@@ -4,6 +4,8 @@
 
 ## 📦 Installation
 
+VueJs-design-system is avaliable as an npm package.
+
 ```sh
 // with npm
 npm install edu-prog/design-system --save
@@ -13,6 +15,9 @@ yarn add edu-prog/design-system --save
 ```
 
 ## 🚗 Usage
+
+Here is a quick example to get you started, it's all you need:
+
 
 ```vue
 <template>
