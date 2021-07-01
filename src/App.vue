@@ -8,6 +8,12 @@
 
     <Row>
       <Column>
+        <PhoneInput />
+      </Column>
+    </Row>
+
+    <Row>
+      <Column>
         <TextInput type="text" label="Фамилия и Имя" mask="Иванов Иван" />
       </Column>
     </Row>
@@ -20,21 +26,23 @@
 
     <Row>
       <Column>
-        <Button content="Войти" type="main" size="l" />
+        <Button content="Войти" type="main" size="l" mode="outlined" />
       </Column>
     </Row>
   </div>
 </template>
 
 <script>
-import Button from "@/components/Button.vue";
+import Button from "./components/Button.vue";
 import { Row, Column } from "vue-grid-responsive";
-import TextInput from "@/components/TextInput";
-import Heading from "@/components/Heading";
+import TextInput from "./components/TextInput.vue";
+import Heading from "./components/Heading.vue";
+import PhoneInput from "./components/PhoneInput";
 
 export default {
   name: "Home",
   components: {
+    PhoneInput,
     Button,
     Row,
     Column,
@@ -55,7 +63,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/styles/_global.scss";
+@import "assets/styles/global";
 
 #app {
   font-family: $font-family;

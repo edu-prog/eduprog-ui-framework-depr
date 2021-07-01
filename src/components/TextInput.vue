@@ -74,6 +74,7 @@ export default {
     top: 50%;
     margin-left: 0.5rem;
     pointer-events: none;
+    transition: 0.25s ease;
     transform: translateY(-50%);
 
     &-focused {
@@ -97,7 +98,7 @@ export default {
     outline: 0;
     padding: 0.5rem;
     background-color: #e7e7e7;
-    border-radius: 0.4rem;
+    border-radius: 0.5rem;
     transition: background-color 0.2s ease;
 
     &.input-size-m {

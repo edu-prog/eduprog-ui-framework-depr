@@ -7,6 +7,7 @@
       `btn-size-${size}`,
       rounded ? 'btn-rounded' : '',
       isActive ? 'btn-clicked' : '',
+      `btn-${type}-${mode}`,
     ]"
   >
     {{ content }}
@@ -33,6 +34,9 @@ export default {
       type: Boolean,
       default: false,
     },
+    mode: {
+
+    }
   },
   data: function () {
     return { isActive: false };
@@ -50,7 +54,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/styles/_global.scss";
+@import "../assets/styles/global";
 
 .btn {
   display: inline-flex;
@@ -66,12 +70,24 @@ export default {
   white-space: nowrap;
   transition: background 0.1s ease, width 0.1s ease, color 0.1s ease;
   border: 1px;
-  border-radius: 0.4rem;
+  border-radius: 0.5rem;
   font-family: $font-family;
 
   &-main {
     background-color: $color-main;
     color: #ffffff;
+
+    &-outlined {
+      background-color: #ffffff;
+      color: #000000;
+      border: 2px solid $color-main;
+
+      &.btn-clicked,
+      &:hover {
+        background-color: $color-main;
+        color: #ffffff;
+      }
+    }
 
     &.btn-clicked,
     &:hover {
@@ -83,6 +99,18 @@ export default {
     background-color: $color-secondary;
     color: #ffffff;
 
+    &-outlined {
+      background-color: #ffffff;
+      color: #000000;
+      border: 2px solid $color-secondary;
+
+      &.btn-clicked,
+      &:hover {
+        background-color: $color-secondary;
+        color: #ffffff;
+      }
+    }
+
     &.btn-clicked,
     &:hover {
       background-color: darken($color-secondary, 5%);
@@ -92,6 +120,18 @@ export default {
   &-accent {
     background-color: $color-accent;
     color: #ffffff;
+
+    &-outlined {
+      background-color: #ffffff;
+      color: #000000;
+      border: 2px solid $color-accent;
+
+      &.btn-clicked,
+      &:hover {
+        background-color: $color-accent;
+        color: #ffffff;
+      }
+    }
 
     &.btn-clicked,
     &:hover {
