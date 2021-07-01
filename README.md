@@ -18,7 +18,6 @@ yarn add edu-prog/design-system --save
 
 Here is a quick example to get you started, it's all you need:
 
-
 ```vue
 <template>
   <div class="home">
