@@ -50,7 +50,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/styles/_global.scss";
+@import "../assets/styles/_global.scss";
 
 .btn {
   display: inline-flex;

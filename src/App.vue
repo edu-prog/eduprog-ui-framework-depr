@@ -55,7 +55,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/styles/_global.scss";
+@import "../assets/styles/_global.scss";
 
 #app {
   font-family: $font-family;
