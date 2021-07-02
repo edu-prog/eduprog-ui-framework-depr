@@ -195,6 +195,14 @@
       </Column>
     </Row>
   </div>
+
+  <div style="width: 300px; margin: 20px auto">
+    <Row>
+      <Column>
+        <TextInput type="text" label="Номер паспорта" mask="0308 075673" />
+      </Column>
+    </Row>
+  </div>
 </template>
 
 <script>
