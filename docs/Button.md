@@ -9,7 +9,6 @@
 | round      | {true, false}                      | Is button round         |
 | rounded    | {true, false}                      | Is button rounded       |
 | mode       | {outlined}                         | Button modificator type |
-|            |                                    |                         |
 
 ## Example
 
