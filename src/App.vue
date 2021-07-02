@@ -146,6 +146,29 @@
       </Column>
     </Row>
   </div>
+
+  <div
+    style="
+      width: 300px;
+      margin: 20px auto;
+    "
+  >
+    <Row>
+      <Column><Heading size="xl">Hello, world!</Heading></Column>
+    </Row>
+    <Row>
+      <Column><Heading size="l">Hello, world!</Heading></Column>
+    </Row>
+    <Row>
+      <Column><Heading size="m">Hello, world!</Heading></Column>
+    </Row>
+    <Row>
+      <Column><Heading size="s">Hello, world!</Heading></Column>
+    </Row>
+    <Row>
+      <Column><Heading size="xs">Hello, world!</Heading></Column>
+    </Row>
+  </div>
 </template>
 
 <script>
