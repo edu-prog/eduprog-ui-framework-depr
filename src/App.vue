@@ -33,6 +33,7 @@
     <Row container style="margin-top: 10px">
       <Column>
         <Checkbox
+          :check="true"
           position="left"
           label="Я принимаю условия Пользовательского соглашения и даю своё согласие Яндексу на обработку моей персональной информации на условиях, определенных Политикой конфиденциальности."
           type="main"
@@ -49,6 +50,15 @@
         />
       </Column>
     </Row>
+
+    <Row>
+      <Column>
+        <Paragraph
+          view="lead"
+          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid, amet cupiditate dicta eaque et eveniet fuga illum ipsum itaque laboriosam laudantium libero minus nisi rerum sed soluta velit. Praesentium."
+        />
+      </Column>
+    </Row>
   </div>
 </template>
 
@@ -59,6 +69,7 @@ import TextInput from "./components/TextInput.vue";
 import Heading from "./components/Heading.vue";
 import PhoneInput from "./components/PhoneInput";
 import Checkbox from "./components/Checkbox";
+import Paragraph from "./components/Paragraph";
 
 export default {
   name: "Home",
@@ -70,6 +81,7 @@ export default {
     Column,
     TextInput,
     Heading,
+    Paragraph,
   },
 };
 </script>

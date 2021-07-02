@@ -1,7 +1,10 @@
 <template>
   <label class="checkbox-container">
     <div v-if="position === 'right'">{{ label }}</div>
-    <input type="checkbox" />
+
+    <input v-if="check" type="checkbox" checked="checked" />
+    <input v-else type="checkbox" />
+
     <span :class="['checkbox-checkmark', `checkbox-checkmark-${type}`]"></span>
     <div v-if="position === 'left'">{{ label }}</div>
   </label>
@@ -21,6 +24,15 @@ export default {
       type: String,
       required: true,
     },
+    check: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data: function () {
+    return {
+      checked: false,
+    };
   },
 };
 </script>

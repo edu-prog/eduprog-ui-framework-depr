@@ -5,7 +5,7 @@
     @keydown="onPhoneKeyDown"
     @paste="onPhonePaste"
     type="tel"
-    max_length="18"
+    :max_length="18"
   />
 </template>
 

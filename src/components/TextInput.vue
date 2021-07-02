@@ -86,6 +86,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../assets/styles/global";
 .form-field {
   margin: 5px 0;
 
@@ -120,7 +121,7 @@ export default {
     border: 0;
     outline: 0;
     padding: 0.5rem;
-    background-color: #e7e7e7;
+    background-color: $color-platinum;
     border-radius: 0.5rem;
     transition: background-color 0.2s ease;
 
@@ -133,20 +134,31 @@ export default {
     }
 
     &:hover {
-      background-color: darken(#e7e7e7, 5%);
+      background-color: darken($color-platinum, 5%);
     }
   }
 
   .input-focused {
-    background-color: darken(#e7e7e7, 5%);
+    background-color: darken($color-platinum, 5%);
   }
 
   .password-toggler {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     right: 1.25rem;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    transition: background-color 0.2s ease;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: silver;
+    }
   }
 }
 </style>
