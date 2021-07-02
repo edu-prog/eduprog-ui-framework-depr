@@ -3,7 +3,7 @@
     <Card>
       <Row container>
         <Column>
-          <Heading size="xl" >Регистрация</Heading>
+          <Heading size="xl">Регистрация</Heading>
         </Column>
       </Row>
 
@@ -27,41 +27,94 @@
 
       <Row container>
         <Column>
-          <Button content="Регистрация" type="main" size="l" mode="block" />
+          <Button type="main" size="l" mode="block"> Регистрация </Button>
         </Column>
       </Row>
 
       <Row container style="margin-top: 10px">
         <Column>
-          <Checkbox
-            :check="true"
-            position="left"
-            label="Я принимаю условия Пользовательского соглашения и даю своё согласие Яндексу на обработку моей персональной информации на условиях, определенных Политикой конфиденциальности."
-            type="main"
-          />
+          <Checkbox :check="true" position="left" type="main">
+            Я принимаю условия Пользовательского соглашения и даю своё согласие
+            Яндексу на обработку моей персональной информации на условиях,
+            определенных Политикой конфиденциальности.
+          </Checkbox>
         </Column>
       </Row>
 
       <Row container style="margin-top: 10px">
         <Column>
-          <Checkbox
-            position="left"
-            label="Я не хочу получать рекламу и другие предложения данного сервиса Яндекса"
-            type="main"
-          />
+          <Checkbox position="left" type="main">
+            Я не хочу получать рекламу и другие предложения данного сервиса
+            Яндекса
+          </Checkbox>
         </Column>
       </Row>
 
       <Row>
         <Column>
-          <Paragraph
-            view="normal"
-          >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, consequatur cupiditate doloremque expedita fugit illo iste magnam minima nostrum, pariatur perferendis porro quam quasi, qui ratione sapiente sed. Illo, quod.
+          <Paragraph view="normal">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae,
+            consequatur cupiditate doloremque expedita fugit illo iste magnam
+            minima nostrum, pariatur perferendis porro quam quasi, qui ratione
+            sapiente sed. Illo, quod.
           </Paragraph>
         </Column>
       </Row>
     </Card>
+
+    <IconButton name="chat"></IconButton>
+  </div>
+
+  <div
+    style="
+      width: 300px;
+      margin: 20px auto;
+    "
+  >
+    <Row>
+      <Column>
+        <Button type="main">Sign in</Button>
+      </Column>
+      <Column>
+        <Button type="secondary">Sign in</Button>
+      </Column>
+      <Column>
+        <Button type="accent">Sign in</Button>
+      </Column>
+    </Row>
+    <Row style="margin-top: 10px">
+      <Column>
+        <Button type="main" mode="outlined">Sign in</Button>
+      </Column>
+      <Column>
+        <Button type="secondary" mode="outlined">Sign in</Button>
+      </Column>
+      <Column>
+        <Button type="accent" mode="outlined">Sign in</Button>
+      </Column>
+    </Row>
+    <Row style="margin-top: 10px">
+      <Column>
+        <Button type="main" rounded>Sign in</Button>
+      </Column>
+      <Column>
+        <Button type="secondary" rounded>Sign in</Button>
+      </Column>
+      <Column>
+        <Button type="accent" rounded>Sign in</Button>
+      </Column>
+    </Row>
+    <Row style="margin-top: 10px">
+      <Column>
+        <Button type="main" round>R</Button>
+      </Column>
+      <Column>
+        <Button type="secondary" round>R</Button>
+      </Column>
+      <Column>
+        <Button type="accent" round>R</Button>
+      </Column>
+    </Row>
   </div>
 </template>
 
@@ -74,6 +127,7 @@ import PhoneInput from "./components/PhoneInput";
 import Checkbox from "./components/Checkbox";
 import Paragraph from "./components/Paragraph";
 import Card from "./components/Card";
+import IconButton from "./components/IconButton";
 
 export default {
   name: "Home",
@@ -86,6 +140,7 @@ export default {
     Column,
     TextInput,
     Heading,
+    IconButton,
     Paragraph,
   },
 };

@@ -1,12 +1,16 @@
 <template>
   <label class="checkbox-container">
-    <div v-if="position === 'right'">{{ label }}</div>
+    <div v-if="position === 'right'">
+      <slot></slot>
+    </div>
 
     <input v-if="check" type="checkbox" checked="checked" />
     <input v-else type="checkbox" />
 
     <span :class="['checkbox-checkmark', `checkbox-checkmark-${type}`]"></span>
-    <div v-if="position === 'left'">{{ label }}</div>
+    <div v-if="position === 'left'">
+      <slot></slot>
+    </div>
   </label>
 </template>
 
@@ -14,9 +18,6 @@
 export default {
   name: "Checkbox",
   props: {
-    label: {
-      type: String,
-    },
     type: {
       type: String,
     },

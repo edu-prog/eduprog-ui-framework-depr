@@ -3,14 +3,17 @@
     @click="toggleState"
     :class="[
       'btn',
+      round ? 'btn-round' : '',
       `btn-${type}`,
       `btn-size-${size}`,
       rounded ? 'btn-rounded' : '',
       isActive ? 'btn-clicked' : '',
-      `btn-${type}-${mode}`,
+      mode ? `btn-${type}-${mode}` : '',
     ]"
   >
-    <span class="btn-label">{{ content }}</span>
+    <span class="btn-label">
+      <slot></slot>
+    </span>
   </button>
 </template>
 
@@ -18,10 +21,6 @@
 export default {
   name: "Button",
   props: {
-    content: {
-      type: String,
-      required: true,
-    },
     type: {
       type: String,
       default: "default",
@@ -30,11 +29,18 @@ export default {
       type: String,
       default: "m",
     },
+    round: {
+      type: Boolean,
+      default: false,
+    },
     rounded: {
       type: Boolean,
       default: false,
     },
-    mode: {},
+    mode: {
+      type: String,
+      default: "",
+    },
   },
   data: function () {
     return { isActive: false };
@@ -68,7 +74,7 @@ export default {
   text-align: center;
   white-space: nowrap;
   transition: background 0.1s ease, width 0.1s ease, color 0.1s ease;
-  border: 1px;
+  border: 2px;
   border-radius: 0.5rem;
   font-family: $font-family;
 
@@ -183,6 +189,21 @@ export default {
     height: 3.75rem;
     padding: 0 2rem;
     font-size: 1.5rem;
+  }
+
+  &-round {
+    padding: 1rem;
+    border-radius: 50%;
+    max-width: 3rem;
+    max-height: 3rem;
+    height: 100%;
+    width: 100%;
+
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 </style>
