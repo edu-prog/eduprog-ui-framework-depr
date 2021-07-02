@@ -1,6 +1,6 @@
 # PhoneInput
 
-This is inheritor of component [TextInput.md](TextInput.md)
+This is inheritor of component [TextInput](TextInput.md)
 
 ## Example
 
