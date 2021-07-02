@@ -2,9 +2,37 @@
 
 ## Properties
 
+| Properties | Values                    | Description             |
+| ---------- | ------------------------- | ----------------------- |
+| type       | {main, secondary, accent} | Checkbox type           |
+| position   | {right, left}             | Checkbox position       |
+| check      | {true, false}             | Checkbox checked status |
 
-Column A | Column B | Column C
----------|----------|---------
- A1 | B1 | C1
- A2 | B2 | C2
- A3 | B3 | C3
+## Examples
+
+![example](https://i.imgur.com/abhxNnC.png)
+
+```vue
+<Row>
+    <Column>
+        <Checkbox type="main" position="left" check>Test</Checkbox>
+    </Column>
+    <Column>
+        <Checkbox type="secondary" position="left" check>Test</Checkbox>
+    </Column>
+    <Column>
+        <Checkbox type="accent" position="left" check>Test</Checkbox>
+    </Column>
+</Row>
+<Row>
+    <Column>
+        <Checkbox type="main" position="left">Test</Checkbox>
+    </Column>
+    <Column>
+        <Checkbox type="secondary" position="left">Test</Checkbox>
+    </Column>
+    <Column>
+        <Checkbox type="accent" position="left">Test</Checkbox>
+    </Column>
+</Row>
+```

@@ -116,6 +116,36 @@
       </Column>
     </Row>
   </div>
+
+  <div
+    style="
+      width: 300px;
+      margin: 20px auto;
+    "
+  >
+    <Row style="margin-top: 10px">
+      <Column>
+        <Checkbox type="main" position="left" check>Test</Checkbox>
+      </Column>
+      <Column>
+        <Checkbox type="secondary" position="left" check>Test</Checkbox>
+      </Column>
+      <Column>
+        <Checkbox type="accent" position="left" check>Test</Checkbox>
+      </Column>
+    </Row>
+    <Row style="margin-top: 10px">
+      <Column>
+        <Checkbox type="main" position="left">Test</Checkbox>
+      </Column>
+      <Column>
+        <Checkbox type="secondary" position="left">Test</Checkbox>
+      </Column>
+      <Column>
+        <Checkbox type="accent" position="left">Test</Checkbox>
+      </Column>
+    </Row>
+  </div>
 </template>
 
 <script>
