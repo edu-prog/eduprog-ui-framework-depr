@@ -4,6 +4,7 @@
 
 | Properties | Values                             | Description             |
 | ---------- | ---------------------------------- | ----------------------- |
+| children   | string                             | Button label            |
 | type       | {main, secondary, accent, default} | Button type             |
 | size       | {xs, s, m, l, xl}                  | Button size             |
 | round      | {true, false}                      | Is button round         |

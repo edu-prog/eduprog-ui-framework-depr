@@ -4,6 +4,7 @@
 
 | Properties | Values                    | Description             |
 | ---------- | ------------------------- | ----------------------- |
+| children   | string                    | Checkbox label          |
 | type       | {main, secondary, accent} | Checkbox type           |
 | position   | {right, left}             | Checkbox position       |
 | check      | {true, false}             | Checkbox checked status |
