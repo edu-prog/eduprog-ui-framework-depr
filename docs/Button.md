@@ -13,6 +13,10 @@
 
 ## Example
 
+<div style="text-align: center;">
+    <img src="https://i.imgur.com/UaePjvy.png" alt="Example" />
+</div>
+
 ```vue
     <Row>
       <Column>
@@ -59,5 +63,3 @@
       </Column>
     </Row>
 ```
-
-![Example](https://i.imgur.com/UaePjvy.png)
