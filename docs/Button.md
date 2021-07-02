@@ -12,9 +12,7 @@
 
 ## Example
 
-<div style="text-align: center;">
-    <img src="https://i.imgur.com/UaePjvy.png" alt="Example" />
-</div>
+![Example](https://i.imgur.com/UaePjvy.png)
 
 ```vue
     <Row>
