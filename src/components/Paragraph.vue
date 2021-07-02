@@ -1,6 +1,6 @@
 <template>
   <p :class="['paragraph', `paragraph-${view}`, `paragraph-${align}`]">
-    {{ text }}
+    <slot></slot>
   </p>
 </template>
 
@@ -8,10 +8,6 @@
 export default {
   name: "Paragraph",
   props: {
-    text: {
-      type: String,
-      required: true,
-    },
     view: {
       type: String,
       default: "normal",
