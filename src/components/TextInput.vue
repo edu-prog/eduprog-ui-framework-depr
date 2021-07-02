@@ -2,13 +2,14 @@
   <div class="form-field">
     <span
       :class="['form-field-label', isActive ? 'form-field-label-focused' : '']"
-      >{{ label }}</span
     >
-    <span :hidden="!isActive || message.length > 0" class="form-field-mask">{{
-      mask
-    }}</span>
+      {{ label }}
+    </span>
+    <span :hidden="!isActive || message.length > 0" class="form-field-mask">
+      {{ mask }}
+    </span>
     <input
-      :type="type"
+      :type="type === 'password' ? (isShow ? 'text' : 'password') : type"
       :class="[
         'form-field-input-control',
         `input-size-${size}`,
@@ -20,12 +21,24 @@
       @input="updateInput"
       :maxlength="max_length"
     />
+    <div v-if="type === 'password'">
+      <Icon
+        @click="togglePassword"
+        class="password-toggler"
+        :name="isShow ? 'visibility' : 'visibility_off'"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import Icon from "./Icon";
+
 export default {
   name: "TextInput",
+  components: {
+    Icon,
+  },
   props: {
     type: {
       type: String,
@@ -49,6 +62,7 @@ export default {
   data: function () {
     return {
       isActive: false,
+      isShow: false,
       message: "",
     };
   },
@@ -63,6 +77,9 @@ export default {
       if (message.length > 0 && !this.isActive) {
         this.isActive = true;
       }
+    },
+    togglePassword: function () {
+      this.isShow = !this.isShow;
     },
   },
 };
@@ -110,6 +127,7 @@ export default {
     &.input-size-m {
       font-size: 1rem;
     }
+
     &.input-size-xl {
       font-size: 2rem;
     }
@@ -121,6 +139,14 @@ export default {
 
   .input-focused {
     background-color: darken(#e7e7e7, 5%);
+  }
+
+  .password-toggler {
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
   }
 }
 </style>
