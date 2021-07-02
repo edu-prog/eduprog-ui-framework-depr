@@ -10,7 +10,7 @@
       `btn-${type}-${mode}`,
     ]"
   >
-    {{ content }}
+    <span class="btn-label">{{ content }}</span>
   </button>
 </template>
 
@@ -34,9 +34,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    mode: {
-
-    }
+    mode: {},
   },
   data: function () {
     return { isActive: false };
@@ -60,6 +58,7 @@ export default {
   display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  justify-content: center;
   align-content: center;
   align-items: center;
   position: relative;
@@ -73,6 +72,10 @@ export default {
   border-radius: 0.5rem;
   font-family: $font-family;
 
+  .btn-label {
+    text-align: center;
+  }
+
   &-main {
     background-color: $color-main;
     color: #ffffff;
@@ -84,9 +87,13 @@ export default {
 
       &.btn-clicked,
       &:hover {
-        background-color: $color-main;
+        background-color: $color-main !important;
         color: #ffffff;
       }
+    }
+
+    &-block {
+      width: calc(100% - 0.875rem);
     }
 
     &.btn-clicked,
@@ -106,7 +113,7 @@ export default {
 
       &.btn-clicked,
       &:hover {
-        background-color: $color-secondary;
+        background-color: $color-secondary !important;
         color: #ffffff;
       }
     }
@@ -128,7 +135,7 @@ export default {
 
       &.btn-clicked,
       &:hover {
-        background-color: $color-accent;
+        background-color: $color-accent !important;
         color: #ffffff;
       }
     }

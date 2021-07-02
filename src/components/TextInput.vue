@@ -18,6 +18,7 @@
       @focus="toggleInput"
       @blur="toggleInput"
       @input="updateInput"
+      :maxlength="max_length"
     />
   </div>
 </template>
@@ -40,6 +41,9 @@ export default {
     },
     mask: {
       type: String,
+    },
+    max_length: {
+      type: Number,
     },
   },
   data: function () {
@@ -76,6 +80,7 @@ export default {
     pointer-events: none;
     transition: 0.25s ease;
     transform: translateY(-50%);
+    color: #000000;
 
     &-focused {
       font-size: 0.625rem;
@@ -88,11 +93,12 @@ export default {
     position: absolute;
     top: 50%;
     margin-left: 0.5rem;
+    color: #333333;
     transform: translateY(-50%);
   }
 
   &-input-control {
-    width: 100%;
+    width: calc(100% - 30px);
     height: 35px;
     border: 0;
     outline: 0;

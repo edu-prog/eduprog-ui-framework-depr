@@ -1,63 +1,75 @@
 <template>
   <div class="home">
-    <Row>
+    <Row container>
       <Column>
         <Heading content="Регистрация" size="xl" />
       </Column>
     </Row>
 
-    <Row>
+    <Row container>
       <Column>
         <PhoneInput />
       </Column>
     </Row>
 
-    <Row>
+    <Row container>
       <Column>
         <TextInput type="text" label="Фамилия и Имя" mask="Иванов Иван" />
       </Column>
     </Row>
 
-    <Row>
+    <Row container>
       <Column>
         <TextInput type="password" label="Пароль" />
       </Column>
     </Row>
 
-    <Row>
+    <Row container>
       <Column>
-        <Button content="Войти" type="main" size="l" mode="outlined" />
+        <Button content="Регистрация" type="main" size="l" mode="block" />
+      </Column>
+    </Row>
+
+    <Row container style="margin-top: 10px">
+      <Column>
+        <Checkbox
+          position="left"
+          label="Я принимаю условия Пользовательского соглашения и даю своё согласие Яндексу на обработку моей персональной информации на условиях, определенных Политикой конфиденциальности."
+          type="main"
+        />
+      </Column>
+    </Row>
+
+    <Row container style="margin-top: 10px">
+      <Column>
+        <Checkbox
+          position="left"
+          label="Я не хочу получать рекламу и другие предложения данного сервиса Яндекса"
+          type="main"
+        />
       </Column>
     </Row>
   </div>
 </template>
 
 <script>
-import Button from "./components/Button.vue";
 import { Row, Column } from "vue-grid-responsive";
+import Button from "./components/Button.vue";
 import TextInput from "./components/TextInput.vue";
 import Heading from "./components/Heading.vue";
 import PhoneInput from "./components/PhoneInput";
+import Checkbox from "./components/Checkbox";
 
 export default {
   name: "Home",
   components: {
+    Checkbox,
     PhoneInput,
     Button,
     Row,
     Column,
     TextInput,
     Heading,
-  },
-  data: function () {
-    return {
-      value: 0,
-    };
-  },
-  methods: {
-    increment() {
-      this.value++;
-    },
   },
 };
 </script>
@@ -70,11 +82,11 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #000000;
 }
 
 .home {
-  max-width: 600px;
+  max-width: 300px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;

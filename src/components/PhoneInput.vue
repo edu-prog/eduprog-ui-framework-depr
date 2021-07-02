@@ -5,6 +5,7 @@
     @keydown="onPhoneKeyDown"
     @paste="onPhonePaste"
     type="tel"
+    max_length="18"
   />
 </template>
 
@@ -29,7 +30,7 @@ export default {
       let formattedInputValue = "";
 
       if (!inputNumbersValue) {
-        return (input.value = "");
+        return (input.value = event.data === "+" ? "+" : "");
       }
 
       if (input.value.length !== selectionStart) {
@@ -39,11 +40,13 @@ export default {
         return;
       }
 
-      if (["7", "8", "9"].includes(inputNumbersValue[0]) > -1) {
-        if (inputNumbersValue[0] === "9")
+      if (["7", "8", "9"].includes(inputNumbersValue[0])) {
+        if (inputNumbersValue[0] === "9") {
           inputNumbersValue = "7" + inputNumbersValue;
-        let firstSymbols = inputNumbersValue[0] === "8" ? "8" : "+7";
+        }
+        const firstSymbols = inputNumbersValue[0] === "8" ? "8" : "+7";
         formattedInputValue = input.value = firstSymbols + " ";
+
         if (inputNumbersValue.length > 1) {
           formattedInputValue += "(" + inputNumbersValue.substring(1, 4);
         }
@@ -62,10 +65,21 @@ export default {
       input.value = formattedInputValue;
     },
     onPhoneKeyDown: function (event) {
-      const inputValue = event.target.value.replace(/\d/g, "");
+      const inputValue = event.target.value.replace(/\D/g, "");
 
       if (event.keyCode === 8 && inputValue.length === 1) {
         event.target.value = "";
+      } else if ([8, 46].includes(event.keyCode) && inputValue.length > 1) {
+        let symToClear = "";
+        if (event.keyCode === 8) {
+          symToClear = event.target.value[event.target.selectionStart - 1];
+        } else if (event.keyCode === 46) {
+          symToClear = event.target.value[event.target.selectionStart];
+        }
+
+        if (symToClear && /\D/g.test(symToClear)) {
+          event.preventDefault();
+        }
       }
     },
     onPhonePaste: function (event) {
@@ -77,11 +91,10 @@ export default {
         const pastedText = pasted.getData("Text");
         if (/\D/g.test(pastedText)) {
           input.value = inputNumbersValue;
+          return;
         }
       }
     },
   },
 };
 </script>
-
-<style scoped></style>
