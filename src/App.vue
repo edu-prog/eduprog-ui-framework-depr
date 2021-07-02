@@ -52,7 +52,7 @@
 
       <Row>
         <Column>
-          <Paragraph view="normal">
+          <Paragraph type="normal">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae,
             consequatur cupiditate doloremque expedita fugit illo iste magnam
             minima nostrum, pariatur perferendis porro quam quasi, qui ratione
@@ -65,12 +65,7 @@
     <IconButton name="chat"></IconButton>
   </div>
 
-  <div
-    style="
-      width: 300px;
-      margin: 20px auto;
-    "
-  >
+  <div style="width: 300px; margin: 20px auto">
     <Row>
       <Column>
         <Button type="main">Sign in</Button>
@@ -117,12 +112,7 @@
     </Row>
   </div>
 
-  <div
-    style="
-      width: 300px;
-      margin: 20px auto;
-    "
-  >
+  <div style="width: 300px; margin: 20px auto">
     <Row style="margin-top: 10px">
       <Column>
         <Checkbox type="main" position="left" check>Test</Checkbox>
@@ -147,12 +137,7 @@
     </Row>
   </div>
 
-  <div
-    style="
-      width: 300px;
-      margin: 20px auto;
-    "
-  >
+  <div style="width: 300px; margin: 20px auto">
     <Row>
       <Column><Heading size="xl">Hello, world!</Heading></Column>
     </Row>
@@ -167,6 +152,39 @@
     </Row>
     <Row>
       <Column><Heading size="xs">Hello, world!</Heading></Column>
+    </Row>
+  </div>
+
+  <div style="width: 300px; margin: 20px auto">
+    <Row>
+      <Column>
+        <Paragraph type="small">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
+          dolore, dolorem doloremque ducimus error excepturi fugit ipsam
+          laborum, minima necessitatibus omnis perspiciatis porro reiciendis
+          suscipit vel! Aliquid deserunt magnam neque!
+        </Paragraph>
+      </Column>
+    </Row>
+    <Row>
+      <Column>
+        <Paragraph type="normal">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
+          dolore, dolorem doloremque ducimus error excepturi fugit ipsam
+          laborum, minima necessitatibus omnis perspiciatis porro reiciendis
+          suscipit vel! Aliquid deserunt magnam neque!
+        </Paragraph>
+      </Column>
+    </Row>
+    <Row>
+      <Column>
+        <Paragraph type="lead">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
+          dolore, dolorem doloremque ducimus error excepturi fugit ipsam
+          laborum, minima necessitatibus omnis perspiciatis porro reiciendis
+          suscipit vel! Aliquid deserunt magnam neque!
+        </Paragraph>
+      </Column>
     </Row>
   </div>
 </template>
