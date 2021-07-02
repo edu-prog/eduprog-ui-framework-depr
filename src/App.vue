@@ -187,6 +187,14 @@
       </Column>
     </Row>
   </div>
+
+  <div style="width: 300px; margin: 20px auto">
+    <Row>
+      <Column>
+        <PhoneInput />
+      </Column>
+    </Row>
+  </div>
 </template>
 
 <script>
