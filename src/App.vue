@@ -203,6 +203,20 @@
       </Column>
     </Row>
   </div>
+  <div style="width: 300px; margin: 20px auto">
+    <Row>
+      <Column>
+        <Progress
+          ref="progress"
+          :values="[
+            { value: 10, color: '#6320EE' },
+            { value: 40, color: '#8075FF' },
+            { value: 50, color: '#50C878' },
+          ]"
+        />
+      </Column>
+    </Row>
+  </div>
 </template>
 
 <script>
@@ -215,6 +229,7 @@ import Checkbox from "./components/Checkbox";
 import Paragraph from "./components/Paragraph";
 import Card from "./components/Card";
 import IconButton from "./components/IconButton";
+import Progress from "./components/Progress";
 
 export default {
   name: "Home",
@@ -229,6 +244,12 @@ export default {
     Heading,
     IconButton,
     Paragraph,
+    Progress,
+  },
+  methods: {
+    showInfo: function () {
+      this.$refs.progress.getValue();
+    },
   },
 };
 </script>
