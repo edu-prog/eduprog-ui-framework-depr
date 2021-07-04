@@ -2,10 +2,11 @@
 
 ## Properties
 
-| Properties | Values            | Description  |
-| ---------- | ----------------- | ------------ |
-| children   | string            | Heading text |
-| size       | {xs, s, m, l, xl} | Heading size |
+| Properties | Values                | Description   |
+| ---------- | --------------------- | ------------- |
+| children   | string                | Heading text  |
+| size       | {xs, s, m, l, xl}     | Heading size  |
+| align      | {left, center, right} | Heading align |
 
 ## Example
 
@@ -26,5 +27,15 @@
 </Row>
 <Row>
     <Column><Heading size="xs">Hello, world!</Heading></Column>
+</Row>
+```
+
+![Example](https://i.imgur.com/OHKo97M.png)
+
+```vue
+<Row>
+  <Column>
+    <Heading size="xl" align="right">Регистрация</Heading>
+  </Column>
 </Row>
 ```

@@ -1,6 +1,6 @@
 <template>
   <div class="heading" v-if="size === 'xl'">
-    <h1><slot></slot></h1>
+    <h1 :class="[align ? `heading-align-${align}` : '']"><slot></slot></h1>
   </div>
   <div class="heading" v-else-if="size === 'l'">
     <h2><slot></slot></h2>
@@ -23,12 +23,29 @@ export default {
     size: {
       type: String,
       require: true,
+      default: "xl",
     },
     align: {
-
-    }
+      type: String,
+      required: false,
+      default: "center",
+    },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.heading {
+  &-align {
+    &-left {
+      text-align: left;
+    }
+    &-center {
+      text-align: center;
+    }
+    &-right {
+      text-align: right;
+    }
+  }
+}
+</style>

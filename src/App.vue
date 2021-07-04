@@ -3,7 +3,7 @@
     <Card size="m" type="border">
       <Row container>
         <Column>
-          <Heading size="xl">Регистрация</Heading>
+          <Heading size="xl" align="right">Регистрация</Heading>
         </Column>
       </Row>
 
