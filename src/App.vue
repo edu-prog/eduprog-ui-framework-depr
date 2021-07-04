@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Card>
+    <Card size="m">
       <Row container>
         <Column>
           <Heading size="xl">Регистрация</Heading>
@@ -61,7 +61,6 @@
         </Column>
       </Row>
     </Card>
-
     <IconButton name="chat"></IconButton>
   </div>
 
@@ -230,7 +229,20 @@
   <div style="width: 300px; margin: 20px auto">
     <Row>
       <Column>
-        <Select label="Выберите повышенный Кэшбэк" :options="['Аптеки', 'Ozon.ru', 'Пятёрочка']" multiple />
+        <Select
+          label="Выберите повышенный Кэшбэк"
+          :options="[
+            'Аптеки',
+            'Ozon.ru',
+            'Пятёрочка',
+            'Спорттовары',
+            'Такси',
+            'Рестораны',
+          ]"
+          ref="cashback_selector"
+          :max_selected="3"
+          multiple
+        />
       </Column>
     </Row>
   </div>
@@ -292,8 +304,6 @@ export default {
 }
 
 .home {
-  max-width: 300px;
-  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }

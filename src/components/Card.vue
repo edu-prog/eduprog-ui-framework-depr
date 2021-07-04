@@ -1,5 +1,7 @@
 <template>
-  <div class="card">
+  <div
+    :class="['card', size ? `card-${size}` : '', align ? `card-${align}` : '']"
+  >
     <slot></slot>
   </div>
 </template>
@@ -7,6 +9,18 @@
 <script>
 export default {
   name: "Card",
+  props: {
+    size: {
+      type: String,
+      required: true,
+      default: "s",
+    },
+    align: {
+      type: String,
+      required: false,
+      default: "center",
+    },
+  },
 };
 </script>
 
@@ -18,5 +32,39 @@ export default {
     inset 0 0 0 1px rgba(255, 255, 255, 0.5);
   padding: 10px;
   border-radius: 0.5rem;
+  width: 100%;
+
+  &-xs {
+    max-width: 300px;
+  }
+
+  &-s {
+    max-width: 600px;
+  }
+
+  &-m {
+    max-width: 960px;
+  }
+
+  &-l {
+    max-width: 1280px;
+  }
+
+  &-xl {
+    max-width: 1920px;
+  }
+
+  &-left {
+    margin-right: auto;
+  }
+
+  &-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &-right {
+    margin-left: auto;
+  }
 }
 </style>

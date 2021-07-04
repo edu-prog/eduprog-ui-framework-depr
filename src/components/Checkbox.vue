@@ -5,12 +5,11 @@
     </div>
 
     <input
-      v-if="check"
       type="checkbox"
-      checked="checked"
       :data-opt="__input_opts"
+      :checked="check === true"
+      :disabled="disabled === true"
     />
-    <input v-else type="checkbox" :data-opt="__input_opts" />
 
     <span :class="['checkbox-checkmark', `checkbox-checkmark-${type}`]"></span>
     <div v-if="position === 'left'">
@@ -37,18 +36,33 @@ export default {
     __input_opts: {
       type: String,
     },
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   data: function () {
     return {
       checked: false,
     };
   },
+  methods: {
+    getValue: function () {
+      return this.checked;
+    },
+  },
 };
 </script>
 
 <style scoped lang="scss">
+@import "../assets/styles/global";
+
 .checkbox-container {
-  @import "../assets/styles/global";
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
 
   div {
     margin-left: 0.75rem;
@@ -56,10 +70,6 @@ export default {
     text-align: left;
     width: calc(100% - 0.75rem - 4rem);
   }
-
-  display: flex;
-  position: relative;
-  justify-content: center;
 
   input {
     display: none;

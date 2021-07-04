@@ -1,7 +1,10 @@
 <template>
   <div class="form-field">
     <span
-      :class="['form-field-label', isActive || message ? 'form-field-label-focused' : '']"
+      :class="[
+        'form-field-label',
+        isActive || message ? 'form-field-label-focused' : '',
+      ]"
     >
       {{ label }}
     </span>
@@ -84,8 +87,10 @@ export default {
     };
   },
   methods: {
+    getValue: function () {
+      return this.message;
+    },
     toggleInput: function () {
-      console.log(this.message);
       if (!this.message.length > 0) {
         this.isActive = !this.isActive;
       }

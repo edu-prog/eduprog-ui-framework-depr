@@ -35,14 +35,14 @@
       </div>
     </div>
 
-    <div v-else class="dropdown-menu">
+    <div v-else class="dropdown-menu" :style="{ marginTop: '1rem' }">
       <div
         class="dropdown-item dropdown-item-multiple"
         v-for="elem in options"
         v-bind:key="elem"
       >
         <Checkbox
-          style="width: 100%; height: 100%"
+          style="width: 100%; height: 100%; padding: 0.5rem"
           @click="itemClickHandler"
           :__input_opts="elem"
           position="left"
@@ -114,6 +114,7 @@ export default {
           } else {
             this.value.push(val);
           }
+
           this.value.forEach((item, iterations) => {
             select.message += `${item}`;
 
@@ -125,6 +126,9 @@ export default {
       } else {
         select.message = event.target.innerText;
       }
+    },
+    getValue: function () {
+      return this.value;
     },
   },
 };
@@ -183,12 +187,16 @@ export default {
 
     &-multiple {
       display: flex;
+      padding: 0;
     }
   }
 }
 </style>
 <style>
 .select-input {
+  width: calc(100% - 3.5rem) !important;
+  padding-right: 2rem !important;
   cursor: pointer;
+  user-select: none;
 }
 </style>

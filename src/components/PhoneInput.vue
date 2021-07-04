@@ -5,6 +5,7 @@
     @keydown="onPhoneKeyDown"
     @paste="onPhonePaste"
     type="tel"
+    ref="phone_input"
     :max_length="18"
   />
 </template>
@@ -94,6 +95,9 @@ export default {
           return;
         }
       }
+    },
+    getValue: function () {
+      return this.$refs.phone_input.message;
     },
   },
 };
