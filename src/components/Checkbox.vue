@@ -44,7 +44,7 @@ export default {
   },
   data: function () {
     return {
-      checked: false,
+      checked: this.check,
     };
   },
   methods: {

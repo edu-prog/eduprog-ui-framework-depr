@@ -35,23 +35,23 @@ export default {
   width: 100%;
 
   &-xs {
-    max-width: 300px;
+    max-width: calc(300px - 3rem);
   }
 
   &-s {
-    max-width: 600px;
+    max-width: calc(600px - 3rem);
   }
 
   &-m {
-    max-width: 960px;
+    max-width: calc(960px - 3rem);
   }
 
   &-l {
-    max-width: 1280px;
+    max-width: calc(1280px - 3rem);
   }
 
   &-xl {
-    max-width: 1920px;
+    max-width: calc(1920px - 3rem);
   }
 
   &-left {

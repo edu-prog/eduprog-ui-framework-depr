@@ -24,6 +24,9 @@ export default {
       type: String,
       require: true,
     },
+    align: {
+
+    }
   },
 };
 </script>
