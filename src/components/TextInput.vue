@@ -1,7 +1,7 @@
 <template>
   <div class="form-field">
     <span
-      :class="['form-field-label', isActive ? 'form-field-label-focused' : '']"
+      :class="['form-field-label', isActive || message ? 'form-field-label-focused' : '']"
     >
       {{ label }}
     </span>
@@ -13,14 +13,18 @@
       :class="[
         'form-field-input-control',
         `input-size-${size}`,
-        isActive ? 'input-focused' : '',
+        isActive || message ? 'input-focused' : '',
+        input_class,
       ]"
       v-model="message"
       @focus="toggleInput"
       @blur="toggleInput"
       @input="updateInput"
       :maxlength="max_length"
+      :readonly="readonly"
+      :value="message"
     />
+    <slot></slot>
     <div v-if="type === 'password'">
       <Icon
         @click="togglePassword"
@@ -44,6 +48,11 @@ export default {
       type: String,
       required: true,
     },
+    val: {
+      type: String,
+      required: false,
+      default: "",
+    },
     label: {
       type: String,
       required: true,
@@ -58,16 +67,25 @@ export default {
     max_length: {
       type: Number,
     },
+    input_class: {
+      type: String,
+      required: false,
+    },
+    readonly: {
+      type: Boolean,
+      default: false,
+    },
   },
   data: function () {
     return {
       isActive: false,
       isShow: false,
-      message: "",
+      message: this.val,
     };
   },
   methods: {
     toggleInput: function () {
+      console.log(this.message);
       if (!this.message.length > 0) {
         this.isActive = !this.isActive;
       }

@@ -4,8 +4,13 @@
       <slot></slot>
     </div>
 
-    <input v-if="check" type="checkbox" checked="checked" />
-    <input v-else type="checkbox" />
+    <input
+      v-if="check"
+      type="checkbox"
+      checked="checked"
+      :data-opt="__input_opts"
+    />
+    <input v-else type="checkbox" :data-opt="__input_opts" />
 
     <span :class="['checkbox-checkmark', `checkbox-checkmark-${type}`]"></span>
     <div v-if="position === 'left'">
@@ -28,6 +33,9 @@ export default {
     check: {
       type: Boolean,
       default: false,
+    },
+    __input_opts: {
+      type: String,
     },
   },
   data: function () {

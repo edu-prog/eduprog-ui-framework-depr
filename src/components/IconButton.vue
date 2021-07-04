@@ -1,5 +1,5 @@
 <template>
-  <Button type="main" round="true">
+  <Button type="main" round>
     <Icon :name="name" />
   </Button>
 </template>

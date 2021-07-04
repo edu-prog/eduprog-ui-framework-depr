@@ -51,7 +51,7 @@ export default {
     justify-content: center;
     transition: width 0.6s ease;
     overflow: hidden;
-    animation: 1s linear infinite progress-bar-stripted;
+    animation: progress-bar-stripted 1s linear infinite;
 
     &-stripted {
       background-image: linear-gradient(

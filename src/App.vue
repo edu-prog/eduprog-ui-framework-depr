@@ -217,6 +217,35 @@
       </Column>
     </Row>
   </div>
+  <div style="width: 300px; margin: 20px auto">
+    <Row>
+      <Column>
+        <Select
+          label="Гражданство"
+          :options="['Имею гражданство РФ', 'Не имею гражданство РФ']"
+        />
+      </Column>
+    </Row>
+  </div>
+  <div style="width: 300px; margin: 20px auto">
+    <Row>
+      <Column>
+        <Select label="Выберите повышенный Кэшбэк" :options="['Аптеки', 'Ozon.ru', 'Пятёрочка']" multiple />
+      </Column>
+    </Row>
+  </div>
+  <div style="width: 300px; margin: 20px auto">
+    <Row>
+      <Column>
+        <Paragraph type="lead"
+          >Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
+          consequuntur eaque et expedita explicabo illum impedit incidunt, ipsam
+          laboriosam libero minus numquam obcaecati, perferendis provident quos?
+          Nulla rerum unde ut!</Paragraph
+        >
+      </Column>
+    </Row>
+  </div>
 </template>
 
 <script>
@@ -230,6 +259,7 @@ import Paragraph from "./components/Paragraph";
 import Card from "./components/Card";
 import IconButton from "./components/IconButton";
 import Progress from "./components/Progress";
+import Select from "./components/Select";
 
 export default {
   name: "Home",
@@ -245,11 +275,7 @@ export default {
     IconButton,
     Paragraph,
     Progress,
-  },
-  methods: {
-    showInfo: function () {
-      this.$refs.progress.getValue();
-    },
+    Select,
   },
 };
 </script>
