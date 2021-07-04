@@ -2,10 +2,15 @@
 
 ## Properties
 
-
 | Properties | Values                                                         | Description        |
 | ---------- | -------------------------------------------------------------- | ------------------ |
 | Values     | [{value: 10, color: "#ffb000"}, {value: 90, color: "#ffcc00"}] | progress bar value |
+
+## Methods
+
+| Method   | Return Value | Description                                 |
+| -------- | ------------ | ------------------------------------------- |
+| getValue | string       | Return value that encapsulated in component |
 
 ## Example
 

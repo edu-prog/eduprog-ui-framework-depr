@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Card size="m">
+    <Card size="m" type="border">
       <Row container>
         <Column>
           <Heading size="xl">Регистрация</Heading>
@@ -61,7 +61,7 @@
         </Column>
       </Row>
     </Card>
-    <IconButton name="chat"></IconButton>
+    <IconButton @click="btnClick" name="chat"></IconButton>
   </div>
 
   <div style="width: 300px; margin: 20px auto">
@@ -114,13 +114,19 @@
   <div style="width: 300px; margin: 20px auto">
     <Row style="margin-top: 10px">
       <Column>
-        <Checkbox type="main" position="left" check>Test</Checkbox>
+        <Checkbox type="main" position="left" ref="checkbox_1" check
+          >Test</Checkbox
+        >
       </Column>
       <Column>
-        <Checkbox type="secondary" position="left" check>Test</Checkbox>
+        <Checkbox type="secondary" position="left" ref="checkbox_2" check
+          >Test</Checkbox
+        >
       </Column>
       <Column>
-        <Checkbox type="accent" position="left" check>Test</Checkbox>
+        <Checkbox type="accent" position="left" ref="checkbox_3" check
+          >Test</Checkbox
+        >
       </Column>
     </Row>
     <Row style="margin-top: 10px">
@@ -258,6 +264,9 @@
       </Column>
     </Row>
   </div>
+  <div style="width: 300px; margin: 20px auto">
+    <Link link="/connect" target="_blank">Подключиться</Link>
+  </div>
 </template>
 
 <script>
@@ -272,6 +281,7 @@ import Card from "./components/Card";
 import IconButton from "./components/IconButton";
 import Progress from "./components/Progress";
 import Select from "./components/Select";
+import Link from "./components/Link";
 
 export default {
   name: "Home",
@@ -288,6 +298,12 @@ export default {
     Paragraph,
     Progress,
     Select,
+    Link,
+  },
+  methods: {
+    btnClick() {
+      console.log(this.$refs.checkbox_1.getValue());
+    },
   },
 };
 </script>

@@ -2,17 +2,18 @@
 
 ## Properties
 
-| Properties | Values                | Description    |
-| ---------- | --------------------- | -------------- |
-| children   | string                | Button label   |
-| type       | {small, normal, lead} | Paragraph type |
+| Properties | Values                | Description     |
+| ---------- | --------------------- | --------------- |
+| children   | string                | Button label    |
+| type       | {small, normal, lead} | Paragraph type  |
+| align      | {left, center, right} | Paragraph align |
 
 ## Example
 
 ![Example](https://i.imgur.com/mw9Pd2b.png)
 
 ```vue
-    <Row>
+<Row>
       <Column>
         <Paragraph type="small">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
@@ -22,7 +23,7 @@
         </Paragraph>
       </Column>
     </Row>
-    <Row>
+<Row>
       <Column>
         <Paragraph type="normal">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
@@ -32,7 +33,7 @@
         </Paragraph>
       </Column>
     </Row>
-    <Row>
+<Row>
       <Column>
         <Paragraph type="lead">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa

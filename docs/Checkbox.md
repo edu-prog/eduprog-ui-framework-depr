@@ -8,6 +8,13 @@
 | type       | {main, secondary, accent} | Checkbox type           |
 | position   | {right, left}             | Checkbox position       |
 | check      | {true, false}             | Checkbox checked status |
+| disabled   | {true, false}             | Is checkbox disabled    |
+
+## Methods
+
+| Method   | Return Value | Description                                 |
+| -------- | ------------ | ------------------------------------------- |
+| getValue | string       | Return value that encapsulated in component |
 
 ## Examples
 

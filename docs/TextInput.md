@@ -9,7 +9,13 @@
 | size       | {xs, s, m, l, xl} | Input size            |
 | mask       | string            | Input mask            |
 | max_length | number            | Input max text length |
+| readonly   | boolean           | Is input readonly     |
 
+## Methods
+
+| Method   | Return Value | Description                                 |
+| -------- | ------------ | ------------------------------------------- |
+| getValue | string       | Return value that encapsulated in component |
 
 ## Example
 
