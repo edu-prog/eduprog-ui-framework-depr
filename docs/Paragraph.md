@@ -2,11 +2,11 @@
 
 ## Properties
 
-| Properties | Values                | Description     |
-| ---------- | --------------------- | --------------- |
-| children   | string                | Button label    |
-| type       | {small, normal, lead} | Paragraph type  |
-| align      | {left, center, right} | Paragraph align |
+| Properties | Values                | Description        |
+| ---------- | --------------------- | ------------------ |
+| children   | string                | Paragraph children |
+| type       | {small, normal, lead} | Paragraph type     |
+| align      | {left, center, right} | Paragraph align    |
 
 ## Example
 
