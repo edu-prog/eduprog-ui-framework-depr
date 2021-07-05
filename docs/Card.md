@@ -1,5 +1,9 @@
 # Card
 
+```js
+import Card from "eduprog-design-system/src/components/Card";
+```
+
 ## Properties
 
 | Properties | Values                | Description   |

@@ -1,5 +1,9 @@
 # PhoneInput
 
+```js
+import PhoneInput from "eduprog-design-system/src/components/PhoneInput";
+```
+
 This is inheritor of component [TextInput](TextInput.md)
 
 ## Methods

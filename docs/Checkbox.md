@@ -1,5 +1,9 @@
 # Checkbox
 
+```js
+import Checkbox from "eduprog-design-system/src/components/Checkbox";
+```
+
 ## Properties
 
 | Properties | Values                    | Description             |

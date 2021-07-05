@@ -1,5 +1,9 @@
 # Select
 
+```js
+import Select from "eduprog-design-system/src/components/Select";
+```
+
 ## Properties
 
 | Properties | Values           | Description        |

@@ -1,5 +1,9 @@
 # Paragraph
 
+```js
+import Paragraph from "eduprog-design-system/src/components/Paragraph";
+```
+
 ## Properties
 
 | Properties | Values                | Description        |

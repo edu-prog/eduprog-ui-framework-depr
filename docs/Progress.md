@@ -1,5 +1,9 @@
 # Progress
 
+```js
+import Progress from "eduprog-design-system/src/components/Progress";
+```
+
 ## Properties
 
 | Properties | Values                                                         | Description        |

@@ -1,5 +1,9 @@
 # Button
 
+```js
+import Button from "eduprog-design-system/src/components/Button";
+```
+
 ## Properties
 
 | Properties | Values                             | Description             |
@@ -16,7 +20,7 @@
 ![Example](https://i.imgur.com/UaePjvy.png)
 
 ```vue
-    <Row>
+<Row>
       <Column>
         <Button type="main">Sign in</Button>
       </Column>
@@ -26,8 +30,8 @@
       <Column>
         <Button type="accent">Sign in</Button>
       </Column>
-    </Row>
-    <Row>
+</Row>
+<Row>
       <Column>
         <Button type="main" mode="outlined">Sign in</Button>
       </Column>
@@ -37,8 +41,8 @@
       <Column>
         <Button type="accent" mode="outlined">Sign in</Button>
       </Column>
-    </Row>
-    <Row>
+</Row>
+<Row>
       <Column>
         <Button type="main" rounded>Sign in</Button>
       </Column>
@@ -48,8 +52,8 @@
       <Column>
         <Button type="accent" rounded>Sign in</Button>
       </Column>
-    </Row>
-    <Row>
+</Row>
+<Row>
       <Column>
         <Button type="main" round>R</Button>
       </Column>
@@ -59,5 +63,5 @@
       <Column>
         <Button type="accent" round>R</Button>
       </Column>
-    </Row>
+</Row>
 ```

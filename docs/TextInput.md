@@ -1,5 +1,9 @@
 # TextInput
 
+```js
+import TextInput from "eduprog-design-system/src/components/TextInput";
+```
+
 ## Properties
 
 | Properties | Values            | Description           |

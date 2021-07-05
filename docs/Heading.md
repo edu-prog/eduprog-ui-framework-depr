@@ -1,5 +1,9 @@
 # Heading
 
+```js
+import Heading from "eduprog-design-system/src/components/Heading";
+```
+
 ## Properties
 
 | Properties | Values                | Description   |

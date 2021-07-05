@@ -1,5 +1,9 @@
 # Link
 
+```js
+import Link from "eduprog-design-system/src/components/Link";
+```
+
 ## Properties
 
 | Properties | Values | Description                                     |
