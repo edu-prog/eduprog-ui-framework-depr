@@ -9,19 +9,30 @@
 
       <Row container>
         <Column>
-          <PhoneInput />
+          <PhoneInput label="Мобильный телефон" />
         </Column>
       </Row>
 
       <Row container>
         <Column>
-          <TextInput type="text" label="Фамилия и Имя" mask="Иванов Иван" />
+          <TextInput
+            type="text"
+            label="Фамилия и Имя"
+            mask="Иванов Иван"
+            :validate="/[А-Я][а-я]+\s[А-Я][а-я]+/"
+          />
         </Column>
       </Row>
 
       <Row container>
         <Column>
-          <TextInput type="password" label="Пароль" />
+          <TextInput
+            type="password"
+            label="Пароль"
+            :validate="
+              /.*([a-z]+[A-Z]+[0-9]+|[a-z]+[0-9]+[A-Z]+|[A-Z]+[a-z]+[0-9]+|[A-Z]+[0-9]+[a-z]+|[0-9]+[a-z]+[A-Z]+|[0-9]+[A-Z]+[a-z]+).*/
+            "
+          />
         </Column>
       </Row>
 

@@ -1,6 +1,6 @@
 <template>
   <Button type="main" round>
-    <Icon :name="name" />
+    <Icon :name="name" :size="iconSize" :color="iconColor"/>
   </Button>
 </template>
 
@@ -18,6 +18,16 @@ export default {
     name: {
       type: String,
       required: true,
+    },
+    iconSize: {
+      type: String,
+      default: "m",
+      required: false,
+    },
+    iconColor: {
+      type: String,
+      default: "white",
+      required: false,
     },
   },
 };

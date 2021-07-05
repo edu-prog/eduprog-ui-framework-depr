@@ -1,6 +1,6 @@
 <template>
   <TextInput
-    label="Номер телефона"
+    :label="label"
     @input="onPhoneInput"
     @keydown="onPhoneKeyDown"
     @paste="onPhonePaste"
@@ -17,6 +17,13 @@ export default {
   name: "PhoneInput",
   components: {
     TextInput,
+  },
+  props: {
+    label: {
+      type: String,
+      required: false,
+      default: "Номер телефона",
+    },
   },
   data: function () {
     return {

@@ -18,16 +18,29 @@
         `input-size-${size}`,
         isActive || message ? 'input-focused' : '',
         input_class,
+        getValidateStatus(),
       ]"
+      ref="text_input_"
       v-model="message"
-      @focus="toggleInput"
-      @blur="toggleInput"
+      @focus="onInputFocus"
+      @blur="onInputBlur"
       @input="updateInput"
       :maxlength="max_length"
       :readonly="readonly"
       :value="message"
     />
     <slot></slot>
+    <div v-if="validateStatus > 0">
+      <Icon
+        :style="{
+          right: type === 'password' ? '3.75rem' : '1.5rem',
+        }"
+        class="input-validate-valid-icon"
+        color="#00b92d"
+        name="done"
+        weight="bold"
+      ></Icon>
+    </div>
     <div v-if="type === 'password'">
       <Icon
         @click="togglePassword"
@@ -78,12 +91,17 @@ export default {
       type: Boolean,
       default: false,
     },
+    validate: {
+      type: RegExp,
+      required: false,
+    },
   },
   data: function () {
     return {
       isActive: false,
       isShow: false,
       message: this.val,
+      validateStatus: -1,
     };
   },
   methods: {
@@ -93,6 +111,20 @@ export default {
     toggleInput: function () {
       if (!this.message.length > 0) {
         this.isActive = !this.isActive;
+        return true;
+      }
+      return false;
+    },
+    onInputFocus: function () {
+      this.toggleInput();
+    },
+    onInputBlur: function () {
+      if (!this.toggleInput() && this.validate) {
+        if (!this.validate.test(this.message)) {
+          this.validateStatus = 0;
+        } else {
+          this.validateStatus = 1;
+        }
       }
     },
     updateInput: function (event) {
@@ -104,12 +136,23 @@ export default {
     togglePassword: function () {
       this.isShow = !this.isShow;
     },
+
+    getValidateStatus: function () {
+      if (this.validateStatus === -1) {
+        return "input-validate-default";
+      } else if (this.validateStatus === 0) {
+        return "input-validate-invalid";
+      } else if (this.validateStatus === 1) {
+        return "input-validate-valid";
+      }
+    },
   },
 };
 </script>
 
 <style scoped lang="scss">
 @import "../assets/styles/global";
+
 .form-field {
   margin: 5px 0;
 
@@ -165,12 +208,26 @@ export default {
     background-color: darken($color-platinum, 5%);
   }
 
+  .input-validate {
+    &-valid {
+      &-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    &-invalid {
+      background-color: $color-invalid;
+    }
+  }
+
   .password-toggler {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    right: 1.25rem;
+    right: 1.5rem;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
