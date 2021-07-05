@@ -31,7 +31,7 @@ export default {
 @import "../assets/styles/global";
 
 .link {
-  color: $color-main;
+  color: $color-primary;
   text-decoration: none;
   transition: color 0.3s ease;
   &:hover {

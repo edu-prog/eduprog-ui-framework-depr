@@ -19,7 +19,7 @@
             type="text"
             label="Фамилия и Имя"
             mask="Иванов Иван"
-            :validate="/[А-Я][а-я]+\s[А-Я][а-я]+/"
+            :validation_pattern="/[А-Я][а-я]+\s[А-Я][а-я]+/"
           />
         </Column>
       </Row>
@@ -29,7 +29,7 @@
           <TextInput
             type="password"
             label="Пароль"
-            :validate="
+            :validation_pattern="
               /.*([a-z]+[A-Z]+[0-9]+|[a-z]+[0-9]+[A-Z]+|[A-Z]+[a-z]+[0-9]+|[A-Z]+[0-9]+[a-z]+|[0-9]+[a-z]+[A-Z]+|[0-9]+[A-Z]+[a-z]+).*/
             "
           />
@@ -64,15 +64,21 @@
       <Row>
         <Column>
           <Paragraph type="normal">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae,
-            consequatur cupiditate doloremque expedita fugit illo iste magnam
-            minima nostrum, pariatur perferendis porro quam quasi, qui ratione
-            sapiente sed. Illo, quod.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis
+            eligendi excepturi incidunt, iste maxime pariatur, porro provident
+            quas qui repellat sint sunt tempore, voluptas? Aliquid at ipsum
+            natus non recusandae.
           </Paragraph>
         </Column>
       </Row>
     </Card>
-    <IconButton @click="btnClick" name="chat"></IconButton>
+    <IconButton
+      @click="btnClick"
+      icon_name="chat"
+      width="m"
+      height="m"
+      round
+    ></IconButton>
   </div>
 
   <div style="width: 300px; margin: 20px auto">

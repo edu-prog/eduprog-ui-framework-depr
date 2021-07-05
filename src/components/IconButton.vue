@@ -1,12 +1,21 @@
 <template>
-  <Button type="main" round>
-    <Icon :name="name" :size="iconSize" :color="iconColor"/>
+  <Button type="main" :style="iconButtonStyles">
+    <Icon :name="icon_name" :size="icon_size" :color="icon_color" />
   </Button>
 </template>
 
 <script>
 import Button from "./Button";
 import Icon from "./Icon";
+import { BreakpointsLabel } from "../utils/breakpoins";
+
+const ButtonSize = {
+  xs: "3rem",
+  s: "4.5rem",
+  m: "6.75rem",
+  l: "10.125rem",
+  xl: "15.1875rem",
+};
 
 export default {
   name: "IconButton",
@@ -15,22 +24,52 @@ export default {
     Button,
   },
   props: {
-    name: {
+    icon_name: {
       type: String,
       required: true,
     },
-    iconSize: {
+    width: {
+      type: String,
+      default: "xs",
+      required: false,
+      validator(value) {
+        return BreakpointsLabel.includes(value);
+      },
+    },
+    height: {
+      type: String,
+      default: "xs",
+      required: false,
+      validator(value) {
+        return BreakpointsLabel.includes(value);
+      },
+    },
+    icon_size: {
       type: String,
       default: "m",
       required: false,
+      validator(value) {
+        return BreakpointsLabel.includes(value);
+      },
     },
-    iconColor: {
+    icon_color: {
       type: String,
       default: "white",
       required: false,
     },
+    button_round: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+  },
+  computed: {
+    iconButtonStyles() {
+      return {
+        maxWidth: ButtonSize[this.width],
+        maxHeight: ButtonSize[this.height],
+      };
+    },
   },
 };
 </script>
-
-<style scoped></style>

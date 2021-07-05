@@ -83,17 +83,17 @@ export default {
   }
 
   &-main {
-    background-color: $color-main;
+    background-color: $color-primary;
     color: #ffffff;
 
     &-outlined {
       background-color: #ffffff;
       color: #000000;
-      border: 2px solid $color-main;
+      border: 2px solid $color-primary;
 
       &.btn-clicked,
       &:hover {
-        background-color: $color-main !important;
+        background-color: $color-primary !important;
         color: #ffffff;
       }
     }
@@ -104,7 +104,7 @@ export default {
 
     &.btn-clicked,
     &:hover {
-      background-color: darken($color-main, 20%);
+      background-color: darken($color-primary, 20%);
     }
   }
 

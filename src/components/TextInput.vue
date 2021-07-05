@@ -18,7 +18,7 @@
         `input-size-${size}`,
         isActive || message ? 'input-focused' : '',
         input_class,
-        getValidateStatus(),
+        getValidationStatus(),
       ]"
       ref="text_input_"
       v-model="message"
@@ -30,12 +30,12 @@
       :value="message"
     />
     <slot></slot>
-    <div v-if="validateStatus > 0">
+    <div v-if="validation.status > 0">
       <Icon
         :style="{
           right: type === 'password' ? '3.75rem' : '1.5rem',
         }"
-        class="input-validate-valid-icon"
+        class="input-validation-valid-icon"
         color="#00b92d"
         name="done"
         weight="bold"
@@ -91,7 +91,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    validate: {
+    validation_pattern: {
       type: RegExp,
       required: false,
     },
@@ -101,7 +101,10 @@ export default {
       isActive: false,
       isShow: false,
       message: this.val,
-      validateStatus: -1,
+      validation: {
+        regexpr: this.validation_pattern,
+        status: -1,
+      },
     };
   },
   methods: {
@@ -119,11 +122,11 @@ export default {
       this.toggleInput();
     },
     onInputBlur: function () {
-      if (!this.toggleInput() && this.validate) {
-        if (!this.validate.test(this.message)) {
-          this.validateStatus = 0;
+      if (!this.toggleInput() && this.validation_pattern) {
+        if (!this.validation.regexpr.test(this.message)) {
+          this.validation.status = 0;
         } else {
-          this.validateStatus = 1;
+          this.validation.status = 1;
         }
       }
     },
@@ -137,13 +140,13 @@ export default {
       this.isShow = !this.isShow;
     },
 
-    getValidateStatus: function () {
-      if (this.validateStatus === -1) {
-        return "input-validate-default";
-      } else if (this.validateStatus === 0) {
-        return "input-validate-invalid";
-      } else if (this.validateStatus === 1) {
-        return "input-validate-valid";
+    getValidationStatus: function () {
+      if (this.validation.status === -1) {
+        return "input-validation-default";
+      } else if (this.validation.status === 0) {
+        return "input-validation-invalid";
+      } else if (this.validation.status === 1) {
+        return "input-validation-valid";
       }
     },
   },
@@ -208,7 +211,7 @@ export default {
     background-color: darken($color-platinum, 5%);
   }
 
-  .input-validate {
+  .input-validation {
     &-valid {
       &-icon {
         position: absolute;

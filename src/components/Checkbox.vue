@@ -75,7 +75,7 @@ export default {
     display: none;
 
     &:checked ~ .checkbox-checkmark-main {
-      background-color: $color-main;
+      background-color: $color-primary;
     }
 
     &:checked ~ .checkbox-checkmark-secondary {
