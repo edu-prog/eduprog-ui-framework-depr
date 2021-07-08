@@ -1,55 +1,57 @@
 <template @onload="onSelectLoaded">
-  <TextInput
-    v-click-outside="closeDropdown"
-    ref="select"
-    input_class="select-input"
-    @click="toggleDropdown"
-    :label="label"
-    type="text"
-    :val="!multiple ? value : ''"
-    readonly
-  >
-    <span :class="['select-icon', isActive ? 'select-icon-activate' : '']">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="24px"
-        viewBox="0 0 24 24"
-        width="24px"
-        fill="#000000"
-      >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
-      </svg>
-    </span>
-  </TextInput>
+  <div>
+    <TextInput
+      v-click-outside="closeDropdown"
+      ref="select"
+      input_class="select-input"
+      @click="toggleDropdown"
+      :label="label"
+      type="text"
+      :val="!multiple ? value : ''"
+      readonly
+    >
+      <span :class="['select-icon', isActive ? 'select-icon-activate' : '']">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 0 24 24"
+          width="24px"
+          fill="#000000"
+        >
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+        </svg>
+      </span>
+    </TextInput>
 
-  <div :class="['dropdown', isActive ? 'dropdown-activate' : '']">
-    <div v-if="!multiple" class="dropdown-menu">
-      <div
-        class="dropdown-item"
-        @click="itemClickHandler"
-        v-for="elem in options"
-        v-bind:key="elem"
-      >
-        {{ elem }}
-      </div>
-    </div>
-
-    <div v-else class="dropdown-menu" :style="{ marginTop: '1rem' }">
-      <div
-        class="dropdown-item dropdown-item-multiple"
-        v-for="elem in options"
-        v-bind:key="elem"
-      >
-        <Checkbox
-          style="width: 100%; height: 100%; padding: 0.5rem"
+    <div :class="['dropdown', isActive ? 'dropdown-activate' : '']">
+      <div v-if="!multiple" class="dropdown-menu">
+        <div
+          class="dropdown-item"
           @click="itemClickHandler"
-          :__input_opts="elem"
-          position="left"
-          type="main"
+          v-for="elem in options"
+          v-bind:key="elem"
         >
           {{ elem }}
-        </Checkbox>
+        </div>
+      </div>
+
+      <div v-else class="dropdown-menu" :style="{ marginTop: '1rem' }">
+        <div
+          class="dropdown-item dropdown-item-multiple"
+          v-for="elem in options"
+          v-bind:key="elem"
+        >
+          <Checkbox
+            style="width: 100%; height: 100%; padding: 0.5rem"
+            @click="itemClickHandler"
+            :__input_opts="elem"
+            position="left"
+            type="main"
+          >
+            {{ elem }}
+          </Checkbox>
+        </div>
       </div>
     </div>
   </div>
