@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import { BreakpointsLabel } from "../utils/breakpoins";
+
 export default {
   name: "Button",
   props: {
@@ -28,6 +30,9 @@ export default {
     size: {
       type: String,
       default: "m",
+      validator(value) {
+        return BreakpointsLabel.includes(value);
+      },
     },
     round: {
       type: Boolean,
@@ -98,7 +103,7 @@ export default {
       }
     }
 
-    &-block {
+    &-max-width {
       width: calc(100% - 0.875rem);
     }
 

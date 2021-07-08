@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import { BreakpointsLabel } from "../utils/breakpoins";
+
 export default {
   name: "Card",
   props: {
@@ -19,6 +21,9 @@ export default {
       type: String,
       required: true,
       default: "s",
+      validator(value) {
+        return BreakpointsLabel.includes(value);
+      },
     },
     align: {
       type: String,

@@ -104,7 +104,7 @@ export default {
       }
     },
     getValue: function () {
-      return this.$refs.phone_input.message;
+      return this.$refs.phone_input.content;
     },
   },
 };

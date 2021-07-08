@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import { BreakpointsLabel } from "../utils/breakpoins";
+
 export default {
   name: "Heading",
   props: {
@@ -24,6 +26,9 @@ export default {
       type: String,
       require: true,
       default: "xl",
+      validator(value) {
+        return BreakpointsLabel.includes(value);
+      },
     },
     align: {
       type: String,

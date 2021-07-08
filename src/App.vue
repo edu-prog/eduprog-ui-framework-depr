@@ -38,7 +38,7 @@
 
       <Row container>
         <Column>
-          <Button type="main" size="l" mode="block"> Регистрация </Button>
+          <Button type="main" size="l" mode="max-width"> Регистрация </Button>
         </Column>
       </Row>
 
@@ -284,6 +284,48 @@
   <div style="width: 300px; margin: 20px auto">
     <Link link="/connect" target="_blank">Подключиться</Link>
   </div>
+
+  <div style="width: 300px; margin: 20px auto">
+    <Row>
+      <Column>
+        <TextInput
+          label="Полное имя"
+          ref="fullNameInput"
+          @input="onFullNameInputUpdated"
+          type="text"
+        />
+      </Column>
+    </Row>
+    <Row>
+      <Column>
+        <Paragraph type="lead">{{ fullName }}</Paragraph>
+      </Column>
+    </Row>
+  </div>
+
+  <div style="width: 300px; margin: 20px auto">
+    <CheckboxBlock
+      :options="[
+        'Front-end development',
+        'Back-end development',
+        'Algorithms and data structures',
+      ]"
+    ></CheckboxBlock>
+  </div>
+
+  <div style="width: 300px; margin: 20px auto">
+    <Row>
+      <Column><Spinner mode="border" type="primary"></Spinner></Column>
+      <Column><Spinner mode="border" type="secondary"></Spinner></Column>
+      <Column><Spinner mode="border" type="accent"></Spinner></Column>
+    </Row>
+
+    <Row style="margin-top: 10px">
+      <Column><Spinner mode="growing" type="primary"></Spinner></Column>
+      <Column><Spinner mode="growing" type="secondary"></Spinner></Column>
+      <Column><Spinner mode="growing" type="accent"></Spinner></Column>
+    </Row>
+  </div>
 </template>
 
 <script>
@@ -299,6 +341,8 @@ import IconButton from "./components/IconButton";
 import Progress from "./components/Progress";
 import Select from "./components/Select";
 import Link from "./components/Link";
+import CheckboxBlock from "./components/CheckboxBlock";
+import Spinner from "./components/Spinner";
 
 export default {
   name: "Home",
@@ -316,10 +360,20 @@ export default {
     Progress,
     Select,
     Link,
+    CheckboxBlock,
+    Spinner,
+  },
+  data() {
+    return {
+      fullName: "",
+    };
   },
   methods: {
     btnClick() {
       console.log(this.$refs.checkbox_1.getValue());
+    },
+    onFullNameInputUpdated() {
+      this.fullName = this.$refs.fullNameInput.Content();
     },
   },
 };
@@ -327,7 +381,6 @@ export default {
 
 <style lang="scss">
 @import "assets/styles/global";
-
 #app {
   font-family: $font-family;
   -webkit-font-smoothing: antialiased;
@@ -335,7 +388,6 @@ export default {
   text-align: center;
   color: #000000;
 }
-
 .home {
   margin-left: auto;
   margin-right: auto;

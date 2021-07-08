@@ -3,12 +3,12 @@
     <span
       :class="[
         'form-field-label',
-        isActive || message ? 'form-field-label-focused' : '',
+        isActive || content ? 'form-field-label-focused' : '',
       ]"
     >
       {{ label }}
     </span>
-    <span :hidden="!isActive || message.length > 0" class="form-field-mask">
+    <span :hidden="!isActive || content.length > 0" class="form-field-mask">
       {{ mask }}
     </span>
     <input
@@ -16,18 +16,18 @@
       :class="[
         'form-field-input-control',
         `input-size-${size}`,
-        isActive || message ? 'input-focused' : '',
+        isActive || content ? 'input-focused' : '',
         input_class,
         getValidationStatus(),
       ]"
       ref="text_input_"
-      v-model="message"
+      v-model="content"
       @focus="onInputFocus"
       @blur="onInputBlur"
-      @input="updateInput"
+      @input="onInputUpdated"
       :maxlength="max_length"
       :readonly="readonly"
-      :value="message"
+      :value="content"
     />
     <slot></slot>
     <div v-if="validation.status > 0">
@@ -53,6 +53,7 @@
 
 <script>
 import Icon from "./Icon";
+import { BreakpointsLabel } from "@/utils/breakpoins";
 
 export default {
   name: "TextInput",
@@ -76,6 +77,9 @@ export default {
     size: {
       type: String,
       default: "m",
+      validator(value) {
+        return BreakpointsLabel.includes(value);
+      },
     },
     mask: {
       type: String,
@@ -100,7 +104,7 @@ export default {
     return {
       isActive: false,
       isShow: false,
-      message: this.val,
+      content: this.val,
       validation: {
         regexpr: this.validation_pattern,
         status: -1,
@@ -108,11 +112,11 @@ export default {
     };
   },
   methods: {
-    getValue: function () {
-      return this.message;
+    Content() {
+      return this.content;
     },
     toggleInput: function () {
-      if (!this.message.length > 0) {
+      if (!this.content.length > 0) {
         this.isActive = !this.isActive;
         return true;
       }
@@ -123,16 +127,15 @@ export default {
     },
     onInputBlur: function () {
       if (!this.toggleInput() && this.validation_pattern) {
-        if (!this.validation.regexpr.test(this.message)) {
+        if (!this.validation.regexpr.test(this.content)) {
           this.validation.status = 0;
         } else {
           this.validation.status = 1;
         }
       }
     },
-    updateInput: function (event) {
-      const message = event.target.value;
-      if (message.length > 0 && !this.isActive) {
+    onInputUpdated: function () {
+      if (this.content.length > 0 && !this.isActive) {
         this.isActive = true;
       }
     },

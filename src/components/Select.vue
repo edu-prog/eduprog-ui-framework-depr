@@ -93,7 +93,7 @@ export default {
   },
   methods: {
     onSelectLoaded: function () {
-      this.$refs.select.message = this.options[0];
+      this.$refs.select.content = this.options[0];
     },
     toggleDropdown: function () {
       this.isActive = !this.isActive;
@@ -106,7 +106,7 @@ export default {
     itemClickHandler: function (event) {
       const select = this.$refs.select;
       if (this.multiple) {
-        select.message = "";
+        select.content = "";
         const val = event.target.dataset.opt;
         if (val !== undefined) {
           if (this.value.includes(val)) {
@@ -116,15 +116,15 @@ export default {
           }
 
           this.value.forEach((item, iterations) => {
-            select.message += `${item}`;
+            select.content += `${item}`;
 
             if (iterations + 1 < this.value.length) {
-              select.message += ", ";
+              select.content += ", ";
             }
           });
         }
       } else {
-        select.message = event.target.innerText;
+        select.content = event.target.innerText;
       }
     },
     getValue: function () {
