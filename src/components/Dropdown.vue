@@ -1,11 +1,13 @@
 <template>
-  <TextInput @click="toggleDropdown" label="Выберите повышенный Кэшбэк"
-    >click</TextInput
-  >
+  <div>
+    <TextInput @click="toggleDropdown" label="Выберите повышенный Кэшбэк"
+      >click</TextInput
+    >
 
-  <div :class="['dropdown', isActive ? 'dropdown-activate' : '']">
-    <div class="dropdown-menu">
-      <slot></slot>
+    <div :class="['dropdown', isActive ? 'dropdown-activate' : '']">
+      <div class="dropdown-menu">
+        <slot></slot>
+      </div>
     </div>
   </div>
 </template>

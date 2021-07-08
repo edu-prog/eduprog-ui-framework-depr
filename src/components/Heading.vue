@@ -1,18 +1,30 @@
 <template>
-  <div class="heading" v-if="size === 'xl'">
-    <h1 :class="[align ? `heading-align-${align}` : '']"><slot></slot></h1>
-  </div>
-  <div class="heading" v-else-if="size === 'l'">
-    <h2><slot></slot></h2>
-  </div>
-  <div class="heading" v-else-if="size === 'm'">
-    <h3><slot></slot></h3>
-  </div>
-  <div class="heading" v-else-if="size === 's'">
-    <h4><slot></slot></h4>
-  </div>
-  <div class="heading" v-else-if="size === 'xs'">
-    <h5><slot></slot></h5>
+  <div class="heading">
+    <div class="heading-item" v-if="size === 'xl'">
+      <h1 :class="[align ? `heading-item-align-${align}` : '']">
+        <slot></slot>
+      </h1>
+    </div>
+    <div class="heading-item" v-else-if="size === 'l'">
+      <h2 :class="[align ? `heading-item-align-${align}` : '']">
+        <slot></slot>
+      </h2>
+    </div>
+    <div class="heading-item" v-else-if="size === 'm'">
+      <h3 :class="[align ? `heading-item-align-${align}` : '']">
+        <slot></slot>
+      </h3>
+    </div>
+    <div class="heading-item" v-else-if="size === 's'">
+      <h4 :class="[align ? `heading-item-align-${align}` : '']">
+        <slot></slot>
+      </h4>
+    </div>
+    <div class="heading-item" v-else-if="size === 'xs'">
+      <h5 :class="[align ? `heading-item-align-${align}` : '']">
+        <slot></slot>
+      </h5>
+    </div>
   </div>
 </template>
 
@@ -40,7 +52,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.heading {
+.heading-item {
   &-align {
     &-left {
       text-align: left;
