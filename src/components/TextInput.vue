@@ -53,7 +53,7 @@
 
 <script>
 import Icon from "./Icon";
-import { BreakpointsLabel } from "@/utils/breakpoins";
+import { BreakpointsLabel } from "../utils/breakpoins";
 
 export default {
   name: "TextInput",

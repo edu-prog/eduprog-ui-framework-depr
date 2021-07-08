@@ -78,7 +78,7 @@ export default {
   user-select: none;
   text-align: center;
   white-space: nowrap;
-  transition: background 0.1s ease, width 0.1s ease, color 0.1s ease;
+  transition: background 0.25s ease, width 0.25s ease, color 0.25s ease;
   border: 2px;
   border-radius: 0.5rem;
   font-family: $font-family;
@@ -94,7 +94,7 @@ export default {
     &-outlined {
       background-color: #ffffff;
       color: #000000;
-      border: 2px solid $color-primary;
+      border: 1px solid $color-primary;
 
       &.btn-clicked,
       &:hover {
@@ -120,7 +120,7 @@ export default {
     &-outlined {
       background-color: #ffffff;
       color: #000000;
-      border: 2px solid $color-secondary;
+      border: 1px solid $color-secondary;
 
       &.btn-clicked,
       &:hover {
@@ -142,7 +142,7 @@ export default {
     &-outlined {
       background-color: #ffffff;
       color: #000000;
-      border: 2px solid $color-accent;
+      border: 1px solid $color-accent;
 
       &.btn-clicked,
       &:hover {
