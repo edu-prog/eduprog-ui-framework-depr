@@ -306,11 +306,21 @@
   <div style="width: 300px; margin: 20px auto">
     <CheckboxBlock
       :options="[
-        'Front-end development',
-        'Back-end development',
-        'Algorithms and data structures',
+        {
+          icon: './assets/icons/front-end-development.svg',
+          content: 'Front-end development',
+        },
+        {
+          icon: './assets/icons/front-end-development.svg',
+          content: 'Back-end development',
+        },
+        {
+          icon: './assets/icons/front-end-development.svg',
+          content: 'Algorithms and data structures',
+        },
       ]"
-    ></CheckboxBlock>
+    >
+    </CheckboxBlock>
   </div>
 
   <div style="width: 300px; margin: 20px auto">

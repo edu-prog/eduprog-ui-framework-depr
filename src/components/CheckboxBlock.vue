@@ -1,9 +1,13 @@
 <template>
-  <div class="CheckboxBlock-container" v-for="option in options" :key="option">
+  <div
+    class="CheckboxBlock-container"
+    v-for="option in options"
+    :key="option.content"
+  >
     <div class="CheckboxBlock-container-item">
-      <CheckboxBlockButton @click="onItemSelected">{{
-        option
-      }}</CheckboxBlockButton>
+      <CheckboxBlockButton @click="onItemSelected" :icon="option.icon" :data-value="option.content">
+        {{ option.content }}
+      </CheckboxBlockButton>
     </div>
   </div>
 </template>
@@ -31,7 +35,7 @@ export default {
       return this.value;
     },
     onItemSelected(event) {
-      const content = event.target.innerText;
+      const content = event.target.dataset.value;
       if (!this.value.includes(content)) {
         this.value.push(content);
       } else {
