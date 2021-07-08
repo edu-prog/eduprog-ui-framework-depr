@@ -1,13 +1,15 @@
 <template>
-  <div
-    class="CheckboxBlock-container"
-    v-for="option in options"
-    :key="option.content"
-  >
-    <div class="CheckboxBlock-container-item">
-      <CheckboxBlockButton @click="onItemSelected" :icon="option.icon" :data-value="option.content">
-        {{ option.content }}
-      </CheckboxBlockButton>
+  <div>
+    <div
+      class="CheckboxBlock-container"
+      v-for="option in options"
+      :key="option.content"
+    >
+      <div class="CheckboxBlock-container-item">
+        <CheckboxBlockButton @click="onItemSelected" :icon="option.icon" :data-value="option.content">
+          {{ option.content }}
+        </CheckboxBlockButton>
+      </div>
     </div>
   </div>
 </template>
