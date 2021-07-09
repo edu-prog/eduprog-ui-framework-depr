@@ -20,6 +20,21 @@
         input_class,
         getValidationStatus(),
       ]"
+      :style="{
+        paddingRight:
+          validation.status > 0
+            ? type === 'password'
+              ? '4.25rem'
+              : '2rem'
+            : '2rem',
+
+        width:
+          validation.status > 0
+            ? type === 'password'
+              ? 'calc(100% - 5.7rem'
+              : 'calc(100% - 2rem)'
+            : 'calc(100% - 3.5rem)',
+      }"
       ref="text_input_"
       v-model="content"
       @focus="onInputFocus"
@@ -115,14 +130,14 @@ export default {
     Content() {
       return this.content;
     },
-    toggleInput: function () {
+    toggleInput() {
       if (!this.content.length > 0) {
         this.isActive = !this.isActive;
         return true;
       }
       return false;
     },
-    onInputFocus: function () {
+    onInputFocus() {
       this.toggleInput();
     },
     onInputBlur: function () {
@@ -134,16 +149,16 @@ export default {
         }
       }
     },
-    onInputUpdated: function () {
+    onInputUpdated() {
       if (this.content.length > 0 && !this.isActive) {
         this.isActive = true;
       }
     },
-    togglePassword: function () {
+    togglePassword() {
       this.isShow = !this.isShow;
     },
 
-    getValidationStatus: function () {
+    getValidationStatus() {
       if (this.validation.status === -1) {
         return "input-validation-default";
       } else if (this.validation.status === 0) {
@@ -151,6 +166,11 @@ export default {
       } else if (this.validation.status === 1) {
         return "input-validation-valid";
       }
+    },
+  },
+  computed: {
+    slotPassed() {
+      return this.$slots.default;
     },
   },
 };

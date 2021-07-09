@@ -147,7 +147,7 @@ export default {
   margin-left: -2rem;
   margin-top: 1.5rem;
   pointer-events: none;
-  transition: 0.2s;
+  transition: 0.2s ease;
 
   &-activate {
     transform: rotate(-180deg) translateY(50%);
@@ -197,8 +197,6 @@ export default {
 </style>
 <style>
 .select-input {
-  width: calc(100% - 3.5rem) !important;
-  padding-right: 2rem !important;
   cursor: pointer;
   user-select: none;
 }
