@@ -33,7 +33,7 @@
     <span v-if="validation.status > 0">
       <Icon
         :style="{
-          marginLeft: type === 'password' ? '-4rem' : '-2.5rem',
+          marginLeft: type === 'password' ? '-4rem' : '-2rem',
         }"
         class="input-validation-valid-icon"
         color="#00b92d"

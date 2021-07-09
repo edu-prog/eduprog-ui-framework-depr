@@ -341,7 +341,7 @@
 </template>
 
 <script>
-import { Row, Column } from "./components/Grid";
+import { Row, Column } from "./components/Grid.vue";
 import Button from "./components/Button.vue";
 import TextInput from "./components/TextInput.vue";
 import Heading from "./components/Heading.vue";
