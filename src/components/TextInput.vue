@@ -23,17 +23,21 @@
       :style="{
         paddingRight:
           validation.status > 0
-            ? type === 'password'
+            ? validation.status > 0 && type === 'password'
               ? '4.25rem'
-              : '2rem'
-            : '2rem',
+              : '2.75rem'
+            : type === 'password'
+            ? '2.75rem'
+            : '2.75rem',
 
         width:
           validation.status > 0
             ? type === 'password'
               ? 'calc(100% - 5.7rem'
-              : 'calc(100% - 2rem)'
-            : 'calc(100% - 3.5rem)',
+              : 'calc(100% - 4rem)'
+            : type === 'password'
+            ? 'calc(100% - 4.125rem)'
+            : 'calc(100% - 4rem)',
       }"
       ref="text_input_"
       v-model="content"
