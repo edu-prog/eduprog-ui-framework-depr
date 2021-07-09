@@ -1,10 +1,10 @@
-<template @onload="onSelectLoaded">
+<template @onload.native="onSelectLoaded">
   <div>
     <TextInput
       v-click-outside="closeDropdown"
       ref="select"
       input_class="select-input"
-      @click="toggleDropdown"
+      @click.native="toggleDropdown"
       :label="label"
       type="text"
       :val="!multiple ? value : ''"
@@ -44,7 +44,7 @@
         >
           <Checkbox
             style="width: 100%; height: 100%; padding: 0.5rem"
-            @click="itemClickHandler"
+            @click.native="itemClickHandler"
             :__input_opts="elem"
             position="left"
             type="main"
@@ -60,7 +60,7 @@
 <script>
 import TextInput from "./TextInput";
 import Checkbox from "./Checkbox";
-import vClickOutside from "click-outside-vue3/src";
+import vClickOutside from "vue2-click-outside";
 
 export default {
   name: "Dropdown",
@@ -87,25 +87,26 @@ export default {
       default: false,
     },
   },
-  data: function () {
+  data() {
     return {
       isActive: false,
       value: !this.multiple ? this.options[0] : [],
     };
   },
   methods: {
-    onSelectLoaded: function () {
+    onSelectLoaded() {
       this.$refs.select.content = this.options[0];
     },
-    toggleDropdown: function () {
+    toggleDropdown() {
       this.isActive = !this.isActive;
+      console.log("GHU");
     },
-    closeDropdown: function () {
+    closeDropdown() {
       if (!this.multiple) {
         this.isActive = false;
       }
     },
-    itemClickHandler: function (event) {
+    itemClickHandler(event) {
       const select = this.$refs.select;
       if (this.multiple) {
         select.content = "";
@@ -129,7 +130,7 @@ export default {
         select.content = event.target.innerText;
       }
     },
-    getValue: function () {
+    getValue() {
       return this.value;
     },
   },

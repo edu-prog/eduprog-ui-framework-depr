@@ -6,7 +6,11 @@
       :key="option.content"
     >
       <div class="CheckboxBlock-container-item">
-        <CheckboxBlockButton @click="onItemSelected" :icon="option.icon" :data-value="option.content">
+        <CheckboxBlockButton
+          @click.native="onItemSelected"
+          :icon="option.icon"
+          :data-value="option.content"
+        >
           {{ option.content }}
         </CheckboxBlockButton>
       </div>

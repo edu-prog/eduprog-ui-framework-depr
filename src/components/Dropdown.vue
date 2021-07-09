@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TextInput @click="toggleDropdown" label="Выберите повышенный Кэшбэк"
+    <TextInput @click.native="toggleDropdown" label="Выберите повышенный Кэшбэк"
       >click</TextInput
     >
 

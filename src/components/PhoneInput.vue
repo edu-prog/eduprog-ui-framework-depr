@@ -1,9 +1,9 @@
 <template>
   <TextInput
     :label="label"
-    @input="onPhoneInput"
-    @keydown="onPhoneKeyDown"
-    @paste="onPhonePaste"
+    @input.native="onPhoneInput"
+    @keydown.native="onPhoneKeyDown"
+    @paste.native="onPhonePaste"
     type="tel"
     ref="phone_input"
     :max_length="18"
@@ -31,7 +31,7 @@ export default {
     };
   },
   methods: {
-    onPhoneInput: function (event) {
+    onPhoneInput(event) {
       const input = event.target;
       const selectionStart = input.selectionStart;
       let inputNumbersValue = input.value.replace(/\D/g, "");
@@ -72,7 +72,7 @@ export default {
       }
       input.value = formattedInputValue;
     },
-    onPhoneKeyDown: function (event) {
+    onPhoneKeyDown(event) {
       const inputValue = event.target.value.replace(/\D/g, "");
 
       if (event.keyCode === 8 && inputValue.length === 1) {
@@ -90,7 +90,7 @@ export default {
         }
       }
     },
-    onPhonePaste: function (event) {
+    onPhonePaste(event) {
       const input = event.target;
       const inputNumbersValue = input.value.replace(/\D/g, "");
       const pasted = event.clipboardData || window.clipboardData;

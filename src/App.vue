@@ -1,340 +1,342 @@
 <template>
-  <div class="home">
-    <Card size="m" type="border">
-      <Row container>
-        <Column>
-          <Heading size="xl" align="right">Регистрация</Heading>
-        </Column>
-      </Row>
+  <div id="app">
+    <div class="home">
+      <Card size="m" type="border">
+        <Row container>
+          <Column>
+            <Heading size="xl" align="right">Регистрация</Heading>
+          </Column>
+        </Row>
 
-      <Row container>
-        <Column>
-          <PhoneInput label="Мобильный телефон" />
-        </Column>
-      </Row>
+        <Row container>
+          <Column>
+            <PhoneInput label="Мобильный телефон" />
+          </Column>
+        </Row>
 
-      <Row container>
-        <Column>
-          <TextInput
-            type="text"
-            label="Фамилия и Имя"
-            mask="Иванов Иван"
-            :validation_pattern="/[А-Я][а-я]+\s[А-Я][а-я]+/"
-          />
-        </Column>
-      </Row>
+        <Row container>
+          <Column>
+            <TextInput
+              type="text"
+              label="Фамилия и Имя"
+              mask="Иванов Иван"
+              :validation_pattern="/[А-Я][а-я]+\s[А-Я][а-я]+/"
+            />
+          </Column>
+        </Row>
 
-      <Row container>
-        <Column>
-          <TextInput
-            type="password"
-            label="Пароль"
-            :validation_pattern="
-              /.*([a-z]+[A-Z]+[0-9]+|[a-z]+[0-9]+[A-Z]+|[A-Z]+[a-z]+[0-9]+|[A-Z]+[0-9]+[a-z]+|[0-9]+[a-z]+[A-Z]+|[0-9]+[A-Z]+[a-z]+).*/
-            "
-          />
-        </Column>
-      </Row>
+        <Row container>
+          <Column>
+            <TextInput
+              type="password"
+              label="Пароль"
+              :validation_pattern="
+                /.*([a-z]+[A-Z]+[0-9]+|[a-z]+[0-9]+[A-Z]+|[A-Z]+[a-z]+[0-9]+|[A-Z]+[0-9]+[a-z]+|[0-9]+[a-z]+[A-Z]+|[0-9]+[A-Z]+[a-z]+).*/
+              "
+            />
+          </Column>
+        </Row>
 
-      <Row container>
-        <Column>
-          <Button type="main" size="l" mode="max-width"> Регистрация </Button>
-        </Column>
-      </Row>
+        <Row container>
+          <Column>
+            <Button type="main" size="l" mode="max-width"> Регистрация </Button>
+          </Column>
+        </Row>
 
-      <Row container style="margin-top: 10px">
-        <Column>
-          <Checkbox :check="true" position="left" type="main">
-            Я принимаю условия Пользовательского соглашения и даю своё согласие
-            Яндексу на обработку моей персональной информации на условиях,
-            определенных Политикой конфиденциальности.
-          </Checkbox>
-        </Column>
-      </Row>
+        <Row container style="margin-top: 10px">
+          <Column>
+            <Checkbox :check="true" position="left" type="main">
+              Я принимаю условия Пользовательского соглашения и даю своё
+              согласие Яндексу на обработку моей персональной информации на
+              условиях, определенных Политикой конфиденциальности.
+            </Checkbox>
+          </Column>
+        </Row>
 
-      <Row container style="margin-top: 10px">
-        <Column>
-          <Checkbox position="left" type="main">
-            Я не хочу получать рекламу и другие предложения данного сервиса
-            Яндекса
-          </Checkbox>
-        </Column>
-      </Row>
+        <Row container style="margin-top: 10px">
+          <Column>
+            <Checkbox position="left" type="main">
+              Я не хочу получать рекламу и другие предложения данного сервиса
+              Яндекса
+            </Checkbox>
+          </Column>
+        </Row>
 
+        <Row>
+          <Column>
+            <Paragraph type="normal">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis
+              eligendi excepturi incidunt, iste maxime pariatur, porro provident
+              quas qui repellat sint sunt tempore, voluptas? Aliquid at ipsum
+              natus non recusandae.
+            </Paragraph>
+          </Column>
+        </Row>
+      </Card>
+      <IconButton
+        @click="btnClick"
+        icon_name="chat"
+        width="m"
+        height="m"
+        round
+      ></IconButton>
+    </div>
+
+    <div style="width: 300px; margin: 20px auto">
       <Row>
         <Column>
-          <Paragraph type="normal">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis
-            eligendi excepturi incidunt, iste maxime pariatur, porro provident
-            quas qui repellat sint sunt tempore, voluptas? Aliquid at ipsum
-            natus non recusandae.
+          <Button type="main">Sign in</Button>
+        </Column>
+        <Column>
+          <Button type="secondary">Sign in</Button>
+        </Column>
+        <Column>
+          <Button type="accent">Sign in</Button>
+        </Column>
+      </Row>
+      <Row style="margin-top: 10px">
+        <Column>
+          <Button type="main" mode="outlined">Sign in</Button>
+        </Column>
+        <Column>
+          <Button type="secondary" mode="outlined">Sign in</Button>
+        </Column>
+        <Column>
+          <Button type="accent" mode="outlined">Sign in</Button>
+        </Column>
+      </Row>
+      <Row style="margin-top: 10px">
+        <Column>
+          <Button type="main" rounded>Sign in</Button>
+        </Column>
+        <Column>
+          <Button type="secondary" rounded>Sign in</Button>
+        </Column>
+        <Column>
+          <Button type="accent" rounded>Sign in</Button>
+        </Column>
+      </Row>
+      <Row style="margin-top: 10px">
+        <Column>
+          <Button type="main" round>R</Button>
+        </Column>
+        <Column>
+          <Button type="secondary" round>R</Button>
+        </Column>
+        <Column>
+          <Button type="accent" round>R</Button>
+        </Column>
+      </Row>
+    </div>
+
+    <div style="width: 300px; margin: 20px auto">
+      <Row style="margin-top: 10px">
+        <Column>
+          <Checkbox type="main" position="left" ref="checkbox_1" check
+            >Test</Checkbox
+          >
+        </Column>
+        <Column>
+          <Checkbox type="secondary" position="left" ref="checkbox_2" check
+            >Test</Checkbox
+          >
+        </Column>
+        <Column>
+          <Checkbox type="accent" position="left" ref="checkbox_3" check
+            >Test</Checkbox
+          >
+        </Column>
+      </Row>
+      <Row style="margin-top: 10px">
+        <Column>
+          <Checkbox type="main" position="left">Test</Checkbox>
+        </Column>
+        <Column>
+          <Checkbox type="secondary" position="left">Test</Checkbox>
+        </Column>
+        <Column>
+          <Checkbox type="accent" position="left">Test</Checkbox>
+        </Column>
+      </Row>
+    </div>
+
+    <div style="width: 300px; margin: 20px auto">
+      <Row>
+        <Column><Heading size="xl">Hello, world!</Heading></Column>
+      </Row>
+      <Row>
+        <Column><Heading size="l">Hello, world!</Heading></Column>
+      </Row>
+      <Row>
+        <Column><Heading size="m">Hello, world!</Heading></Column>
+      </Row>
+      <Row>
+        <Column><Heading size="s">Hello, world!</Heading></Column>
+      </Row>
+      <Row>
+        <Column><Heading size="xs">Hello, world!</Heading></Column>
+      </Row>
+    </div>
+
+    <div style="width: 300px; margin: 20px auto">
+      <Row>
+        <Column>
+          <Paragraph type="small">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
+            dolore, dolorem doloremque ducimus error excepturi fugit ipsam
+            laborum, minima necessitatibus omnis perspiciatis porro reiciendis
+            suscipit vel! Aliquid deserunt magnam neque!
           </Paragraph>
         </Column>
       </Row>
-    </Card>
-    <IconButton
-      @click="btnClick"
-      icon_name="chat"
-      width="m"
-      height="m"
-      round
-    ></IconButton>
-  </div>
+      <Row>
+        <Column>
+          <Paragraph type="normal">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
+            dolore, dolorem doloremque ducimus error excepturi fugit ipsam
+            laborum, minima necessitatibus omnis perspiciatis porro reiciendis
+            suscipit vel! Aliquid deserunt magnam neque!
+          </Paragraph>
+        </Column>
+      </Row>
+      <Row>
+        <Column>
+          <Paragraph type="lead">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
+            dolore, dolorem doloremque ducimus error excepturi fugit ipsam
+            laborum, minima necessitatibus omnis perspiciatis porro reiciendis
+            suscipit vel! Aliquid deserunt magnam neque!
+          </Paragraph>
+        </Column>
+      </Row>
+    </div>
 
-  <div style="width: 300px; margin: 20px auto">
-    <Row>
-      <Column>
-        <Button type="main">Sign in</Button>
-      </Column>
-      <Column>
-        <Button type="secondary">Sign in</Button>
-      </Column>
-      <Column>
-        <Button type="accent">Sign in</Button>
-      </Column>
-    </Row>
-    <Row style="margin-top: 10px">
-      <Column>
-        <Button type="main" mode="outlined">Sign in</Button>
-      </Column>
-      <Column>
-        <Button type="secondary" mode="outlined">Sign in</Button>
-      </Column>
-      <Column>
-        <Button type="accent" mode="outlined">Sign in</Button>
-      </Column>
-    </Row>
-    <Row style="margin-top: 10px">
-      <Column>
-        <Button type="main" rounded>Sign in</Button>
-      </Column>
-      <Column>
-        <Button type="secondary" rounded>Sign in</Button>
-      </Column>
-      <Column>
-        <Button type="accent" rounded>Sign in</Button>
-      </Column>
-    </Row>
-    <Row style="margin-top: 10px">
-      <Column>
-        <Button type="main" round>R</Button>
-      </Column>
-      <Column>
-        <Button type="secondary" round>R</Button>
-      </Column>
-      <Column>
-        <Button type="accent" round>R</Button>
-      </Column>
-    </Row>
-  </div>
+    <div style="width: 300px; margin: 20px auto">
+      <Row>
+        <Column>
+          <PhoneInput />
+        </Column>
+      </Row>
+    </div>
 
-  <div style="width: 300px; margin: 20px auto">
-    <Row style="margin-top: 10px">
-      <Column>
-        <Checkbox type="main" position="left" ref="checkbox_1" check
-          >Test</Checkbox
-        >
-      </Column>
-      <Column>
-        <Checkbox type="secondary" position="left" ref="checkbox_2" check
-          >Test</Checkbox
-        >
-      </Column>
-      <Column>
-        <Checkbox type="accent" position="left" ref="checkbox_3" check
-          >Test</Checkbox
-        >
-      </Column>
-    </Row>
-    <Row style="margin-top: 10px">
-      <Column>
-        <Checkbox type="main" position="left">Test</Checkbox>
-      </Column>
-      <Column>
-        <Checkbox type="secondary" position="left">Test</Checkbox>
-      </Column>
-      <Column>
-        <Checkbox type="accent" position="left">Test</Checkbox>
-      </Column>
-    </Row>
-  </div>
+    <div style="width: 300px; margin: 20px auto">
+      <Row>
+        <Column>
+          <TextInput type="text" label="Номер паспорта" mask="0308 075673" />
+        </Column>
+      </Row>
+    </div>
+    <div style="width: 300px; margin: 20px auto">
+      <Row>
+        <Column>
+          <Progress
+            ref="progress"
+            :values="[
+              { value: 10, color: '#6320EE' },
+              { value: 40, color: '#8075FF' },
+              { value: 50, color: '#50C878' },
+            ]"
+          />
+        </Column>
+      </Row>
+    </div>
+    <div style="width: 300px; margin: 20px auto">
+      <Row>
+        <Column>
+          <Select
+            label="Гражданство"
+            :options="['Имею гражданство РФ', 'Не имею гражданство РФ']"
+          />
+        </Column>
+      </Row>
+    </div>
+    <div style="width: 300px; margin: 20px auto">
+      <Row>
+        <Column>
+          <Select
+            label="Выберите повышенный Кэшбэк"
+            :options="[
+              'Аптеки',
+              'Ozon.ru',
+              'Пятёрочка',
+              'Спорттовары',
+              'Такси',
+              'Рестораны',
+            ]"
+            ref="cashback_selector"
+            :max_selected="3"
+            multiple
+          />
+        </Column>
+      </Row>
+    </div>
+    <div style="width: 300px; margin: 20px auto">
+      <Row>
+        <Column>
+          <Paragraph type="lead"
+            >Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
+            consequuntur eaque et expedita explicabo illum impedit incidunt,
+            ipsam laboriosam libero minus numquam obcaecati, perferendis
+            provident quos? Nulla rerum unde ut!</Paragraph
+          >
+        </Column>
+      </Row>
+    </div>
+    <div style="width: 300px; margin: 20px auto">
+      <Link link="/connect" target="_blank">Подключиться</Link>
+    </div>
 
-  <div style="width: 300px; margin: 20px auto">
-    <Row>
-      <Column><Heading size="xl">Hello, world!</Heading></Column>
-    </Row>
-    <Row>
-      <Column><Heading size="l">Hello, world!</Heading></Column>
-    </Row>
-    <Row>
-      <Column><Heading size="m">Hello, world!</Heading></Column>
-    </Row>
-    <Row>
-      <Column><Heading size="s">Hello, world!</Heading></Column>
-    </Row>
-    <Row>
-      <Column><Heading size="xs">Hello, world!</Heading></Column>
-    </Row>
-  </div>
+    <div style="width: 300px; margin: 20px auto">
+      <Row>
+        <Column>
+          <TextInput
+            label="Полное имя"
+            ref="fullNameInput"
+            @input="onFullNameInputUpdated"
+            type="text"
+          />
+        </Column>
+      </Row>
+      <Row>
+        <Column>
+          <Paragraph type="lead">{{ fullName }}</Paragraph>
+        </Column>
+      </Row>
+    </div>
 
-  <div style="width: 300px; margin: 20px auto">
-    <Row>
-      <Column>
-        <Paragraph type="small">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
-          dolore, dolorem doloremque ducimus error excepturi fugit ipsam
-          laborum, minima necessitatibus omnis perspiciatis porro reiciendis
-          suscipit vel! Aliquid deserunt magnam neque!
-        </Paragraph>
-      </Column>
-    </Row>
-    <Row>
-      <Column>
-        <Paragraph type="normal">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
-          dolore, dolorem doloremque ducimus error excepturi fugit ipsam
-          laborum, minima necessitatibus omnis perspiciatis porro reiciendis
-          suscipit vel! Aliquid deserunt magnam neque!
-        </Paragraph>
-      </Column>
-    </Row>
-    <Row>
-      <Column>
-        <Paragraph type="lead">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
-          dolore, dolorem doloremque ducimus error excepturi fugit ipsam
-          laborum, minima necessitatibus omnis perspiciatis porro reiciendis
-          suscipit vel! Aliquid deserunt magnam neque!
-        </Paragraph>
-      </Column>
-    </Row>
-  </div>
+    <div style="width: 300px; margin: 20px auto">
+      <CheckboxBlock
+        :options="[
+          {
+            icon: './assets/icons/front-end-development.svg',
+            content: 'Front-end development',
+          },
+          {
+            icon: './assets/icons/front-end-development.svg',
+            content: 'Back-end development',
+          },
+          {
+            icon: './assets/icons/front-end-development.svg',
+            content: 'Algorithms and data structures',
+          },
+        ]"
+      >
+      </CheckboxBlock>
+    </div>
 
-  <div style="width: 300px; margin: 20px auto">
-    <Row>
-      <Column>
-        <PhoneInput />
-      </Column>
-    </Row>
-  </div>
+    <div style="width: 300px; margin: 20px auto">
+      <Row>
+        <Column><Spinner mode="border" type="primary"></Spinner></Column>
+        <Column><Spinner mode="border" type="secondary"></Spinner></Column>
+        <Column><Spinner mode="border" type="accent"></Spinner></Column>
+      </Row>
 
-  <div style="width: 300px; margin: 20px auto">
-    <Row>
-      <Column>
-        <TextInput type="text" label="Номер паспорта" mask="0308 075673" />
-      </Column>
-    </Row>
-  </div>
-  <div style="width: 300px; margin: 20px auto">
-    <Row>
-      <Column>
-        <Progress
-          ref="progress"
-          :values="[
-            { value: 10, color: '#6320EE' },
-            { value: 40, color: '#8075FF' },
-            { value: 50, color: '#50C878' },
-          ]"
-        />
-      </Column>
-    </Row>
-  </div>
-  <div style="width: 300px; margin: 20px auto">
-    <Row>
-      <Column>
-        <Select
-          label="Гражданство"
-          :options="['Имею гражданство РФ', 'Не имею гражданство РФ']"
-        />
-      </Column>
-    </Row>
-  </div>
-  <div style="width: 300px; margin: 20px auto">
-    <Row>
-      <Column>
-        <Select
-          label="Выберите повышенный Кэшбэк"
-          :options="[
-            'Аптеки',
-            'Ozon.ru',
-            'Пятёрочка',
-            'Спорттовары',
-            'Такси',
-            'Рестораны',
-          ]"
-          ref="cashback_selector"
-          :max_selected="3"
-          multiple
-        />
-      </Column>
-    </Row>
-  </div>
-  <div style="width: 300px; margin: 20px auto">
-    <Row>
-      <Column>
-        <Paragraph type="lead"
-          >Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-          consequuntur eaque et expedita explicabo illum impedit incidunt, ipsam
-          laboriosam libero minus numquam obcaecati, perferendis provident quos?
-          Nulla rerum unde ut!</Paragraph
-        >
-      </Column>
-    </Row>
-  </div>
-  <div style="width: 300px; margin: 20px auto">
-    <Link link="/connect" target="_blank">Подключиться</Link>
-  </div>
-
-  <div style="width: 300px; margin: 20px auto">
-    <Row>
-      <Column>
-        <TextInput
-          label="Полное имя"
-          ref="fullNameInput"
-          @input="onFullNameInputUpdated"
-          type="text"
-        />
-      </Column>
-    </Row>
-    <Row>
-      <Column>
-        <Paragraph type="lead">{{ fullName }}</Paragraph>
-      </Column>
-    </Row>
-  </div>
-
-  <div style="width: 300px; margin: 20px auto">
-    <CheckboxBlock
-      :options="[
-        {
-          icon: './assets/icons/front-end-development.svg',
-          content: 'Front-end development',
-        },
-        {
-          icon: './assets/icons/front-end-development.svg',
-          content: 'Back-end development',
-        },
-        {
-          icon: './assets/icons/front-end-development.svg',
-          content: 'Algorithms and data structures',
-        },
-      ]"
-    >
-    </CheckboxBlock>
-  </div>
-
-  <div style="width: 300px; margin: 20px auto">
-    <Row>
-      <Column><Spinner mode="border" type="primary"></Spinner></Column>
-      <Column><Spinner mode="border" type="secondary"></Spinner></Column>
-      <Column><Spinner mode="border" type="accent"></Spinner></Column>
-    </Row>
-
-    <Row style="margin-top: 10px">
-      <Column><Spinner mode="growing" type="primary"></Spinner></Column>
-      <Column><Spinner mode="growing" type="secondary"></Spinner></Column>
-      <Column><Spinner mode="growing" type="accent"></Spinner></Column>
-    </Row>
+      <Row style="margin-top: 10px">
+        <Column><Spinner mode="growing" type="primary"></Spinner></Column>
+        <Column><Spinner mode="growing" type="secondary"></Spinner></Column>
+        <Column><Spinner mode="growing" type="accent"></Spinner></Column>
+      </Row>
+    </div>
   </div>
 </template>
 

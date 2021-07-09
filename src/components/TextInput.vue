@@ -43,7 +43,7 @@
     </div>
     <div v-if="type === 'password'">
       <Icon
-        @click="togglePassword"
+        @click.native="togglePassword"
         class="password-toggler"
         :name="isShow ? 'visibility' : 'visibility_off'"
       />
