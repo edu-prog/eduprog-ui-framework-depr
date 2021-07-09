@@ -143,9 +143,9 @@ export default {
   width: 24px;
   height: 24px;
   position: absolute;
-  top: 50%;
   transform: translateY(-50%);
-  right: 1rem;
+  margin-left: -2rem;
+  margin-top: 1.5rem;
   pointer-events: none;
   transition: 0.2s;
 

@@ -30,7 +30,7 @@
       :value="content"
     />
     <slot></slot>
-    <div v-if="validation.status > 0">
+    <span v-if="validation.status > 0">
       <Icon
         :style="{
           right: type === 'password' ? '3.75rem' : '1.5rem',
@@ -40,14 +40,14 @@
         name="done"
         weight="bold"
       ></Icon>
-    </div>
-    <div v-if="type === 'password'">
+    </span>
+    <span v-if="type === 'password'">
       <Icon
         @click.native="togglePassword"
         class="password-toggler"
         :name="isShow ? 'visibility' : 'visibility_off'"
       />
-    </div>
+    </span>
   </div>
 </template>
 
@@ -165,26 +165,24 @@ export default {
   &-label {
     position: absolute;
     font-size: 1rem;
-    top: 50%;
+    margin-top: 1rem;
     margin-left: 0.5rem;
     pointer-events: none;
     transition: 0.25s ease;
-    transform: translateY(-50%);
     color: #000000;
 
     &-focused {
       font-size: 0.625rem;
-      top: 27%;
+      margin-top: 0.25rem;
     }
   }
 
   &-mask {
     font-size: 1rem;
     position: absolute;
-    top: 50%;
+    margin-top: 1rem;
     margin-left: 0.5rem;
     color: #333333;
-    transform: translateY(-50%);
   }
 
   &-input-control {
@@ -229,18 +227,17 @@ export default {
   }
 
   .password-toggler {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    right: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
+    margin-top: 0.55rem;
     cursor: pointer;
     width: 2rem;
     height: 2rem;
     transition: background-color 0.2s ease;
     border-radius: 50%;
+    margin-left: -2.5rem;
 
     &:hover {
       background-color: silver;
