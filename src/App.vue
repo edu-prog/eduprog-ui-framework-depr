@@ -10,7 +10,11 @@
 
         <Row container>
           <Column>
-            <PhoneInput label="Мобильный телефон" />
+            <PhoneInput
+              label="Мобильный телефон"
+              validation_message="Укажите номер телефона"
+              :validation_pattern="/^[^\s*$]/"
+            />
           </Column>
         </Row>
 
@@ -20,6 +24,7 @@
               type="text"
               label="Фамилия и Имя"
               mask="Иванов Иван"
+              validation_message="Укажите фамилию и имя"
               :validation_pattern="/[А-Я][а-я]+\s[А-Я][а-я]+/"
             />
           </Column>

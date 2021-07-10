@@ -67,6 +67,14 @@
         :name="isShow ? 'visibility' : 'visibility_off'"
       />
     </span>
+
+    <div
+      :class="[
+        'validation-message',
+        validation.status === 0 ? 'validation-message-show' : '',
+      ]"
+      ref="validation_message"
+    ></div>
   </div>
 </template>
 
@@ -118,6 +126,11 @@ export default {
       type: RegExp,
       required: false,
     },
+    validation_message: {
+      type: String,
+      required: false,
+      default: "",
+    },
   },
   data: function () {
     return {
@@ -135,28 +148,24 @@ export default {
       return this.content;
     },
     toggleInput() {
-      if (!this.content.length > 0) {
-        this.isActive = !this.isActive;
-        return true;
-      }
-      return false;
+      return (this.isActive = !this.isActive);
     },
     onInputFocus() {
       this.toggleInput();
     },
     onInputBlur: function () {
       if (!this.toggleInput() && this.validation_pattern) {
-        if (!this.validation.regexpr.test(this.content)) {
-          this.validation.status = 0;
-        } else {
-          this.validation.status = 1;
-        }
+        const validation_message = this.$refs.validation_message;
+        const validation_status = this.validation.regexpr.test(this.content);
+
+        this.validation.status = Number(validation_status);
+        validation_message.innerText = !validation_status
+          ? this.validation_message
+          : "";
       }
     },
     onInputUpdated() {
-      if (this.content.length > 0 && !this.isActive) {
-        this.isActive = true;
-      }
+      this.isActive = !this.isActive;
     },
     togglePassword() {
       this.isShow = !this.isShow;
@@ -169,6 +178,8 @@ export default {
         return "input-validation-invalid";
       } else if (this.validation.status === 1) {
         return "input-validation-valid";
+      } else {
+        throw "Invalid validatation status was setted.";
       }
     },
   },
@@ -246,6 +257,19 @@ export default {
 
     &-invalid {
       background-color: $color-invalid;
+    }
+  }
+
+  .validation-message {
+    display: flex;
+    color: $color-danger;
+    transition: 0.25s;
+    opacity: 0;
+    flex-direction: flex-start;
+
+    &-show {
+      transition-delay: 0.1s;
+      opacity: 1;
     }
   }
 

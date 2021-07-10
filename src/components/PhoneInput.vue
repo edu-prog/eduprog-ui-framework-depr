@@ -6,6 +6,8 @@
     @paste.native="onPhonePaste"
     type="tel"
     ref="phone_input"
+    :validation_pattern="validation_pattern"
+    :validation_message="validation_message"
     :max_length="18"
   />
 </template>
@@ -23,6 +25,15 @@ export default {
       type: String,
       required: false,
       default: "Номер телефона",
+    },
+    validation_pattern: {
+      type: RegExp,
+      required: false,
+    },
+    validation_message: {
+      type: String,
+      required: false,
+      default: "",
     },
   },
   data: function () {
