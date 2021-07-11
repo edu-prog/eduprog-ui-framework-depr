@@ -34,10 +34,10 @@
           validation.status > 0
             ? type === 'password'
               ? 'calc(100% - 5.7rem'
-              : 'calc(100% - 4rem)'
+              : 'calc(100% - 4px)'
             : type === 'password'
             ? 'calc(100% - 4.125rem)'
-            : 'calc(100% - 4rem)',
+            : 'calc(100% - 51px)',
       }"
       ref="text_input_"
       v-model="content"
