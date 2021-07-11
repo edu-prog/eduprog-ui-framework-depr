@@ -104,7 +104,7 @@ export default {
     }
 
     &-max-width {
-      width: calc(100% - 0.875rem);
+      width: 100%;
     }
 
     &.btn-clicked,
