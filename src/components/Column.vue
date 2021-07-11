@@ -1,5 +1,5 @@
 <template>
-  <div :class="[col ? `col-${col}` : 'col']">
+  <div :class="[col ? `grid-col-${col}` : 'grid-col']">
     <slot></slot>
   </div>
 </template>
