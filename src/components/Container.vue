@@ -1,17 +1,14 @@
 <template>
-  <div
-    :class="[
-      !size && !fluid ? 'grid-container' : '',
-      size ? `grid-container-${size}` : 'grid-container',
-      fluid ? `grid-container-fluid` : 'grid-container',
-    ]"
-  >
+  <div :class="[size ? `grid-container-${rightSize}` : 'grid-container']">
     <slot></slot>
   </div>
 </template>
 
 <script>
-import { BreakpointsLabel } from "../utils/breakpoins";
+import {
+  BreakpointsLabel,
+  BreakpointsLabelConvertToLarge,
+} from "../utils/breakpoins";
 export default {
   name: "Container",
   props: {
@@ -19,17 +16,14 @@ export default {
       type: String,
       default: "s",
       validator(value) {
-        return !value.fluid && BreakpointsLabel.includes(value);
+        return [...BreakpointsLabel, "fluid"].includes(value);
       },
     },
-    fluid: {
-      type: Boolean,
-      default: false,
-      required: false,
-      validator(value) {
-        return !value.size;
-      },
-    },
+  },
+  data() {
+    return {
+      rightSize: BreakpointsLabelConvertToLarge(this.size),
+    };
   },
 };
 </script>

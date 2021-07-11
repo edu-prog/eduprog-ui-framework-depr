@@ -1,11 +1,14 @@
-export const BreakpointsLabel = ["xs", "s", "m", "l", "xl"];
-export const BreakpointsLabelConvertFromLarge = (value) => {
+const BreakpointsLabel = ["xs", "s", "m", "l", "xl"];
+const BreakpointsLabelConvertToLarge = (value) => {
   const sizes = {
-    sm: "xs",
-    md: "s",
-    lg: "m",
-    xl: "l",
-    xxl: "xl",
+    xs: "sm",
+    s: "md",
+    m: "lg",
+    l: "xl",
+    xl: "xxl",
+    fluid: "fluid",
   };
   return sizes[value];
 };
+
+export { BreakpointsLabel, BreakpointsLabelConvertToLarge };
