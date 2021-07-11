@@ -1,5 +1,9 @@
 # Row
 
+```js
+import PhoneInput from "eduprog-design-system/src/components/Row.vue";
+```
+
 ## Properties
 
 | Properties | Values | Description                            |

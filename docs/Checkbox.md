@@ -1,7 +1,7 @@
 # Checkbox
 
 ```js
-import Checkbox from "eduprog-design-system/src/components/Checkbox";
+import Checkbox from "eduprog-design-system/src/components/Checkbox.vue";
 ```
 
 ## Properties

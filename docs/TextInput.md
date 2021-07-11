@@ -1,7 +1,7 @@
 # TextInput
 
 ```js
-import TextInput from "eduprog-design-system/src/components/TextInput";
+import TextInput from "eduprog-design-system/src/components/TextInput.vue";
 ```
 
 ## Properties

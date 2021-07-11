@@ -1,14 +1,14 @@
 # Checkbox Block
 
 ```js
-import CheckboxBlock from "eduprog-design-system/src/components/CheckboxBlock";
+import CheckboxBlock from "eduprog-design-system/src/components/CheckboxBlock.vue";
 ```
 
 ## Properties
 
-| Properties | Values                                                   | Description                   |
-| ---------- | -------------------------------------------------------- | ----------------------------- |
-| options    | ``` [{icon: 'path_to_icon', content: 'button_title'}]``` | Options to CheckboxBlock List |
+| Properties | Values                                                  | Description                   |
+| ---------- | ------------------------------------------------------- | ----------------------------- |
+| options    | ```[{icon: 'path_to_icon', content: 'button_title'}]``` | Options to CheckboxBlock List |
 
 ## Methods
 

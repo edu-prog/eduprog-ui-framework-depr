@@ -1,7 +1,7 @@
 # Paragraph
 
 ```js
-import Paragraph from "eduprog-design-system/src/components/Paragraph";
+import Paragraph from "eduprog-design-system/src/components/Paragraph.vue";
 ```
 
 ## Properties

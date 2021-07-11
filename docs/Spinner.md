@@ -1,5 +1,9 @@
 # Spinner
 
+```js
+import PhoneInput from "eduprog-design-system/src/components/Spinner.vue";
+```
+
 ## Properties
 
 | Properties | Values                       | Description   |
