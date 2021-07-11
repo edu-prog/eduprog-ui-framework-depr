@@ -5,6 +5,6 @@ export { default as Column } from "./Column.vue";
 export default {};
 </script>
 
-<style>
+<style lang="scss">
 @import "../assets/styles/_grid.css";
 </style>
