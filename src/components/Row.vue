@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div :class="[cols ? `row-cols-${cols}` : 'row']">
     <slot></slot>
   </div>
 </template>
@@ -12,6 +12,10 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    },
+    cols: {
+      type: Number,
+      required: false,
     },
   },
 };
