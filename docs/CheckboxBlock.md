@@ -4,10 +4,10 @@
 import CheckboxBlock from "eduprog-design-system/src/components/CheckboxBlock";
 ```
 
-## Props
+## Properties
 
-| Properties | Values                                            | Description                   |
-| ---------- | ------------------------------------------------- | ----------------------------- |
+| Properties | Values                                                   | Description                   |
+| ---------- | -------------------------------------------------------- | ----------------------------- |
 | options    | ``` [{icon: 'path_to_icon', content: 'button_title'}]``` | Options to CheckboxBlock List |
 
 ## Methods

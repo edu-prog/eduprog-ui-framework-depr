@@ -1,6 +1,6 @@
 # Spinner
 
-## Props
+## Properties
 
 | Properties | Values                       | Description   |
 | ---------- | ---------------------------- | ------------- |
