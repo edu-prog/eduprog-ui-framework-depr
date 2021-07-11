@@ -266,6 +266,7 @@ export default {
     transition: 0.25s;
     opacity: 0;
     flex-direction: flex-start;
+    font-size: 0.8125rem;
 
     &-show {
       transition-delay: 0.1s;
