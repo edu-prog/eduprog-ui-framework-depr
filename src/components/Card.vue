@@ -63,7 +63,7 @@ export default {
   }
 
   &-s {
-    max-width: calc(600px - 3rem);
+    max-width: calc(500px - 3rem);
   }
 
   &-m {

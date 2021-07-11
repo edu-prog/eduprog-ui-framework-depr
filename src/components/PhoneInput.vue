@@ -101,6 +101,7 @@ export default {
         }
       }
     },
+
     onPhonePaste(event) {
       const input = event.target;
       const inputNumbersValue = input.value.replace(/\D/g, "");
@@ -114,7 +115,8 @@ export default {
         }
       }
     },
-    getValue: function () {
+
+    Content() {
       return this.$refs.phone_input.content;
     },
   },
