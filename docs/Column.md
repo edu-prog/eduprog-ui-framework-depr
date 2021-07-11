@@ -1,14 +1,14 @@
 # Row
 
 ```js
-import Row from "eduprog-design-system/src/components/Row.vue";
+import Column from "eduprog-design-system/src/components/Column.vue";
 ```
 
 ## Properties
 
-| Properties | Values | Description                            |
-| ---------- | ------ | -------------------------------------- |
-| cols       | Number | Maximum number of columns in one line. |
+| Properties | Values | Description                                   |
+| ---------- | ------ | --------------------------------------------- |
+| col        | Number | The number of cells that the column occupies. |
 
 ## Examples
 
