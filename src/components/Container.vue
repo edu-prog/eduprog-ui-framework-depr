@@ -1,5 +1,11 @@
 <template>
-  <div :class="['grid-container']">
+  <div
+    :class="[
+      !size && !fluid ? 'grid-container' : '',
+      size ? `grid-container-${size}` : 'grid-container',
+      fluid ? `grid-container-fluid` : 'grid-container',
+    ]"
+  >
     <slot></slot>
   </div>
 </template>
