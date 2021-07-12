@@ -15,12 +15,6 @@ import TextInput from "eduprog-design-system/src/components/TextInput.vue";
 | max_length | number            | Input max text length |
 | readonly   | boolean           | Is input readonly     |
 
-## Methods
-
-| Method   | Return Value | Description                                 |
-| -------- | ------------ | ------------------------------------------- |
-| getValue | string       | Return value that encapsulated in component |
-
 ## Example
 
 ![Example](https://i.imgur.com/Qw2HntY.png)

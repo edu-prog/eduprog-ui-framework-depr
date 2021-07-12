@@ -14,12 +14,6 @@ import Checkbox from "eduprog-design-system/src/components/Checkbox.vue";
 | check      | {true, false}             | Checkbox checked status |
 | disabled   | {true, false}             | Is checkbox disabled    |
 
-## Methods
-
-| Method   | Return Value | Description                                 |
-| -------- | ------------ | ------------------------------------------- |
-| getValue | string       | Return value that encapsulated in component |
-
 ## Examples
 
 ![example](https://i.imgur.com/abhxNnC.png)

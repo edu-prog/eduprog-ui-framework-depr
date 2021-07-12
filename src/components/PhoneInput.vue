@@ -5,10 +5,11 @@
     @keydown.native="onPhoneKeyDown"
     @paste.native="onPhonePaste"
     type="tel"
-    ref="phone_input"
+    v-model="phone_number"
     :validation_pattern="validation_pattern"
     :validation_message="validation_message"
     :max_length="18"
+    :required="required === true"
   />
 </template>
 
@@ -19,6 +20,9 @@ export default {
   name: "PhoneInput",
   components: {
     TextInput,
+  },
+  model: {
+    event: "input",
   },
   props: {
     label: {
@@ -35,6 +39,11 @@ export default {
       required: false,
       default: "",
     },
+    required: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   data: function () {
     return {
@@ -43,6 +52,7 @@ export default {
   },
   methods: {
     onPhoneInput(event) {
+      this.$emit("input", this.phone_number);
       const input = event.target;
       const selectionStart = input.selectionStart;
       let inputNumbersValue = input.value.replace(/\D/g, "");
@@ -114,10 +124,6 @@ export default {
           return;
         }
       }
-    },
-
-    Content() {
-      return this.$refs.phone_input.content;
     },
   },
 };

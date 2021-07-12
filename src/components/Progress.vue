@@ -40,9 +40,9 @@ export default {
 
 .progress {
   display: flex;
-  height: 1rem;
+  height: 0.5rem;
   background-color: $color-platinum;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   overflow: hidden;
 
   &-bar {
@@ -51,21 +51,6 @@ export default {
     justify-content: center;
     transition: width 0.6s ease;
     overflow: hidden;
-    animation: progress-bar-stripted 1s linear infinite;
-
-    &-stripted {
-      background-image: linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.15) 25%,
-        transparent 25%,
-        transparent 50%,
-        rgba(255, 255, 255, 0.15) 50%,
-        rgba(255, 255, 255, 0.15) 75%,
-        transparent 75%,
-        transparent
-      );
-      background-size: 1rem 1rem;
-    }
   }
 }
 </style>

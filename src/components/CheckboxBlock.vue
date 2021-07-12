@@ -36,10 +36,10 @@ export default {
       value: [],
     };
   },
+  model: {
+    event: "update",
+  },
   methods: {
-    getValue() {
-      return this.value;
-    },
     onItemSelected(event) {
       const content = event.target.dataset.value;
       if (!this.value.includes(content)) {
@@ -47,6 +47,8 @@ export default {
       } else {
         this.value.splice(this.value.indexOf(content), 1);
       }
+
+      this.$emit("update", this.value);
     },
   },
 };

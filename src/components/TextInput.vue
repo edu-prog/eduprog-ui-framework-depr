@@ -8,9 +8,6 @@
     >
       {{ label }}
     </span>
-    <span :hidden="!isActive || content.length > 0" class="form-field-mask">
-      {{ mask }}
-    </span>
     <input
       :type="type === 'password' ? (isShow ? 'text' : 'password') : type"
       :class="[
@@ -36,14 +33,15 @@
               ? 'calc(100% - 5.7rem'
               : 'calc(100% - 52px)'
             : type === 'password'
-            ? 'calc(100% - 4.125rem)'
+            ? 'calc(100% - 52px)'
             : 'calc(100% - 52px)',
       }"
-      ref="text_input_"
       v-model="content"
       @focus="onInputFocus"
       @blur="onInputBlur"
       @input="onInputUpdated"
+      autocomplete="nope"
+      :placeholder="isActive ? mask : ''"
       :maxlength="max_length"
       :readonly="readonly"
       :value="content"
@@ -84,6 +82,9 @@ import { BreakpointsLabel } from "../utils/breakpoins";
 
 export default {
   name: "TextInput",
+  model: {
+    event: "input",
+  },
   components: {
     Icon,
   },
@@ -137,6 +138,7 @@ export default {
       isActive: false,
       isShow: false,
       content: this.val,
+      forceMaskHide: false,
       validation: {
         regexpr: this.validation_pattern,
         status: -1,
@@ -144,9 +146,6 @@ export default {
     };
   },
   methods: {
-    Content() {
-      return this.content;
-    },
     toggleInput() {
       return (this.isActive = !this.isActive);
     },
@@ -165,7 +164,8 @@ export default {
       }
     },
     onInputUpdated() {
-      this.isActive = !this.isActive;
+      this.forceMaskHide = !this.forceMaskHide ? true : this.content.length > 0;
+      this.$emit("input", this.content);
     },
     togglePassword() {
       this.isShow = !this.isShow;

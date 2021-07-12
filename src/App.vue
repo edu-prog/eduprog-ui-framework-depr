@@ -50,7 +50,7 @@
 
         <Row container style="margin-top: 10px">
           <Column>
-            <Checkbox :check="true" position="left" type="main">
+            <Checkbox checked position="left" type="main">
               Я принимаю условия Пользовательского соглашения и даю своё
               согласие Яндексу на обработку моей персональной информации на
               условиях, определенных Политикой конфиденциальности.
@@ -78,13 +78,7 @@
           </Column>
         </Row>
       </Card>
-      <IconButton
-        @click="btnClick"
-        icon_name="chat"
-        width="m"
-        height="m"
-        round
-      ></IconButton>
+      <IconButton icon_name="chat" width="m" height="m" round></IconButton>
 
       <div style="width: 300px; margin: 20px auto">
         <Row>
@@ -136,17 +130,17 @@
       <div style="width: 300px; margin: 20px auto">
         <Row style="margin-top: 10px">
           <Column>
-            <Checkbox type="main" position="left" ref="checkbox_1" check
+            <Checkbox type="main" position="left" ref="checkbox_1" checked
               >Test</Checkbox
             >
           </Column>
           <Column>
-            <Checkbox type="secondary" position="left" ref="checkbox_2" check
+            <Checkbox type="secondary" position="left" ref="checkbox_2" checked
               >Test</Checkbox
             >
           </Column>
           <Column>
-            <Checkbox type="accent" position="left" ref="checkbox_3" check
+            <Checkbox type="accent" position="left" ref="checkbox_3" checked
               >Test</Checkbox
             >
           </Column>
@@ -248,6 +242,7 @@
         <Row>
           <Column>
             <Select
+              v-model="debug_info"
               label="Гражданство"
               :options="['Имею гражданство РФ', 'Не имею гражданство РФ']"
             />
@@ -258,6 +253,7 @@
         <Row>
           <Column>
             <Select
+              v-model="debug_info"
               label="Выберите повышенный Кэшбэк"
               :options="[
                 'Аптеки',
@@ -293,12 +289,7 @@
       <div style="width: 300px; margin: 20px auto">
         <Row>
           <Column>
-            <TextInput
-              label="Полное имя"
-              ref="fullNameInput"
-              @input="onFullNameInputUpdated"
-              type="text"
-            />
+            <TextInput label="Полное имя" v-model="fullName" type="text" />
           </Column>
         </Row>
         <Row>
@@ -310,6 +301,7 @@
 
       <div style="width: 300px; margin: 20px auto">
         <CheckboxBlock
+          v-model="debug_info"
           :options="[
             {
               icon: './assets/icons/front-end-development.svg',
@@ -326,6 +318,8 @@
           ]"
         >
         </CheckboxBlock>
+
+        <Paragraph>{{ debug_info }}</Paragraph>
       </div>
 
       <div style="width: 300px; margin: 20px auto">
@@ -341,6 +335,32 @@
           <Column><Spinner mode="growing" type="accent"></Spinner></Column>
         </Row>
       </div>
+    </div>
+
+    <div style="width: 300px; margin: 20px auto">
+      <Row>
+        <Column
+          ><PhoneInput type="text" v-model="debug_info" label="Тестовое поле"
+        /></Column>
+      </Row>
+      <Row>
+        <Column>
+          <Paragraph>{{ debug_info }}</Paragraph></Column
+        >
+      </Row>
+    </div>
+
+    <div style="width: 300px; margin: 20px auto">
+      <Row>
+        <Column
+          ><Checkbox v-model="debug_info" position="left" type="main" checked
+        /></Column>
+      </Row>
+      <Row>
+        <Column>
+          <Paragraph>{{ debug_info }}</Paragraph></Column
+        >
+      </Row>
     </div>
   </div>
 </template>
@@ -383,21 +403,18 @@ export default {
   data() {
     return {
       fullName: "",
+      debug_info: "",
     };
-  },
-  methods: {
-    btnClick() {
-      console.log(this.$refs.checkbox_1.getValue());
-    },
-    onFullNameInputUpdated() {
-      this.fullName = this.$refs.fullNameInput.Content();
-    },
   },
 };
 </script>
 
 <style lang="scss">
 @import "assets/styles/global";
+
+body {
+  margin: 0;
+}
 #app {
   font-family: $font-family;
   -webkit-font-smoothing: antialiased;

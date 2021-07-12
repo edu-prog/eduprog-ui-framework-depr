@@ -10,12 +10,6 @@ import Progress from "eduprog-design-system/src/components/Progress.vue";
 | ---------- | -------------------------------------------------------------- | ------------------ |
 | Values     | [{value: 10, color: "#ffb000"}, {value: 90, color: "#ffcc00"}] | progress bar value |
 
-## Methods
-
-| Method   | Return Value | Description                                 |
-| -------- | ------------ | ------------------------------------------- |
-| getValue | string       | Return value that encapsulated in component |
-
 ## Example
 
 ![Example](https://i.imgur.com/DXTWPlW.png)

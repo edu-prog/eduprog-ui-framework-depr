@@ -7,8 +7,9 @@
     <input
       type="checkbox"
       :data-opt="__input_opts"
-      :checked="check === true"
+      :checked="checked === true"
       :disabled="disabled === true"
+      @change="onCheckboxChanged"
     />
 
     <span :class="['checkbox-checkmark', `checkbox-checkmark-${type}`]"></span>
@@ -29,7 +30,7 @@ export default {
       type: String,
       required: true,
     },
-    check: {
+    checked: {
       type: Boolean,
       default: false,
     },
@@ -42,14 +43,18 @@ export default {
       default: false,
     },
   },
+  model: {
+    event: "change",
+  },
   data: function () {
     return {
-      checked: this.check,
+      check: this.checked,
     };
   },
   methods: {
-    getValue: function () {
-      return this.checked;
+    onCheckboxChanged() {
+      this.check = !this.check;
+      this.$emit("change", this.check);
     },
   },
 };
