@@ -12,7 +12,18 @@
       @change="onCheckboxChanged"
     />
 
-    <span :class="['checkbox-checkmark', `checkbox-checkmark-${type}`]"></span>
+    <span class="checkbox-fake">
+      <span :class="['checkbox-checkmark', `checkbox-checkmark-${type}`]">
+        <Icon
+          class="checkbox-checkmark-icon"
+          size="xs"
+          name="done"
+          weight="bold"
+          color="#fff"
+        />
+      </span>
+    </span>
+
     <div v-if="position === 'left'">
       <slot></slot>
     </div>
@@ -20,8 +31,13 @@
 </template>
 
 <script>
+import Icon from "./Icon.vue";
+
 export default {
   name: "Checkbox",
+  components: {
+    Icon,
+  },
   props: {
     type: {
       type: String,
@@ -73,52 +89,69 @@ export default {
     margin-left: 0.75rem;
     margin-right: 0.75rem;
     text-align: left;
-    width: calc(100% - 0.75rem - 4rem);
+    width: calc(100% - 4.75rem);
+    user-select: none;
   }
 
   input {
     display: none;
 
-    &:checked ~ .checkbox-checkmark-main {
+    &:checked ~ .checkbox-fake > .checkbox-checkmark-main {
       background-color: $color-primary;
     }
 
-    &:checked ~ .checkbox-checkmark-secondary {
+    &:checked ~ .checkbox-fake > .checkbox-checkmark-secondary {
       background-color: $color-secondary;
     }
 
-    &:checked ~ .checkbox-checkmark-accent {
+    &:checked ~ .checkbox-fake > .checkbox-checkmark-accent {
       background-color: $color-accent;
     }
 
-    &:checked ~ .checkbox-checkmark:after {
+    &:checked ~ .checkbox-fake > .checkbox-checkmark:after {
       display: flex;
+    }
+
+    &:checked ~ .checkbox-fake > .checkbox-checkmark {
+      transform: scale(1);
+    }
+
+    &:checked ~ .checkbox-fake .checkbox-checkmark > .checkbox-checkmark-icon {
+      visibility: visible;
+      transform: scale(1);
     }
   }
 
-  .checkbox-checkmark {
+  .checkbox-fake {
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 0.5rem;
     background-color: #ecf1f7;
-    transition: 0.2s;
+    transition: 0.25s ease;
     cursor: pointer;
 
     &:hover {
       background-color: darken(#ecf1f7, 5%);
     }
 
-    &:after {
-      content: "";
-      display: none;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 0.25rem;
-      width: 0.25rem;
-      height: 0.5rem;
-      border: solid #ffffff;
-      border-width: 0 3px 3px 0;
-      transform: rotate(45deg);
+    .checkbox-checkmark {
+      display: flex;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 0.5rem;
+      transition: transform 0.25s ease;
+      transform: scale(0);
+
+      &-icon {
+        visibility: hidden;
+        display: flex;
+        transition: transform 0.25s ease;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        transform: scale(0);
+      }
     }
   }
 }
