@@ -114,10 +114,10 @@
 </template>
 
 <script>
-// eslint-disable-next-line no-unused-vars
-import { isMobile } from "mobile-device-detect";
-import TextInput from "./TextInput";
 import Checkbox from "./Checkbox";
+// eslint-disable-next-line no-unused-vars
+import TextInput from "./TextInput";
+import { isMobile } from "mobile-device-detect";
 import vClickOutside from "vue2-click-outside";
 
 export default {

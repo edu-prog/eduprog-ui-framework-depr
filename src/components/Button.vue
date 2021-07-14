@@ -3,12 +3,12 @@
     @click="toggleState"
     :class="[
       'btn',
-      round ? 'btn-round' : '',
+      round && 'btn-round',
       `btn-${type}`,
       `btn-size-${size}`,
-      rounded ? 'btn-rounded' : '',
-      isActive ? 'btn-clicked' : '',
-      mode ? `btn-${type}-${mode}` : '',
+      rounded && 'btn-rounded',
+      isActive && 'btn-clicked',
+      mode ? `btn-${mode}` : '',
     ]"
   >
     <span class="btn-label">
@@ -26,6 +26,16 @@ export default {
     type: {
       type: String,
       default: "default",
+      validator(value) {
+        return [
+          "default",
+          "action",
+          "link",
+          "pseudo",
+          "clear",
+          "raised",
+        ].includes(value);
+      },
     },
     size: {
       type: String,
@@ -78,93 +88,61 @@ export default {
   user-select: none;
   text-align: center;
   white-space: nowrap;
-  transition: background 0.25s ease, width 0.25s ease, color 0.25s ease;
+  transform: scale(1);
+  transition: background 0.25s ease, width 0.25s ease, color 0.25s ease,
+    transform 0.25s ease;
   border: 2px;
   border-radius: 0.5rem;
   font-family: $font-family;
-
   .btn-label {
     text-align: center;
   }
 
-  &-main {
+  &-clicked {
+    transform: scale(0.9);
+  }
+
+  &-default {
+    background-color: $color-lightgray;
+  }
+
+  &-action {
     background-color: $color-primary;
     color: #ffffff;
 
-    &-outlined {
-      background-color: #ffffff;
-      color: #000000;
-      border: 1px solid $color-primary;
-
-      &.btn-clicked,
-      &:hover {
-        background-color: $color-primary !important;
-        color: #ffffff;
-      }
-    }
-
-    &-max-width {
-      width: 100%;
-    }
-
-    &.btn-clicked,
     &:hover {
       background-color: darken($color-primary, 20%);
     }
   }
 
-  &-secondary {
-    background-color: $color-secondary;
-    color: #ffffff;
-
-    &-outlined {
-      background-color: #ffffff;
-      color: #000000;
-      border: 1px solid $color-secondary;
-
-      &.btn-clicked,
-      &:hover {
-        background-color: $color-secondary !important;
-        color: #ffffff;
-      }
-    }
-
-    &.btn-clicked,
-    &:hover {
-      background-color: darken($color-secondary, 5%);
-    }
-  }
-
-  &-accent {
-    background-color: $color-accent;
-    color: #ffffff;
-
-    &-outlined {
-      background-color: #ffffff;
-      color: #000000;
-      border: 1px solid $color-accent;
-
-      &.btn-clicked,
-      &:hover {
-        background-color: $color-accent !important;
-        color: #ffffff;
-      }
-    }
-
-    &.btn-clicked,
-    &:hover {
-      background-color: darken($color-accent, 20%);
-    }
-  }
-
   &-default {
-    box-shadow: 0 0 13px 3px rgba(0, 0, 0, 0.17);
-    color: #211a1d;
-    background-color: #ffffff;
+    color: $color-black;
+    background-color: $color-lightgray;
 
     &.btn-clicked,
     &:hover {
-      background-color: darken(#ffffff, 20%);
+      background-color: darken($color-white, 20%);
+    }
+  }
+
+  &-link {
+    border: 1px solid $color-lightblue;
+    color: $color-lightblue;
+
+    &:hover {
+      background-color: lighten($color-lightblue, 21%);
+    }
+  }
+
+  &-raised {
+    box-shadow: 0 0 13px 3px rgba(0, 0, 0, 0.17);
+  }
+
+  &-max-width {
+    width: 100%;
+
+    &.btn-clicked {
+      transform: scale(0.99);
     }
   }
 

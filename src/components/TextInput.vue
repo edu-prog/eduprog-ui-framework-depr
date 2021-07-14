@@ -77,8 +77,8 @@
 </template>
 
 <script>
-import Icon from "./Icon";
 import { BreakpointsLabel } from "../utils/breakpoins";
+import Icon from "./Icon";
 
 export default {
   name: "TextInput",
