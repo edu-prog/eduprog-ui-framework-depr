@@ -135,6 +135,19 @@ export default {
     }
   }
 
+  &-pseudo {
+    border: 2px solid $color-gray;
+  }
+
+  &-clear {
+    color: $color-darkgray;
+    background-color: transparent;
+
+    &:hover {
+      color: $color-black;
+    }
+  }
+
   &-raised {
     box-shadow: 0 0 13px 3px rgba(0, 0, 0, 0.17);
   }
