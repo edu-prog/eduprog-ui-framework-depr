@@ -128,6 +128,7 @@ export default {
   &-link {
     border: 1px solid $color-lightblue;
     color: $color-lightblue;
+    background-color: $color-white;
 
     &:hover {
       background-color: lighten($color-lightblue, 21%);
