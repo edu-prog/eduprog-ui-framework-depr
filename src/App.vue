@@ -265,11 +265,12 @@
                 'Такси',
                 'Рестораны',
               ]"
-              ref="cashback_selector"
-              :max_selected="3"
               multiple
             />
           </Column>
+        </Row>
+        <Row>
+          {{ debug_info }}
         </Row>
       </div>
       <div style="width: 300px; margin: 20px auto">

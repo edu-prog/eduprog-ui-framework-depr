@@ -62,7 +62,7 @@
         <span
           :class="[
             'mobile-select-label',
-            this.value ? 'mobile-select-label-checked' : '',
+            value && value.length > 0 ? 'mobile-select-label-checked' : '',
             multiple ? 'mobile-select-label-multiple' : '',
           ]"
           >{{ label }}</span
@@ -70,7 +70,7 @@
         <span
           :class="[
             'mobile-select-value',
-            this.value ? 'mobile-select-value-checked' : '',
+            value && 'mobile-select-value-checked',
             multiple ? 'mobile-select-value-multiple' : '',
           ]"
           >{{ multiple ? parseMultipleValue(value) : value }}</span
@@ -82,7 +82,7 @@
             isActive ? 'mobile-select-handle-checked' : '',
           ]"
           :multiple="multiple"
-          :size="multiple ? 1 : -1"
+          :size="multiple && 1"
           v-model="value"
           @change="onMobileSelectSelected"
         >
@@ -161,6 +161,7 @@ export default {
       return String(value.join(", "));
     },
     onSelectLoaded() {
+      console.log(this.value.join());
       this.$refs.select.content = this.options[0];
     },
     toggleDropdown() {
@@ -194,6 +195,7 @@ export default {
       this.$emit("update", this.value);
     },
     onMobileSelectSelected() {
+      console.log(this.value);
       this.isActive = !this.isActive;
       this.$emit("update", this.value);
     },
@@ -275,12 +277,10 @@ export default {
     transition: 0.25s ease;
     font-size: 0.625rem;
     margin-top: 0.25rem;
-
     &-multiple {
       margin-top: 1rem;
       font-size: 1rem;
     }
-
     &-checked {
       margin-top: 0.25rem;
       font-size: 0.625rem;
