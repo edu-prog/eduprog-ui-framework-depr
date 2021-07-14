@@ -32,6 +32,7 @@
         </Column>
       </Row>
     </Container>
+
     <Row style="margin-top: 10px">
       <Column>
         <Button type="action" mode="outlined">Sign in</Button>
@@ -314,17 +315,17 @@ export default {
 body {
   margin: 0;
 }
-#app {
-  font-family: $font-family;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #000000;
-}
+
 .home {
   max-width: 600px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  font-family: $font-family;
+  .grid-row {
+    .grid-col {
+      margin-top: 10px;
+    }
+  }
 }
 </style>
