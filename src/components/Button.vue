@@ -160,9 +160,23 @@ export default {
   &-link {
     border: 1px solid $color-lightblue;
     color: $color-lightblue;
+    background-color: $color-white;
 
     &:hover {
       background-color: lighten($color-lightblue, 21%);
+    }
+  }
+
+  &-pseudo {
+    border: 2px solid $color-gray;
+  }
+
+  &-clear {
+    color: $color-darkgray;
+    background-color: transparent;
+
+    &:hover {
+      color: $color-black;
     }
   }
 
