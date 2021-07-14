@@ -365,6 +365,25 @@
         >
       </Row>
     </div>
+
+    <div style="width: 300px; margin: 20px auto">
+      <Row>
+        <Column>
+          <Badge icon_name="shopping_cart">10</Badge>
+        </Column>
+      </Row>
+      <Row>
+        <Column>
+          <Button
+            type="primary"
+            badge="10"
+            badge_type="edge"
+            badge_color="danger"
+            >Привет</Button
+          ></Column
+        >
+      </Row>
+    </div>
   </div>
 </template>
 
@@ -383,6 +402,7 @@ import Select from "./components/Select";
 import Link from "./components/Link";
 import CheckboxBlock from "./components/CheckboxBlock";
 import Spinner from "./components/Spinner";
+import Badge from "./components/Badge.vue";
 
 export default {
   name: "Home",
@@ -402,6 +422,7 @@ export default {
     Link,
     CheckboxBlock,
     Spinner,
+    Badge,
   },
   data() {
     return {

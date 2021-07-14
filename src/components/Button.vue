@@ -13,6 +13,16 @@
   >
     <span class="btn-label">
       <slot></slot>
+      <span
+        :class="[
+          'badge-container',
+          badge && `badge-container-${badge_type}`,
+          badge_color && `badge-container-${badge_color}`,
+        ]"
+        v-if="badge"
+      >
+        {{ badge }}
+      </span>
     </span>
   </button>
 </template>
@@ -55,6 +65,28 @@ export default {
     mode: {
       type: String,
       default: "",
+    },
+    badge: {
+      type: String,
+      default: "",
+      required: false,
+    },
+    badge_type: {
+      type: String,
+      required: false,
+      default: "edge",
+      validation(value) {
+        return ["edge", "inside"].includes(value);
+      },
+    },
+    badge_color: {
+      type: String,
+      required: false,
+      validator(value) {
+        return ["primary", "secondary", "accent", "success", "danger"].includes(
+          value
+        );
+      },
     },
   },
   data: function () {
@@ -187,6 +219,46 @@ export default {
       justify-content: center;
       align-items: center;
     }
+  }
+}
+
+.badge-container {
+  display: inline-flex;
+  border: 2px solid #ffffff;
+  font-size: 0.75rem;
+  padding: 0 0.125rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #ffffff;
+  border-radius: 1rem;
+
+  &-edge {
+    position: absolute;
+    border-radius: 2px solid #ffffff;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+
+  &-inside {
+    margin-left: 0.375rem;
+  }
+
+  &-primary {
+    background-color: $color-primary;
+  }
+  &-secondary {
+    background-color: $color-secondary;
+  }
+  &-accent {
+    background-color: $color-accent;
+  }
+  &-success {
+    background-color: $color-success;
+  }
+  &-danger {
+    background-color: $color-danger;
   }
 }
 </style>
