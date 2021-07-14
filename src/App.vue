@@ -44,7 +44,9 @@
 
         <Row container>
           <Column>
-            <Button type="main" size="l" mode="max-width"> Регистрация </Button>
+            <Button type="action" size="l" mode="max-width">
+              Регистрация
+            </Button>
           </Column>
         </Row>
 
@@ -83,46 +85,46 @@
       <div style="width: 300px; margin: 20px auto">
         <Row>
           <Column>
-            <Button type="main">Sign in</Button>
+            <Button type="action">Sign in</Button>
           </Column>
           <Column>
-            <Button type="secondary">Sign in</Button>
+            <Button type="default">Sign in</Button>
           </Column>
           <Column>
-            <Button type="accent">Sign in</Button>
-          </Column>
-        </Row>
-        <Row style="margin-top: 10px">
-          <Column>
-            <Button type="main" mode="outlined">Sign in</Button>
-          </Column>
-          <Column>
-            <Button type="secondary" mode="outlined">Sign in</Button>
-          </Column>
-          <Column>
-            <Button type="accent" mode="outlined">Sign in</Button>
+            <Button type="link">Sign in</Button>
           </Column>
         </Row>
         <Row style="margin-top: 10px">
           <Column>
-            <Button type="main" rounded>Sign in</Button>
+            <Button type="action" mode="outlined">Sign in</Button>
           </Column>
           <Column>
-            <Button type="secondary" rounded>Sign in</Button>
+            <Button type="default" mode="outlined">Sign in</Button>
           </Column>
           <Column>
-            <Button type="accent" rounded>Sign in</Button>
+            <Button type="link" mode="outlined">Sign in</Button>
           </Column>
         </Row>
         <Row style="margin-top: 10px">
           <Column>
-            <Button type="main" round>R</Button>
+            <Button type="action" rounded>Sign in</Button>
           </Column>
           <Column>
-            <Button type="secondary" round>R</Button>
+            <Button type="default" rounded>Sign in</Button>
           </Column>
           <Column>
-            <Button type="accent" round>R</Button>
+            <Button type="link" rounded>Sign in</Button>
+          </Column>
+        </Row>
+        <Row style="margin-top: 10px">
+          <Column>
+            <Button type="action" round>R</Button>
+          </Column>
+          <Column>
+            <Button type="default" round>R</Button>
+          </Column>
+          <Column>
+            <Button type="link" round>R</Button>
           </Column>
         </Row>
       </div>
@@ -263,11 +265,12 @@
                 'Такси',
                 'Рестораны',
               ]"
-              ref="cashback_selector"
-              :max_selected="3"
               multiple
             />
           </Column>
+        </Row>
+        <Row>
+          {{ debug_info }}
         </Row>
       </div>
       <div style="width: 300px; margin: 20px auto">
@@ -366,7 +369,7 @@
 </template>
 
 <script>
-import { Row, Column } from "./components/Grid.vue";
+import { Column, Row } from "./components/Grid.vue";
 import Button from "./components/Button.vue";
 import TextInput from "./components/TextInput.vue";
 import Heading from "./components/Heading.vue";
