@@ -50,11 +50,11 @@ Here is a quick example to get you started, it's all you need:
 </template>
 
 <script>
-import Button from "eduprog-ds/src/components/Button";
-import Heading from "eduprog-ds/src/components/Heading";
-import TextInput from "eduprog-ds/src/components/TextInput";
+import Button from "eduprog-ds/src/components/Button.vue";
+import Heading from "eduprog-ds/src/components/Heading.vue";
+import TextInput from "eduprog-ds/src/components/TextInput.vue";
 
-import { Row, Column } from "vue-grid-responsive";
+import { Row, Column } from "eduprog-ds/src/components/Grid.vue";
 
 export default {
   name: "Home",
