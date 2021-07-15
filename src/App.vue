@@ -52,7 +52,32 @@
       </Row>
     </Container>
 
-    Row>Column
+    <Container size="m">
+      <Row>
+        <Column>
+          <TextInput type="text" label="Первое" />
+        </Column>
+      </Row>
+      <Row>
+        <Column>
+          <TextInput type="password" label="Второе" />
+        </Column>
+      </Row>
+      <Row>
+        <Column>
+          <TextInput type="text" label="Третье" :validation_pattern="/\D/" />
+        </Column>
+      </Row>
+      <Row>
+        <Column>
+          <TextInput
+            type="password"
+            label="Четвертое"
+            :validation_pattern="/\D/"
+          />
+        </Column>
+      </Row>
+    </Container>
 
     <Row>
       <Column><Heading size="m" align="left">Typography</Heading></Column>

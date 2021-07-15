@@ -22,19 +22,19 @@
           validation.status > 0
             ? validation.status > 0 && type === 'password'
               ? '4.25rem'
-              : '2.75rem'
+              : '2.25rem'
             : type === 'password'
             ? '2.75rem'
-            : '2.75rem',
+            : '0.5rem',
 
         width:
           validation.status > 0
             ? type === 'password'
-              ? 'calc(100% - 5.7rem'
-              : 'calc(100% - 52px)'
+              ? 'calc(100% - 4.75rem'
+              : 'calc(100% - 2.75rem)'
             : type === 'password'
             ? 'calc(100% - 52px)'
-            : 'calc(100% - 52px)',
+            : 'calc(100% - 16px)',
       }"
       v-model="content"
       @focus="onInputFocus"
