@@ -45,6 +45,7 @@
       :maxlength="max_length"
       :readonly="readonly"
       :value="content"
+      :autofocus="autofocus"
     />
     <slot></slot>
     <span v-if="validation.status > 0">
@@ -120,6 +121,10 @@ export default {
       required: false,
     },
     readonly: {
+      type: Boolean,
+      default: false,
+    },
+    autofocus: {
       type: Boolean,
       default: false,
     },
