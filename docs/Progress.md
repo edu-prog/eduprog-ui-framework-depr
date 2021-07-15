@@ -1,7 +1,7 @@
 # Progress
 
 ```js
-import Progress from "eduprog-design-system/src/components/Progress.vue";
+import Progress from "eduprog-ds/src/components/Progress.vue";
 ```
 
 ## Properties

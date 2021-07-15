@@ -1,7 +1,7 @@
 # PhoneInput
 
 ```js
-import PhoneInput from "eduprog-design-system/src/components/PhoneInput.vue";
+import PhoneInput from "eduprog-ds/src/components/PhoneInput.vue";
 ```
 
 This is inheritor of component [TextInput](TextInput.md)

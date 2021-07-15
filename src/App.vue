@@ -3,15 +3,15 @@
     <Container size="xs">
       <Row>
         <Column>
-          <Heading size="xl" align="left">Button</Heading>
+          <Heading size="m" align="left">Button</Heading>
         </Column>
       </Row>
       <Row>
         <Column>
-          <Heading size="l" align="left">Examples</Heading>
+          <Heading size="s" align="left">Examples</Heading>
         </Column>
       </Row>
-      <Row cols="3">
+      <Row :cols="3">
         <Column>
           <Button type="action">Action</Button>
         </Column>
@@ -30,86 +30,68 @@
         <Column>
           <Button type="raised">Raised</Button>
         </Column>
+
+        <Column>
+          <Button type="action" rounded>Action</Button>
+        </Column>
+        <Column>
+          <Button type="default" rounded>Default</Button>
+        </Column>
+        <Column>
+          <Button type="link" rounded>Link</Button>
+        </Column>
+        <Column>
+          <Button type="pseudo" rounded>Pseudo</Button>
+        </Column>
+        <Column>
+          <Button type="clear" rounded>Clear</Button>
+        </Column>
+        <Column>
+          <Button type="raised" rounded>Raised</Button>
+        </Column>
       </Row>
     </Container>
 
-    <Row style="margin-top: 10px">
-      <Column>
-        <Button type="action" mode="outlined">Sign in</Button>
-      </Column>
-      <Column>
-        <Button type="default" mode="outlined">Sign in</Button>
-      </Column>
-      <Column>
-        <Button type="link" mode="outlined">Sign in</Button>
-      </Column>
-    </Row>
-    <Row style="margin-top: 10px">
-      <Column>
-        <Button type="action" rounded>Sign in</Button>
-      </Column>
-      <Column>
-        <Button type="default" rounded>Sign in</Button>
-      </Column>
-      <Column>
-        <Button type="link" rounded>Sign in</Button>
-      </Column>
-    </Row>
-    <Row style="margin-top: 10px">
-      <Column>
-        <Button type="action" round>R</Button>
-      </Column>
-      <Column>
-        <Button type="default" round>R</Button>
-      </Column>
-      <Column>
-        <Button type="link" round>R</Button>
-      </Column>
-    </Row>
-
-    <Row style="margin-top: 10px">
-      <Column>
-        <Checkbox type="main" position="left" ref="checkbox_1" checked
-          >Test</Checkbox
-        >
-      </Column>
-      <Column>
-        <Checkbox type="secondary" position="left" ref="checkbox_2" checked
-          >Test</Checkbox
-        >
-      </Column>
-      <Column>
-        <Checkbox type="accent" position="left" ref="checkbox_3" checked
-          >Test</Checkbox
-        >
-      </Column>
-    </Row>
-    <Row style="margin-top: 10px">
-      <Column>
-        <Checkbox type="main" position="left">Test</Checkbox>
-      </Column>
-      <Column>
-        <Checkbox type="secondary" position="left">Test</Checkbox>
-      </Column>
-      <Column>
-        <Checkbox type="accent" position="left">Test</Checkbox>
-      </Column>
-    </Row>
+    Row>Column
 
     <Row>
-      <Column><Heading size="xl">Hello, world!</Heading></Column>
+      <Column><Heading size="m" align="left">Typography</Heading></Column>
     </Row>
     <Row>
-      <Column><Heading size="l">Hello, world!</Heading></Column>
+      <Column><Heading size="s" align="left">Headings</Heading></Column>
     </Row>
     <Row>
-      <Column><Heading size="m">Hello, world!</Heading></Column>
+      <Column
+        ><Paragraph
+          >We provide some basic styling on headings tags. In the example, you
+          see the the 6 header tags' different sizes.</Paragraph
+        ></Column
+      >
     </Row>
+    <Card type="border" size="m" align="left" style="margin-top: 2rem">
+      <Container>
+        <Row>
+          <Column><Heading size="xxl" align="left">Heading h1</Heading></Column>
+        </Row>
+        <Row>
+          <Column><Heading size="xl" align="left">Heading h2</Heading></Column>
+        </Row>
+        <Row>
+          <Column><Heading size="l" align="left">Heading h3</Heading></Column>
+        </Row>
+        <Row>
+          <Column><Heading size="m" align="left">Heading h4</Heading></Column>
+        </Row>
+        <Row>
+          <Column><Heading size="s" align="left">Heading h5</Heading></Column>
+        </Row>
+        <Row>
+          <Column><Heading size="xs" align="left">Heading h6</Heading></Column>
+        </Row>
+      </Container>
+    </Card>
     <Row>
-      <Column><Heading size="s">Hello, world!</Heading></Column>
-    </Row>
-    <Row>
-      <Column><Heading size="xs">Hello, world!</Heading></Column>
+      <Column><Heading size="s" align="left">Paragraphs</Heading></Column>
     </Row>
 
     <Row>
@@ -226,15 +208,15 @@
       v-model="debug_info"
       :options="[
         {
-          icon: './assets/icons/front-end-development.svg',
+          icon: require('./assets/icons/front-end-development.svg'),
           content: 'Front-end development',
         },
         {
-          icon: './assets/icons/front-end-development.svg',
+          icon: require('./assets/icons/back-end-development.svg'),
           content: 'Back-end development',
         },
         {
-          icon: './assets/icons/front-end-development.svg',
+          icon: require('./assets/icons/front-end-development.svg'),
           content: 'Algorithms and data structures',
         },
       ]"
@@ -269,23 +251,23 @@
 </template>
 
 <script>
-import { Column, Container, Row } from "./components/Grid.vue";
 import Button from "./components/Button.vue";
-import TextInput from "./components/TextInput.vue";
+import Card from "./components/Card";
+import CheckboxBlock from "./components/CheckboxBlock";
+import { Column, Container, Row } from "./components/Grid.vue";
 import Heading from "./components/Heading.vue";
-import PhoneInput from "./components/PhoneInput";
-import Checkbox from "./components/Checkbox";
+import Link from "./components/Link";
 import Paragraph from "./components/Paragraph";
+import PhoneInput from "./components/PhoneInput";
 import Progress from "./components/Progress";
 import Select from "./components/Select";
-import Link from "./components/Link";
-import CheckboxBlock from "./components/CheckboxBlock";
 import Spinner from "./components/Spinner";
+import TextInput from "./components/TextInput.vue";
 
 export default {
   name: "Home",
   components: {
-    Checkbox,
+    Card,
     PhoneInput,
     Button,
     Row,

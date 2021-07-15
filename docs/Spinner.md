@@ -1,7 +1,7 @@
 # Spinner
 
 ```js
-import Spinner from "eduprog-design-system/src/components/Spinner.vue";
+import Spinner from "eduprog-ds/src/components/Spinner.vue";
 ```
 
 ## Properties

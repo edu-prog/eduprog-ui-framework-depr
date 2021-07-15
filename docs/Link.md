@@ -1,7 +1,7 @@
 # Link
 
 ```js
-import Link from "eduprog-design-system/src/components/Link.vue";
+import Link from "eduprog-ds/src/components/Link.vue";
 ```
 
 ## Properties

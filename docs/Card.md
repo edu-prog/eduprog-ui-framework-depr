@@ -1,7 +1,7 @@
 # Card
 
 ```js
-import Card from "eduprog-design-system/src/components/Card.vue";
+import Card from "eduprog-ds/src/components/Card.vue";
 ```
 
 ## Properties

@@ -50,9 +50,9 @@ Here is a quick example to get you started, it's all you need:
 </template>
 
 <script>
-import Button from "vue-design-system/src/components/Button";
-import Heading from "vue-design-system/src/components/Heading";
-import TextInput from "vue-design-system/src/components/TextInput";
+import Button from "eduprog-ds/src/components/Button";
+import Heading from "eduprog-ds/src/components/Heading";
+import TextInput from "eduprog-ds/src/components/TextInput";
 
 import { Row, Column } from "vue-grid-responsive";
 

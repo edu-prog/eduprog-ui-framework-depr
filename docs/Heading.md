@@ -1,7 +1,7 @@
 # Heading
 
 ```js
-import Heading from "eduprog-design-system/src/components/Heading.vue";
+import Heading from "eduprog-ds/src/components/Heading.vue";
 ```
 
 ## Properties

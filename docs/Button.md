@@ -1,7 +1,7 @@
 # Button
 
 ```js
-import Button from "eduprog-design-system/src/components/Button.vue";
+import Button from "eduprog-ds/src/components/Button.vue";
 ```
 
 ## Properties

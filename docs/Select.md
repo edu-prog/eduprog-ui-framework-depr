@@ -1,7 +1,7 @@
 # Select
 
 ```js
-import Select from "eduprog-design-system/src/components/Select.vue";
+import Select from "eduprog-ds/src/components/Select.vue";
 ```
 
 ## Properties

@@ -1,7 +1,7 @@
 # Row
 
 ```js
-import Column from "eduprog-design-system/src/components/Column.vue";
+import Column from "eduprog-ds/src/components/Column.vue";
 ```
 
 ## Properties

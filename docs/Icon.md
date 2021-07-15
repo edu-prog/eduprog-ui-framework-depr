@@ -1,7 +1,7 @@
 # Icon
 
 ```js
-import Icon from "eduprog-design-system/src/components/Icon.vue";
+import Icon from "eduprog-ds/src/components/Icon.vue";
 ```
 
 ## Properties

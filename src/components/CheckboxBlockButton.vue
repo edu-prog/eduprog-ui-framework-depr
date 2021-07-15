@@ -6,7 +6,7 @@
     <img
       v-if="icon"
       class="cb-button-img"
-      src="../assets/icons/front-end-development.svg"
+      :src="icon"
       alt="registration icon"
     />
     <slot></slot>

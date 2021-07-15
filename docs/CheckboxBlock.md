@@ -1,7 +1,7 @@
 # Checkbox Block
 
 ```js
-import CheckboxBlock from "eduprog-design-system/src/components/CheckboxBlock.vue";
+import CheckboxBlock from "eduprog-ds/src/components/CheckboxBlock.vue";
 ```
 
 ## Properties
