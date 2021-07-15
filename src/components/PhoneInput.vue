@@ -10,6 +10,7 @@
     :validation_message="validation_message"
     :max_length="18"
     :required="required === true"
+    :autofocus="autofocus"
   />
 </template>
 
@@ -38,6 +39,10 @@ export default {
       type: String,
       required: false,
       default: "",
+    },
+    autofocus: {
+      type: Boolean,
+      default: false,
     },
     required: {
       type: Boolean,
