@@ -151,6 +151,15 @@ export default {
     };
   },
   methods: {
+    forceValidate() {
+      const validation_message = this.$refs.validation_message;
+      const validation_status = this.validation.regexpr.test(this.content);
+
+      this.validation.status = Number(validation_status);
+      validation_message.innerText = !validation_status
+        ? this.validation_message
+        : "";
+    },
     toggleInput() {
       return (this.isActive = !this.isActive);
     },
@@ -159,13 +168,7 @@ export default {
     },
     onInputBlur: function () {
       if (!this.toggleInput() && this.validation_pattern) {
-        const validation_message = this.$refs.validation_message;
-        const validation_status = this.validation.regexpr.test(this.content);
-
-        this.validation.status = Number(validation_status);
-        validation_message.innerText = !validation_status
-          ? this.validation_message
-          : "";
+        this.forceValidate();
       }
     },
     onInputUpdated() {
