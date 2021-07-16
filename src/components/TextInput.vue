@@ -45,7 +45,7 @@
       :maxlength="max_length"
       :readonly="readonly"
       :value="content"
-      :autofocus="autofocus"
+      ref="textInput_"
     />
     <slot></slot>
     <span v-if="validation.status > 0">
@@ -195,6 +195,11 @@ export default {
     slotPassed() {
       return this.$slots.default;
     },
+  },
+  mounted() {
+    if (this.autofocus) {
+      this.$refs.textInput_.focus();
+    }
   },
 };
 </script>
