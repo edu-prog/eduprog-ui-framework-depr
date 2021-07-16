@@ -1,5 +1,5 @@
 <template>
-  <Button type="main" :style="iconButtonStyles">
+  <Button :type="button_type" :style="iconButtonStyles">
     <Icon :name="icon_name" :size="icon_size" :color="icon_color" />
   </Button>
 </template>
@@ -60,6 +60,11 @@ export default {
     button_round: {
       type: Boolean,
       default: false,
+      required: false,
+    },
+    button_type: {
+      type: String,
+      default: "default",
       required: false,
     },
   },
