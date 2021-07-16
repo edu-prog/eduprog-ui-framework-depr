@@ -2,6 +2,7 @@
   <button
     :class="['cb-button', isActive ? 'cb-button-clicked' : '']"
     @click="onCheckboxItemClicked"
+    type="button"
   >
     <img
       v-if="icon"
