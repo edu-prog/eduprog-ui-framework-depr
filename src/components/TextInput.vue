@@ -40,7 +40,7 @@
       @focus="onInputFocus"
       @blur="onInputBlur"
       @input="onInputUpdated"
-      autocomplete="nope"
+      :autocomplete="autocomplete"
       :placeholder="isActive ? mask : ''"
       :maxlength="max_length"
       :readonly="readonly"
@@ -133,6 +133,11 @@ export default {
       required: false,
     },
     validation_message: {
+      type: String,
+      required: false,
+      default: "",
+    },
+    autocomplete: {
       type: String,
       required: false,
       default: "",
