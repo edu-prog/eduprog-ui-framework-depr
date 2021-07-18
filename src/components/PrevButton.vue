@@ -14,6 +14,12 @@
   </button>
 </template>
 
+<script>
+export default {
+  name: "PrevButton",
+};
+</script>
+
 <style lang="scss" scoped>
 .previous_button {
   display: flex;
