@@ -50,6 +50,7 @@ export default {
       outline: none;
       background-color: inherit;
       font-size: 1rem;
+      cursor: pointer;
     }
   }
 
