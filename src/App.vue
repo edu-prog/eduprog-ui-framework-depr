@@ -65,7 +65,12 @@
       </Row>
       <Row>
         <Column>
-          <TextInput type="text" label="Третье" :validation_pattern="/\D/" />
+          <TextInput
+            type="text"
+            label="Третье"
+            :validation_message="'Укажите что-то'"
+            :validation_pattern="/\D/"
+          />
         </Column>
       </Row>
       <Row>
@@ -307,6 +312,20 @@
         </TextInputButton>
       </Column>
     </Row>
+    <Row>
+      <Column>
+        <Popup>
+          <template v-slot:toggle>
+            <Button>Popup</Button>
+          </template>
+          <template v-slot:content>
+            structure sign mysterious border blind doctor article floating
+            hollow nuts massage jet heavy built wash would flow pile per back
+            saddle couple sad positive
+          </template>
+        </Popup>
+      </Column>
+    </Row>
   </div>
 </template>
 
@@ -324,6 +343,7 @@ import Select from "./components/Select";
 import Spinner from "./components/Spinner";
 import TextInput from "./components/TextInput.vue";
 import TextInputButton from "./components/TextInputButton.vue";
+import Popup from "./components/Popup.vue";
 
 export default {
   name: "Home",
@@ -343,6 +363,7 @@ export default {
     Spinner,
     Container,
     TextInputButton,
+    Popup,
   },
   data() {
     return {
