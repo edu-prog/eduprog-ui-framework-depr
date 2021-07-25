@@ -2,7 +2,7 @@
     Eduprog: Vue design system
 </h1>
 
-[![Eduprog DS Build](https://github.com/edu-prog/design-system/actions/workflows/node.js.yml/badge.svg)](https://github.com/edu-prog/design-system/actions/workflows/node.js.yml)
+[![CI](https://github.com/edu-prog/design-system/actions/workflows/ci.yml/badge.svg)](https://github.com/edu-prog/design-system/actions/workflows/ci.yml)
 
 ## 📦 Installation
 
