@@ -11,24 +11,24 @@
 
 <script>
 export default {
-  name: "Progress",
+  name: 'Progress',
   props: {
     values: {
       type: Array,
       required: true,
     },
   },
-  data: function () {
+  data() {
     return {
       progress_value: this.value,
     };
   },
   methods: {
-    getValue: function () {
+    getValue() {
       return this.progress_value;
     },
 
-    setValue: function (value) {
+    setValue(value) {
       this.progress_value = value;
     },
   },

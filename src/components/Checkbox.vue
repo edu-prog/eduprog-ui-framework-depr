@@ -31,10 +31,10 @@
 </template>
 
 <script>
-import Icon from "./Icon.vue";
+import Icon from './Icon.vue';
 
 export default {
-  name: "Checkbox",
+  name: 'Checkbox',
   components: {
     Icon,
   },
@@ -60,9 +60,9 @@ export default {
     },
   },
   model: {
-    event: "change",
+    event: 'change',
   },
-  data: function () {
+  data() {
     return {
       check: this.checked,
     };
@@ -70,7 +70,7 @@ export default {
   methods: {
     onCheckboxChanged() {
       this.check = !this.check;
-      this.$emit("change", this.check);
+      this.$emit('change', this.check);
     },
   },
 };

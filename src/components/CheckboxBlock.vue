@@ -19,10 +19,10 @@
 </template>
 
 <script>
-import CheckboxBlockButton from "./CheckboxBlockButton";
+import CheckboxBlockButton from './CheckboxBlockButton.vue';
 
 export default {
-  name: "CheckboxBlock",
+  name: 'CheckboxBlock',
   components: {
     CheckboxBlockButton,
   },
@@ -37,7 +37,7 @@ export default {
     };
   },
   model: {
-    event: "update",
+    event: 'update',
   },
   methods: {
     onItemSelected(event) {
@@ -48,7 +48,7 @@ export default {
         this.value.splice(this.value.indexOf(content), 1);
       }
 
-      this.$emit("update", this.value);
+      this.$emit('update', this.value);
     },
   },
 };

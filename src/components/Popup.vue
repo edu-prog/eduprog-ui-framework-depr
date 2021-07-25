@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import Vue2ClickOutside from "vue2-click-outside";
+import Vue2ClickOutside from 'vue2-click-outside';
 
 export default {
-  name: "Popup",
+  name: 'Popup',
   directives: {
     clickOutside: Vue2ClickOutside.directive,
   },

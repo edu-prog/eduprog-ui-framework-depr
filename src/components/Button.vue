@@ -28,28 +28,28 @@
 </template>
 
 <script>
-import { BreakpointsLabel } from "../utils/breakpoins";
+import { BreakpointsLabel } from '../utils/breakpoins';
 
 export default {
-  name: "Button",
+  name: 'Button',
   props: {
     type: {
       type: String,
-      default: "default",
+      default: 'default',
       validator(value) {
         return [
-          "default",
-          "action",
-          "link",
-          "pseudo",
-          "clear",
-          "raised",
+          'default',
+          'action',
+          'link',
+          'pseudo',
+          'clear',
+          'raised',
         ].includes(value);
       },
     },
     size: {
       type: String,
-      default: "m",
+      default: 'm',
       validator(value) {
         return BreakpointsLabel.includes(value);
       },
@@ -64,36 +64,36 @@ export default {
     },
     mode: {
       type: String,
-      default: "",
+      default: '',
     },
     badge: {
       type: String,
-      default: "",
+      default: '',
       required: false,
     },
     badge_type: {
       type: String,
       required: false,
-      default: "edge",
+      default: 'edge',
       validation(value) {
-        return ["edge", "inside"].includes(value);
+        return ['edge', 'inside'].includes(value);
       },
     },
     badge_color: {
       type: String,
       required: false,
       validator(value) {
-        return ["primary", "secondary", "accent", "success", "danger"].includes(
-          value
+        return ['primary', 'secondary', 'accent', 'success', 'danger'].includes(
+          value,
         );
       },
     },
   },
-  data: function () {
+  data() {
     return { isActive: false };
   },
   methods: {
-    toggleState: function () {
+    toggleState() {
       this.isActive = !this.isActive;
 
       setTimeout(() => {

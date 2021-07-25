@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "Row",
+  name: 'Row',
   props: {
     container: {
       type: Boolean,

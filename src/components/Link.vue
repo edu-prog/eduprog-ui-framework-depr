@@ -6,22 +6,22 @@
 
 <script>
 export default {
-  name: "Link",
+  name: 'Link',
   props: {
     link: {
       type: String,
       required: false,
-      default: "",
+      default: '',
     },
     target: {
       type: String,
       required: false,
-      default: "",
+      default: '',
     },
     title: {
       type: String,
       required: false,
-      default: "",
+      default: '',
     },
   },
 };

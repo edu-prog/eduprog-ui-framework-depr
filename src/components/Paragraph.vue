@@ -6,15 +6,15 @@
 
 <script>
 export default {
-  name: "Paragraph",
+  name: 'Paragraph',
   props: {
     type: {
       type: String,
-      default: "normal",
+      default: 'normal',
     },
     align: {
       type: String,
-      default: "left",
+      default: 'left',
     },
   },
 };

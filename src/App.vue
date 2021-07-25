@@ -330,23 +330,23 @@
 </template>
 
 <script>
-import Button from "./components/Button.vue";
-import Card from "./components/Card";
-import CheckboxBlock from "./components/CheckboxBlock";
-import { Column, Container, Row } from "./components/Grid.vue";
-import Heading from "./components/Heading.vue";
-import Link from "./components/Link";
-import Paragraph from "./components/Paragraph";
-import PhoneInput from "./components/PhoneInput";
-import Progress from "./components/Progress";
-import Select from "./components/Select";
-import Spinner from "./components/Spinner";
-import TextInput from "./components/TextInput.vue";
-import TextInputButton from "./components/TextInputButton.vue";
-import Popup from "./components/Popup.vue";
+import Button from './components/Button.vue';
+import Card from './components/Card.vue';
+import CheckboxBlock from './components/CheckboxBlock.vue';
+import { Column, Container, Row } from './components/Grid.vue';
+import Heading from './components/Heading.vue';
+import Link from './components/Link.vue';
+import Paragraph from './components/Paragraph.vue';
+import PhoneInput from './components/PhoneInput.vue';
+import Progress from './components/Progress.vue';
+import Select from './components/Select.vue';
+import Spinner from './components/Spinner.vue';
+import TextInput from './components/TextInput.vue';
+import TextInputButton from './components/TextInputButton.vue';
+import Popup from './components/Popup.vue';
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     Card,
     PhoneInput,
@@ -367,8 +367,8 @@ export default {
   },
   data() {
     return {
-      fullName: "",
-      debug_info: "",
+      fullName: '',
+      debug_info: '',
     };
   },
 };

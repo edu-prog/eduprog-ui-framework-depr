@@ -12,20 +12,20 @@
 
 <script>
 export default {
-  name: "Spinner",
+  name: 'Spinner',
   props: {
     type: {
       type: String,
       required: true,
       validator(value) {
-        return ["primary", "secondary", "accent"].includes(value);
+        return ['primary', 'secondary', 'accent'].includes(value);
       },
     },
     mode: {
       type: String,
       required: true,
       validator(value) {
-        return ["border", "growing"].includes(value);
+        return ['border', 'growing'].includes(value);
       },
     },
   },

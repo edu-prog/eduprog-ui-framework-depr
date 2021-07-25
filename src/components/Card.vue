@@ -12,15 +12,15 @@
 </template>
 
 <script>
-import { BreakpointsLabel } from "../utils/breakpoins";
+import { BreakpointsLabel } from '../utils/breakpoins';
 
 export default {
-  name: "Card",
+  name: 'Card',
   props: {
     size: {
       type: String,
       required: true,
-      default: "s",
+      default: 's',
       validator(value) {
         return BreakpointsLabel.includes(value);
       },
@@ -28,12 +28,12 @@ export default {
     align: {
       type: String,
       required: false,
-      default: "center",
+      default: 'center',
     },
     type: {
       type: String,
       required: false,
-      default: "shadow",
+      default: 'shadow',
     },
   },
 };

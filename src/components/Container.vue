@@ -8,15 +8,16 @@
 import {
   BreakpointsLabel,
   BreakpointsLabelConvertToLarge,
-} from "../utils/breakpoins";
+} from '../utils/breakpoins';
+
 export default {
-  name: "Container",
+  name: 'Container',
   props: {
     size: {
       type: String,
-      default: "s",
+      default: 's',
       validator(value) {
-        return [...BreakpointsLabel, "fluid"].includes(value);
+        return [...BreakpointsLabel, 'fluid'].includes(value);
       },
     },
   },

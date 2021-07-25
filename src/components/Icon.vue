@@ -4,15 +4,15 @@
 
 <script>
 const sizes = {
-  xs: "1rem",
-  s: "1.25rem",
-  m: "1.5rem",
-  l: "1.75rem",
-  xl: "2rem",
+  xs: '1rem',
+  s: '1.25rem',
+  m: '1.5rem',
+  l: '1.75rem',
+  xl: '2rem',
 };
 
 export default {
-  name: "Icon",
+  name: 'Icon',
   props: {
     name: {
       type: String,
@@ -24,11 +24,11 @@ export default {
     },
     size: {
       type: String,
-      default: "m",
+      default: 'm',
     },
     weight: {
       type: String,
-      default: "normal",
+      default: 'normal',
       required: false,
     },
   },

@@ -114,14 +114,13 @@
 </template>
 
 <script>
-import Checkbox from "./Checkbox";
-// eslint-disable-next-line no-unused-vars
-import TextInput from "./TextInput";
-import { isMobile } from "mobile-device-detect";
-import vClickOutside from "vue2-click-outside";
+import { isMobile } from 'mobile-device-detect';
+import vClickOutside from 'vue2-click-outside';
+import Checkbox from './Checkbox.vue';
+import TextInput from './TextInput.vue';
 
 export default {
-  name: "Dropdown",
+  name: 'Dropdown',
   components: {
     TextInput,
     Checkbox,
@@ -133,7 +132,7 @@ export default {
   props: {
     label: {
       type: String,
-      default: "Выберите",
+      default: 'Выберите',
       required: true,
     },
     options: {
@@ -154,15 +153,14 @@ export default {
     };
   },
   model: {
-    event: "update",
+    event: 'update',
   },
   methods: {
     parseMultipleValue(value) {
-      return String(value.join(", "));
+      return String(value.join(', '));
     },
     onSelectLoaded() {
-      console.log(this.value.join());
-      this.$refs.select.content = this.options[0];
+      [this.$refs.select.content] = this.options;
     },
     toggleDropdown() {
       this.isActive = !this.isActive;
@@ -174,9 +172,9 @@ export default {
     },
     itemClickHandler(event) {
       if (!this.IsMobile) {
-        const select = this.$refs.select;
+        const { select } = this.$refs;
         if (this.multiple) {
-          select.content = "";
+          select.content = '';
           const val = event.target.dataset.opt;
           if (val !== undefined) {
             if (this.value.includes(val)) {
@@ -192,12 +190,11 @@ export default {
         }
       }
 
-      this.$emit("update", this.value);
+      this.$emit('update', this.value);
     },
     onMobileSelectSelected() {
-      console.log(this.value);
       this.isActive = !this.isActive;
-      this.$emit("update", this.value);
+      this.$emit('update', this.value);
     },
   },
 };

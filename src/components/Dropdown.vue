@@ -13,20 +13,20 @@
 </template>
 
 <script>
-import TextInput from "./TextInput";
+import TextInput from './TextInput.vue';
 
 export default {
-  name: "Dropdown",
+  name: 'Dropdown',
   components: {
     TextInput,
   },
-  data: function () {
+  data() {
     return {
       isActive: false,
     };
   },
   methods: {
-    toggleDropdown: function () {
+    toggleDropdown() {
       this.isActive = !this.isActive;
     },
   },

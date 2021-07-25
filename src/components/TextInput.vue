@@ -46,7 +46,7 @@
         :maxlength="max_length"
         :readonly="readonly"
         :value="content"
-        ref="textInput_"
+        ref="textInput"
       />
       <slot></slot>
       <span v-if="validation.status > 0">
@@ -102,19 +102,19 @@
         'validation-message',
         validation.status === 0 ? 'validation-message-show' : '',
       ]"
-      ref="validation_message"
+      ref="validationMessage"
     ></div>
   </div>
 </template>
 
 <script>
-import { BreakpointsLabel } from "../utils/breakpoins";
-import Icon from "./Icon";
+import { BreakpointsLabel } from '../utils/breakpoins';
+import Icon from './Icon.vue';
 
 export default {
-  name: "TextInput",
+  name: 'TextInput',
   model: {
-    event: "input",
+    event: 'input',
   },
   components: {
     Icon,
@@ -127,7 +127,7 @@ export default {
     val: {
       type: String,
       required: false,
-      default: "",
+      default: '',
     },
     label: {
       type: String,
@@ -135,7 +135,7 @@ export default {
     },
     size: {
       type: String,
-      default: "m",
+      default: 'm',
       validator(value) {
         return BreakpointsLabel.includes(value);
       },
@@ -165,15 +165,15 @@ export default {
     validation_message: {
       type: String,
       required: false,
-      default: "",
+      default: '',
     },
     autocomplete: {
       type: String,
       required: false,
-      default: "",
+      default: '',
     },
   },
-  data: function () {
+  data() {
     return {
       isActive: false,
       isShow: false,
@@ -187,28 +187,29 @@ export default {
   },
   methods: {
     forceValidate() {
-      const validation_message = this.$refs.validation_message;
-      const validation_status = this.validation.regexpr.test(this.content);
+      const { validationMessage } = this.$refs;
+      const validationStatus = this.validation.regexpr.test(this.content);
 
-      this.validation.status = Number(validation_status);
-      validation_message.innerText = !validation_status
+      this.validation.status = Number(validationStatus);
+      validationMessage.innerText = !validationStatus
         ? this.validation_message
-        : "";
+        : '';
     },
     toggleInput() {
-      return (this.isActive = !this.isActive);
+      this.isActive = !this.isActive;
+      return this.isActive;
     },
     onInputFocus() {
       this.toggleInput();
     },
-    onInputBlur: function () {
+    onInputBlur() {
       if (!this.toggleInput() && this.validation_pattern) {
         this.forceValidate();
       }
     },
     onInputUpdated() {
       this.forceMaskHide = !this.forceMaskHide ? true : this.content.length > 0;
-      this.$emit("input", this.content);
+      this.$emit('input', this.content);
     },
     togglePassword() {
       this.isShow = !this.isShow;
@@ -216,14 +217,13 @@ export default {
 
     getValidationStatus() {
       if (this.validation.status === -1) {
-        return "input-validation-default";
-      } else if (this.validation.status === 0) {
-        return "input-validation-invalid";
-      } else if (this.validation.status === 1) {
-        return "input-validation-valid";
-      } else {
-        throw "Invalid validatation status was setted.";
+        return 'input-validation-default';
+      } if (this.validation.status === 0) {
+        return 'input-validation-invalid';
+      } if (this.validation.status === 1) {
+        return 'input-validation-valid';
       }
+      throw new Error('Invalid validatation status was setted.');
     },
   },
   computed: {
@@ -233,7 +233,7 @@ export default {
   },
   mounted() {
     if (this.autofocus) {
-      this.$refs.textInput_.focus();
+      this.$refs.textInput.focus();
     }
   },
 };
@@ -315,7 +315,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
     cursor: pointer;
     width: 2rem;
     height: 2rem;
@@ -337,7 +336,6 @@ export default {
   color: $color-danger;
   transition: 0.25s;
   opacity: 0;
-  flex-direction: flex-start;
   font-size: 0.8125rem;
 
   &-show {

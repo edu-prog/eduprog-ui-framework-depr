@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "CheckboxBlockButton",
+  name: 'CheckboxBlockButton',
   props: {
     icon: {
       type: String,

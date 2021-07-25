@@ -14,10 +14,10 @@
 </template>
 
 <script>
-import Icon from "./Icon.vue";
+import Icon from './Icon.vue';
 
 export default {
-  name: "Badge",
+  name: 'Badge',
   components: {
     Icon,
   },
@@ -25,9 +25,9 @@ export default {
     color: {
       type: String,
       required: false,
-      default: "primary",
+      default: 'primary',
       validator(value) {
-        return ["primary", "secondary", "accent"].includes(value);
+        return ['primary', 'secondary', 'accent'].includes(value);
       },
     },
     max: {
@@ -44,11 +44,11 @@ export default {
     },
     icon_size: {
       type: String,
-      default: "m",
+      default: 'm',
     },
     icon_weight: {
       type: String,
-      default: "normal",
+      default: 'normal',
       required: false,
     },
   },

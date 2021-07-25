@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "TextInputButton",
+  name: 'TextInputButton',
   props: {
     label: {
       type: String,
@@ -38,6 +38,7 @@ export default {
   width: calc(100% - 1rem);
   cursor: pointer;
   transition: background 0.25s ease;
+  position: relative;
 
   &__left-icon {
     display: flex;
@@ -56,7 +57,8 @@ export default {
 
   &__right-icon {
     display: flex;
-    margin-left: auto;
+    position: absolute;
+    right: 0.5rem;
   }
 
   &:hover {
