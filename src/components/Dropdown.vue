@@ -47,7 +47,6 @@ export default {
     z-index: 10;
     transition: opacity 0.25s ease;
     position: absolute;
-    background-color: #ffffff;
 
     &-clicked {
       display: block;
@@ -59,6 +58,7 @@ export default {
       box-shadow: 0 0 0.75rem 0.25rem rgba(0, 0, 0, 0.2);
       max-width: 280px;
       border-radius: 0.5rem;
+      background-color: #ffffff;
     }
   }
 }
