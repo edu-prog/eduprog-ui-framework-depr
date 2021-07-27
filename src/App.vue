@@ -343,16 +343,16 @@
     </Row>
     <Row>
       <Column>
-        <Popup>
-          <template v-slot:toggle>
+        <Dropdown>
+          <template #toggle>
             <Button>Popup</Button>
           </template>
-          <template v-slot:content>
+          <template #content>
             structure sign mysterious border blind doctor article floating
             hollow nuts massage jet heavy built wash would flow pile per back
             saddle couple sad positive
           </template>
-        </Popup>
+        </Dropdown>
       </Column>
     </Row>
   </div>
@@ -372,7 +372,7 @@ import Select from './components/Select.vue';
 import Spinner from './components/Spinner.vue';
 import TextInput from './components/TextInput.vue';
 import TextInputButton from './components/TextInputButton.vue';
-import Popup from './components/Popup.vue';
+import Dropdown from './components/Dropdown.vue';
 
 export default {
   name: 'Home',
@@ -392,7 +392,7 @@ export default {
     Spinner,
     Container,
     TextInputButton,
-    Popup,
+    Dropdown,
   },
   data() {
     return {

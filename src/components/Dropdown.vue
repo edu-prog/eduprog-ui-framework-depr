@@ -1,24 +1,24 @@
 <template>
-  <div>
-    <TextInput @click.native="toggleDropdown" label="Выберите повышенный Кэшбэк"
-      >click</TextInput
-    >
-
-    <div :class="['dropdown', isActive ? 'dropdown-activate' : '']">
-      <div class="dropdown-menu">
-        <slot></slot>
+  <div class="dropdown" v-click-outside="onDropdownOutsideClicked">
+    <div class="dropdown-toggle" @click="onDropdownToogleClicked">
+      <slot name="toggle"></slot>
+    </div>
+    <div class="dropdown-item" :class="[isActive && 'dropdown-item-clicked']">
+      <div class="dropdown-item-content">
+        <slot name="content"></slot>
       </div>
+      <div class="dropdown-item-tail"></div>
     </div>
   </div>
 </template>
 
 <script>
-import TextInput from './TextInput.vue';
+import Vue2ClickOutside from 'vue2-click-outside';
 
 export default {
   name: 'Dropdown',
-  components: {
-    TextInput,
+  directives: {
+    clickOutside: Vue2ClickOutside.directive,
   },
   data() {
     return {
@@ -26,38 +26,52 @@ export default {
     };
   },
   methods: {
-    toggleDropdown() {
+    onDropdownToogleClicked() {
       this.isActive = !this.isActive;
+    },
+    onDropdownOutsideClicked() {
+      this.isActive = false;
     },
   },
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .dropdown {
   position: relative;
-  display: none;
-
-  &-activate {
-    display: flex;
+  &-toggle {
+    display: inline-block;
   }
+  &-item {
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+    transition: opacity 0.25s ease;
+    position: relative;
 
-  &-menu {
-    width: calc(100% - 0.5rem);
-    z-index: 1000;
-    margin-top: 0.5rem;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 0.25rem;
-    box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-    background-color: #ffffff;
-    padding: 0 0.5rem;
+    &-clicked {
+      opacity: 1;
+      pointer-events: auto;
+    }
 
-    &-top {
-      bottom: 100%;
-      transform: translate(-50%, -40%);
+    &-content {
+      margin-top: 0.625rem;
+      box-shadow: 0 0 0.75rem 0.25rem rgba(0, 0, 0, 0.2);
+      max-width: 280px;
+      border-radius: 0.5rem;
+    }
+
+    &-tail {
+      z-index: 11;
+      position: absolute;
+      top: -3.5px;
+      left: 2rem;
+      width: 0.5rem;
+      height: 0.5rem;
+      transform: rotate(135deg);
+      background-color: #ffffff;
+      box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2),
+      0 2px 4px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
     }
   }
 }
