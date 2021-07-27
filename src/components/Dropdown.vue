@@ -47,6 +47,7 @@ export default {
     z-index: 10;
     transition: opacity 0.25s ease;
     position: absolute;
+    background-color: #ffffff;
 
     &-clicked {
       display: block;
