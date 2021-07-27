@@ -46,7 +46,7 @@ export default {
     pointer-events: none;
     z-index: 10;
     transition: opacity 0.25s ease;
-    position: relative;
+    position: absolute;
 
     &-clicked {
       display: block;
