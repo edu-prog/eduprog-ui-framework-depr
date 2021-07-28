@@ -96,7 +96,10 @@ export default {
 
     &-top-right {
       bottom: calc(100% + 10px);
+    }
 
+    &-top-center {
+      bottom: calc(100% + 10px);
     }
   }
 }
