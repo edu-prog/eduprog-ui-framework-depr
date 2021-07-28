@@ -2,7 +2,7 @@
   <div>
     <span v-if="!IsMobile" class="select-wrapper">
       <TextInput
-        v-click-outside="closeDropdown"
+        v-on-clickaway="closeDropdown"
         ref="select"
         input_class="select-input"
         @click.native="toggleDropdown"
@@ -115,7 +115,7 @@
 
 <script>
 import { isMobile } from 'mobile-device-detect';
-import vClickOutside from 'vue2-click-outside';
+import { mixin as clickaway } from 'vue-clickaway';
 import Checkbox from './Checkbox.vue';
 import TextInput from './TextInput.vue';
 
@@ -125,8 +125,8 @@ export default {
     TextInput,
     Checkbox,
   },
+  mixins: [clickaway],
   directives: {
-    clickOutside: vClickOutside.directive,
     isMobile,
   },
   props: {

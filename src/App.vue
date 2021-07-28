@@ -343,14 +343,17 @@
     </Row>
     <Row>
       <Column>
-        <Dropdown>
+        <Dropdown direction="bottom-left">
           <template #toggle>
-            <Button>Popup</Button>
+            <Button>top-right direction</Button>
           </template>
           <template #content>
-            structure sign mysterious border blind doctor article floating
-            hollow nuts massage jet heavy built wash would flow pile per back
-            saddle couple sad positive
+            <div :style="{ display: 'flex', flexDirection: 'column' }">
+              <div :style="{padding: '0.5rem'}">Label 0</div>
+              <div :style="{padding: '0.5rem'}">Label 1</div>
+              <div :style="{padding: '0.5rem'}">Label 2</div>
+              <div :style="{padding: '0.5rem'}">Label 3</div>
+            </div>
           </template>
         </Dropdown>
       </Column>
@@ -359,23 +362,23 @@
 </template>
 
 <script>
-import Button from './components/Button.vue';
-import Card from './components/Card.vue';
-import CheckboxBlock from './components/CheckboxBlock.vue';
-import { Column, Container, Row } from './components/Grid.vue';
-import Heading from './components/Heading.vue';
-import Link from './components/Link.vue';
-import Paragraph from './components/Paragraph.vue';
-import PhoneInput from './components/PhoneInput.vue';
-import Progress from './components/Progress.vue';
-import Select from './components/Select.vue';
-import Spinner from './components/Spinner.vue';
-import TextInput from './components/TextInput.vue';
-import TextInputButton from './components/TextInputButton.vue';
-import Dropdown from './components/Dropdown.vue';
+import Button from "./components/Button.vue";
+import Card from "./components/Card.vue";
+import CheckboxBlock from "./components/CheckboxBlock.vue";
+import { Column, Container, Row } from "./components/Grid.vue";
+import Heading from "./components/Heading.vue";
+import Link from "./components/Link.vue";
+import Paragraph from "./components/Paragraph.vue";
+import PhoneInput from "./components/PhoneInput.vue";
+import Progress from "./components/Progress.vue";
+import Select from "./components/Select.vue";
+import Spinner from "./components/Spinner.vue";
+import TextInput from "./components/TextInput.vue";
+import TextInputButton from "./components/TextInputButton.vue";
+import Dropdown from "./components/Dropdown.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     Card,
     PhoneInput,
@@ -396,8 +399,8 @@ export default {
   },
   data() {
     return {
-      fullName: '',
-      debug_info: '',
+      fullName: "",
+      debug_info: "",
     };
   },
 };
