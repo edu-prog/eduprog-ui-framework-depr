@@ -11,14 +11,13 @@
     "core-js": "^3.6.5",
     "mobile-device-detect": "^0.4.3",
     "vue": "^2.6.11",
-    "vue-grid-responsive": "^0.2.2",
-    "vue2-click-outside": "^1.0.2"
+    "vue-clickaway": "^2.2.2",
+    "vue-grid-responsive": "^0.2.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "@vue/eslint-config-airbnb": "^5.3.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
     "babel-preset-airbnb": "^5.0.0",
@@ -39,8 +38,7 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended",
-      "@vue/eslint-config-airbnb"
+      "eslint:recommended"
     ],
     "parserOptions": {
       "parser": "babel-eslint"

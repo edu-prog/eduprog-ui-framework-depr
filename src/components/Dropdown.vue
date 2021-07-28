@@ -1,9 +1,17 @@
 <template>
-  <div class="dropdown" v-click-outside="onDropdownOutsideClicked">
-    <div class="dropdown-toggle" @click="onDropdownToogleClicked">
+  <div class="dropdown">
+    <div
+      ref="dropdownToggle"
+      v-on-clickaway="onDropdownAwayClicked"
+      class="dropdown-toggle"
+      @click="onDropdownToogleClicked"
+    >
       <slot name="toggle"></slot>
     </div>
-    <div class="dropdown-item" :class="[isActive && 'dropdown-item-clicked']">
+    <div
+      :class="[isActive && 'dropdown-item-clicked', direction && `dropdown-item-${direction}`]"
+      class="dropdown-item"
+    >
       <div class="dropdown-item-content">
         <slot name="content"></slot>
       </div>
@@ -12,12 +20,27 @@
 </template>
 
 <script>
-import Vue2ClickOutside from 'vue2-click-outside';
+import { mixin as clickaway } from "vue-clickaway";
 
 export default {
-  name: 'Dropdown',
-  directives: {
-    clickOutside: Vue2ClickOutside.directive,
+  name: "Dropdown",
+  mixins: [clickaway],
+  props: {
+    direction: {
+      type: String,
+      required: false,
+      default: "bottom-left",
+      validation(value) {
+        return [
+          "bottom-left",
+          "bottom-center",
+          "bottom-right",
+          "top-left",
+          "top-center",
+          "top-right"
+        ].includes(value);
+      }
+    }
   },
   data() {
     return {
@@ -28,9 +51,12 @@ export default {
     onDropdownToogleClicked() {
       this.isActive = !this.isActive;
     },
-    onDropdownOutsideClicked() {
+    onDropdownAwayClicked() {
       this.isActive = false;
     },
+    dropdownHeight() {
+      return this.$refs.dropdownToggle.$el.clientHeight;
+    }
   },
 };
 </script>
@@ -38,27 +64,39 @@ export default {
 <style lang="scss" scoped>
 .dropdown {
   position: relative;
+
   &-toggle {
     display: inline-block;
   }
+
   &-item {
     display: none;
-    pointer-events: none;
     z-index: 10;
     transition: opacity 0.25s ease;
     position: absolute;
 
     &-clicked {
       display: block;
-      pointer-events: auto;
     }
 
     &-content {
-      margin-top: 0.625rem;
       box-shadow: 0 0 0.75rem 0.25rem rgba(0, 0, 0, 0.2);
       max-width: 280px;
       border-radius: 0.5rem;
       background-color: #ffffff;
+    }
+
+    &-bottom-left {
+      top: calc(100% + 10px)
+    }
+
+    &-top-left {
+      bottom: calc(100% + 10px);
+    }
+
+    &-top-right {
+      bottom: calc(100% + 10px);
+
     }
   }
 }
