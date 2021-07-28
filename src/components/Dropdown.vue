@@ -10,6 +10,7 @@
     </div>
     <div
       :class="[isActive && 'dropdown-item-clicked', direction && `dropdown-item-${direction}`]"
+      :style="[left && {left: `${left}rem`}]"
       class="dropdown-item"
     >
       <div class="dropdown-item-content">
@@ -40,6 +41,10 @@ export default {
           "top-right"
         ].includes(value);
       }
+    },
+    left: {
+      type: Number,
+      required: false,
     }
   },
   data() {

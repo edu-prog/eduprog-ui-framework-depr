@@ -343,7 +343,7 @@
     </Row>
     <Row>
       <Column>
-        <Dropdown direction="top-right">
+        <Dropdown direction="top-right" left="6">
           <template #toggle>
             <Button>top-right direction</Button>
           </template>
