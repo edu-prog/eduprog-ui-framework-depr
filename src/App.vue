@@ -3,12 +3,12 @@
     <Container size="xs">
       <Row>
         <Column>
-          <Heading size="m" align="left">Button</Heading>
+          <Heading align="left" size="m">Button</Heading>
         </Column>
       </Row>
       <Row>
         <Column>
-          <Heading size="s" align="left">Examples</Heading>
+          <Heading align="left" size="s">Examples</Heading>
         </Column>
       </Row>
       <Row :cols="3">
@@ -32,22 +32,22 @@
         </Column>
 
         <Column>
-          <Button type="action" rounded>Action</Button>
+          <Button rounded type="action">Action</Button>
         </Column>
         <Column>
-          <Button type="default" rounded>Default</Button>
+          <Button rounded type="default">Default</Button>
         </Column>
         <Column>
-          <Button type="link" rounded>Link</Button>
+          <Button rounded type="link">Link</Button>
         </Column>
         <Column>
-          <Button type="pseudo" rounded>Pseudo</Button>
+          <Button rounded type="pseudo">Pseudo</Button>
         </Column>
         <Column>
-          <Button type="clear" rounded>Clear</Button>
+          <Button rounded type="clear">Clear</Button>
         </Column>
         <Column>
-          <Button type="raised" rounded>Raised</Button>
+          <Button rounded type="raised">Raised</Button>
         </Column>
       </Row>
     </Container>
@@ -55,73 +55,94 @@
     <Container size="m">
       <Row>
         <Column>
-          <TextInput type="text" label="Первое" />
+          <TextInput label="Первое" type="text" />
         </Column>
       </Row>
       <Row>
         <Column>
-          <TextInput type="password" label="Второе" />
+          <TextInput label="Второе" type="password" />
         </Column>
       </Row>
       <Row>
         <Column>
           <TextInput
-            type="text"
-            label="Третье"
             :validation_message="'Укажите что-то'"
             :validation_pattern="/\D/"
+            label="Третье"
+            type="text"
           />
         </Column>
       </Row>
       <Row>
         <Column>
           <TextInput
-            type="password"
-            label="Четвертое"
             :validation_pattern="/\D/"
+            label="Четвертое"
+            type="password"
           />
         </Column>
       </Row>
     </Container>
 
     <Row>
-      <Column><Heading size="m" align="left">Typography</Heading></Column>
+      <Column>
+        <Heading align="left" size="m">Typography</Heading>
+      </Column>
     </Row>
     <Row>
-      <Column><Heading size="s" align="left">Headings</Heading></Column>
+      <Column>
+        <Heading align="left" size="s">Headings</Heading>
+      </Column>
     </Row>
     <Row>
       <Column
-        ><Paragraph
-          >We provide some basic styling on headings tags. In the example, you
-          see the the 6 header tags' different sizes.</Paragraph
-        ></Column
+      >
+        <Paragraph
+        >We provide some basic styling on headings tags. In the example, you
+          see the the 6 header tags' different sizes.
+        </Paragraph
+        >
+      </Column
       >
     </Row>
-    <Card type="border" size="m" align="left" style="margin-top: 2rem">
+    <Card align="left" size="m" style="margin-top: 2rem" type="border">
       <Container>
         <Row>
-          <Column><Heading size="xxl" align="left">Heading h1</Heading></Column>
+          <Column>
+            <Heading align="left" size="xxl">Heading h1</Heading>
+          </Column>
         </Row>
         <Row>
-          <Column><Heading size="xl" align="left">Heading h2</Heading></Column>
+          <Column>
+            <Heading align="left" size="xl">Heading h2</Heading>
+          </Column>
         </Row>
         <Row>
-          <Column><Heading size="l" align="left">Heading h3</Heading></Column>
+          <Column>
+            <Heading align="left" size="l">Heading h3</Heading>
+          </Column>
         </Row>
         <Row>
-          <Column><Heading size="m" align="left">Heading h4</Heading></Column>
+          <Column>
+            <Heading align="left" size="m">Heading h4</Heading>
+          </Column>
         </Row>
         <Row>
-          <Column><Heading size="s" align="left">Heading h5</Heading></Column>
+          <Column>
+            <Heading align="left" size="s">Heading h5</Heading>
+          </Column>
         </Row>
         <Row>
-          <Column><Heading size="xs" align="left">Heading h6</Heading></Column>
+          <Column>
+            <Heading align="left" size="xs">Heading h6</Heading>
+          </Column>
         </Row>
       </Container>
     </Card>
     <Row>
-      <Column><Heading size="s" align="left">Paragraphs</Heading></Column>
+      <Column>
+        <Heading align="left" size="s">Paragraphs</Heading>
+      </Column>
     </Row>
 
     <Row>
@@ -163,7 +184,7 @@
 
     <Row>
       <Column>
-        <TextInput type="text" label="Номер паспорта" mask="0308 075673" />
+        <TextInput label="Номер паспорта" mask="0308 075673" type="text" />
       </Column>
     </Row>
 
@@ -184,8 +205,8 @@
       <Column>
         <Select
           v-model="debug_info"
-          label="Гражданство"
           :options="['Имею гражданство РФ', 'Не имею гражданство РФ']"
+          label="Гражданство"
         />
       </Column>
     </Row>
@@ -193,8 +214,9 @@
     <Row>
       <Column>
         <Select
+          ref="cashback_selector"
           v-model="debug_info"
-          label="Выберите повышенный Кэшбэк"
+          :max_selected="3"
           :options="[
             'Аптеки',
             'Ozon.ru',
@@ -203,8 +225,7 @@
             'Такси',
             'Рестораны',
           ]"
-          ref="cashback_selector"
-          :max_selected="3"
+          label="Выберите повышенный Кэшбэк"
           multiple
         />
       </Column>
@@ -213,10 +234,11 @@
     <Row>
       <Column>
         <Paragraph type="lead"
-          >Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
+        >Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
           consequuntur eaque et expedita explicabo illum impedit incidunt, ipsam
           laboriosam libero minus numquam obcaecati, perferendis provident quos?
-          Nulla rerum unde ut!</Paragraph
+          Nulla rerum unde ut!
+        </Paragraph
         >
       </Column>
     </Row>
@@ -225,7 +247,7 @@
 
     <Row>
       <Column>
-        <TextInput label="Полное имя" v-model="fullName" type="text" />
+        <TextInput v-model="fullName" label="Полное имя" type="text" />
       </Column>
     </Row>
     <Row>
@@ -256,25 +278,40 @@
     <Paragraph>{{ debug_info }}</Paragraph>
 
     <Row>
-      <Column><Spinner mode="border" type="primary"></Spinner></Column>
-      <Column><Spinner mode="border" type="secondary"></Spinner></Column>
-      <Column><Spinner mode="border" type="accent"></Spinner></Column>
+      <Column>
+        <Spinner mode="border" type="primary"></Spinner>
+      </Column>
+      <Column>
+        <Spinner mode="border" type="secondary"></Spinner>
+      </Column>
+      <Column>
+        <Spinner mode="border" type="accent"></Spinner>
+      </Column>
     </Row>
 
     <Row style="margin-top: 10px">
-      <Column><Spinner mode="growing" type="primary"></Spinner></Column>
-      <Column><Spinner mode="growing" type="secondary"></Spinner></Column>
-      <Column><Spinner mode="growing" type="accent"></Spinner></Column>
+      <Column>
+        <Spinner mode="growing" type="primary"></Spinner>
+      </Column>
+      <Column>
+        <Spinner mode="growing" type="secondary"></Spinner>
+      </Column>
+      <Column>
+        <Spinner mode="growing" type="accent"></Spinner>
+      </Column>
     </Row>
 
     <Row>
       <Column
-        ><PhoneInput type="text" v-model="debug_info" label="Тестовое поле"
-      /></Column>
+      >
+        <PhoneInput v-model="debug_info" label="Тестовое поле" type="text"
+        />
+      </Column>
     </Row>
     <Row>
       <Column>
-        <Paragraph>{{ debug_info }}</Paragraph></Column
+        <Paragraph>{{ debug_info }}</Paragraph>
+      </Column
       >
     </Row>
     <Row>
@@ -282,10 +319,10 @@
         <TextInputButton label="sviridov@sviirdovcomp.ru">
           <template v-slot:left-icon>
             <svg
-              width="36"
+              fill="none"
               height="36"
               viewBox="0 0 36 36"
-              fill="none"
+              width="36"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -326,10 +363,10 @@
 
           <template v-slot:right-icon>
             <svg
-              width="16"
+              fill="none"
               height="16"
               viewBox="0 0 16 16"
-              fill="none"
+              width="16"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -374,6 +411,33 @@
         </Dropdown>
       </Column>
     </Row>
+
+    <Row>
+      <Column>
+        <Modal>
+          <template #toggle>
+            <Button>Открыть</Button>
+          </template>
+
+          <template #modal-content>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at ea error excepturi, expedita
+            inventore nulla officia omnis qui quod! Distinctio fuga inventore nemo odio perspiciatis quas quia quis
+            velit!
+          </template>
+
+          <template #modal-footer>
+            <Row align="right" cols="2">
+              <Column>
+                <Button type="clear">Отменить</Button>
+              </Column>
+              <Column>
+                <Button type="default">Хорошо</Button>
+              </Column>
+            </Row>
+          </template>
+        </Modal>
+      </Column>
+    </Row>
   </div>
 </template>
 
@@ -381,9 +445,11 @@
 import Button from "./components/Button.vue";
 import Card from "./components/Card.vue";
 import CheckboxBlock from "./components/CheckboxBlock.vue";
+import Dropdown from "./components/Dropdown.vue";
 import { Column, Container, Row } from "./components/Grid.vue";
 import Heading from "./components/Heading.vue";
 import Link from "./components/Link.vue";
+import Modal from "./components/Modal.vue";
 import Paragraph from "./components/Paragraph.vue";
 import PhoneInput from "./components/PhoneInput.vue";
 import Progress from "./components/Progress.vue";
@@ -391,7 +457,6 @@ import Select from "./components/Select.vue";
 import Spinner from "./components/Spinner.vue";
 import TextInput from "./components/TextInput.vue";
 import TextInputButton from "./components/TextInputButton.vue";
-import Dropdown from "./components/Dropdown.vue";
 
 export default {
   name: "Home",
@@ -412,13 +477,14 @@ export default {
     Container,
     TextInputButton,
     Dropdown,
+    Modal
   },
   data() {
     return {
       fullName: "",
-      debug_info: "",
+      debug_info: ""
     };
-  },
+  }
 };
 </script>
 
@@ -435,6 +501,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   font-family: $font-family;
+
   .grid-row {
     .grid-col {
       margin-top: 10px;

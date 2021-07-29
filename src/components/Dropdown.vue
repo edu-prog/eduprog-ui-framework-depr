@@ -59,9 +59,6 @@ export default {
     onDropdownAwayClicked() {
       this.isActive = false;
     },
-    dropdownHeight() {
-      return this.$refs.dropdownToggle.$el.clientHeight;
-    }
   },
 };
 </script>
@@ -89,6 +86,7 @@ export default {
       max-width: 280px;
       border-radius: 0.5rem;
       background-color: #ffffff;
+      overflow: hidden;
     }
 
     &-bottom-left {
