@@ -10,7 +10,9 @@
         {{ label }}
       </span>
       <input
-        :type="type === 'password' ? (isShow ? 'text' : 'password') : type"
+        ref="textInput"
+        v-model="content"
+        :autocomplete="autocomplete"
         :class="[
           'form-field-input-control',
           `input-size-${size}`,
@@ -18,6 +20,9 @@
           input_class,
           getValidationStatus(),
         ]"
+        :maxlength="max_length"
+        :placeholder="isActive ? mask : ''"
+        :readonly="readonly"
         :style="{
           paddingRight:
             validation.status > 0
@@ -37,38 +42,35 @@
               ? 'calc(100% - 52px)'
               : 'calc(100% - 16px)',
         }"
-        v-model="content"
-        @focus="onInputFocus"
-        @blur="onInputBlur"
-        @input="onInputUpdated"
-        :autocomplete="autocomplete"
-        :placeholder="isActive ? mask : ''"
-        :maxlength="max_length"
-        :readonly="readonly"
+        :type="type === 'password' ? (isShow ? 'text' : 'password') : type"
         :value="content"
-        ref="textInput"
+        @blur="onInputBlur"
+        @focus="onInputFocus"
+        @input="onInputUpdated"
       />
       <slot></slot>
       <span v-if="validation.status > 0">
-        <Icon
-          :style="{
-            marginLeft: type === 'password' ? '-4rem' : '-2rem',
-          }"
-          class="input-validation-valid-icon"
-          color="#00b92d"
-          name="done"
-          weight="bold"
-        ></Icon>
+        <svg class="validation-icon"
+             :style="type === 'password' && {right: '2.5rem'}"
+             height="24px"
+             width="24px"
+             viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 16.2l-3.5-3.5c-.39-.39-1.01-.39-1.4 0-.39.39-.39
+                   1.01 0 1.4l4.19 4.19c.39.39 1.02.39 1.41 0L20.3
+                   7.7c.39-.39.39-1.01 0-1.4-.39-.39-1.01-.39-1.4 0L9 16.2z" fill="#00b92d"
+          />
+        </svg>
       </span>
       <span v-if="type === 'password'">
         <span @click="togglePassword">
-          <span v-if="isShow" class="password-toggler">
+          <span v-if="isShow" class="password-toggle">
             <svg
-              xmlns="http://www.w3.org/2000/svg"
+              fill="#000000"
               height="24px"
               viewBox="0 0 24 24"
               width="24px"
-              fill="#000000"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <path d="M0 0h24v24H0z" fill="none" />
                 <path
@@ -78,13 +80,13 @@
                     0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
             </svg>
           </span>
-          <span v-else class="password-toggler">
+          <span v-else class="password-toggle">
             <svg
-              xmlns="http://www.w3.org/2000/svg"
+              fill="#000000"
               height="24px"
               viewBox="0 0 24 24"
               width="24px"
-              fill="#000000">
+              xmlns="http://www.w3.org/2000/svg">
               <path d="M0 0h24v24H0zm0 0h24v24H0zm0 0h24v24H0zm0 0h24v24H0z" fill="none" />
               <path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92
                       2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4
@@ -101,80 +103,76 @@
     </div>
 
     <div
+      ref="validationMessage"
       :class="[
         'validation-message',
         validation.status === 0 ? 'validation-message-show' : '',
       ]"
-      ref="validationMessage"
     ></div>
   </div>
 </template>
 
 <script>
-import { BreakpointsLabel } from '../utils/breakpoins';
-import Icon from './Icon.vue';
+import { BreakpointsLabel } from "../utils/breakpoins";
 
 export default {
-  name: 'TextInput',
+  name: "TextInput",
   model: {
-    event: 'input',
-  },
-  components: {
-    Icon,
+    event: "input"
   },
   props: {
     type: {
       type: String,
-      required: true,
+      required: true
     },
     val: {
       type: String,
       required: false,
-      default: '',
+      default: ""
     },
     label: {
       type: String,
-      required: true,
+      required: true
     },
     size: {
       type: String,
-      default: 'm',
+      default: "m",
       validator(value) {
         return BreakpointsLabel.includes(value);
-      },
+      }
     },
     mask: {
-      type: String,
+      type: String
     },
     max_length: {
-      type: Number,
+      type: Number
     },
     input_class: {
       type: String,
-      required: false,
+      required: false
     },
     readonly: {
       type: Boolean,
-      default: false,
+      default: false
     },
     autofocus: {
       type: Boolean,
-      default: false,
+      default: false
     },
     validation_pattern: {
       type: RegExp,
-      required: false,
+      required: false
     },
     validation_message: {
       type: String,
       required: false,
-      default: '',
+      default: ""
     },
     autocomplete: {
       type: String,
       required: false,
-      default: '',
-    },
+      default: ""
+    }
   },
   data() {
     return {
@@ -184,8 +182,8 @@ export default {
       forceMaskHide: false,
       validation: {
         regexpr: this.validation_pattern,
-        status: -1,
-      },
+        status: -1
+      }
     };
   },
   methods: {
@@ -196,7 +194,7 @@ export default {
       this.validation.status = Number(validationStatus);
       validationMessage.innerText = !validationStatus
         ? this.validation_message
-        : '';
+        : "";
     },
     toggleInput() {
       this.isActive = !this.isActive;
@@ -212,7 +210,7 @@ export default {
     },
     onInputUpdated() {
       this.forceMaskHide = !this.forceMaskHide ? true : this.content.length > 0;
-      this.$emit('input', this.content);
+      this.$emit("input", this.content);
     },
     togglePassword() {
       this.isShow = !this.isShow;
@@ -220,31 +218,31 @@ export default {
 
     getValidationStatus() {
       if (this.validation.status === -1) {
-        return 'input-validation-default';
+        return "input-validation-default";
       }
       if (this.validation.status === 0) {
-        return 'input-validation-invalid';
+        return "input-validation-invalid";
       }
       if (this.validation.status === 1) {
-        return 'input-validation-valid';
+        return "input-validation-valid";
       }
-      throw new Error('Invalid validatation status was setted.');
-    },
+      throw new Error("Invalid validatation status was setted.");
+    }
   },
   computed: {
     slotPassed() {
       return this.$slots.default;
-    },
+    }
   },
   mounted() {
     if (this.autofocus) {
       this.$refs.textInput.focus();
     }
-  },
+  }
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import "../assets/styles/global";
 
 .form-field {
@@ -315,7 +313,7 @@ export default {
     }
   }
 
-  .password-toggler {
+  .password-toggle {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -330,22 +328,31 @@ export default {
     right: 0.5rem;
 
     &:hover {
-      background-color: silver;
+      background-color: darken($color-platinum, 15%);
     }
   }
 }
 
-.validation-message {
-  position: relative;
-  display: flex;
-  color: $color-danger;
-  transition: 0.25s;
-  opacity: 0;
-  font-size: 0.8125rem;
+.validation {
+  &-message {
+    position: relative;
+    display: flex;
+    color: $color-danger;
+    transition: 0.25s;
+    opacity: 0;
+    font-size: 0.8125rem;
 
-  &-show {
-    transition-delay: 0.1s;
-    opacity: 1;
+    &-show {
+      transition-delay: 0.1s;
+      opacity: 1;
+    }
+  }
+
+  &-icon {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 </style>

@@ -380,7 +380,7 @@
     </Row>
     <Row>
       <Column>
-        <Dropdown direction="top-right" left="6">
+        <Dropdown direction="top-right" :left="6">
           <template #toggle>
             <Button>top-right direction</Button>
           </template>
@@ -426,7 +426,7 @@
           </template>
 
           <template #modal-footer>
-            <Row align="right" cols="2">
+            <Row align="right" :cols="2">
               <Column>
                 <Button type="clear">Отменить</Button>
               </Column>
