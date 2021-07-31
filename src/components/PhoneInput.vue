@@ -8,7 +8,7 @@
     v-model="phone_number"
     :val="phone_number"
     ref="phone_input"
-    :validation_pattern="validation_pattern"
+    :validation_pattern="/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/"
     :validation_message="validation_message"
     :max_length="18"
     :required="required === true"
@@ -17,30 +17,26 @@
 </template>
 
 <script>
-import TextInput from './TextInput.vue';
+import TextInput from "./TextInput.vue";
 
 export default {
-  name: 'PhoneInput',
+  name: "PhoneInput",
   components: {
     TextInput,
   },
   model: {
-    event: 'input',
+    event: "input",
   },
   props: {
     label: {
       type: String,
       required: false,
-      default: 'Номер телефона',
-    },
-    validation_pattern: {
-      type: RegExp,
-      required: false,
+      default: "Номер телефона",
     },
     validation_message: {
       type: String,
       required: false,
-      default: '',
+      default: "",
     },
     autofocus: {
       type: Boolean,
@@ -54,20 +50,20 @@ export default {
   },
   data() {
     return {
-      phone_number: '',
+      phone_number: "",
     };
   },
   methods: {
     onPhoneInput(event) {
-      this.$emit('input', this.phone_number);
+      this.$emit("input", this.phone_number);
 
       const input = this.$refs.phone_input;
       const { selectionStart } = event.target;
-      let inputNumbersValue = input.content.replace(/\D/g, '');
-      let formattedInputValue = '';
+      let inputNumbersValue = input.content.replace(/\D/g, "");
+      let formattedInputValue = "";
 
       if (!inputNumbersValue) {
-        input.content = event.data === '+' ? '+' : '';
+        input.content = event.data === "+" ? "+" : "";
         return input.content;
       }
 
@@ -78,11 +74,11 @@ export default {
         return null;
       }
 
-      if (['7', '8', '9'].includes(inputNumbersValue[0])) {
-        if (inputNumbersValue[0] === '9') {
+      if (["7", "8", "9"].includes(inputNumbersValue[0])) {
+        if (inputNumbersValue[0] === "9") {
           inputNumbersValue = `7${inputNumbersValue}`;
         }
-        const firstSymbols = inputNumbersValue[0] === '8' ? '8' : '+7';
+        const firstSymbols = inputNumbersValue[0] === "8" ? "8" : "+7";
         formattedInputValue = `${firstSymbols} `;
         input.content = `${firstSymbols} `;
 
@@ -106,12 +102,12 @@ export default {
       return this.phone_number;
     },
     onPhoneKeyDown(event) {
-      const inputValue = this.phone_number.replace(/\D/g, '');
+      const inputValue = this.phone_number.replace(/\D/g, "");
 
       if (event.keyCode === 8 && inputValue.length === 1) {
-        this.phone_number = '';
+        this.phone_number = "";
       } else if ([8, 46].includes(event.keyCode) && inputValue.length > 1) {
-        let symToClear = '';
+        let symToClear = "";
         if (event.keyCode === 8) {
           symToClear = this.phone_number[event.target.selectionStart - 1];
         } else if (event.keyCode === 46) {
@@ -126,11 +122,11 @@ export default {
 
     onPhonePaste(event) {
       const input = event.target;
-      const inputNumbersValue = input.value.replace(/\D/g, '');
+      const inputNumbersValue = input.value.replace(/\D/g, "");
       const pasted = event.clipboardData || window.clipboardData;
 
       if (pasted) {
-        const pastedText = pasted.getData('Text');
+        const pastedText = pasted.getData("Text");
         if (/\D/g.test(pastedText)) {
           input.value = inputNumbersValue;
         }
