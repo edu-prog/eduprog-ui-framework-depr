@@ -4,15 +4,15 @@
 import Link from "eduprog-ds/src/components/Link.vue";
 ```
 
-## Properties
+## Свойства
 
-| Properties | Values | Description                                     |
-| ---------- | ------ | ----------------------------------------------- |
-| link       | string | Link to redirect                                |
-| target     | string | Link [target](http://htmlbook.ru/html/a/target) |
-| title      | string | Title that will be show when you hover to link  |
+| Свойство | Значения | Описание                                                              |
+| -------- | -------- | --------------------------------------------------------------------- |
+| link     | string   | ссылка для переадресации                                              |
+| target   | string   | [target](http://htmlbook.ru/html/a/target) ссылки                     |
+| title    | string   | Заголовок, который будет отображаться при наведении курсора на ссылку |
 
-## Example
+## Пример
 
 ```vue
 <Row>
@@ -22,4 +22,4 @@ import Link from "eduprog-ds/src/components/Link.vue";
 </Row>
 ```
 
-![Example](https://i.imgur.com/zsah5Eb.png)
+![Пример](https://i.imgur.com/zsah5Eb.png)
