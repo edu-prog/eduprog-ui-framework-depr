@@ -4,16 +4,16 @@
 import Spinner from "eduprog-ds/src/components/Spinner.vue";
 ```
 
-## Properties
+## Свойства
 
-| Properties | Values                       | Description   |
-| ---------- | ---------------------------- | ------------- |
-| type       | {primary, secondary, accent} | Spinner color |
-| mode       | {border, growing}            | Spinner mode  |
+| Свойство | Значения                     | Описание            |
+| -------- | ---------------------------- | ------------------- |
+| type     | {primary, secondary, accent} | цвет Spinner        |
+| mode     | {border, growing}            | модификация Spinner |
 
-## Example
+## Пример
 
-![Example](https://i.imgur.com/RBY70LU.gif)
+![Пример](https://i.imgur.com/RBY70LU.gif)
 
 ```vue
 <Row>
