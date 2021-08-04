@@ -4,17 +4,17 @@
 import Paragraph from "eduprog-ds/src/components/Paragraph.vue";
 ```
 
-## Properties
+## Свойства
 
-| Properties | Values                | Description        |
-| ---------- | --------------------- | ------------------ |
-| children   | string                | Paragraph children |
-| type       | {small, normal, lead} | Paragraph type     |
-| align      | {left, center, right} | Paragraph align    |
+| Свойство | Значения              | Описание               |
+| -------- | --------------------- | ---------------------- |
+| children | string                | текст параграфа        |
+| type     | {small, normal, lead} | тип параграфа          |
+| align    | {left, center, right} | выравнивание параграфа |
 
-## Example
+## Пример
 
-![Example](https://i.imgur.com/mw9Pd2b.png)
+![Пример](https://i.imgur.com/mw9Pd2b.png)
 
 ```vue
 <Row>
