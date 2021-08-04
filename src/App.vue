@@ -49,6 +49,27 @@
         <Column>
           <Button rounded type="raised">Raised</Button>
         </Column>
+
+        <Column>
+          <Button
+            rounded
+            type="action"
+            badge="100"
+            badge_type="edge"
+            badge_color="danger"
+            >Badge</Button
+          >
+        </Column>
+        <Column>
+          <Button
+            rounded
+            type="action"
+            badge="100"
+            badge_type="inside"
+            badge_color="danger"
+            >Badge</Button
+          >
+        </Column>
       </Row>
     </Container>
 
@@ -95,15 +116,12 @@
       </Column>
     </Row>
     <Row>
-      <Column
-      >
+      <Column>
         <Paragraph
-        >We provide some basic styling on headings tags. In the example, you
+          >We provide some basic styling on headings tags. In the example, you
           see the the 6 header tags' different sizes.
-        </Paragraph
-        >
-      </Column
-      >
+        </Paragraph>
+      </Column>
     </Row>
     <Card align="left" size="m" style="margin-top: 2rem" type="border">
       <Container>
@@ -234,12 +252,11 @@
     <Row>
       <Column>
         <Paragraph type="lead"
-        >Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
+          >Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
           consequuntur eaque et expedita explicabo illum impedit incidunt, ipsam
           laboriosam libero minus numquam obcaecati, perferendis provident quos?
           Nulla rerum unde ut!
-        </Paragraph
-        >
+        </Paragraph>
       </Column>
     </Row>
 
@@ -302,17 +319,14 @@
     </Row>
 
     <Row>
-      <Column
-      >
-        <PhoneInput v-model="debug_info" label="Тестовое поле" type="text"
-        />
+      <Column>
+        <PhoneInput v-model="debug_info" label="Тестовое поле" type="text" />
       </Column>
     </Row>
     <Row>
       <Column>
         <Paragraph>{{ debug_info }}</Paragraph>
-      </Column
-      >
+      </Column>
     </Row>
     <Row>
       <Column>
@@ -386,10 +400,10 @@
           </template>
           <template #content>
             <div :style="{ display: 'flex', flexDirection: 'column' }">
-              <div :style="{padding: '0.5rem'}">Label 0</div>
-              <div :style="{padding: '0.5rem'}">Label 1</div>
-              <div :style="{padding: '0.5rem'}">Label 2</div>
-              <div :style="{padding: '0.5rem'}">Label 3</div>
+              <div :style="{ padding: '0.5rem' }">Label 0</div>
+              <div :style="{ padding: '0.5rem' }">Label 1</div>
+              <div :style="{ padding: '0.5rem' }">Label 2</div>
+              <div :style="{ padding: '0.5rem' }">Label 3</div>
             </div>
           </template>
         </Dropdown>
@@ -402,10 +416,10 @@
           </template>
           <template #content>
             <div :style="{ display: 'flex', flexDirection: 'column' }">
-              <div :style="{padding: '0.5rem'}">Label 0</div>
-              <div :style="{padding: '0.5rem'}">Label 1</div>
-              <div :style="{padding: '0.5rem'}">Label 2</div>
-              <div :style="{padding: '0.5rem'}">Label 3</div>
+              <div :style="{ padding: '0.5rem' }">Label 0</div>
+              <div :style="{ padding: '0.5rem' }">Label 1</div>
+              <div :style="{ padding: '0.5rem' }">Label 2</div>
+              <div :style="{ padding: '0.5rem' }">Label 3</div>
             </div>
           </template>
         </Dropdown>
@@ -420,9 +434,10 @@
           </template>
 
           <template #modal-content>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at ea error excepturi, expedita
-            inventore nulla officia omnis qui quod! Distinctio fuga inventore nemo odio perspiciatis quas quia quis
-            velit!
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
+            at ea error excepturi, expedita inventore nulla officia omnis qui
+            quod! Distinctio fuga inventore nemo odio perspiciatis quas quia
+            quis velit!
           </template>
 
           <template #modal-footer>
@@ -477,14 +492,14 @@ export default {
     Container,
     TextInputButton,
     Dropdown,
-    Modal
+    Modal,
   },
   data() {
     return {
       fullName: "",
-      debug_info: ""
+      debug_info: "",
     };
-  }
+  },
 };
 </script>
 

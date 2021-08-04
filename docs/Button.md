@@ -6,16 +6,16 @@ import Button from "eduprog-ds/src/components/Button.vue";
 
 ## Свойства
 
-| Свойство | Значение                             | Описание             |
-| ---------- | ---------------------------------- | ----------------------- |
-| children   | string                             | заголовок кнопки            |
-| type       | {default, action, link, pseudo, clear, raised} | стиль кнопки             |
-| size       | {xs, s, m, l, xl}                  | размер кнопки            |
-| round      | {true, false}                      | круглая ли кнопка         |
-| rounded    | {true, false}                      | закругленная ли кнопка        |
-| badge    | string                      | текст отметки        |
-| badge_type    | {edge, inside}                      | Тип отметки        |
-| badge_color    | {primary, secondary, accent, success, danger}                      | Цвет отметки        |
+| Свойство    | Значение                                       | Описание               |
+| ----------- | ---------------------------------------------- | ---------------------- |
+| children    | string                                         | заголовок кнопки       |
+| type        | {default, action, link, pseudo, clear, raised} | стиль кнопки           |
+| size        | {xs, s, m, l, xl}                              | размер кнопки          |
+| round       | {true, false}                                  | круглая ли кнопка      |
+| rounded     | {true, false}                                  | закругленная ли кнопка |
+| badge       | string                                         | текст отметки          |
+| badge_type  | {edge, inside}                                 | Тип отметки            |
+| badge_color | {primary, secondary, accent, success, danger}  | Цвет отметки           |
 
 ## Example
 
