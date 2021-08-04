@@ -4,11 +4,11 @@
 import Icon from "eduprog-ds/src/components/Icon.vue";
 ```
 
-## Properties
+## Свойства
 
-| Properties | Values | Description |
-| ---------- | ------ | ----------- |
-| children   | string | Icon label  |
-| name       | string | Icon name   |
+| Свойство | Значение | Описание         |
+| -------- | -------- | ---------------- |
+| children | string   | заголовок иконки |
+| name     | string   | название иконки  |
 
-The icon name you can to see [here](https://fonts.google.com/icons)
+Название иконок, Вы можете найти [здесь](https://fonts.google.com/icons)
