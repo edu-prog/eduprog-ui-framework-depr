@@ -4,11 +4,11 @@
 import PhoneInput from "eduprog-ds/src/components/PhoneInput.vue";
 ```
 
-This is inheritor of component [TextInput](TextInput.md)
+Это наследник компонента [TextInput](TextInput.md)
 
-## Example
+## Пример
 
-![Example](https://i.imgur.com/JSxa67f.png)
+![Пример](https://i.imgur.com/JSxa67f.png)
 
 ```vue
 <Row>
