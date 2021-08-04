@@ -4,15 +4,15 @@
 import Column from "eduprog-ds/src/components/Column.vue";
 ```
 
-## Properties
+## Свойства
 
-| Properties | Values | Description                                   |
-| ---------- | ------ | --------------------------------------------- |
-| col        | Number | The number of cells that the column occupies. |
+| Свойство | Значение | Описание                                    |
+| -------- | -------- | ------------------------------------------- |
+| col      | Number   | Количество ячеек, которые занимает столбец. |
 
-## Examples
+## Пример
 
-![Example](https://i.imgur.com/BriCISU.png)
+![Пример](https://i.imgur.com/BriCISU.png)
 
 ```vue
 <Row :cols="2">
