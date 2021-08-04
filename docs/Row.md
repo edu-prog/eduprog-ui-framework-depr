@@ -4,15 +4,15 @@
 import Row from "eduprog-ds/src/components/Row.vue";
 ```
 
-## Properties
+## Свойства
 
-| Properties | Values | Description                            |
-| ---------- | ------ | -------------------------------------- |
-| cols       | Number | Maximum number of columns in one line. |
+| Свойство | Значения | Описание                                         |
+| -------- | -------- | ------------------------------------------------ |
+| cols     | Number   | Максимальное количество столбцов в одной строке. |
 
-## Examples
+## Пример
 
-![Example](https://i.imgur.com/BriCISU.png)
+![Пример](https://i.imgur.com/BriCISU.png)
 
 ```vue
 <Row :cols="2">
