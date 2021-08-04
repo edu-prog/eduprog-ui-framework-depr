@@ -4,19 +4,19 @@
 import Checkbox from "eduprog-ds/src/components/Checkbox.vue";
 ```
 
-## Properties
+## Свойства
 
-| Properties | Values                    | Description             |
-| ---------- | ------------------------- | ----------------------- |
-| children   | string                    | Checkbox label          |
-| type       | {main, secondary, accent} | Checkbox type           |
-| position   | {right, left}             | Checkbox position       |
-| check      | {true, false}             | Checkbox checked status |
-| disabled   | {true, false}             | Is checkbox disabled    |
+| Свойство | Значения                  | Описание                                |
+| -------- | ------------------------- | --------------------------------------- |
+| children | string                    | заголовок чекбокса                      |
+| type     | {main, secondary, accent} | тип чекбокса                            |
+| position | {right, left}             | позиция чекбокса относительно заголовка |
+| check    | {true, false}             | Выбран ли чекбокс                       |
+| disabled | {true, false}             | Выключен ли чекбокс                     |
 
 ## Examples
 
-![example](https://i.imgur.com/abhxNnC.png)
+![Пример](https://i.imgur.com/abhxNnC.png)
 
 ```vue
 <Row>
