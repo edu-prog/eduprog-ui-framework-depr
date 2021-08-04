@@ -4,17 +4,17 @@
 import Select from "eduprog-ds/src/components/Select.vue";
 ```
 
-## Properties
+## Свойства
 
-| Properties | Values           | Description        |
-| ---------- | ---------------- | ------------------ |
-| label      | string           | Select label       |
-| options    | ['opt1', 'ops2'] | Select options     |
-| multiple   | boolean          | Is multiple select |
+| Свойство | Значения         | Описания             |
+| -------- | ---------------- | -------------------- |
+| label    | string           | заголовок выборщика  |
+| options  | ['opt1', 'ops2'] | опции выборщика      |
+| multiple | boolean          | множественный выбор? |
 
-## Example
+## Пример
 
-![Example](https://i.imgur.com/mwx3Ncx.gif)
+![Пример](https://i.imgur.com/mwx3Ncx.gif)
 
 ```vue
 <Row>

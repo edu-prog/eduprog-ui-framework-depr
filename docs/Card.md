@@ -6,12 +6,12 @@ import Card from "eduprog-ds/src/components/Card.vue";
 
 ## Properties
 
-| Properties | Values                | Description   |
-| ---------- | --------------------- | ------------- |
-| children   | string                | Card children |
-| type       | {shadow, border}      | Card type     |
-| size       | {xs, s, m, l, xl}     | Card size     |
-| align      | {left, center, right} | Card align    |
+| Properties | Values                | Description           |
+| ---------- | --------------------- | --------------------- |
+| children   | string                | потомки карточки      |
+| type       | {shadow, border}      | тип карточки          |
+| size       | {xs, s, m, l, xl}     | размер карточки       |
+| align      | {left, center, right} | выравнивание карточки |
 
 ## Example
 

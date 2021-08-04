@@ -4,15 +4,15 @@
 import Progress from "eduprog-ds/src/components/Progress.vue";
 ```
 
-## Properties
+## Свойства
 
-| Properties | Values                                                         | Description        |
-| ---------- | -------------------------------------------------------------- | ------------------ |
-| Values     | [{value: 10, color: "#ffb000"}, {value: 90, color: "#ffcc00"}] | progress bar value |
+| Свойство | Значение                                                       | Описание               |
+| -------- | -------------------------------------------------------------- | ---------------------- |
+| Значение | [{value: 10, color: "#ffb000"}, {value: 90, color: "#ffcc00"}] | значения прогресс-бара |
 
-## Example
+## Пример
 
-![Example](https://i.imgur.com/DXTWPlW.png)
+![Пример](https://i.imgur.com/DXTWPlW.png)
 
 ```vue
 <Row>

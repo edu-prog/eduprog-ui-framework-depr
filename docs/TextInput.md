@@ -4,20 +4,20 @@
 import TextInput from "eduprog-ds/src/components/TextInput.vue";
 ```
 
-## Properties
+## Свойства
 
-| Properties | Values            | Description           |
-| ---------- | ----------------- | --------------------- |
-| type       | {text, password}  | Input type            |
-| label      | string            | Input label           |
-| size       | {xs, s, m, l, xl} | Input size            |
-| mask       | string            | Input mask            |
-| max_length | number            | Input max text length |
-| readonly   | boolean           | Is input readonly     |
+| Свойство   | Значения          | Описание                   |
+| ---------- | ----------------- | -------------------------- |
+| type       | {text, password}  | тип Input'а                |
+| label      | string            | заголовок Input'а          |
+| size       | {xs, s, m, l, xl} | размер Input'а             |
+| mask       | string            | маска Input'а              |
+| max_length | number            | максимальная длина Input'a |
+| readonly   | boolean           | Только для чтения?         |
 
-## Example
+## Пример
 
-![Example](https://i.imgur.com/Qw2HntY.png)
+![Пример](https://i.imgur.com/Qw2HntY.png)
 
 ```vue
 <Row>

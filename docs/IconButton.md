@@ -4,4 +4,4 @@
 import IconButton from "eduprog-ds/src/components/IconButton.vue";
 ```
 
-This is inheritor of component [Icon](Icon.md) and [Button](Button.md)
+Это наследник класса [Icon](Icon.md) и [Button](Button.md)
