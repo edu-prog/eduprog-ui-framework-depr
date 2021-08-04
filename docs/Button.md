@@ -4,64 +4,82 @@
 import Button from "eduprog-ds/src/components/Button.vue";
 ```
 
-## Properties
+## Свойства
 
-| Properties | Values                             | Description             |
+| Свойство | Значение                             | Описание             |
 | ---------- | ---------------------------------- | ----------------------- |
-| children   | string                             | Button label            |
-| type       | {main, secondary, accent, default} | Button type             |
-| size       | {xs, s, m, l, xl}                  | Button size             |
-| round      | {true, false}                      | Is button round         |
-| rounded    | {true, false}                      | Is button rounded       |
-| mode       | {outlined}                         | Button modificator type |
+| children   | string                             | заголовок кнопки            |
+| type       | {default, action, link, pseudo, clear, raised} | стиль кнопки             |
+| size       | {xs, s, m, l, xl}                  | размер кнопки            |
+| round      | {true, false}                      | круглая ли кнопка         |
+| rounded    | {true, false}                      | закругленная ли кнопка        |
+| badge    | string                      | текст отметки        |
+| badge_type    | {edge, inside}                      | Тип отметки        |
+| badge_color    | {primary, secondary, accent, success, danger}                      | Цвет отметки        |
 
 ## Example
 
-![Example](https://i.imgur.com/UaePjvy.png)
+![Пример](https://i.imgur.com/0qVMXRF.png)
 
 ```vue
-<Row>
-      <Column>
-        <Button type="main">Sign in</Button>
-      </Column>
-      <Column>
-        <Button type="secondary">Sign in</Button>
-      </Column>
-      <Column>
-        <Button type="accent">Sign in</Button>
-      </Column>
-</Row>
-<Row>
-      <Column>
-        <Button type="main" mode="outlined">Sign in</Button>
-      </Column>
-      <Column>
-        <Button type="secondary" mode="outlined">Sign in</Button>
-      </Column>
-      <Column>
-        <Button type="accent" mode="outlined">Sign in</Button>
-      </Column>
-</Row>
-<Row>
-      <Column>
-        <Button type="main" rounded>Sign in</Button>
-      </Column>
-      <Column>
-        <Button type="secondary" rounded>Sign in</Button>
-      </Column>
-      <Column>
-        <Button type="accent" rounded>Sign in</Button>
-      </Column>
-</Row>
-<Row>
-      <Column>
-        <Button type="main" round>R</Button>
-      </Column>
-      <Column>
-        <Button type="secondary" round>R</Button>
-      </Column>
-      <Column>
-        <Button type="accent" round>R</Button>
-      </Column>
+<Row :cols="3">
+  <Column>
+    <Button type="action">Action</Button>
+  </Column>
+  <Column>
+    <Button type="default">Default</Button>
+  </Column>
+  <Column>
+    <Button type="link">Link</Button>
+  </Column>
+  <Column>
+    <Button type="pseudo">Pseudo</Button>
+  </Column>
+  <Column>
+    <Button type="clear">Clear</Button>
+  </Column>
+  <Column>
+    <Button type="raised">Raised</Button>
+  </Column>
+
+  <Column>
+    <Button rounded type="action">Action</Button>
+  </Column>
+  <Column>
+    <Button rounded type="default">Default</Button>
+  </Column>
+  <Column>
+    <Button rounded type="link">Link</Button>
+  </Column>
+  <Column>
+    <Button rounded type="pseudo">Pseudo</Button>
+  </Column>
+  <Column>
+    <Button rounded type="clear">Clear</Button>
+  </Column>
+  <Column>
+    <Button rounded type="raised">Raised</Button>
+  </Column>
+
+  <Column>
+    <Button
+      rounded
+      type="action"
+      badge="100"
+      badge_type="edge"
+      badge_color="danger"
+      >Badge</Button
+    >
+  </Column>
+  <Column>
+    <Button
+      rounded
+      type="action"
+      badge="100"
+      badge_type="inside"
+      badge_color="danger"
+      >Badge</Button
+    >
+  </Column>
 </Row>
 ```
