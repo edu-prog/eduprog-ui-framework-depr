@@ -4,17 +4,17 @@
 import Heading from "eduprog-ds/src/components/Heading.vue";
 ```
 
-## Properties
+## Свойства
 
-| Properties | Values                | Description   |
-| ---------- | --------------------- | ------------- |
-| children   | string                | Heading text  |
-| size       | {xs, s, m, l, xl}     | Heading size  |
-| align      | {left, center, right} | Heading align |
+| Свойство | Значение              | Описание               |
+| -------- | --------------------- | ---------------------- |
+| children | string                | текст заголовка        |
+| size     | {xs, s, m, l, xl}     | размер заголовка       |
+| align    | {left, center, right} | выравнивание заголовка |
 
-## Example
+## Пример
 
-![Example](https://i.imgur.com/UlUY6pU.png)
+![Пример](https://i.imgur.com/UlUY6pU.png)
 
 ```vue
 <Row>
@@ -34,7 +34,7 @@ import Heading from "eduprog-ds/src/components/Heading.vue";
 </Row>
 ```
 
-![Example](https://i.imgur.com/OHKo97M.png)
+![Пример](https://i.imgur.com/OHKo97M.png)
 
 ```vue
 <Row>
