@@ -1,5 +1,7 @@
 # Modal
 
+## Пример
+
 ```vue
 <Modal>
     <template #toggle>
