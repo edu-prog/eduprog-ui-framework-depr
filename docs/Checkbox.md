@@ -14,7 +14,7 @@ import Checkbox from "eduprog-ds/src/components/Checkbox.vue";
 | check    | {true, false}             | Выбран ли чекбокс                       |
 | disabled | {true, false}             | Выключен ли чекбокс                     |
 
-## Examples
+## Пример
 
 ![Пример](https://i.imgur.com/abhxNnC.png)
 
