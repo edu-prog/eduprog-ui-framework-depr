@@ -1,7 +1,7 @@
 # Row
 
 ```js
-import Row from "eduprog-ds/src/components/Row.vue";
+import { Row } from "eduprog-ds/src/components/Grid.vue";
 ```
 
 ## Свойства
