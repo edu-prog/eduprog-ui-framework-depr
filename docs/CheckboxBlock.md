@@ -4,15 +4,15 @@
 import CheckboxBlock from "eduprog-ds/src/components/CheckboxBlock.vue";
 ```
 
-## Properties
+## Свойства
 
-| Properties | Values                                                  | Description                   |
-| ---------- | ------------------------------------------------------- | ----------------------------- |
-| options    | ```[{icon: 'path_to_icon', content: 'button_title'}]``` | Options to CheckboxBlock List |
+| Свойство | Значения                                                | Описание                         |
+| -------- | ------------------------------------------------------- | -------------------------------- |
+| options  | ```[{icon: 'path_to_icon', content: 'button_title'}]``` | Список опций для блока чекбоксов |
 
-## Example
+## Пример
 
-![Example](https://i.imgur.com/L5XRGuH.gif)
+![Пример](https://i.imgur.com/L5XRGuH.gif)
 
 ```vue
 <CheckboxBlock
