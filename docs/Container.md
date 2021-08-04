@@ -1,7 +1,7 @@
 # Row
 
 ```js
-import Container from "eduprog-ds/src/components/Container.vue";
+import { Container } from "eduprog-ds/src/components/Grid.vue";
 ```
 
 ## Свойства
