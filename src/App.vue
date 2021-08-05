@@ -194,6 +194,18 @@
       </Column>
     </Row>
 
+    <Row :cols="3">
+      <Column>
+        <Checkbox position="left" type="main">Текст </Checkbox>
+      </Column>
+      <Column>
+        <Checkbox position="left" type="secondary">Текст </Checkbox>
+      </Column>
+      <Column>
+        <Checkbox position="left" type="accent">Текст </Checkbox>
+      </Column>
+    </Row>
+
     <Row>
       <Column>
         <PhoneInput />
@@ -472,6 +484,7 @@ import Select from "./components/Select.vue";
 import Spinner from "./components/Spinner.vue";
 import TextInput from "./components/TextInput.vue";
 import TextInputButton from "./components/TextInputButton.vue";
+import Checkbox from "./components/Checkbox.vue";
 
 export default {
   name: "Home",
@@ -493,6 +506,7 @@ export default {
     TextInputButton,
     Dropdown,
     Modal,
+    Checkbox,
   },
   data() {
     return {

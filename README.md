@@ -26,6 +26,10 @@ npm install edu-prog/design-system --save
 yarn add edu-prog/design-system --save
 ```
 
+## Figma-компоненты
+
+Вы можете найти сверстанные figma компоненты по [ссылке](https://www.figma.com/file/B0RL6ptJLTX5CdzbxGou84/Design-system?node-id=2%3A120&viewport=525%2C722%2C0.37326961755752563).
+
 ## 🚗 Использование
 
 Здесь Вы видите начальный пример:
