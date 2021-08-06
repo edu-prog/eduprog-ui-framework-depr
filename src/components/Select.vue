@@ -264,38 +264,39 @@ export default {
 
 .mobile-select {
   width: 100%;
+  position: relative;
 
   &-label {
-    display: inline-flex;
     position: absolute;
-    margin-top: 1rem;
-    margin-left: 0.5rem;
     pointer-events: none;
     transition: 0.25s ease;
     font-size: 0.625rem;
-    margin-top: 0.25rem;
+    top: 0.625rem;
+    left: 0.5rem;
+
     &-multiple {
-      margin-top: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
       font-size: 1rem;
     }
     &-checked {
-      margin-top: 0.25rem;
+      top: 0.625rem;
       font-size: 0.625rem;
+      transform: translateY(-50%);
     }
   }
 
   &-value {
-    display: inline-flex;
     position: absolute;
-    margin-top: 1rem;
-    margin-left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0.5rem;
     pointer-events: none;
     opacity: 1;
     overflow: hidden;
 
     &-multiple {
       opacity: 0;
-      height: 1.25rem;
       overflow: hidden;
       text-overflow: ellipsis;
       max-width: 260px;
