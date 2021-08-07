@@ -34,6 +34,8 @@ import Heading from "eduprog-ds/src/components/Heading.vue";
 </Row>
 ```
 
+## Пример
+
 ![Пример](https://i.imgur.com/OHKo97M.png)
 
 ```vue
