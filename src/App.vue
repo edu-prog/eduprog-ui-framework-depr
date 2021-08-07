@@ -52,22 +52,24 @@
 
         <Column>
           <Button
+            badge="100"
+            badge_color="danger"
+            badge_type="edge"
             rounded
             type="action"
-            badge="100"
-            badge_type="edge"
-            badge_color="danger"
-            >Badge</Button
+          >Badge
+          </Button
           >
         </Column>
         <Column>
           <Button
+            badge="100"
+            badge_color="danger"
+            badge_type="inside"
             rounded
             type="action"
-            badge="100"
-            badge_type="inside"
-            badge_color="danger"
-            >Badge</Button
+          >Badge
+          </Button
           >
         </Column>
       </Row>
@@ -118,7 +120,7 @@
     <Row>
       <Column>
         <Paragraph
-          >We provide some basic styling on headings tags. In the example, you
+        >We provide some basic styling on headings tags. In the example, you
           see the the 6 header tags' different sizes.
         </Paragraph>
       </Column>
@@ -196,13 +198,13 @@
 
     <Row :cols="3">
       <Column>
-        <Checkbox position="left" type="main">Текст </Checkbox>
+        <Checkbox position="left" type="main">Текст</Checkbox>
       </Column>
       <Column>
-        <Checkbox position="left" type="secondary">Текст </Checkbox>
+        <Checkbox position="left" type="secondary">Текст</Checkbox>
       </Column>
       <Column>
-        <Checkbox position="left" type="accent">Текст </Checkbox>
+        <Checkbox position="left" type="accent">Текст</Checkbox>
       </Column>
     </Row>
 
@@ -264,7 +266,7 @@
     <Row>
       <Column>
         <Paragraph type="lead"
-          >Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
+        >Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
           consequuntur eaque et expedita explicabo illum impedit incidunt, ipsam
           laboriosam libero minus numquam obcaecati, perferendis provident quos?
           Nulla rerum unde ut!
@@ -406,7 +408,7 @@
     </Row>
     <Row>
       <Column>
-        <Dropdown direction="top-right" :left="6">
+        <Dropdown :left="6" direction="top-right">
           <template #toggle>
             <Button>top-right direction</Button>
           </template>
@@ -453,7 +455,7 @@
           </template>
 
           <template #modal-footer>
-            <Row align="right" :cols="2">
+            <Row :cols="2" align="right">
               <Column>
                 <Button type="clear">Отменить</Button>
               </Column>
@@ -465,12 +467,37 @@
         </Modal>
       </Column>
     </Row>
+
+    <Row>
+      <Column>
+        <AutocompleteInput v-model="debug_info" :items="['Привет', 'Привет мир', 'привет']" label="Приветствие" />
+      </Column>
+    </Row>
+
+    <Row>
+      <Column>
+        <Paragraph>
+          {{ debug_info }}
+        </Paragraph>
+      </Column>
+    </Row>
+
+    <Row>
+      <Column>
+        <Paragraph>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda autem culpa eveniet
+          excepturi hic incidunt iusto labore laboriosam laudantium molestiae neque obcaecati recusandae sapiente sequi
+          temporibus totam, vitae voluptate?
+        </Paragraph>
+      </Column>
+    </Row>
   </div>
 </template>
 
 <script>
+import AutocompleteInput from "./components/AutocompleteInput.vue";
 import Button from "./components/Button.vue";
 import Card from "./components/Card.vue";
+import Checkbox from "./components/Checkbox.vue";
 import CheckboxBlock from "./components/CheckboxBlock.vue";
 import Dropdown from "./components/Dropdown.vue";
 import { Column, Container, Row } from "./components/Grid.vue";
@@ -484,7 +511,6 @@ import Select from "./components/Select.vue";
 import Spinner from "./components/Spinner.vue";
 import TextInput from "./components/TextInput.vue";
 import TextInputButton from "./components/TextInputButton.vue";
-import Checkbox from "./components/Checkbox.vue";
 
 export default {
   name: "Home",
@@ -507,13 +533,14 @@ export default {
     Dropdown,
     Modal,
     Checkbox,
+    AutocompleteInput
   },
   data() {
     return {
       fullName: "",
-      debug_info: "",
+      debug_info: ""
     };
-  },
+  }
 };
 </script>
 

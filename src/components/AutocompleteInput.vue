@@ -1,12 +1,13 @@
 <template>
   <div class="Autocomplete-Input">
-    <div class="Autocomplete-Input-pc" v-on:keyup.down="onKeyDown" v-on:keyup.up="onKeyUp">
+    <div class="Autocomplete-Input-pc" v-on:keydown.down="onKeyDown" v-on:keyup.up="onKeyUp">
       <TextInput ref="TextInput" v-model="value" :label="label" type="text" @input="onInput"
-                  />
+      />
 
       <div v-if="isActive" class="Autocomplete-Input-dropdown">
-        <div v-for="(item, index) in resultItems" :key="index" :tabindex="index + 1"
-             class="Autocomplete-Input-dropdown-item" @click="onClickToItem" v-html="item">
+        <div v-for="(item, index) in resultItems" :key="index"
+             class="Autocomplete-Input-dropdown-item"
+             @click="onClickToItem" @focus="onItemFocus" v-html="item">
         </div>
       </div>
     </div>
@@ -33,6 +34,7 @@ export default {
       value: "",
       isActive: false,
       resultItems: [],
+      focusedItem: 0
     };
   },
   components: {
@@ -40,15 +42,41 @@ export default {
   },
   methods: {
     onInput() {
-      this.isActive = Boolean(this.value) &&
-        (this.resultItems = this.items.filter(item => item.includes(this.value))) &&
-        (this.resultItems = this.resultItems.map(item => {
-          return item.replace(this.value, `<b>${this.value}</b>`)
-        }));
+      this.isActive = Boolean(this.value);
+      const regex_pattern = new RegExp(this.value, "i");
+
+      this.resultItems = this.items.filter(item =>
+        regex_pattern.test(item));
+
+      this.resultItems = this.resultItems.map(item => {
+        return item.replace(regex_pattern, `<strong>${this.value}</strong>`);
+      });
+
+      this.$emit("input", this.value);
     },
     onClickToItem(event) {
-      this.$refs.TextInput.content = event.target.innerText;
+      const content = event.target.innerText;
+      this.$refs.TextInput.content = content;
+      this.value = content;
       this.isActive = false;
+      this.$emit("input", this.value);
+    },
+    onKeyUp() {
+      if (this.focusedItem > 1) {
+        this.focusedItem--;
+        document.querySelector(`div[data-autocomplete="${this.focusedItem}"]`).focus();
+      }
+      console.log(`up - ${this.focusedItem}`);
+    },
+    onKeyDown() {
+      if (this.focusedItem < this.items.length) {
+        this.focusedItem++;
+        document.querySelector(`div[data-autocomplete="${this.focusedItem}"]`).focus();
+      }
+      console.log(`down - ${this.focusedItem}`);
+    },
+    onItemFocus() {
+      console.log("focus");
     }
   }
 };
@@ -78,11 +106,7 @@ export default {
         cursor: pointer;
         outline: none;
 
-        &:hover {
-          background-color: $color-platinum;
-        }
-
-        &:focus {
+        &:hover, &:focus {
           background-color: $color-platinum;
         }
       }
