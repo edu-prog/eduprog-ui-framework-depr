@@ -187,6 +187,7 @@ export default {
           }
         } else {
           select.content = event.target.innerText;
+          this.value = select.content;
         }
       }
 
