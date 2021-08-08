@@ -472,7 +472,7 @@
       <Column>
         <AutocompleteInput v-model="debug_info"
                            :options="listCounties"
-                           label="Приветствие" />
+                           label="Страна" />
       </Column>
     </Row>
 
