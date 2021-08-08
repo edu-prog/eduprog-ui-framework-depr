@@ -1,8 +1,9 @@
 <template>
   <div class="Autocomplete-Input">
-    <div class="Autocomplete-Input-pc" v-on:keydown.down="onKeyDown" v-on:keydown.up="onKeyUp"
+    <div v-if="!IsMobile" class="Autocomplete-Input-pc" v-on:keydown.down="onKeyDown" v-on:keydown.up="onKeyUp"
          v-on:keyup.enter="onKeyEnter">
-      <TextInput ref="TextInput" v-model="value" :label="label" type="text" @input="onInput"
+      <TextInput ref="TextInput" v-model="value" :label="label" type="text"
+                 @input="onInput"
       />
 
       <div v-if="isActive" class="Autocomplete-Input-dropdown">
@@ -14,10 +15,30 @@
         </div>
       </div>
     </div>
+
+    <div v-else class="Autocomplete-Input-mobile">
+      <TextInput ref="TextInput" v-model="value" :label="label" type="text" @click.native="onInputFocused" />
+
+      <div v-if="isActive" class="Autocomplete-Input-mobile-wrapper">
+        <div class="Autocomplete-Input-mobile-line" />
+        <div v-on-clickaway="clearFocusState" class="Autocomplete-Input-mobile-modal">
+          <TextInput v-model="value" :label="label" autofocus type="text" @input="onInput" />
+
+          <div class="Autocomplete-Input-mobile-modal-options" tabindex="0">
+            <div v-for="(item, index) in resultItems" :key="index"
+                 class="Autocomplete-Input-mobile-modal-options-item"
+                 @click="onClickToItem" v-html="item">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { isMobile } from "mobile-device-detect";
+import { mixin as clickaway } from "vue-clickaway";
 import TextInput from "./TextInput";
 
 export default {
@@ -27,17 +48,22 @@ export default {
       type: String,
       required: true
     },
-    items: {
+    options: {
       type: Array,
       required: true
     }
   },
+  directives: {
+    isMobile
+  },
+  mixins: [clickaway],
   data() {
     return {
       value: "",
       isActive: false,
       resultItems: [],
-      focusedItem: 0
+      focusedItem: 0,
+      IsMobile: isMobile
     };
   },
   components: {
@@ -45,7 +71,7 @@ export default {
   },
   methods: {
     escapeRegExp(string) {
-      return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+      return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     },
     clearFocusState() {
       this.isActive = false;
@@ -53,10 +79,14 @@ export default {
       this.resultItems = [];
     },
     onInput() {
-      this.isActive = Boolean(this.value);
-      const regex_pattern = new RegExp(this.escapeRegExp(this.value), "i");
+      // console.log(event);
+      // this.IsMobile && (this.value = event.target.value);
 
-      this.resultItems = this.items.filter(item =>
+      this.isActive = this.IsMobile || Boolean(this.value);
+
+      const regex_pattern = new RegExp(this.escapeRegExp(this.value.trim()), "i");
+
+      this.resultItems = this.options.filter(item =>
         regex_pattern.test(item));
 
       this.resultItems = this.resultItems.map(item => {
@@ -86,7 +116,7 @@ export default {
     onKeyDown(event) {
       if (this.isActive) {
         event.preventDefault();
-        if (this.focusedItem < this.items.length) {
+        if (this.focusedItem < this.options.length) {
           this.focusedItem++;
           this.$refs.autocompleteItems[this.focusedItem - 1].focus();
         }
@@ -100,6 +130,10 @@ export default {
 
         this.clearFocusState();
       }
+    },
+    onInputFocused() {
+      this.isActive = true;
+      this.resultItems = this.options.slice();
     }
   }
 };
@@ -131,6 +165,49 @@ export default {
 
         &:hover, &:focus {
           background-color: $color-platinum;
+        }
+      }
+    }
+  }
+
+  &-mobile {
+    position: relative;
+
+    &-wrapper {
+      position: fixed;
+      background-color: rgba(0, 0, 0, 0.25);
+      top: 0;
+      width: 100%;
+      height: 100%;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+
+    &-line {
+      display: block;
+      width: 40px;
+      height: 3px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: $color-white;
+      top: 91px;
+    }
+
+    &-modal {
+      margin: 100px auto;
+      background-color: $color-white;
+      width: 85%;
+      height: 100%;
+      padding: 1rem;
+      border-radius: 0.5rem;
+
+      &-options {
+        overflow-y: scroll;
+        max-height: calc(100% - 210px);
+
+        &-item {
+          padding: 0.5rem;
         }
       }
     }
