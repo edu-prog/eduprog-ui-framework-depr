@@ -20,17 +20,18 @@
       <TextInput ref="TextInput" v-model="value" :label="label" type="text" @click.native="onInputFocused" />
 
       <div v-if="isActive" class="Autocomplete-Input-mobile-wrapper">
-        <div class="Autocomplete-Input-mobile-line" />
-        <div v-on-clickaway="clearFocusState" class="Autocomplete-Input-mobile-modal">
-          <TextInput v-model="value" :label="label" autofocus type="text" @input="onInput" />
+        <transition-group name="pop" mode="out-in" appear>
+          <div v-on-clickaway="clearFocusState" class="Autocomplete-Input-mobile-modal" :key="2">
+            <TextInput v-model="value" :label="label" autofocus type="text" @input="onInput" />
 
-          <div class="Autocomplete-Input-mobile-modal-options" tabindex="0">
-            <div v-for="(item, index) in resultItems" :key="index"
-                 class="Autocomplete-Input-mobile-modal-options-item"
-                 @click="onClickToItem" v-html="item">
+            <div class="Autocomplete-Input-mobile-modal-options" tabindex="0">
+              <div v-for="(item, index) in resultItems" :key="index"
+                   class="Autocomplete-Input-mobile-modal-options-item"
+                   @click="onClickToItem" v-html="item">
+              </div>
             </div>
           </div>
-        </div>
+        </transition-group>
       </div>
     </div>
   </div>
@@ -79,9 +80,6 @@ export default {
       this.resultItems = [];
     },
     onInput() {
-      // console.log(event);
-      // this.IsMobile && (this.value = event.target.value);
-
       this.isActive = this.IsMobile || Boolean(this.value);
 
       const regex_pattern = new RegExp(this.escapeRegExp(this.value.trim()), "i");
@@ -183,17 +181,6 @@ export default {
       transform: translate(-50%, 0);
     }
 
-    &-line {
-      display: block;
-      width: 40px;
-      height: 3px;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: $color-white;
-      top: 91px;
-    }
-
     &-modal {
       margin: 100px auto;
       background-color: $color-white;
@@ -201,6 +188,18 @@ export default {
       height: 100%;
       padding: 1rem;
       border-radius: 0.5rem;
+
+      &::before {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 3px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $color-white;
+        top: 91px;
+      }
 
       &-options {
         overflow-y: scroll;
@@ -212,5 +211,26 @@ export default {
       }
     }
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .4s ease;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.pop-enter-active,
+.pop-leave-active {
+  transition: transform 0.4s cubic-bezier(0.5, 0, 0.5, 1), opacity 0.4s linear;
+}
+
+.pop-enter,
+.pop-leave-to {
+  opacity: 0;
+  transform: scale(0.3) translateY(-50%);
 }
 </style>
