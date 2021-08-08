@@ -1,13 +1,16 @@
 <template>
   <div class="Autocomplete-Input">
-    <div class="Autocomplete-Input-pc" v-on:keydown.down="onKeyDown" v-on:keyup.up="onKeyUp">
+    <div class="Autocomplete-Input-pc" v-on:keydown.down="onKeyDown" v-on:keydown.up="onKeyUp"
+         v-on:keyup.enter="onKeyEnter">
       <TextInput ref="TextInput" v-model="value" :label="label" type="text" @input="onInput"
       />
 
       <div v-if="isActive" class="Autocomplete-Input-dropdown">
         <div v-for="(item, index) in resultItems" :key="index"
+             ref="autocompleteItems"
              class="Autocomplete-Input-dropdown-item"
-             @click="onClickToItem" @focus="onItemFocus" v-html="item">
+             tabindex="0"
+             @click="onClickToItem" v-html="item">
         </div>
       </div>
     </div>
@@ -41,9 +44,17 @@ export default {
     TextInput
   },
   methods: {
+    escapeRegExp(string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+    },
+    clearFocusState() {
+      this.isActive = false;
+      this.focusedItem = 0;
+      this.resultItems = [];
+    },
     onInput() {
       this.isActive = Boolean(this.value);
-      const regex_pattern = new RegExp(this.value, "i");
+      const regex_pattern = new RegExp(this.escapeRegExp(this.value), "i");
 
       this.resultItems = this.items.filter(item =>
         regex_pattern.test(item));
@@ -54,29 +65,41 @@ export default {
 
       this.$emit("input", this.value);
     },
-    onClickToItem(event) {
-      const content = event.target.innerText;
-      this.$refs.TextInput.content = content;
-      this.value = content;
-      this.isActive = false;
+    setComponentValue(value) {
+      this.$refs.TextInput.content = value;
+      this.value = value;
       this.$emit("input", this.value);
     },
-    onKeyUp() {
-      if (this.focusedItem > 1) {
-        this.focusedItem--;
-        document.querySelector(`div[data-autocomplete="${this.focusedItem}"]`).focus();
-      }
-      console.log(`up - ${this.focusedItem}`);
+    onClickToItem(event) {
+      this.setComponentValue(event.target.innerText);
+      this.clearFocusState();
     },
-    onKeyDown() {
-      if (this.focusedItem < this.items.length) {
-        this.focusedItem++;
-        document.querySelector(`div[data-autocomplete="${this.focusedItem}"]`).focus();
+    onKeyUp(event) {
+      if (this.isActive) {
+        event.preventDefault();
+        if (this.focusedItem > 1) {
+          this.focusedItem--;
+          this.$refs.autocompleteItems[this.focusedItem - 1].focus();
+        }
       }
-      console.log(`down - ${this.focusedItem}`);
     },
-    onItemFocus() {
-      console.log("focus");
+    onKeyDown(event) {
+      if (this.isActive) {
+        event.preventDefault();
+        if (this.focusedItem < this.items.length) {
+          this.focusedItem++;
+          this.$refs.autocompleteItems[this.focusedItem - 1].focus();
+        }
+      }
+    },
+    onKeyEnter() {
+      if (this.isActive) {
+        const content = this.resultItems[this.focusedItem - 1].replace("<strong>", "")
+          .replace("</strong>", "");
+        this.setComponentValue(content);
+
+        this.clearFocusState();
+      }
     }
   }
 };
