@@ -99,6 +99,8 @@ export default {
     flex-direction: column;
     transition: all 0.2s ease-in-out;
     z-index: 101;
+    padding: 1rem;
+    border-radius: 0.5rem;
 
     &-fluid {
       max-width: 95vh;
