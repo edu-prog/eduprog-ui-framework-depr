@@ -1,5 +1,6 @@
 # Дизайн-система Eduprog
 
+- [AutocompleteInput](AutocompleteInput.md)
 - [Button](Button.md)
 - [Card](Card.md)
 - [Checkbox](Checkbox.md)

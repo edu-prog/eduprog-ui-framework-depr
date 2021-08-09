@@ -1,38 +1,61 @@
 <template>
   <div class="modal">
-    <div v-on-clickaway="onModalClickedAway" class="modal-toggle" @click="onToggleClicked">
+    <div class="modal-toggle" @click="onToggleClicked">
       <slot name="toggle"></slot>
     </div>
 
-    <div v-if="isActive" class="modal-wrapper">
-      <transition appear name="modal-animation">
-        <div class="modal-body">
-          <div class="modal-header">
-            <slot name="modal-header"></slot>
-          </div>
+    <transition appear name="fade">
+      <div
+        v-if="isActive"
+        class="modal-wrapper"
+        @click="onModalClickedAway"
+      ></div>
+    </transition>
 
-          <div class="modal-content">
-            <slot name="modal-content"></slot>
-          </div>
-
-          <div class="modal-footer">
-            <slot name="modal-footer"></slot>
-          </div>
+    <transition appear name="pop">
+      <div
+        :class="[
+          'modal-body',
+          fullscreen && 'modal-body-fullscreen',
+          fluid && 'modal-body-fluid',
+        ]"
+        v-if="isActive"
+        role="dialog"
+      >
+        <div class="modal-header">
+          <slot name="modal-header"></slot>
         </div>
-      </transition>
-    </div>
+
+        <div class="modal-content">
+          <slot name="modal-content"></slot>
+        </div>
+
+        <div class="modal-footer">
+          <slot name="modal-footer"></slot>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
-import { mixin as clickaway } from "vue-clickaway";
-
 export default {
   name: "Modal",
-  mixins: [clickaway],
+  props: {
+    fullscreen: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    fluid: {
+      type: Boolean,
+      require: false,
+      default: false,
+    },
+  },
   data() {
     return {
-      isActive: false
+      isActive: false,
     };
   },
   methods: {
@@ -40,11 +63,9 @@ export default {
       this.isActive = !this.isActive;
     },
     onModalClickedAway() {
-      if (this.isActive) {
-        this.isActive = false;
-      }
-    }
-  }
+      this.isActive = false;
+    },
+  },
 };
 </script>
 
@@ -62,12 +83,14 @@ export default {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    z-index: 100;
   }
 
   &-body {
     display: flex;
     max-width: 600px;
     position: fixed;
+    justify-content: space-between;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -75,18 +98,44 @@ export default {
     background-color: #ffffff;
     flex-direction: column;
     transition: all 0.2s ease-in-out;
-  }
+    z-index: 101;
+    padding: 1rem;
+    border-radius: 0.5rem;
 
-  &-animation-enter-active, &-animation-leave-active {
-    transition: transform .2s;
-  }
+    &-fluid {
+      max-width: 95vh;
+      width: 100%;
+      max-height: 95vh;
+      height: 100%;
+    }
 
-  &-animation-enter  {
-    transform: translate(-50%, -50%) scale(0.7);
+    &-fullscreen {
+      max-width: 100vh;
+      width: 100%;
+      max-height: 100vh;
+      height: 100%;
+    }
   }
+}
 
-  &-animation-leave {
-    transform: translate(-50%, -50%) scale(1.3);
-  }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s linear;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.pop-enter-active,
+.pop-leave-active {
+  transition: transform 0.4s cubic-bezier(0.5, 0, 0.5, 1), opacity 0.4s ease;
+}
+
+.pop-enter,
+.pop-leave-to {
+  opacity: 0;
+  transform: scale(0.3) translate(-100%, -100%);
 }
 </style>
