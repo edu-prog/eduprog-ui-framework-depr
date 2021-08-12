@@ -1,34 +1,65 @@
 <template>
   <div class="Autocomplete-Input">
-    <div v-if="!IsMobile" class="Autocomplete-Input-pc" v-on:keydown.down="onKeyDown" v-on:keydown.up="onKeyUp"
-         v-on:keyup.enter="onKeyEnter">
-      <TextInput ref="TextInput" v-model="value" :label="label" type="text"
-                 @input="onInput"
+    <div
+      v-if="!IsMobile"
+      class="Autocomplete-Input-pc"
+      v-on:keydown.down="onKeyDown"
+      v-on:keydown.up="onKeyUp"
+      v-on:keyup.enter="onKeyEnter"
+    >
+      <TextInput
+        ref="TextInput"
+        v-model="value"
+        :label="label"
+        type="text"
+        @input="onInput"
       />
 
       <div v-if="isActive" class="Autocomplete-Input-dropdown">
-        <div v-for="(item, index) in resultItems" :key="index"
-             ref="autocompleteItems"
-             class="Autocomplete-Input-dropdown-item"
-             tabindex="0"
-             @click="onClickToItem" v-html="item">
-        </div>
+        <div
+          v-for="(item, index) in resultItems"
+          :key="index"
+          ref="autocompleteItems"
+          class="Autocomplete-Input-dropdown-item"
+          tabindex="0"
+          @click="onClickToItem"
+          v-html="item"
+        ></div>
       </div>
     </div>
 
     <div v-else class="Autocomplete-Input-mobile">
-      <TextInput ref="TextInput" v-model="value" :label="label" type="text" @click.native="onInputFocused" />
+      <TextInput
+        ref="TextInput"
+        v-model="value"
+        :label="label"
+        type="text"
+        @click.native="onInputFocused"
+      />
 
       <div v-if="isActive" class="Autocomplete-Input-mobile-wrapper">
         <transition-group name="pop" mode="out-in" appear>
-          <div v-on-clickaway="clearFocusState" class="Autocomplete-Input-mobile-modal" :key="2">
-            <TextInput v-model="value" :label="label" autofocus type="text" @input="onInput" />
+          <div
+            v-on-clickaway="clearFocusState"
+            class="Autocomplete-Input-mobile-modal"
+            :key="2"
+          >
+            <TextInput
+              v-model="value"
+              :label="label"
+              autofocus
+              type="text"
+              @input="onInput"
+            />
 
             <div class="Autocomplete-Input-mobile-modal-options" tabindex="0">
-              <div v-for="(item, index) in resultItems" :key="index"
-                   class="Autocomplete-Input-mobile-modal-options-item"
-                   @click="onClickToItem" v-html="item">
-              </div>
+              <div
+                v-for="(item, index) in resultItems"
+                :key="index"
+                class="Autocomplete-Input-mobile-modal-options-item"
+                @click="onClickToItem"
+                v-html="item"
+              ></div>
             </div>
           </div>
         </transition-group>
@@ -47,15 +78,15 @@ export default {
   props: {
     label: {
       type: String,
-      required: true
+      required: true,
     },
     options: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
   directives: {
-    isMobile
+    isMobile,
   },
   mixins: [clickaway],
   data() {
@@ -64,11 +95,11 @@ export default {
       isActive: false,
       resultItems: [],
       focusedItem: 0,
-      IsMobile: isMobile
+      IsMobile: isMobile,
     };
   },
   components: {
-    TextInput
+    TextInput,
   },
   methods: {
     escapeRegExp(string) {
@@ -82,13 +113,28 @@ export default {
     onInput() {
       this.isActive = this.IsMobile || Boolean(this.value);
 
-      const regex_pattern = new RegExp(this.escapeRegExp(this.value.trim()), "i");
+      const regex_pattern = new RegExp(
+        this.escapeRegExp(this.value.trim()),
+        "i"
+      );
 
-      this.resultItems = this.options.filter(item =>
-        regex_pattern.test(item));
+      this.resultItems = this.options.filter((item) =>
+        regex_pattern.test(item)
+      );
 
-      this.resultItems = this.resultItems.map(item => {
-        return item.replace(regex_pattern, `<strong>${this.value}</strong>`);
+      this.resultItems = this.resultItems.map((item) => {
+        let selectedSubstrIndex = item
+          .toLowerCase()
+          .indexOf(this.value.toLowerCase());
+        let selectedString = item.substring(
+          selectedSubstrIndex,
+          selectedSubstrIndex + this.value.length
+        );
+
+        return item.replace(
+          regex_pattern,
+          `<strong>${selectedString}</strong>`
+        );
       });
 
       this.$emit("input", this.value);
@@ -122,7 +168,8 @@ export default {
     },
     onKeyEnter() {
       if (this.isActive) {
-        const content = this.resultItems[this.focusedItem - 1].replace("<strong>", "")
+        const content = this.resultItems[this.focusedItem - 1]
+          .replace("<strong>", "")
           .replace("</strong>", "");
         this.setComponentValue(content);
 
@@ -132,8 +179,8 @@ export default {
     onInputFocused() {
       this.isActive = true;
       this.resultItems = this.options.slice();
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -152,7 +199,7 @@ export default {
       border-radius: 0.5rem;
       overflow: hidden;
       box-shadow: 0 0 28px 0 rgba(0, 0, 0, 0.2), 0 0 4px 0 rgba(0, 0, 0, 0.1),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
       z-index: 10;
       background-color: $color-white;
 
@@ -161,7 +208,8 @@ export default {
         cursor: pointer;
         outline: none;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           background-color: $color-platinum;
         }
       }
@@ -215,7 +263,7 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity .4s ease;
+  transition: opacity 0.4s ease;
 }
 
 .fade-enter,
