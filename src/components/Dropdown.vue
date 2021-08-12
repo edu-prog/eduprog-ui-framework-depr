@@ -93,6 +93,7 @@ export default {
 <style lang="scss" scoped>
 .dropdown {
   position: relative;
+  display: inline-block;
 
   &-toggle {
     display: inline-block;
@@ -124,6 +125,7 @@ export default {
 
     &-bottom-right {
       top: calc(100% + 10px);
+      right: 0;
     }
 
     &-top-left {
