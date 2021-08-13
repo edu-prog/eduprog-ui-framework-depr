@@ -6,6 +6,6 @@ labels: question
 assignees: ''
 ---
 
-Make sure to check documentation https://eduprog-docs.sviridovcomp.ru first. If the question is concise and probably has a short answer, asking it in Telegram chat https://t.me/joinchat/38qpkeBaAZpiNjky is probably the fastest way to find the answer.
+Убедитесь, что ответа на ваш вопрос нет в [документации](https://edu-prog.github.io/design-system/). Если вопрос краткий и вероятно имеет короткий ответ, обратитесь к [Telegram chat](https://t.me/joinchat/38qpkeBaAZpiNjky) - это наиболее выстрый способ получить ответ на Ваш вопрос.
 
-If you still prefer GitHub issues, remove all this text and ask your question here.
+Если вы по-прежнему предпочитаете GitHub Issue, удалите весь этот текст и задайте свой вопрос здесь.
