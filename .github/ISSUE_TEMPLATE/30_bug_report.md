@@ -1,37 +1,38 @@
 ---
 name: Bug report
-about: 'Create a report to help improve Eduprog: Testing Module'
+about: ''
 title: ''
 labels: bug
 assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**Опишите баг**
+Четкое и краткое описание того, в чем заключается ошибка.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+**Чтобы воспроизвести**
+Шаги по воспроизведению поведения:
+1. Перейдите к '...'
+2. Кликните на '....'
+3. Проскрольте к '....'
+4. Увидите ошибку
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+**Ожидаемое поведение**
+Четкое и краткое описание того, что вы ожидали увидеть.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+**Скриншоты**
+Если это применимо, добавьте скриншоты, чтобы помочь объяснить вашу проблему.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Version [e.g. 22]
+**Desktop (Пожалуйста, укажите следующую информацию):**
+ - OS: [e.g. Windows]
+ - Browser: [e.g. Chrome, Firefox]
+ - Version [e.g. 10]
 
-**Smartphone (please complete the following information):**
+**Smartphone (Пожалуйста, укажите следующую информацию):**
  - Device: [e.g. iPhone6]
  - OS: [e.g. iOS8.1]
  - Browser [e.g. stock browser, safari]
  - Version [e.g. 22]
 
-**Additional context**
-Add any other context about the problem here.
+**Дополнительный контекст**
+Добавьте сюда любой другой контекст, касающийся этой проблемы.
