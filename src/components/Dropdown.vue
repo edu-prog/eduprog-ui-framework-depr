@@ -18,6 +18,8 @@
         :class="[direction && `dropdown-item-${direction}`]"
         :style="[left && { left: `${left}rem` }]"
         class="dropdown-item"
+        @mouseover="onDropdownMouseOverOnItem"
+        @mouseleave="onDropdownMouseLeaveFromItem"
       >
         <div class="dropdown-item-content">
           <slot name="content"></slot>
@@ -62,6 +64,7 @@ export default {
   data() {
     return {
       isActive: false,
+      isHover: false,
     };
   },
   methods: {
@@ -84,8 +87,22 @@ export default {
     onDropdownMouseLeave() {
       if (this.hover) {
         setTimeout(() => {
-          this.isActive = false;
+          if (!this.isHover) {
+            this.isActive = false;
+          }
         }, 500);
+      }
+    },
+
+    onDropdownMouseOverOnItem() {
+      if (this.hover) {
+        this.isHover = true;
+      }
+    },
+
+    onDropdownMouseLeaveFromItem() {
+      if (this.hover) {
+        this.isHover = false;
       }
     },
   },
