@@ -15,17 +15,19 @@
         @input="onInput"
       />
 
-      <div v-if="isActive" class="Autocomplete-Input-dropdown">
-        <div
-          v-for="(item, index) in resultItems"
-          :key="index"
-          ref="autocompleteItems"
-          class="Autocomplete-Input-dropdown-item"
-          tabindex="0"
-          @click="onClickToItem"
-          v-html="item"
-        ></div>
-      </div>
+      <transition name="fade" appear>
+        <div v-if="isActive" class="Autocomplete-Input-dropdown">
+          <div
+            v-for="(item, index) in resultItems"
+            :key="index"
+            ref="autocompleteItems"
+            class="Autocomplete-Input-dropdown-item"
+            tabindex="0"
+            @click="onClickToItem"
+            v-html="item"
+          ></div>
+        </div>
+      </transition>
     </div>
 
     <div v-else class="Autocomplete-Input-mobile">
