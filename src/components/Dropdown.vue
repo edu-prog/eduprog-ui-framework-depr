@@ -12,16 +12,18 @@
     >
       <slot name="toggle"></slot>
     </div>
-    <div
-      v-if="isActive"
-      :class="[direction && `dropdown-item-${direction}`]"
-      :style="[left && { left: `${left}rem` }]"
-      class="dropdown-item"
-    >
-      <div class="dropdown-item-content">
-        <slot name="content"></slot>
+    <transition name="fade" appear>
+      <div
+        v-if="isActive"
+        :class="[direction && `dropdown-item-${direction}`]"
+        :style="[left && { left: `${left}rem` }]"
+        class="dropdown-item"
+      >
+        <div class="dropdown-item-content">
+          <slot name="content"></slot>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -105,6 +107,17 @@ export default {
     transition: opacity 0.25s ease;
     position: absolute;
 
+    &::before {
+      content: "";
+      position: absolute;
+      width: 0.75rem;
+      height: 0.75rem;
+      background-color: #fff;
+      transform: rotate(135deg);
+      top: -0.375rem;
+      left: 0.75rem;
+    }
+
     &-content {
       box-shadow: 0 0 0.75rem 0.25rem rgba(0, 0, 0, 0.2);
       max-width: 280px;
@@ -121,27 +134,67 @@ export default {
       top: calc(100% + 10px);
       left: 50%;
       transform: translateX(-50%);
+
+      &::before {
+        left: 50%;
+        transform: translateX(-50%) rotate(135deg);
+      }
     }
 
     &-bottom-right {
       top: calc(100% + 10px);
       right: 0;
+
+      &::before {
+        left: initial;
+        right: 0.75rem;
+      }
     }
 
     &-top-left {
       bottom: calc(100% + 10px);
+
+      &::before {
+        top: initial;
+        bottom: -0.375rem;
+        left: 0.75rem;
+      }
     }
 
     &-top-right {
       bottom: calc(100% + 10px);
       right: 0;
+
+      &::before {
+        top: initial;
+        bottom: -0.375rem;
+        left: initial;
+        right: 0.75rem;
+      }
     }
 
     &-top-center {
       bottom: calc(100% + 10px);
       left: 50%;
       transform: translateX(-50%);
+
+      &::before {
+        top: initial;
+        bottom: -0.375rem;
+        left: 50%;
+        transform: translateX(-50%) rotate(135deg);
+      }
     }
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
