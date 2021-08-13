@@ -6,16 +6,16 @@ import AutocompleteInput from "eduprog-ds/src/components/AutocompleteInput.vue";
 
 ## Свойства
 
-| Свойство    | Значение                                       | Описание               |
-| ----------- | ---------------------------------------------- | ---------------------- |
-| label        | string | заголовок поля ввода           |
-| options        | `['первое', 'второе', 'третье']` | заголовок поля ввода           |
+| Свойство | Значение                         | Описание             |
+| -------- | -------------------------------- | -------------------- |
+| label    | string                           | заголовок поля ввода |
+| options  | `['первое', 'второе', 'третье']` | заголовок поля ввода |
 
 ## Примеры
 
-![Пример](https://i.imgur.com/qhWxioq.gif)
+![PC](https://i.imgur.com/ydBUxOO.gif)
 
-![Пример](https://i.imgur.com/6bI4rPt.gif)
+![Mobile](https://i.imgur.com/2Aunofw.gif)
 
 ```vue
 <Row>
