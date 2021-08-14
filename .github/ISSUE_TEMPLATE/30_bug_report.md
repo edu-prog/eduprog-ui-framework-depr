@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: ''
+about: 'Создайте bug report, который поможет улучшить дизайн-систему Eduprog.'
 title: ''
 labels: bug
 assignees: ''
