@@ -1,5 +1,5 @@
 ---
-name: Bug report
+name: Сообщение об ошибке
 about: 'Создайте bug report, который поможет улучшить дизайн-систему Eduprog.'
 title: ''
 labels: bug
