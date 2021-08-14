@@ -1,6 +1,6 @@
 ---
-name: Question
-about: 'Add question about Eduprog: Testing module'
+name: Вопрос
+about: 'Создайте вопрос для дизайн-системы Eduprog'
 title: ''
 labels: question
 assignees: ''
