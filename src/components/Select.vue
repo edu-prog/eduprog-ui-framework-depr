@@ -52,6 +52,7 @@
               :__input_opts="elem"
               position="left"
               type="main"
+              :checked="value.indexOf(elem) != -1"
             >
               {{ elem }}
             </Checkbox>
