@@ -1,8 +1,11 @@
 <template @onload.native="onSelectLoaded">
   <div>
-    <span v-if="!IsMobile" class="select-wrapper">
+    <span
+      v-if="!IsMobile"
+      class="select-wrapper"
+      v-on-clickaway="closeDropdown"
+    >
       <TextInput
-        v-on-clickaway="closeDropdown"
         ref="select"
         input_class="select-input"
         @click.native="toggleDropdown"
@@ -11,7 +14,7 @@
         :val="!multiple ? value : ''"
         readonly
       >
-        <span :class="['select-icon', isActive ? 'select-icon-activate' : '']">
+        <span :class="['select-icon', isActive && 'select-icon-activate']">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -25,7 +28,7 @@
         </span>
       </TextInput>
 
-      <div :class="['dropdown', isActive ? 'dropdown-activate' : '']">
+      <div class="dropdown" v-if="isActive">
         <div v-if="!multiple" class="dropdown-menu">
           <div
             class="dropdown-item"
@@ -114,13 +117,13 @@
 </template>
 
 <script>
-import { isMobile } from 'mobile-device-detect';
-import { mixin as clickaway } from 'vue-clickaway';
-import Checkbox from './Checkbox.vue';
-import TextInput from './TextInput.vue';
+import { isMobile } from "mobile-device-detect";
+import { mixin as clickaway } from "vue-clickaway";
+import Checkbox from "./Checkbox.vue";
+import TextInput from "./TextInput.vue";
 
 export default {
-  name: 'Dropdown',
+  name: "Dropdown",
   components: {
     TextInput,
     Checkbox,
@@ -132,7 +135,7 @@ export default {
   props: {
     label: {
       type: String,
-      default: 'Выберите',
+      default: "Выберите",
       required: true,
     },
     options: {
@@ -153,11 +156,11 @@ export default {
     };
   },
   model: {
-    event: 'update',
+    event: "update",
   },
   methods: {
     parseMultipleValue(value) {
-      return String(value.join(', '));
+      return String(value.join(", "));
     },
     onSelectLoaded() {
       [this.$refs.select.content] = this.options;
@@ -166,15 +169,13 @@ export default {
       this.isActive = !this.isActive;
     },
     closeDropdown() {
-      if (!this.multiple) {
-        this.isActive = false;
-      }
+      this.isActive = false;
     },
     itemClickHandler(event) {
       if (!this.IsMobile) {
         const { select } = this.$refs;
         if (this.multiple) {
-          select.content = '';
+          select.content = "";
           const val = event.target.dataset.opt;
           if (val !== undefined) {
             if (this.value.includes(val)) {
@@ -188,14 +189,15 @@ export default {
         } else {
           select.content = event.target.innerText;
           this.value = select.content;
+          this.closeDropdown();
         }
       }
 
-      this.$emit('update', this.value);
+      this.$emit("update", this.value);
     },
     onMobileSelectSelected() {
       this.isActive = !this.isActive;
-      this.$emit('update', this.value);
+      this.$emit("update", this.value);
     },
   },
 };
@@ -220,17 +222,10 @@ export default {
 .dropdown {
   display: flex;
   position: relative;
-  opacity: 0;
   transition: opacity 0.05s linear;
-  pointer-events: none;
-
-  &-activate {
-    pointer-events: auto;
-    opacity: 1;
-  }
 
   &-menu {
-    width: calc(100% - 1rem);
+    width: 100%;
     z-index: 1000;
     margin-top: 0.5rem;
     position: absolute;
