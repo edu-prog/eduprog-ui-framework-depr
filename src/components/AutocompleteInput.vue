@@ -162,7 +162,7 @@ export default {
     onKeyDown(event) {
       if (this.isActive) {
         event.preventDefault();
-        if (this.focusedItem < this.options.length) {
+        if (this.focusedItem < this.resultItems.length) {
           this.focusedItem++;
           this.$refs.autocompleteItems[this.focusedItem - 1].focus();
         }
