@@ -13,6 +13,7 @@
 - [IconButton](IconButton.md)
 - [Link](Link.md)
 - [Modal](Modal.md)
+- [Pagination](Pagination.md)
 - [Paragraph](Paragraph.md)
 - [PhoneInput](PhoneInput.md)
 - [Progress](Progress.md)
