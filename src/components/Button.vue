@@ -10,6 +10,7 @@
       isActive && 'btn-clicked',
       mode ? `btn-${mode}` : '',
     ]"
+    :style="{padding: `${padding}rem`}"
   >
     <slot name="icon_right"></slot>
 
@@ -86,12 +87,16 @@ export default {
     badge_color: {
       type: String,
       required: false,
-      validator(value) {
+      validation(value) {
         return ["primary", "secondary", "accent", "success", "danger"].includes(
           value
         );
       },
     },
+    padding: {
+      type: Number,
+      required: false,
+    }
   },
   data() {
     return { isActive: false };
