@@ -16,9 +16,10 @@ import Pagination from "eduprog-ds/src/components/Pagination.vue";
 ![Example](https://i.imgur.com/hey9vbg.gif)
 
 ```vue
+
 <Row>
-  <Column>
-    <Pagination :length="400" :total_visible="10"/>
-  </Column>
+<Column>
+  <Pagination :length="400" :total_visible="10"/>
+</Column>
 </Row>
 ```
