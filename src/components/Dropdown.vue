@@ -1,25 +1,24 @@
 <template>
   <div
-    class="dropdown"
-    v-on-clickaway="onDropdownAwayClicked"
-    @mouseleave="onDropdownMouseLeave"
+      v-on-clickaway="onDropdownAwayClicked"
+      class="dropdown"
+      @mouseleave="onDropdownMouseLeave"
   >
     <div
-      ref="dropdownToggle"
-      class="dropdown-toggle"
-      @click="onDropdownToogleClicked"
-      @mouseover="onDropdownMouseOver"
+        ref="dropdownToggle"
+        class="dropdown-toggle"
+        @click="onDropdownToogleClicked"
+        @mouseover="onDropdownMouseOver"
     >
       <slot name="toggle"></slot>
     </div>
-    <transition name="fade" appear>
+    <transition appear name="fade">
       <div
-        v-if="isActive"
-        :class="[direction && `dropdown-item-${direction}`]"
-        :style="[left && { left: `${left}rem` }]"
-        class="dropdown-item"
-        @mouseover="onDropdownMouseOverOnItem"
-        @mouseleave="onDropdownMouseLeaveFromItem"
+          v-if="isActive"
+          :class="['dropdown-item', direction && `dropdown-item-${direction}`]"
+          :style="{width: `${max_width}px`}"
+          @mouseleave="onDropdownMouseLeaveFromItem"
+          @mouseover="onDropdownMouseOverOnItem"
       >
         <div class="dropdown-item-content">
           <slot name="content"></slot>
@@ -30,7 +29,7 @@
 </template>
 
 <script>
-import { mixin as clickaway } from "vue-clickaway";
+import {mixin as clickaway} from "vue-clickaway";
 
 export default {
   name: "Dropdown",
@@ -51,15 +50,15 @@ export default {
         ].includes(value);
       },
     },
-    left: {
-      type: Number,
-      required: false,
-    },
     hover: {
       type: Boolean,
       required: false,
       default: false,
     },
+    max_width: {
+      type: Number,
+      required: false,
+    }
   },
   data() {
     return {
@@ -137,10 +136,11 @@ export default {
 
     &-content {
       box-shadow: 0 0 0.75rem 0.25rem rgba(0, 0, 0, 0.2);
-      max-width: 280px;
+      width: 100%;
       border-radius: 0.5rem;
       background-color: #ffffff;
       overflow: hidden;
+      padding: 0.5rem;
     }
 
     &-bottom-left {

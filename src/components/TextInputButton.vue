@@ -5,7 +5,7 @@
     </div>
 
     <div class="TextInput-Button__input">
-      <input type="text" :value="label" readonly />
+      <input ref="TextInputButtonInput" :value="label" readonly type="text"/>
     </div>
 
     <div class="TextInput-Button__right-icon">
@@ -28,14 +28,16 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/styles/_global.scss";
+
 .TextInput-Button {
   display: flex;
+  box-sizing: border-box;
   align-items: center;
   background-color: $color-platinum;
-  height: 35px;
+  height: 3.125rem;
   border-radius: 0.5rem;
   padding: 0.5rem;
-  width: calc(100% - 1rem);
+  width: 100%;
   cursor: pointer;
   transition: background 0.25s ease;
   position: relative;
@@ -46,7 +48,10 @@ export default {
 
   &__input {
     margin-left: 0.5rem;
+    width: 100%;
+
     input {
+      width: 100%;
       border: none;
       outline: none;
       background-color: inherit;

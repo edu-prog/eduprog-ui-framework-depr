@@ -1,8 +1,11 @@
 <template>
   <div class="TextInput-field">
     <div class="form-field">
+      <span class="additional-content-left">
+        <slot name="additional_left"></slot>
+      </span>
       <span
-        :class="[
+          :class="[
           'form-field-label',
           isActive || content ? 'form-field-label-focused' : '',
         ]"
@@ -10,20 +13,20 @@
         {{ label }}
       </span>
       <input
-        ref="textInput"
-        v-model="content"
-        :autocomplete="autocomplete"
-        :class="[
+          ref="textInput"
+          v-model="content"
+          :autocomplete="autocomplete"
+          :class="[
           'form-field-input-control',
           `input-size-${size}`,
           isActive || content ? 'input-focused' : '',
           input_class,
           getValidationStatus(),
         ]"
-        :maxlength="max_length"
-        :placeholder="isActive ? mask : ''"
-        :readonly="readonly"
-        :style="{
+          :maxlength="max_length"
+          :placeholder="isActive ? mask : ''"
+          :readonly="readonly"
+          :style="{
           paddingRight:
             validation.status > 0
               ? validation.status > 0 && type === 'password'
@@ -32,29 +35,23 @@
               : type === 'password'
               ? '2.75rem'
               : '0.5rem',
-
-          width:
-            validation.status > 0
-              ? type === 'password'
-                ? 'calc(100% - 4.75rem'
-                : 'calc(100% - 2.75rem)'
-              : type === 'password'
-              ? 'calc(100% - 52px)'
-              : 'calc(100% - 16px)',
         }"
-        :type="type === 'password' ? (isShow ? 'text' : 'password') : type"
-        :value="content"
-        @blur="onInputBlur"
-        @focus="onInputFocus"
-        @input="onInputUpdated"
+          :type="type === 'password' ? (isShow ? 'text' : 'password') : type"
+          :value="content"
+          @blur="onInputBlur"
+          @focus="onInputFocus"
+          @input="onInputUpdated"
       />
-      <slot></slot>
+      <span class="additional-content-right">
+        <slot name="additional_right"></slot>
+      </span>
+
       <span v-if="validation.status > 0">
-        <svg class="validation-icon"
-             :style="type === 'password' && {right: '2.5rem'}"
+        <svg :style="type === 'password' && {right: '2.5rem'}"
+             class="validation-icon"
              height="24px"
-             width="24px"
              viewBox="0 0 24 24"
+             width="24px"
              xmlns="http://www.w3.org/2000/svg">
           <path d="M9 16.2l-3.5-3.5c-.39-.39-1.01-.39-1.4 0-.39.39-.39
                    1.01 0 1.4l4.19 4.19c.39.39 1.02.39 1.41 0L20.3
@@ -66,28 +63,28 @@
         <span @click="togglePassword">
           <span v-if="isShow" class="password-toggle">
             <svg
-              fill="#000000"
-              height="24px"
-              viewBox="0 0 24 24"
-              width="24px"
-              xmlns="http://www.w3.org/2000/svg"
+                fill="#000000"
+                height="24px"
+                viewBox="0 0 24 24"
+                width="24px"
+                xmlns="http://www.w3.org/2000/svg"
             >
-              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M0 0h24v24H0z" fill="none"/>
                 <path
-                  d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11
+                    d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11
                     7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76
                     0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66
-                    0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+                    0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
             </svg>
           </span>
           <span v-else class="password-toggle">
             <svg
-              fill="#000000"
-              height="24px"
-              viewBox="0 0 24 24"
-              width="24px"
-              xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 0h24v24H0zm0 0h24v24H0zm0 0h24v24H0zm0 0h24v24H0z" fill="none" />
+                fill="#000000"
+                height="24px"
+                viewBox="0 0 24 24"
+                width="24px"
+                xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0h24v24H0zm0 0h24v24H0zm0 0h24v24H0zm0 0h24v24H0z" fill="none"/>
               <path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92
                       2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4
                       0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28
@@ -95,7 +92,7 @@
                       0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53
                       9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0
                       .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5
-                      0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z" />
+                      0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"/>
             </svg>
           </span>
         </span>
@@ -103,8 +100,8 @@
     </div>
 
     <div
-      ref="validationMessage"
-      :class="[
+        ref="validationMessage"
+        :class="[
         'validation-message',
         validation.status === 0 ? 'validation-message-show' : '',
       ]"
@@ -113,7 +110,7 @@
 </template>
 
 <script>
-import { BreakpointsLabel } from "../utils/breakpoins";
+import {BreakpointsLabel} from "../utils/breakpoins";
 
 export default {
   name: "TextInput",
@@ -188,13 +185,13 @@ export default {
   },
   methods: {
     forceValidate() {
-      const { validationMessage } = this.$refs;
+      const {validationMessage} = this.$refs;
       const validationStatus = this.validation.regexpr.test(this.content);
 
       this.validation.status = Number(validationStatus);
       validationMessage.innerText = !validationStatus
-        ? this.validation_message
-        : "";
+          ? this.validation_message
+          : "";
     },
     toggleInput() {
       this.isActive = !this.isActive;
@@ -248,6 +245,7 @@ export default {
 .form-field {
   margin: 5px 0;
   position: relative;
+  display: flex;
 
   &-label {
     position: absolute;
@@ -275,8 +273,10 @@ export default {
   }
 
   &-input-control {
-    width: calc(100% - 30px);
-    height: 35px;
+    font-family: $font-family;
+    box-sizing: border-box;
+    width: 100%;
+    height: 3.125rem;
     border: 0;
     outline: 0;
     padding: 0.5rem;
@@ -330,6 +330,22 @@ export default {
     &:hover {
       background-color: darken($color-platinum, 15%);
     }
+  }
+}
+
+.additional-content {
+  &-left {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &-right {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 
