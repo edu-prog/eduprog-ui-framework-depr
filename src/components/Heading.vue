@@ -1,31 +1,31 @@
 <template>
   <div class="heading">
-    <div class="heading-item" v-if="size === 'xxl'">
+    <div v-if="size === 'xxl'" class="heading-item">
       <h1 :class="[align ? `heading-item-align-${align}` : '']">
         <slot></slot>
       </h1>
     </div>
-    <div class="heading-item" v-else-if="size === 'xl'">
+    <div v-else-if="size === 'xl'" class="heading-item">
       <h2 :class="[align ? `heading-item-align-${align}` : '']">
         <slot></slot>
       </h2>
     </div>
-    <div class="heading-item" v-else-if="size === 'l'">
+    <div v-else-if="size === 'l'" class="heading-item">
       <h3 :class="[align ? `heading-item-align-${align}` : '']">
         <slot></slot>
       </h3>
     </div>
-    <div class="heading-item" v-else-if="size === 'm'">
+    <div v-else-if="size === 'm'" class="heading-item">
       <h4 :class="[align ? `heading-item-align-${align}` : '']">
         <slot></slot>
       </h4>
     </div>
-    <div class="heading-item" v-else-if="size === 's'">
+    <div v-else-if="size === 's'" class="heading-item">
       <h5 :class="[align ? `heading-item-align-${align}` : '']">
         <slot></slot>
       </h5>
     </div>
-    <div class="heading-item" v-else-if="size === 'xs'">
+    <div v-else-if="size === 'xs'" class="heading-item">
       <h6 :class="[align ? `heading-item-align-${align}` : '']">
         <slot></slot>
       </h6>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { BreakpointsLabel } from '../utils/breakpoins';
+import {BreakpointsLabel} from '../utils/breakpoins';
 
 export default {
   name: 'Heading',
@@ -56,7 +56,9 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
+@use "sass:math";
+
 $h1-font-size: 4.2rem !default;
 $h2-font-size: 3.56rem !default;
 $h3-font-size: 2.92rem !default;
@@ -69,41 +71,48 @@ $h6-font-size: 1.15rem !default;
     h1 {
       font-size: $h1-font-size;
       line-height: 110%;
-      margin: ($h1-font-size / 1.5) 0 ($h1-font-size / 2.5) 0;
+      margin: math.div($h1-font-size, 1.5) 0 math.div($h1-font-size, 2.5) 0;
     }
+
     h2 {
       font-size: $h2-font-size;
       line-height: 110%;
-      margin: ($h2-font-size / 1.5) 0 ($h2-font-size / 2.5) 0;
+      margin: math.div($h2-font-size, 1.5) 0 math.div($h2-font-size, 2.5) 0;
     }
+
     h3 {
       font-size: $h3-font-size;
       line-height: 110%;
-      margin: ($h3-font-size / 1.5) 0 ($h3-font-size / 2.5) 0;
+      margin: math.div($h3-font-size, 1.5) 0 math.div($h3-font-size, 2.5) 0;
     }
+
     h4 {
       font-size: $h4-font-size;
       line-height: 110%;
-      margin: ($h4-font-size / 1.5) 0 ($h4-font-size / 2.5) 0;
+      margin: math.div($h4-font-size, 1.5) 0 math.div($h4-font-size, 2.5) 0;
     }
+
     h5 {
       font-size: $h5-font-size;
       line-height: 110%;
-      margin: ($h5-font-size / 1.5) 0 ($h5-font-size / 2.5) 0;
+      margin: math.div($h5-font-size, 1.5) 0 math.div($h5-font-size, 2.5) 0;
     }
+
     h6 {
       font-size: $h6-font-size;
       line-height: 110%;
-      margin: ($h6-font-size / 1.5) 0 ($h6-font-size / 2.5) 0;
+      margin: math.div($h6-font-size, 1.5) 0 math.div($h6-font-size, 2.5) 0;
     }
 
     &-align {
       &-left {
         text-align: left;
       }
+
       &-center {
         text-align: center;
       }
+
       &-right {
         text-align: right;
       }
