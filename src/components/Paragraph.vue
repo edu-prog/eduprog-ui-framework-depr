@@ -1,6 +1,5 @@
 <template>
-  <p :class="['paragraph', `paragraph-${type}`, `paragraph-${align}`, wrap && `paragraph-wrap`]"
-     :style="{color: color, backgroundColor: wrap}">
+  <p :class="['paragraph', `paragraph-${type}`, `paragraph-${align}`, wrap && `paragraph-wrap`]">
     <slot></slot>
   </p>
 </template>
@@ -25,7 +24,7 @@ export default {
         return ['left', 'right', 'center', 'justify'].includes(value);
       }
     },
-    color: {
+    text_color: {
       type: String,
       default: "#000000",
       required: false,
@@ -34,12 +33,9 @@ export default {
       }
     },
     wrap: {
-      type: String,
-      default: "inherit",
+      type: Boolean,
+      default: false,
       required: false,
-      validator(value) {
-        return value.match(/(?:#|0x)(?:[a-f0-9]{3}|[a-f0-9]{6})\b|(?:rgb|hsl)a?\([^)]*\)/i)
-      }
     },
   },
 };
