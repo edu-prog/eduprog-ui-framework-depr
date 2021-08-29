@@ -108,6 +108,8 @@ export default {
       setTimeout(() => {
         this.isActive = false;
       }, 400);
+
+      this.$emit("click");
     },
   },
 };
