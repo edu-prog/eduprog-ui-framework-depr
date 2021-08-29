@@ -7,6 +7,7 @@
     >
       <TextInput
           ref="select"
+          :additional_content_right="0.5"
           :label="label"
           :val="!multiple ? value : ''"
           input_class="select-input"
@@ -50,7 +51,7 @@
           >
             <Checkbox
                 :__input_opts="elem"
-                :checked="value.indexOf(elem) != -1"
+                :checked="value.indexOf(elem) !== -1"
                 position="left"
                 style="width: 100%; height: 100%; padding: 0.5rem"
                 type="main"
@@ -214,8 +215,7 @@ export default {
   height: 24px;
   position: absolute;
   transform: translateY(-50%);
-  margin-left: -2rem;
-  margin-top: 1.5rem;
+  right: 0;
   pointer-events: none;
   transition: 0.2s ease;
 

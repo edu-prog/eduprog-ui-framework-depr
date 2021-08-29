@@ -42,7 +42,7 @@
           @focus="onInputFocus"
           @input="onInputUpdated"
       />
-      <span class="additional-content-right">
+      <span :style="{right: `${additional_content_right}rem`}" class="additional-content-right">
         <slot name="additional_right"></slot>
       </span>
 
@@ -169,7 +169,12 @@ export default {
       type: String,
       required: false,
       default: ""
-    }
+    },
+    additional_content_right: {
+      type: Number,
+      required: false,
+      default: 0.5,
+    },
   },
   data() {
     return {
@@ -224,19 +229,15 @@ export default {
         return "input-validation-valid";
       }
       throw new Error("Invalid validatation status was setted.");
-    }
-  },
-  computed: {
-    slotPassed() {
-      return this.$slots.default;
-    }
+    },
   },
   mounted() {
     if (this.autofocus) {
       this.$refs.textInput.focus();
     }
   }
-};
+}
+
 </script>
 
 <style lang="scss" scoped>

@@ -1,7 +1,6 @@
 <template>
   <button
-    @click="toggleState"
-    :class="[
+      :class="[
       'btn',
       round && 'btn-round',
       `btn-${type}`,
@@ -10,19 +9,20 @@
       isActive && 'btn-clicked',
       mode ? `btn-${mode}` : '',
     ]"
-    :style="{padding: `${padding}rem`}"
+      :style="{padding: `${padding}rem`}"
+      @click="toggleState"
   >
     <slot name="icon_right"></slot>
 
     <span class="btn-label">
       <slot></slot>
       <span
-        :class="[
+          v-if="badge"
+          :class="[
           'badge-container',
           badge && `badge-container-${badge_type}`,
           badge_color && `badge-container-${badge_color}`,
         ]"
-        v-if="badge"
       >
         {{ badge }}
       </span>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { BreakpointsLabel } from "../utils/breakpoins";
+import {BreakpointsLabel} from "../utils/breakpoins";
 
 export default {
   name: "Button",
@@ -80,16 +80,16 @@ export default {
       type: String,
       required: false,
       default: "edge",
-      validation(value) {
+      validator(value) {
         return ["edge", "inside"].includes(value);
       },
     },
     badge_color: {
       type: String,
       required: false,
-      validation(value) {
+      validator(value) {
         return ["primary", "secondary", "accent", "success", "danger"].includes(
-          value
+            value
         );
       },
     },
@@ -99,7 +99,7 @@ export default {
     }
   },
   data() {
-    return { isActive: false };
+    return {isActive: false};
   },
   methods: {
     toggleState() {
@@ -113,7 +113,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import "../assets/styles/global";
 
 .btn {
@@ -131,10 +131,11 @@ export default {
   white-space: nowrap;
   transform: scale(1);
   transition: background 0.25s ease, width 0.25s ease, color 0.25s ease,
-    transform 0.25s ease;
+  transform 0.25s ease;
   border: 2px;
   border-radius: 0.5rem;
   font-family: $font-family;
+
   .btn-label {
     text-align: center;
   }
@@ -271,15 +272,19 @@ export default {
   &-primary {
     background-color: $color-primary;
   }
+
   &-secondary {
     background-color: $color-secondary;
   }
+
   &-accent {
     background-color: $color-accent;
   }
+
   &-success {
     background-color: $color-success;
   }
+
   &-danger {
     background-color: $color-danger;
   }

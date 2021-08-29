@@ -1,10 +1,11 @@
 <template>
   <div
-    :class="[
+      :class="[
       'card',
-      size ? `card-${size}` : '',
-      align ? `card-${align}` : '',
-      type ? `card-${type}` : '',
+      size && `card-${size}`,
+      align && `card-${align}`,
+      type && `card-${type}`,
+      hoverable && 'card-hoverable'
     ]"
   >
     <slot></slot>
@@ -12,7 +13,7 @@
 </template>
 
 <script>
-import { BreakpointsLabel } from '../utils/breakpoins';
+import {BreakpointsLabel} from '../utils/breakpoins';
 
 export default {
   name: 'Card',
@@ -35,11 +36,16 @@ export default {
       required: false,
       default: 'shadow',
     },
+    hoverable: {
+      type: Boolean,
+      required: false,
+      default: false,
+    }
   },
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import "../assets/styles/global";
 
 .card {
@@ -50,8 +56,12 @@ export default {
   width: 100%;
 
   &-shadow {
-    box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    transition: box-shadow .3s cubic-bezier(.25, .1, .25, .1);
+    box-shadow: 0 2px 8px rgba(18, 17, 36, 0.04), 0 4px 32px rgba(18, 17, 36, 0.08);
+  }
+
+  &-hoverable:hover {
+    box-shadow: 0 2px 8px rgba(18, 17, 36, 0.1), 0 4px 32px rgba(18, 17, 36, 0.2);
   }
 
   &-border {

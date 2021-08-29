@@ -39,7 +39,7 @@ export default {
       type: String,
       required: false,
       default: "bottom-left",
-      validation(value) {
+      validator(value) {
         return [
           "bottom-left",
           "bottom-center",

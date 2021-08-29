@@ -25,7 +25,7 @@ export default {
       type: String,
       required: false,
       default: "m",
-      validation(value) {
+      validator(value) {
         return BreakpointsLabel.includes(value);
       }
     }
