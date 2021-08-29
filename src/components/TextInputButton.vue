@@ -1,5 +1,5 @@
 <template>
-  <div class="TextInput-Button">
+  <div class="TextInput-Button" @click="$emit('click')">
     <div class="TextInput-Button__left-icon">
       <slot name="left-icon"></slot>
     </div>
