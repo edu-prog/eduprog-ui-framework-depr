@@ -39,6 +39,7 @@
           :type="type === 'password' ? (isShow ? 'text' : 'password') : type"
           :value="content"
           @blur="onInputBlur"
+          @click="$emit('click')"
           @focus="onInputFocus"
           @input="onInputUpdated"
       />

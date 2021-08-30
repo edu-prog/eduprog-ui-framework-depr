@@ -13,7 +13,7 @@
           input_class="select-input"
           readonly
           type="text"
-          @click.native="toggleDropdown"
+          @click="toggleDropdown"
       >
         <template #additional_right>
           <span :class="['select-icon', isActive && 'select-icon-activate']">

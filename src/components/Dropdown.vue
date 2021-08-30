@@ -140,7 +140,6 @@ export default {
       border-radius: 0.5rem;
       background-color: #ffffff;
       overflow: hidden;
-      padding: 0.5rem;
     }
 
     &-bottom-left {
