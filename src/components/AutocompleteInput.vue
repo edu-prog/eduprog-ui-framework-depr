@@ -202,7 +202,7 @@ export default {
       overflow: hidden;
       box-shadow: 0 0 28px 0 rgba(0, 0, 0, 0.2), 0 0 4px 0 rgba(0, 0, 0, 0.1),
       inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-      z-index: 999;
+      z-index: 10;
       background-color: $color-white;
 
       &-item {
@@ -229,6 +229,7 @@ export default {
       height: 100%;
       left: 50%;
       transform: translate(-50%, 0);
+      z-index: 10;
     }
 
     &-modal {
@@ -237,7 +238,6 @@ export default {
       width: 85%;
       height: 100%;
       padding: 1rem;
-      z-index: 999;
       border-radius: 0.5rem;
 
       &::before {
