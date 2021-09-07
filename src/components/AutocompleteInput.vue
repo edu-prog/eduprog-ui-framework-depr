@@ -204,6 +204,19 @@ export default {
       inset 0 0 0 1px rgba(255, 255, 255, 0.5);
       z-index: 10;
       background-color: $color-white;
+      max-height: 190px;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 0.25rem;
+        height: 0.25rem;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $color-gray;
+        border-radius: 0.5rem;
+      }
+
 
       &-item {
         padding: 0.5rem 0.5rem;
