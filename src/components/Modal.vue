@@ -19,7 +19,8 @@
           'modal-body',
           fullscreen && 'modal-body-fullscreen',
           fluid && 'modal-body-fluid',
-          size && `modal-body-${size}`
+          size && `modal-body-${size}`,
+          scrollable && 'modal-body-scrollable',
         ]"
           role="dialog"
       >
