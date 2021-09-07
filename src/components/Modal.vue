@@ -138,6 +138,7 @@ export default {
     &-scrollable {
       overflow-x: hidden;
       overflow-y: auto;
+      height: 60vh;
 
       &::-webkit-scrollbar {
         width: 0.25rem;
@@ -145,7 +146,7 @@ export default {
       }
 
       &::-webkit-scrollbar-thumb {
-        background-color: $color-platinum;
+        background-color: $color-gray;
         border-radius: 0.5rem;
       }
     }
