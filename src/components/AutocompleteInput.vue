@@ -237,6 +237,7 @@ export default {
       width: 85%;
       height: 100%;
       padding: 1rem;
+      z-index: 999;
       border-radius: 0.5rem;
 
       &::before {
