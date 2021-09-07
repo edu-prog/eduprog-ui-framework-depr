@@ -138,7 +138,6 @@ export default {
     &-scrollable {
       overflow-x: hidden;
       overflow-y: auto;
-      height: 60vh;
 
       &::-webkit-scrollbar {
         width: 0.25rem;
