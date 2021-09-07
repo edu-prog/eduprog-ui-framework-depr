@@ -6,21 +6,22 @@
 
     <transition appear name="fade">
       <div
-        v-if="isActive"
-        class="modal-wrapper"
-        @click="onModalClickedAway"
+          v-if="isActive"
+          :class="['modal-wrapper', scrollable && 'modal-scrollable']"
+          @click="onModalClickedAway"
       ></div>
     </transition>
 
     <transition appear name="pop">
       <div
-        :class="[
+          v-if="isActive"
+          :class="[
           'modal-body',
           fullscreen && 'modal-body-fullscreen',
           fluid && 'modal-body-fluid',
+          size && `modal-body-${size}`
         ]"
-        v-if="isActive"
-        role="dialog"
+          role="dialog"
       >
         <div class="modal-header">
           <slot name="modal-header"></slot>
@@ -52,6 +53,16 @@ export default {
       require: false,
       default: false,
     },
+    scrollable: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    size: {
+      type: String,
+      required: false,
+      default: "m",
+    }
   },
   data() {
     return {
@@ -114,6 +125,22 @@ export default {
       width: 100%;
       max-height: 100vh;
       height: 100%;
+    }
+
+    &-s {
+      max-width: 300px;
+    }
+
+    &-m {
+      max-width: 500px;
+    }
+
+    &-l {
+      max-width: 800px;
+    }
+
+    &-xl {
+      max-width: 1140px;
     }
   }
 }
