@@ -87,6 +87,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/styles/global";
+
 .modal {
   &-toggle {
     display: inline-block;
@@ -136,6 +138,16 @@ export default {
     &-scrollable {
       overflow-x: hidden;
       overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 0.25rem;
+        height: 0.25rem;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $color-platinum;
+        border-radius: 0.5rem;
+      }
     }
 
     &-s {
