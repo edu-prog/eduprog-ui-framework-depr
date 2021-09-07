@@ -77,6 +77,11 @@ export default {
       this.isActive = false;
     },
   },
+  watch: {
+    active() {
+      document.body.style.overflow = (this.isActive && this.scrollable) ? 'hidden' : '';
+    }
+  }
 };
 </script>
 
@@ -125,6 +130,11 @@ export default {
       width: 100%;
       max-height: 100vh;
       height: 100%;
+    }
+
+    &-scrollable {
+      overflow-x: hidden;
+      overflow-y: auto;
     }
 
     &-s {
