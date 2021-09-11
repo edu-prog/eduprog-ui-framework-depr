@@ -128,12 +128,6 @@ export default {
     transition: opacity 0.25s ease;
     position: absolute;
 
-    .dropdown-clearly {
-      &::before {
-        opacity: 0;
-      }
-    }
-
     &::before {
       content: "";
       position: absolute;
@@ -212,6 +206,12 @@ export default {
         transform: translateX(-50%) rotate(135deg);
       }
     }
+  }
+}
+
+.dropdown-clearly {
+  &::before {
+    opacity: 0;
   }
 }
 
