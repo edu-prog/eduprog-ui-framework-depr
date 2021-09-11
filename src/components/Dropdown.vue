@@ -15,7 +15,7 @@
     <transition appear name="fade">
       <div
           v-if="isActive"
-          :class="['dropdown-item', direction && `dropdown-item-${direction}`]"
+          :class="['dropdown-item', direction && `dropdown-item-${direction}`, clearly && 'dropdown-clearly']"
           :style="{width: `${max_width}px`}"
           @mouseleave="onDropdownMouseLeaveFromItem"
           @mouseover="onDropdownMouseOverOnItem"
@@ -58,6 +58,11 @@ export default {
     max_width: {
       type: Number,
       required: false,
+    },
+    clearly: {
+      type: Boolean,
+      required: false,
+      default: false,
     }
   },
   data() {
@@ -122,6 +127,12 @@ export default {
     z-index: 10;
     transition: opacity 0.25s ease;
     position: absolute;
+
+    .dropdown-clearly {
+      &::before {
+        opacity: 0;
+      }
+    }
 
     &::before {
       content: "";
