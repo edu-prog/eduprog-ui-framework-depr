@@ -153,7 +153,7 @@ export default {
     border-radius: 0.5rem;
 
     @media #{$small-and-down} {
-      max-width: 300px;
+      width: 300px;
       height: 80vh;
     }
 
@@ -172,17 +172,19 @@ export default {
     }
 
     &-scrollable {
-      overflow-x: hidden;
-      overflow-y: auto;
+      .modal-content {
+        overflow-x: hidden;
+        overflow-y: auto;
 
-      &::-webkit-scrollbar {
-        width: 0.25rem;
-        height: 0.25rem;
-      }
+        &::-webkit-scrollbar {
+          width: 0.25rem;
+          height: 0.25rem;
+        }
 
-      &::-webkit-scrollbar-thumb {
-        background-color: $color-gray;
-        border-radius: 0.5rem;
+        &::-webkit-scrollbar-thumb {
+          background-color: $color-gray;
+          border-radius: 0.5rem;
+        }
       }
     }
 
