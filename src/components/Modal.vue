@@ -155,6 +155,7 @@ export default {
     @media #{$small-and-down} {
       width: 300px;
       height: 80vh;
+      transform: translate(-50%, -46%);
     }
 
     &-fluid {
