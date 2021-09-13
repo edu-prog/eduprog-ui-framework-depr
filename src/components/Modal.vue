@@ -152,6 +152,10 @@ export default {
     padding: 1rem;
     border-radius: 0.5rem;
 
+    @media #{$small-and-down} {
+      width: 300px;
+    }
+
     &-fluid {
       max-width: 95vh;
       width: 100%;

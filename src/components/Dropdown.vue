@@ -114,6 +114,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/styles/global";
+
 .dropdown {
   position: relative;
   display: inline-block;
