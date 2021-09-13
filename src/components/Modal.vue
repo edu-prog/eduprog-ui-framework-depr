@@ -153,7 +153,8 @@ export default {
     border-radius: 0.5rem;
 
     @media #{$small-and-down} {
-      width: 300px;
+      max-width: 300px;
+      height: 80vh;
     }
 
     &-fluid {
