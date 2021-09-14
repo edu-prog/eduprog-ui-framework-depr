@@ -167,6 +167,7 @@ export default {
     @media #{$small-and-down} {
       width: 300px;
       height: 80vh;
+      top: initial;
       bottom: 0;
       transform: translate(-50%, 0);
     }
