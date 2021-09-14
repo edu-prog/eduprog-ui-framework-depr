@@ -61,9 +61,6 @@ export default {
   directives: {
     isMobile,
   },
-  computed: {
-    IsMobile: isMobile
-  },
   name: "Modal",
   props: {
     fullscreen: {
@@ -90,6 +87,7 @@ export default {
   data() {
     return {
       isActive: false,
+      IsMobile: isMobile,
     };
   },
   methods: {
