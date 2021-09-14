@@ -93,6 +93,7 @@ export default {
   methods: {
     onToggleClicked() {
       this.isActive = !this.isActive;
+      document.body.style.overflow = (this.isActive && this.scrollable) ? 'hidden' : '';
     },
     closeModal() {
       this.isActive = false;
@@ -101,11 +102,6 @@ export default {
       this.closeModal();
     },
   },
-  watch: {
-    active() {
-      document.body.style.overflow = (this.isActive && this.scrollable) ? 'hidden' : '';
-    }
-  }
 };
 </script>
 
