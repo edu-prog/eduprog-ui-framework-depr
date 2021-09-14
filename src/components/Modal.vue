@@ -191,6 +191,10 @@ export default {
         overflow-x: hidden;
         overflow-y: auto;
 
+        @media #{$small-and-down} {
+          padding-right: 0.25rem;
+        }
+
         &::-webkit-scrollbar {
           width: 0.25rem;
           height: 0.25rem;
