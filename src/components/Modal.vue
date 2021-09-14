@@ -93,7 +93,10 @@ export default {
   methods: {
     onToggleClicked() {
       this.isActive = !this.isActive;
-      document.body.style.overflow = (this.isActive && this.scrollable) ? 'hidden' : '';
+
+      setTimeout(() => {
+        document.body.style.overflow = (this.isActive && this.scrollable) ? 'hidden' : '';
+      }, 100)
     },
     closeModal() {
       this.isActive = false;
