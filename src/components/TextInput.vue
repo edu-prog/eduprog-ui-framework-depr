@@ -176,6 +176,11 @@ export default {
       required: false,
       default: 0.5,
     },
+    invalid: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   data() {
     return {
@@ -185,7 +190,7 @@ export default {
       forceMaskHide: false,
       validation: {
         regexpr: this.validation_pattern,
-        status: -1
+        status: this.invalid ? 0 : -1
       }
     };
   },
