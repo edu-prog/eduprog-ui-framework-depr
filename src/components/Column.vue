@@ -6,10 +6,10 @@
 
 <script>
 export default {
-  name: 'Column',
+  name: "Column",
   props: {
     col: {
-      type: Number,
+      type: String,
       required: false,
     },
   },
