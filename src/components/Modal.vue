@@ -165,7 +165,7 @@ export default {
       border-radius: 50%;
       width: 2rem;
       height: 2rem;
-      
+
 
       &:hover {
         background-color: $color-platinum;
