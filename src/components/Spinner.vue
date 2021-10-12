@@ -11,29 +11,32 @@
 </template>
 
 <script>
-export default {
-  name: 'Spinner',
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "Spinner",
   props: {
     type: {
       type: String,
       required: true,
       validator(value) {
-        return ['primary', 'secondary', 'accent'].includes(value);
+        return ["primary", "secondary", "accent"].includes(value);
       },
     },
     mode: {
       type: String,
       required: true,
       validator(value) {
-        return ['border', 'growing'].includes(value);
+        return ["border", "growing"].includes(value);
       },
     },
   },
-};
+});
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import "../assets/styles/global";
+
 .spinner {
   &-border {
     display: inline-block;
@@ -83,6 +86,7 @@ export default {
       background-color: $color-accent;
     }
   }
+
   &-label {
     display: none;
   }

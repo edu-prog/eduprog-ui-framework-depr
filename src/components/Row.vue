@@ -5,8 +5,10 @@
 </template>
 
 <script>
-export default {
-  name: 'Row',
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "Row",
   props: {
     container: {
       type: Boolean,
@@ -18,5 +20,5 @@ export default {
       required: false,
     },
   },
-};
+});
 </script>

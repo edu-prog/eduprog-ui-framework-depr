@@ -8,16 +8,17 @@
 import {
   BreakpointsLabel,
   BreakpointsLabelConvertToLarge,
-} from '../utils/breakpoins';
+} from "../utils/breakpoins";
+import { defineComponent } from "vue";
 
-export default {
-  name: 'Container',
+export default defineComponent({
+  name: "Container",
   props: {
     size: {
       type: String,
-      default: 's',
+      default: "s",
       validator(value) {
-        return [...BreakpointsLabel, 'fluid'].includes(value);
+        return [...BreakpointsLabel, "fluid"].includes(value);
       },
     },
   },
@@ -26,5 +27,5 @@ export default {
       rightSize: BreakpointsLabelConvertToLarge(this.size),
     };
   },
-};
+});
 </script>

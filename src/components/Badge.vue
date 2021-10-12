@@ -1,8 +1,8 @@
 <template>
   <div class="badge-container">
     <Icon
-      :name="icon_name"
       :color="icon_color"
+      :name="icon_name"
       :size="icon_size"
       :weigth="icon_weight"
     />
@@ -14,10 +14,10 @@
 </template>
 
 <script>
-import Icon from './Icon.vue';
+import Icon from "./Icon.vue";
+import { defineComponent } from "vue";
 
-export default {
-  name: 'Badge',
+export default defineComponent({
   components: {
     Icon,
   },
@@ -25,9 +25,9 @@ export default {
     color: {
       type: String,
       required: false,
-      default: 'primary',
+      default: "primary",
       validator(value) {
-        return ['primary', 'secondary', 'accent'].includes(value);
+        return ["primary", "secondary", "accent"].includes(value);
       },
     },
     max: {
@@ -44,19 +44,20 @@ export default {
     },
     icon_size: {
       type: String,
-      default: 'm',
+      default: "m",
     },
     icon_weight: {
       type: String,
-      default: 'normal',
+      default: "normal",
       required: false,
     },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
 @import "../assets/styles/_global.scss";
+
 .badge-content {
   display: inline-flex;
   background-color: $color-primary;

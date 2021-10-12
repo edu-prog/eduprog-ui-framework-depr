@@ -5,9 +5,16 @@
     </div>
 
     <div v-if="isActive" class="drawer">
-      <div class="drawer-wrapper" @touchend="OnSwipeEnd" @touchstart="OnSwipeStart">
+      <div
+        class="drawer-wrapper"
+        @touchmove="OnSwipeMove"
+        @touchstart="OnSwipeStart"
+      >
         <transition appear name="slide">
-          <div :style="{transform: translate}" class="drawer-content">
+          <div
+            :style="{ transform: `translate(-50%, ${process}%)` }"
+            class="drawer-content"
+          >
             <div class="drawer-control"></div>
 
             <slot name="content"></slot>
@@ -19,18 +26,15 @@
 </template>
 
 <script>
-import {NuxtHammer} from "nuxt-hammer/index";
+import { defineComponent } from "vue";
 
-export default {
-  directives: {
-    NuxtHammer,
-  },
+export default defineComponent({
   data() {
     return {
       isActive: false,
-      translate: "translate(-50%, -100%)",
+      process: 0,
       currentHeight: 0,
-    }
+    };
   },
   methods: {
     onClick() {
@@ -40,19 +44,24 @@ export default {
       document.body.style.overflowY = "hidden";
     },
     OnSwipeStart(event) {
-      this.currentHeight = event.touches[0].clientY
+      this.currentHeight = event.touchpo;
     },
-    OnSwipeEnd(event) {
+    OnSwipeMove(event) {
       const height = event.changedTouches[0].clientY - this.currentHeight;
-      this.translate = `translate(-50%, ${-1 * height / 100}%)`
-      if (height < -300) {
-        this.onClick()
-      }
 
-      console.log(height)
-    }
-  }
-}
+      if (height > 20) {
+        const currentViewPort = document.body.offsetHeight;
+
+        if (Math.abs(height) <= 100) {
+          this.process += ((height / currentViewPort) * 100) % 100;
+        } else if (height > 100) {
+          this.onClick();
+        }
+        console.log(height, currentViewPort);
+      }
+    },
+  },
+});
 </script>
 
 <style lang="scss" scoped>
@@ -79,6 +88,7 @@ export default {
     max-width: $small-screen;
     left: 50%;
     transform: translateX(-50%);
+    transition: transform 0.25s ease;
     border-radius: 1rem 1rem 0 0;
     padding: 1.25rem;
   }

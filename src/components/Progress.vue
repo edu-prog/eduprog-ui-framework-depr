@@ -3,15 +3,17 @@
     <div
       v-for="value of values"
       v-bind:key="value.color"
-      class="progress-bar progress-bar-stripted"
       :style="{ backgroundColor: value.color, width: `${value.value}%` }"
+      class="progress-bar progress-bar-stripted"
     ></div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'Progress',
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "Progress",
   props: {
     values: {
       type: Array,
@@ -32,10 +34,10 @@ export default {
       this.progress_value = value;
     },
   },
-};
+});
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import "../assets/styles/global";
 
 .progress {

@@ -1,7 +1,7 @@
 <template>
   <div class="pagination">
-    <div class="pagination-item" v-show="rendered_page">
-      <Button :padding="0.25" @click.native="onButtonPrevClicked">
+    <div v-show="rendered_page" class="pagination-item">
+      <Button :padding="0.25" @click="onButtonPrevClicked">
         <svg
           :style="{ display: 'flex' }"
           fill="#000000"
@@ -18,7 +18,7 @@
       </Button>
     </div>
     <div v-show="rendered_page > 0" class="pagination-item">
-      <Button :padding="0.5" @click.native="onButtonPrevFrameRendered">
+      <Button :padding="0.5" @click="onButtonPrevFrameRendered">
         <svg
           :style="{ display: 'flex' }"
           fill="#000000"
@@ -42,7 +42,7 @@
       <Button
         :padding="0.75"
         :type="rendered_page + item === page ? 'action' : 'default'"
-        @click.native="onButtonNumberClicked"
+        @click="onButtonNumberClicked"
         >{{ rendered_page + item }}
       </Button>
     </div>
@@ -51,9 +51,9 @@
       class="pagination-item"
     >
       <Button
-        :style="{ display: 'flex' }"
         :padding="0.5"
-        @click.native="onButtonNextFrameRendered"
+        :style="{ display: 'flex' }"
+        @click="onButtonNextFrameRendered"
       >
         <svg
           fill="#000000"
@@ -71,7 +71,7 @@
     </div>
 
     <div class="pagination-item">
-      <Button :padding="0.25" @click.native="onButtonNextClicked">
+      <Button :padding="0.25" @click="onButtonNextClicked">
         <svg
           :style="{ display: 'flex' }"
           fill="#000000"
@@ -92,9 +92,9 @@
 
 <script>
 import Button from "./Button";
+import { defineComponent } from "vue";
 
-export default {
-  name: "Pagination",
+export default defineComponent({
   components: {
     Button,
   },
@@ -155,7 +155,8 @@ export default {
       this.$emit("input", this.page);
     },
   },
-};
+  emits: ["input"],
+});
 </script>
 
 <style lang="scss" scoped>

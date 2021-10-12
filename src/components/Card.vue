@@ -1,11 +1,11 @@
 <template>
   <div
-      :class="[
+    :class="[
       'card',
       size && `card-${size}`,
       align && `card-${align}`,
       type && `card-${type}`,
-      hoverable && 'card-hoverable'
+      hoverable && 'card-hoverable',
     ]"
   >
     <slot></slot>
@@ -13,15 +13,16 @@
 </template>
 
 <script>
-import {BreakpointsLabel} from '../utils/breakpoins';
+import { BreakpointsLabel } from "@/utils/breakpoins";
+import { defineComponent } from "vue";
 
-export default {
-  name: 'Card',
+export default defineComponent({
+  name: "Card",
   props: {
     size: {
       type: String,
       required: true,
-      default: 's',
+      default: "s",
       validator(value) {
         return BreakpointsLabel.includes(value);
       },
@@ -29,20 +30,20 @@ export default {
     align: {
       type: String,
       required: false,
-      default: 'center',
+      default: "center",
     },
     type: {
       type: String,
       required: false,
-      default: 'shadow',
+      default: "shadow",
     },
     hoverable: {
       type: Boolean,
       required: false,
       default: false,
-    }
+    },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
@@ -56,12 +57,14 @@ export default {
   width: 100%;
 
   &-shadow {
-    transition: box-shadow .3s cubic-bezier(.25, .1, .25, .1);
-    box-shadow: 0 2px 8px rgba(18, 17, 36, 0.04), 0 4px 32px rgba(18, 17, 36, 0.08);
+    transition: box-shadow 0.3s cubic-bezier(0.25, 0.1, 0.25, 0.1);
+    box-shadow: 0 2px 8px rgba(18, 17, 36, 0.04),
+      0 4px 32px rgba(18, 17, 36, 0.08);
   }
 
   &-hoverable:hover {
-    box-shadow: 0 2px 8px rgba(18, 17, 36, 0.1), 0 4px 32px rgba(18, 17, 36, 0.2);
+    box-shadow: 0 2px 8px rgba(18, 17, 36, 0.1),
+      0 4px 32px rgba(18, 17, 36, 0.2);
   }
 
   &-border {

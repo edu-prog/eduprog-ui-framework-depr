@@ -1,6 +1,6 @@
 <template>
   <button
-      :class="[
+    :class="[
       'btn',
       round && 'btn-round',
       `btn-${type}`,
@@ -9,16 +9,16 @@
       isActive && 'btn-clicked',
       mode ? `btn-${mode}` : '',
     ]"
-      :style="{padding: `${padding}rem`}"
-      @click="toggleState"
+    :style="{ padding: `${padding}rem` }"
+    @click="toggleState"
   >
     <slot name="icon_right"></slot>
 
     <span class="btn-label">
       <slot></slot>
       <span
-          v-if="badge"
-          :class="[
+        v-if="badge"
+        :class="[
           'badge-container',
           badge && `badge-container-${badge_type}`,
           badge_color && `badge-container-${badge_color}`,
@@ -33,9 +33,10 @@
 </template>
 
 <script>
-import {BreakpointsLabel} from "../utils/breakpoins";
+import { BreakpointsLabel } from "../utils/breakpoins";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "Button",
   props: {
     type: {
@@ -89,17 +90,17 @@ export default {
       required: false,
       validator(value) {
         return ["primary", "secondary", "accent", "success", "danger"].includes(
-            value
+          value
         );
       },
     },
     padding: {
       type: Number,
       required: false,
-    }
+    },
   },
   data() {
-    return {isActive: false};
+    return { isActive: false };
   },
   methods: {
     toggleState() {
@@ -112,7 +113,8 @@ export default {
       this.$emit("click");
     },
   },
-};
+  emits: ["click"],
+});
 </script>
 
 <style lang="scss" scoped>
@@ -133,7 +135,7 @@ export default {
   white-space: nowrap;
   transform: scale(1);
   transition: background 0.25s ease, width 0.25s ease, color 0.25s ease,
-  transform 0.25s ease;
+    transform 0.25s ease;
   border: 2px;
   border-radius: 0.5rem;
   font-family: $font-family;

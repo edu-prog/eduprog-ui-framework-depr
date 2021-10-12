@@ -5,35 +5,38 @@
 </template>
 
 <script>
-export default {
-  name: 'Link',
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "Link",
   props: {
     link: {
       type: String,
       required: false,
-      default: '',
+      default: "",
     },
     target: {
       type: String,
       required: false,
-      default: '',
+      default: "",
     },
     title: {
       type: String,
       required: false,
-      default: '',
+      default: "",
     },
   },
-};
+});
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import "../assets/styles/global";
 
 .link {
   color: $color-primary;
   text-decoration: none;
   transition: color 0.3s ease;
+
   &:hover {
     color: $color-danger;
   }

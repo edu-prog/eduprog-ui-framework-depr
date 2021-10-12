@@ -5,7 +5,7 @@
     </div>
 
     <div class="TextInput-Button__input">
-      <input ref="TextInputButtonInput" :value="label" readonly type="text"/>
+      <input ref="TextInputButtonInput" :value="label" readonly type="text" />
     </div>
 
     <div class="TextInput-Button__right-icon">
@@ -15,15 +15,18 @@
 </template>
 
 <script>
-export default {
-  name: 'TextInputButton',
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "TextInputButton",
   props: {
     label: {
       type: String,
       required: true,
     },
   },
-};
+  emits: ["click"],
+});
 </script>
 
 <style lang="scss" scoped>

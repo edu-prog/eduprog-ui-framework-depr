@@ -1,15 +1,15 @@
 <template>
   <div>
     <div
-      class="CheckboxBlock-container"
       v-for="option in options"
       :key="option.content"
+      class="CheckboxBlock-container"
     >
       <div class="CheckboxBlock-container-item">
         <CheckboxBlockButton
-          @click.native="onItemSelected"
-          :icon="option.icon"
           :data-value="option.content"
+          :icon="option.icon"
+          @click="onItemSelected"
         >
           {{ option.content }}
         </CheckboxBlockButton>
@@ -19,10 +19,11 @@
 </template>
 
 <script>
-import CheckboxBlockButton from './CheckboxBlockButton.vue';
+import CheckboxBlockButton from "./CheckboxBlockButton.vue";
+import { defineComponent } from "vue";
 
-export default {
-  name: 'CheckboxBlock',
+export default defineComponent({
+  name: "CheckboxBlock",
   components: {
     CheckboxBlockButton,
   },
@@ -30,14 +31,14 @@ export default {
     options: {
       type: Array,
     },
+    modelValue: {
+      type: String,
+    },
   },
   data() {
     return {
       value: [],
     };
-  },
-  model: {
-    event: 'update',
   },
   methods: {
     onItemSelected(event) {
@@ -48,13 +49,14 @@ export default {
         this.value.splice(this.value.indexOf(content), 1);
       }
 
-      this.$emit('update', this.value);
+      this.$emit("update:modelValue", this.value);
     },
   },
-};
+  emits: ["update:modelValue"],
+});
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import "../assets/styles/global";
 
 .CheckboxBlock-container {

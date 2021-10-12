@@ -1,22 +1,24 @@
 <template>
   <button
     :class="['cb-button', isActive ? 'cb-button-clicked' : '']"
-    @click="onCheckboxItemClicked"
     type="button"
+    @click="onCheckboxItemClicked"
   >
     <img
       v-if="icon"
-      class="cb-button-img"
       :src="icon"
       alt="registration icon"
+      class="cb-button-img"
     />
     <slot></slot>
   </button>
 </template>
 
 <script>
-export default {
-  name: 'CheckboxBlockButton',
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "CheckboxBlockButton",
   props: {
     icon: {
       type: String,
@@ -33,10 +35,10 @@ export default {
       this.isActive = !this.isActive;
     },
   },
-};
+});
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import "../assets/styles/global";
 
 .cb-button {

@@ -5,10 +5,10 @@
     </div>
 
     <input
-      type="checkbox"
-      :data-opt="__input_opts"
       :checked="checked === true"
+      :data-opt="__input_opts"
       :disabled="disabled === true"
+      type="checkbox"
       @change="onCheckboxChanged"
     />
 
@@ -16,10 +16,10 @@
       <span :class="['checkbox-checkmark', `checkbox-checkmark-${type}`]">
         <Icon
           class="checkbox-checkmark-icon"
-          size="xs"
-          name="done"
-          weight="bold"
           color="#fff"
+          name="done"
+          size="xs"
+          weight="bold"
         />
       </span>
     </span>
@@ -31,10 +31,11 @@
 </template>
 
 <script>
-import Icon from './Icon.vue';
+import Icon from "./Icon.vue";
+import { defineComponent } from "vue";
 
-export default {
-  name: 'Checkbox',
+export default defineComponent({
+  name: "Checkbox",
   components: {
     Icon,
   },
@@ -59,9 +60,6 @@ export default {
       default: false,
     },
   },
-  model: {
-    event: 'change',
-  },
   data() {
     return {
       check: this.checked,
@@ -70,13 +68,14 @@ export default {
   methods: {
     onCheckboxChanged() {
       this.check = !this.check;
-      this.$emit('change', this.check);
+      this.$emit("change", this.check);
     },
   },
-};
+  emits: ["change"],
+});
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import "../assets/styles/global";
 
 .checkbox-container {

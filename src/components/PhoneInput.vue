@@ -1,31 +1,28 @@
 <template>
   <TextInput
-    :label="label"
-    @input.native="onPhoneInput"
-    @keydown.native="onPhoneKeyDown"
-    @paste.native="onPhonePaste"
-    type="tel"
-    v-model="phone_number"
-    :val="phone_number"
     ref="phone_input"
-    :validation_pattern="/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/"
-    :validation_message="validation_message"
+    v-model="phone_number"
+    :autofocus="autofocus"
+    :label="label"
     :max_length="18"
     :required="required === true"
-    :autofocus="autofocus"
+    :val="phone_number"
+    :validation_message="validation_message"
+    :validation_pattern="/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/"
+    type="tel"
+    @input="onPhoneInput"
+    @keydown="onPhoneKeyDown"
+    @paste="onPhonePaste"
   />
 </template>
 
 <script>
 import TextInput from "./TextInput.vue";
+import { defineComponent } from "vue";
 
-export default {
-  name: "PhoneInput",
+export default defineComponent({
   components: {
     TextInput,
-  },
-  model: {
-    event: "input",
   },
   props: {
     label: {
@@ -47,6 +44,9 @@ export default {
       required: false,
       default: false,
     },
+    modelValue: {
+      type: String,
+    },
   },
   data() {
     return {
@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     onPhoneInput(event) {
-      this.$emit("input", this.phone_number);
+      this.$emit("input:modelValue", this.phone_number);
 
       const input = this.$refs.phone_input;
       const { selectionStart } = event.target;
@@ -133,5 +133,6 @@ export default {
       }
     },
   },
-};
+  emits: ["input:modelValue"],
+});
 </script>

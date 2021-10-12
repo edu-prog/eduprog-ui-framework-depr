@@ -1,24 +1,28 @@
 <template>
   <div
-      v-on-clickaway="onDropdownAwayClicked"
-      class="dropdown"
-      @mouseleave="onDropdownMouseLeave"
+    v-click-away="onDropdownAwayClicked"
+    class="dropdown"
+    @mouseleave="onDropdownMouseLeave"
   >
     <div
-        ref="dropdownToggle"
-        class="dropdown-toggle"
-        @click="onDropdownToogleClicked"
-        @mouseover="onDropdownMouseOver"
+      ref="dropdownToggle"
+      class="dropdown-toggle"
+      @click="onDropdownToogleClicked"
+      @mouseover="onDropdownMouseOver"
     >
       <slot name="toggle"></slot>
     </div>
     <transition appear name="fade">
       <div
-          v-if="isActive"
-          :class="['dropdown-item', direction && `dropdown-item-${direction}`, clearly && 'dropdown-clearly']"
-          :style="{width: `${max_width}px`}"
-          @mouseleave="onDropdownMouseLeaveFromItem"
-          @mouseover="onDropdownMouseOverOnItem"
+        v-if="isActive"
+        :class="[
+          'dropdown-item',
+          direction && `dropdown-item-${direction}`,
+          clearly && 'dropdown-clearly',
+        ]"
+        :style="{ width: `${max_width}px` }"
+        @mouseleave="onDropdownMouseLeaveFromItem"
+        @mouseover="onDropdownMouseOverOnItem"
       >
         <div class="dropdown-item-content">
           <slot name="content"></slot>
@@ -29,11 +33,14 @@
 </template>
 
 <script>
-import {mixin as clickaway} from "vue-clickaway";
+import { directive } from "vue3-click-away";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "Dropdown",
-  mixins: [clickaway],
+  directives: {
+    ClickAway: directive,
+  },
   props: {
     direction: {
       type: String,
@@ -63,7 +70,7 @@ export default {
       type: Boolean,
       required: false,
       default: false,
-    }
+    },
   },
   data() {
     return {
@@ -110,7 +117,7 @@ export default {
       }
     },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
@@ -222,7 +229,7 @@ export default {
   transition: opacity 0.25s ease;
 }
 
-.fade-enter,
+.fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }

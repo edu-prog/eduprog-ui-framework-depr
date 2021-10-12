@@ -2,8 +2,20 @@
   <div class="datepicker">
     <div class="datepicker-controllers">
       <div class="datepicker-controllers-left">
-        <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M15 4L7 12L15 20" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15 4L7 12L15 20"
+            stroke="black"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
         </svg>
       </div>
 
@@ -12,8 +24,20 @@
       </div>
 
       <div class="datepicker-controllers-right">
-        <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M15 4L7 12L15 20" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <svg
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15 4L7 12L15 20"
+            stroke="black"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
         </svg>
       </div>
     </div>
@@ -26,27 +50,39 @@
     <div class="datepicker-weekname-item">Сб</div>
     <div class="datepicker-weekname-item">Вс</div>
 
-    <div v-for="(day, index) in getDaysInMonth(currentFrame)" :key="index"
-         :class="['datepicker-date', selectedDates.has(`${parseFrame(currentFrame)[0]}-${parseFrame(currentFrame)[1]}-${day}`) && 'datepicker-date-selected']"
-         :data-date="`${parseFrame(currentFrame)[0]}-${parseFrame(currentFrame)[1]}-${day}`"
-         @click="selectDate">
+    <div
+      v-for="(day, index) in getDaysInMonth(currentFrame)"
+      :key="index"
+      :class="[
+        'datepicker-date',
+        selectedDates.has(
+          `${parseFrame(currentFrame)[0]}-${parseFrame(currentFrame)[1]}-${day}`
+        ) && 'datepicker-date-selected',
+      ]"
+      :data-date="`${parseFrame(currentFrame)[0]}-${
+        parseFrame(currentFrame)[1]
+      }-${day}`"
+      @click="selectDate"
+    >
       {{ day }}
     </div>
   </div>
 </template>
 
 <script>
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "Datepicker",
   data() {
     return {
       selectedDates: new Set(),
       currentFrame: `${new Date().getFullYear()}-${new Date().getMonth() + 1}`,
-    }
+    };
   },
   methods: {
     parseFrame(frame) {
-      return frame.split("-")
+      return frame.split("-");
     },
 
     getDaysInMonth(frame) {
@@ -55,16 +91,29 @@ export default {
     },
 
     selectDate(event) {
-      console.log("fwefwe")
+      console.log("fwefwe");
       this.selectedDates.add(event.target.dataset.date);
-      this.$emit("update", this.selectedDates)
+      this.$emit("update", this.selectedDates);
     },
     getMonthName(frame) {
       const parsedFrame = this.parseFrame(frame);
-      return ["Январь", "Феврать", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"][parsedFrame[1] - 1];
+      return [
+        "Январь",
+        "Феврать",
+        "Март",
+        "Апрель",
+        "Май",
+        "Июнь",
+        "Июль",
+        "Август",
+        "Сентябрь",
+        "Октябрь",
+        "Ноябрь",
+        "Декабрь",
+      ][parsedFrame[1] - 1];
     },
-  }
-}
+  },
+});
 </script>
 
 <style lang="scss" scoped>

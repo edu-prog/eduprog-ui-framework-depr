@@ -1,31 +1,27 @@
-<template @onload.native="onSelectLoaded">
+<template @onload="onSelectLoaded">
   <div>
-    <span
-        v-if="!IsMobile"
-        v-on-clickaway="closeDropdown"
-        class="select-wrapper"
-    >
+    <span v-if="!IsMobile" v-click-away="closeDropdown" class="select-wrapper">
       <TextInput
-          ref="select"
-          :additional_content_right="0.5"
-          :label="label"
-          :val="!multiple ? value : ''"
-          input_class="select-input"
-          readonly
-          type="text"
-          @click="toggleDropdown"
+        ref="select"
+        :additional_content_right="0.5"
+        :label="label"
+        :val="!multiple ? value : ''"
+        input_class="select-input"
+        readonly
+        type="text"
+        @click="toggleDropdown"
       >
         <template #additional_right>
           <span :class="['select-icon', isActive && 'select-icon-activate']">
             <svg
-                fill="#000000"
-                height="24px"
-                viewBox="0 0 24 24"
-                width="24px"
-                xmlns="http://www.w3.org/2000/svg"
+              fill="#000000"
+              height="24px"
+              viewBox="0 0 24 24"
+              width="24px"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <path d="M0 0h24v24H0z" fill="none"/>
-              <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
             </svg>
           </span>
         </template>
@@ -34,10 +30,10 @@
       <div v-if="isActive" class="dropdown">
         <div v-if="!multiple" class="dropdown-menu">
           <div
-              v-for="elem in options"
-              v-bind:key="elem"
-              class="dropdown-item"
-              @click="itemClickHandler"
+            v-for="elem in options"
+            v-bind:key="elem"
+            class="dropdown-item"
+            @click="itemClickHandler"
           >
             {{ elem }}
           </div>
@@ -45,17 +41,17 @@
 
         <div v-else :style="{ marginTop: '1rem' }" class="dropdown-menu">
           <div
-              v-for="elem in options"
-              v-bind:key="elem"
-              class="dropdown-item dropdown-item-multiple"
+            v-for="elem in options"
+            v-bind:key="elem"
+            class="dropdown-item dropdown-item-multiple"
           >
             <Checkbox
-                :__input_opts="elem"
-                :checked="value.indexOf(elem) !== -1"
-                position="left"
-                style="width: 100%; height: 100%; padding: 0.5rem"
-                type="main"
-                @click.native="itemClickHandler"
+              :__input_opts="elem"
+              :checked="value.indexOf(elem) !== -1"
+              position="left"
+              style="width: 100%; height: 100%; padding: 0.5rem"
+              type="main"
+              @click="itemClickHandler"
             >
               {{ elem }}
             </Checkbox>
@@ -67,37 +63,37 @@
     <span v-else>
       <div class="mobile-select">
         <span
-            :class="[
+          :class="[
             'mobile-select-label',
             value && value.length > 0 ? 'mobile-select-label-checked' : '',
             multiple ? 'mobile-select-label-multiple' : '',
           ]"
-        >{{ label }}</span
+          >{{ label }}</span
         >
         <span
-            :class="[
+          :class="[
             'mobile-select-value',
             value && 'mobile-select-value-checked',
             multiple ? 'mobile-select-value-multiple' : '',
           ]"
-        >{{ multiple ? parseMultipleValue(value) : value }}</span
+          >{{ multiple ? parseMultipleValue(value) : value }}</span
         >
 
         <select
-            v-model="value"
-            :class="[
+          v-model="value"
+          :class="[
             'mobile-select-handle',
             isActive ? 'mobile-select-handle-checked' : '',
           ]"
-            :multiple="multiple"
-            :size="multiple && 1"
-            @change="onMobileSelectSelected"
+          :multiple="multiple"
+          :size="multiple && 1"
+          @change="onMobileSelectSelected"
         >
           <option
-              v-for="elem in options"
-              :key="elem"
-              :selected="elem.includes(options[0])"
-              :value="elem"
+            v-for="elem in options"
+            :key="elem"
+            :selected="elem.includes(options[0])"
+            :value="elem"
           >
             {{ elem }}
           </option>
@@ -105,14 +101,14 @@
 
         <span :class="['select-icon']">
           <svg
-              fill="#000000"
-              height="24px"
-              viewBox="0 0 24 24"
-              width="24px"
-              xmlns="http://www.w3.org/2000/svg"
+            fill="#000000"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
           </svg>
         </span>
       </div>
@@ -121,20 +117,20 @@
 </template>
 
 <script>
-import {isMobile} from "mobile-device-detect";
-import {mixin as clickaway} from "vue-clickaway";
+import { isMobile } from "mobile-device-detect";
+import { directive } from "vue3-click-away";
 import Checkbox from "./Checkbox.vue";
 import TextInput from "./TextInput.vue";
+import { defineComponent } from "vue";
 
-export default {
-  name: "Dropdown",
+export default defineComponent({
   components: {
     TextInput,
     Checkbox,
   },
-  mixins: [clickaway],
   directives: {
     isMobile,
+    ClickAway: directive,
   },
   props: {
     label: {
@@ -151,6 +147,9 @@ export default {
       required: false,
       default: false,
     },
+    modelValue: {
+      type: String,
+    },
   },
   data() {
     return {
@@ -158,9 +157,6 @@ export default {
       isActive: false,
       value: !this.multiple ? this.options[0] : [],
     };
-  },
-  model: {
-    event: "update",
   },
   methods: {
     parseMultipleValue(value) {
@@ -177,7 +173,7 @@ export default {
     },
     itemClickHandler(event) {
       if (!this.IsMobile) {
-        const {select} = this.$refs;
+        const { select } = this.$refs;
         if (this.multiple) {
           select.content = "";
           const val = event.target.dataset.opt;
@@ -197,14 +193,15 @@ export default {
         }
       }
 
-      this.$emit("update", this.value);
+      this.$emit("update:modelValue", this.value);
     },
     onMobileSelectSelected() {
       this.isActive = !this.isActive;
-      this.$emit("update", this.value);
+      this.$emit("update:modelValue", this.value);
     },
   },
-};
+  emits: ["update:modelValue"],
+});
 </script>
 
 <style lang="scss" scoped>
@@ -238,7 +235,7 @@ export default {
     transform: translate(-50%, -5%);
     border-radius: 0.25rem;
     box-shadow: 0 0 28px 0 rgba(0, 0, 0, 0.2), 0 0 4px 0 rgba(0, 0, 0, 0.1),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5);
     background-color: #ffffff;
 
     &-top {

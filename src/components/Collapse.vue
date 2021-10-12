@@ -1,7 +1,13 @@
 <template>
   <div class="collapse">
-    <div class="collapse-target" @click="$emit('click'); isActive = !isActive">
-      <slot name="target"/>
+    <div
+      class="collapse-target"
+      @click="
+        $emit('click');
+        isActive = !isActive;
+      "
+    >
+      <slot name="target" />
     </div>
 
     <transition appear name="fade">
@@ -13,14 +19,17 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "Collapse",
   data() {
     return {
       isActive: false,
-    }
-  }
-}
+    };
+  },
+  emits: ["click"],
+});
 </script>
 
 <style lang="scss" scoped>

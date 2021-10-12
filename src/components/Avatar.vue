@@ -1,14 +1,20 @@
 <template>
   <div :class="['avatar', `avatar-size-${size}`]">
-
     <div class="avatar-image">
-      <img alt="" src="https://thispersondoesnotexist.com/image">
+      <img alt="" src="https://thispersondoesnotexist.com/image" />
 
       <div class="avatar-image-wrapper">
-        <svg fill="none" height="18" viewBox="0 0 20 18" width="20" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          fill="none"
+          height="18"
+          viewBox="0 0 20 18"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
-              d="M7 0L5.17 2H2C0.9 2 0 2.9 0 4V16C0 17.1 0.9 18 2 18H18C19.1 18 20 17.1 20 16V4C20 2.9 19.1 2 18 2H14.83L13 0H7ZM10 15C7.24 15 5 12.76 5 10C5 7.24 7.24 5 10 5C12.76 5 15 7.24 15 10C15 12.76 12.76 15 10 15Z"
-              fill="white"/>
+            d="M7 0L5.17 2H2C0.9 2 0 2.9 0 4V16C0 17.1 0.9 18 2 18H18C19.1 18 20 17.1 20 16V4C20 2.9 19.1 2 18 2H14.83L13 0H7ZM10 15C7.24 15 5 12.76 5 10C5 7.24 7.24 5 10 5C12.76 5 15 7.24 15 10C15 12.76 12.76 15 10 15Z"
+            fill="white"
+          />
         </svg>
       </div>
     </div>
@@ -16,9 +22,10 @@
 </template>
 
 <script>
-import {BreakpointsLabel} from "../utils/breakpoins";
+import { BreakpointsLabel } from "@/utils/breakpoins";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "Avatar",
   props: {
     size: {
@@ -27,10 +34,10 @@ export default {
       default: "m",
       validator(value) {
         return BreakpointsLabel.includes(value);
-      }
-    }
-  }
-}
+      },
+    },
+  },
+});
 </script>
 
 <style lang="scss" scoped>
@@ -39,7 +46,6 @@ export default {
   width: 100%;
   height: 100%;
   cursor: pointer;
-
 
   &-size-xs {
     max-width: 100px;

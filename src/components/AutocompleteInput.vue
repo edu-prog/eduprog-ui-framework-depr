@@ -1,30 +1,30 @@
 <template>
   <div class="Autocomplete-Input">
     <div
-        v-if="!IsMobile"
-        class="Autocomplete-Input-pc"
-        v-on:keydown.down="onKeyDown"
-        v-on:keydown.up="onKeyUp"
-        v-on:keyup.enter="onKeyEnter"
+      v-if="!IsMobile"
+      class="Autocomplete-Input-pc"
+      @keydown.down="onKeyDown"
+      @keydown.up="onKeyUp"
+      @keyup.enter="onKeyEnter"
     >
       <TextInput
-          ref="TextInput"
-          v-model="value"
-          :label="label"
-          type="text"
-          @input="onInput"
+        ref="TextInput"
+        v-model="value"
+        :label="label"
+        type="text"
+        @input="onInput"
       />
 
       <transition appear name="fade">
         <div v-if="isActive" class="Autocomplete-Input-dropdown">
           <div
-              v-for="(item, index) in resultItems"
-              :key="index"
-              ref="autocompleteItems"
-              class="Autocomplete-Input-dropdown-item"
-              tabindex="0"
-              @click="onClickToItem"
-              v-html="item"
+            v-for="(item, index) in resultItems"
+            :key="index"
+            :ref="setAutocompleteItemRef"
+            class="Autocomplete-Input-dropdown-item"
+            tabindex="0"
+            @click="onClickToItem"
+            v-html="item"
           ></div>
         </div>
       </transition>
@@ -32,35 +32,35 @@
 
     <div v-else class="Autocomplete-Input-mobile">
       <TextInput
-          ref="TextInput"
-          v-model="value"
-          :label="label"
-          type="text"
-          @click.native="onInputFocused"
+        ref="TextInput"
+        v-model="value"
+        :label="label"
+        type="text"
+        @click="onInputFocused"
       />
 
       <div v-if="isActive" class="Autocomplete-Input-mobile-wrapper">
         <transition-group appear mode="out-in" name="pop">
           <div
-              :key="2"
-              v-on-clickaway="clearFocusState"
-              class="Autocomplete-Input-mobile-modal"
+            :key="2"
+            v-click-away="clearFocusState"
+            class="Autocomplete-Input-mobile-modal"
           >
             <TextInput
-                v-model="value"
-                :label="label"
-                autofocus
-                type="text"
-                @input="onInput"
+              v-model="value"
+              :label="label"
+              autofocus
+              type="text"
+              @input="onInput"
             />
 
             <div class="Autocomplete-Input-mobile-modal-options" tabindex="0">
               <div
-                  v-for="(item, index) in resultItems"
-                  :key="index"
-                  class="Autocomplete-Input-mobile-modal-options-item"
-                  @click="onClickToItem"
-                  v-html="item"
+                v-for="(item, index) in resultItems"
+                :key="index"
+                class="Autocomplete-Input-mobile-modal-options-item"
+                @click="onClickToItem"
+                v-html="item"
               ></div>
             </div>
           </div>
@@ -71,12 +71,12 @@
 </template>
 
 <script>
-import {isMobile} from "mobile-device-detect";
-import {mixin as clickaway} from "vue-clickaway";
+import { defineComponent } from "vue";
+import { isMobile } from "mobile-device-detect";
+import { directive } from "vue3-click-away";
 import TextInput from "./TextInput";
 
-export default {
-  name: "AutocompleteInput",
+export default defineComponent({
   props: {
     label: {
       type: String,
@@ -86,11 +86,14 @@ export default {
       type: Array,
       required: true,
     },
+    modelValue: {
+      type: String,
+    },
   },
   directives: {
     isMobile,
+    ClickAway: directive,
   },
-  mixins: [clickaway],
   data() {
     return {
       value: "",
@@ -98,12 +101,18 @@ export default {
       resultItems: [],
       focusedItem: 0,
       IsMobile: isMobile,
+      autocompleteItems: [],
     };
   },
   components: {
     TextInput,
   },
   methods: {
+    setAutocompleteItemRef(el) {
+      if (el) {
+        this.autocompleteItems.push(el);
+      }
+    },
     escapeRegExp(string) {
       return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     },
@@ -116,35 +125,35 @@ export default {
       this.isActive = this.IsMobile || Boolean(this.value);
 
       const regex_pattern = new RegExp(
-          this.escapeRegExp(this.value.trim()),
-          "i"
+        this.escapeRegExp(this.value.trim()),
+        "i"
       );
 
       this.resultItems = this.options.filter((item) =>
-          regex_pattern.test(item)
+        regex_pattern.test(item)
       );
 
       this.resultItems = this.resultItems.map((item) => {
         let selectedSubstrIndex = item
-            .toLowerCase()
-            .indexOf(this.value.toLowerCase());
+          .toLowerCase()
+          .indexOf(this.value.toLowerCase());
         let selectedString = item.substring(
-            selectedSubstrIndex,
-            selectedSubstrIndex + this.value.length
+          selectedSubstrIndex,
+          selectedSubstrIndex + this.value.length
         );
 
         return item.replace(
-            regex_pattern,
-            `<strong>${selectedString}</strong>`
+          regex_pattern,
+          `<strong>${selectedString}</strong>`
         );
       });
 
-      this.$emit("input", this.value);
+      this.$emit("changed:modelValue", this.value);
     },
     setComponentValue(value) {
       this.$refs.TextInput.content = value;
       this.value = value;
-      this.$emit("input", this.value);
+      this.$emit("changed:modelValue", this.value);
     },
     onClickToItem(event) {
       this.setComponentValue(event.target.innerText);
@@ -155,7 +164,7 @@ export default {
         event.preventDefault();
         if (this.focusedItem > 1) {
           this.focusedItem--;
-          this.$refs.autocompleteItems[this.focusedItem - 1].focus();
+          this.autocompleteItems[this.focusedItem - 1].focus();
         }
       }
     },
@@ -164,15 +173,15 @@ export default {
         event.preventDefault();
         if (this.focusedItem < this.resultItems.length) {
           this.focusedItem++;
-          this.$refs.autocompleteItems[this.focusedItem - 1].focus();
+          this.autocompleteItems[this.focusedItem - 1].focus();
         }
       }
     },
     onKeyEnter() {
       if (this.isActive) {
         const content = this.resultItems[this.focusedItem - 1]
-            .replace("<strong>", "")
-            .replace("</strong>", "");
+          .replace("<strong>", "")
+          .replace("</strong>", "");
         this.setComponentValue(content);
 
         this.clearFocusState();
@@ -183,7 +192,8 @@ export default {
       this.resultItems = this.options.slice();
     },
   },
-};
+  emits: ["changed:modelValue"],
+});
 </script>
 
 <style lang="scss" scoped>
@@ -201,7 +211,7 @@ export default {
       border-radius: 0.5rem;
       overflow: hidden;
       box-shadow: 0 0 28px 0 rgba(0, 0, 0, 0.2), 0 0 4px 0 rgba(0, 0, 0, 0.1),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
       z-index: 10;
       background-color: $color-white;
       max-height: 190px;
@@ -216,7 +226,6 @@ export default {
         background-color: $color-gray;
         border-radius: 0.5rem;
       }
-
 
       &-item {
         padding: 0.5rem 0.5rem;
@@ -282,7 +291,7 @@ export default {
   transition: opacity 0.4s ease;
 }
 
-.fade-enter,
+.fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }
@@ -292,7 +301,7 @@ export default {
   transition: transform 0.4s cubic-bezier(0.5, 0, 0.5, 1), opacity 0.4s linear;
 }
 
-.pop-enter,
+.pop-enter-from,
 .pop-leave-to {
   opacity: 0;
   transform: scale(0.3) translateY(-50%);

@@ -1,18 +1,20 @@
 <template>
-  <span class="material-icons" :style="iconStyles">{{ name }}</span>
+  <span :style="iconStyles" class="material-icons">{{ name }}</span>
 </template>
 
 <script>
+import { defineComponent } from "vue";
+
 const sizes = {
-  xs: '1rem',
-  s: '1.25rem',
-  m: '1.5rem',
-  l: '1.75rem',
-  xl: '2rem',
+  xs: "1rem",
+  s: "1.25rem",
+  m: "1.5rem",
+  l: "1.75rem",
+  xl: "2rem",
 };
 
-export default {
-  name: 'Icon',
+export default defineComponent({
+  name: "Icon",
   props: {
     name: {
       type: String,
@@ -24,11 +26,11 @@ export default {
     },
     size: {
       type: String,
-      default: 'm',
+      default: "m",
     },
     weight: {
       type: String,
-      default: 'normal',
+      default: "normal",
       required: false,
     },
   },
@@ -41,10 +43,10 @@ export default {
       };
     },
   },
-};
+});
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .material-icons {
   user-select: none;
 }

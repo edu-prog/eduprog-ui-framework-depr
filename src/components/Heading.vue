@@ -34,26 +34,27 @@
 </template>
 
 <script>
-import {BreakpointsLabel} from '../utils/breakpoins';
+import { BreakpointsLabel } from "@/utils/breakpoins";
+import { defineComponent } from "vue";
 
-export default {
-  name: 'Heading',
+export default defineComponent({
+  name: "Heading",
   props: {
     size: {
       type: String,
       require: true,
-      default: 'xl',
+      default: "xl",
       validator(value) {
-        return [...BreakpointsLabel, 'xxl'].includes(value);
+        return [...BreakpointsLabel, "xxl"].includes(value);
       },
     },
     align: {
       type: String,
       required: false,
-      default: 'center',
+      default: "center",
     },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

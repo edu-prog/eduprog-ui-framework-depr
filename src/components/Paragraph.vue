@@ -1,36 +1,47 @@
 <template>
-  <p :class="['paragraph', `paragraph-${type}`, `paragraph-${align}`, wrap && `paragraph-wrap`]">
+  <p
+    :class="[
+      'paragraph',
+      `paragraph-${type}`,
+      `paragraph-${align}`,
+      wrap && `paragraph-wrap`,
+    ]"
+  >
     <slot></slot>
   </p>
 </template>
 
 <script>
-export default {
-  name: 'Paragraph',
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "Paragraph",
   props: {
     type: {
       type: String,
-      default: 'normal',
+      default: "normal",
       required: false,
       validator(value) {
-        return ['small', 'normal', 'lead'].includes(value);
-      }
+        return ["small", "normal", "lead"].includes(value);
+      },
     },
     align: {
       type: String,
-      default: 'left',
+      default: "left",
       required: false,
       validator(value) {
-        return ['left', 'right', 'center', 'justify'].includes(value);
-      }
+        return ["left", "right", "center", "justify"].includes(value);
+      },
     },
     text_color: {
       type: String,
       default: "#000000",
       required: false,
       validator(value) {
-        return value.match(/(?:#|0x)(?:[a-f0-9]{3}|[a-f0-9]{6})\b|(?:rgb|hsl)a?\([^)]*\)/i)
-      }
+        return value.match(
+          /(?:#|0x)(?:[a-f0-9]{3}|[a-f0-9]{6})\b|(?:rgb|hsl)a?\([^)]*\)/i
+        );
+      },
     },
     wrap: {
       type: Boolean,
@@ -38,7 +49,7 @@ export default {
       required: false,
     },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

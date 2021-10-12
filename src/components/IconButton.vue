@@ -1,24 +1,25 @@
 <template>
-  <Button :type="button_type" :style="iconButtonStyles">
-    <Icon :name="icon_name" :size="icon_size" :color="icon_color" />
+  <Button :style="iconButtonStyles" :type="button_type">
+    <Icon :color="icon_color" :name="icon_name" :size="icon_size" />
   </Button>
 </template>
 
 <script>
-import Button from './Button.vue';
-import Icon from './Icon.vue';
-import { BreakpointsLabel } from '../utils/breakpoins';
+import Button from "./Button.vue";
+import Icon from "./Icon.vue";
+import { BreakpointsLabel } from "../utils/breakpoins";
+import { defineComponent } from "vue";
 
 const ButtonSize = {
-  xs: '3rem',
-  s: '4.5rem',
-  m: '6.75rem',
-  l: '10.125rem',
-  xl: '15.1875rem',
+  xs: "3rem",
+  s: "4.5rem",
+  m: "6.75rem",
+  l: "10.125rem",
+  xl: "15.1875rem",
 };
 
-export default {
-  name: 'IconButton',
+export default defineComponent({
+  name: "IconButton",
   components: {
     Icon,
     Button,
@@ -30,7 +31,7 @@ export default {
     },
     width: {
       type: String,
-      default: 'xs',
+      default: "xs",
       required: false,
       validator(value) {
         return BreakpointsLabel.includes(value);
@@ -38,7 +39,7 @@ export default {
     },
     height: {
       type: String,
-      default: 'xs',
+      default: "xs",
       required: false,
       validator(value) {
         return BreakpointsLabel.includes(value);
@@ -46,7 +47,7 @@ export default {
     },
     icon_size: {
       type: String,
-      default: 'm',
+      default: "m",
       required: false,
       validator(value) {
         return BreakpointsLabel.includes(value);
@@ -54,7 +55,7 @@ export default {
     },
     icon_color: {
       type: String,
-      default: 'white',
+      default: "white",
       required: false,
     },
     button_round: {
@@ -64,7 +65,7 @@ export default {
     },
     button_type: {
       type: String,
-      default: 'default',
+      default: "default",
       required: false,
     },
   },
@@ -76,5 +77,5 @@ export default {
       };
     },
   },
-};
+});
 </script>
