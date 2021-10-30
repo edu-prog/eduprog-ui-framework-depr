@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   name: "CheckboxBlockButton",
@@ -25,15 +25,13 @@ export default defineComponent({
       required: false,
     },
   },
-  data() {
-    return {
-      isActive: false,
+  setup() {
+    const isActive = ref(false);
+    const onCheckboxItemClicked = () => {
+      isActive.value = !isActive.value;
     };
-  },
-  methods: {
-    onCheckboxItemClicked() {
-      this.isActive = !this.isActive;
-    },
+
+    return { isActive, onCheckboxItemClicked };
   },
 });
 </script>

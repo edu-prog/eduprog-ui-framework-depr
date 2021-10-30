@@ -8,7 +8,7 @@
       <div
         v-if="isActive"
         :class="['modal-wrapper', scrollable && 'modal-scrollable']"
-        @click="onModalClickedAway"
+        @click="closeModal"
       ></div>
     </transition>
 
@@ -62,7 +62,7 @@
 
 <script>
 import { isMobile } from "mobile-device-detect";
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   directives: {
@@ -91,25 +91,21 @@ export default defineComponent({
       default: "m",
     },
   },
-  data() {
-    return {
-      isActive: false,
-    };
-  },
-  methods: {
-    onToggleClicked() {
+  setup() {
+    const isActive = ref(false);
+    const onToggleClicked = () => {
+      isActive.value = !isActive.value;
       this.isActive = !this.isActive;
       document.body.style.overflow =
         this.isActive && this.scrollable ? "hidden" : "";
-    },
-    closeModal() {
-      this.isActive = false;
+    };
+    const closeModal = () => {
+      isActive.value = false;
       document.body.style.overflow =
         this.isActive && this.scrollable ? "hidden" : "";
-    },
-    onModalClickedAway() {
-      this.closeModal();
-    },
+    };
+
+    return { isActive, onToggleClicked, closeModal };
   },
 });
 </script>
@@ -164,7 +160,9 @@ export default defineComponent({
     width: 100%;
     background-color: #ffffff;
     flex-direction: column;
-    transition: all 0.2s ease-in-out;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-duration: 0.25s;
+    transition-property: max-height;
     z-index: 101;
     padding: 1rem;
     border-radius: 0.5rem;

@@ -5,11 +5,11 @@
     </div>
 
     <input
-      :checked="checked === true"
+      :checked="isActive || checked"
       :data-opt="__input_opts"
-      :disabled="disabled === true"
+      :disabled="disabled"
       type="checkbox"
-      @change="onCheckboxChanged"
+      @click="onCheckboxChanged"
     />
 
     <span class="checkbox-fake">
@@ -30,17 +30,19 @@
   </label>
 </template>
 
-<script>
+<script lang="ts">
 import Icon from "./Icon.vue";
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: "Checkbox",
   components: {
     Icon,
   },
   props: {
     type: {
+      type: String,
+    },
+    modelValue: {
       type: String,
     },
     position: {
@@ -60,18 +62,18 @@ export default defineComponent({
       default: false,
     },
   },
-  data() {
-    return {
-      check: this.checked,
+  setup(props, { emit }) {
+    const isActive = ref(false);
+
+    const onCheckboxChanged = () => {
+      isActive.value = !isActive.value;
+      emit("update:modelValue", isActive.value);
+      emit("click");
     };
+
+    return { isActive, onCheckboxChanged };
   },
-  methods: {
-    onCheckboxChanged() {
-      this.check = !this.check;
-      this.$emit("change", this.check);
-    },
-  },
-  emits: ["change"],
+  emits: ["update:modelValue", "click"],
 });
 </script>
 

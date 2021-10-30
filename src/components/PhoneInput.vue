@@ -1,24 +1,22 @@
 <template>
   <TextInput
-    ref="phone_input"
-    v-model="phone_number"
-    :autofocus="autofocus"
+    v-model="phoneNumber"
     :label="label"
-    :max_length="18"
-    :required="required === true"
-    :val="phone_number"
-    :validation_message="validation_message"
-    :validation_pattern="/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/"
-    type="tel"
+    :max-length="18"
+    :input-required="required === true"
+    :validation-message="validation_message"
+    :validation-pattern="/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/"
+    input-type="tel"
     @input="onPhoneInput"
     @keydown="onPhoneKeyDown"
     @paste="onPhonePaste"
+    :autofocus="autofocus"
   />
 </template>
 
-<script>
+<script lang="ts">
 import TextInput from "./TextInput.vue";
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   components: {
@@ -44,34 +42,25 @@ export default defineComponent({
       required: false,
       default: false,
     },
-    modelValue: {
-      type: String,
-    },
   },
-  data() {
-    return {
-      phone_number: "",
-    };
-  },
-  methods: {
-    onPhoneInput(event) {
-      this.$emit("input:modelValue", this.phone_number);
+  setup(props, { emit }) {
+    const phoneNumber = ref("");
 
-      const input = this.$refs.phone_input;
-      const { selectionStart } = event.target;
-      let inputNumbersValue = input.content.replace(/\D/g, "");
+    const onPhoneInput = (event: InputEvent) => {
+      const { selectionStart } = event.target as HTMLInputElement;
+      let inputNumbersValue = phoneNumber.value.replace(/\D/g, "");
       let formattedInputValue = "";
 
       if (!inputNumbersValue) {
-        input.content = event.data === "+" ? "+" : "";
-        return input.content;
+        phoneNumber.value = event.data === "+" ? "+" : "";
+        return;
       }
 
-      if (input.content.length !== selectionStart) {
+      if (phoneNumber.value.length !== selectionStart) {
         if (event.data && /\D/g.test(event.data)) {
-          input.content = inputNumbersValue;
+          phoneNumber.value = inputNumbersValue;
         }
-        return null;
+        return;
       }
 
       if (["7", "8", "9"].includes(inputNumbersValue[0])) {
@@ -80,7 +69,6 @@ export default defineComponent({
         }
         const firstSymbols = inputNumbersValue[0] === "8" ? "8" : "+7";
         formattedInputValue = `${firstSymbols} `;
-        input.content = `${firstSymbols} `;
 
         if (inputNumbersValue.length > 1) {
           formattedInputValue += `(${inputNumbersValue.substring(1, 4)}`;
@@ -97,33 +85,36 @@ export default defineComponent({
       } else {
         formattedInputValue = `+${inputNumbersValue.substring(0, 16)}`;
       }
-      input.content = formattedInputValue;
+      (event.target as HTMLInputElement).value = formattedInputValue;
+      emit("update:phoneNumber", phoneNumber.value);
+    };
+    const onPhoneKeyDown = (event: any) => {
+      if (event) {
+        const inputValue = phoneNumber.value.replace(/\D/g, "");
 
-      return this.phone_number;
-    },
-    onPhoneKeyDown(event) {
-      const inputValue = this.phone_number.replace(/\D/g, "");
+        if (event.code === "Backspace" && inputValue.length === 1) {
+          phoneNumber.value = "";
+        } else if (
+          ["Delete", "Backspace"].includes(event.code) &&
+          inputValue.length > 1
+        ) {
+          let symToClear = "";
+          if (event.code === "Backspace") {
+            symToClear = phoneNumber.value[event.target?.selectionStart - 1];
+          } else if (event.code === "Delete") {
+            symToClear = phoneNumber.value[event.target?.selectionStart];
+          }
 
-      if (event.keyCode === 8 && inputValue.length === 1) {
-        this.phone_number = "";
-      } else if ([8, 46].includes(event.keyCode) && inputValue.length > 1) {
-        let symToClear = "";
-        if (event.keyCode === 8) {
-          symToClear = this.phone_number[event.target.selectionStart - 1];
-        } else if (event.keyCode === 46) {
-          symToClear = this.phone_number[event.target.selectionStart];
-        }
-
-        if (symToClear && /\D/g.test(symToClear)) {
-          event.preventDefault();
+          if (symToClear && /\D/g.test(symToClear)) {
+            event.preventDefault();
+          }
         }
       }
-    },
-
-    onPhonePaste(event) {
-      const input = event.target;
+    };
+    const onPhonePaste = (event: any) => {
+      const input = event.target as HTMLInputElement;
       const inputNumbersValue = input.value.replace(/\D/g, "");
-      const pasted = event.clipboardData || window.clipboardData;
+      const pasted = event.clipboardData;
 
       if (pasted) {
         const pastedText = pasted.getData("Text");
@@ -131,8 +122,15 @@ export default defineComponent({
           input.value = inputNumbersValue;
         }
       }
-    },
+    };
+
+    return {
+      phoneNumber,
+      onPhoneInput,
+      onPhoneKeyDown,
+      onPhonePaste,
+    };
   },
-  emits: ["input:modelValue"],
+  emits: ["update:phoneNumber"],
 });
 </script>

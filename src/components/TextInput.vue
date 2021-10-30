@@ -1,13 +1,17 @@
 <template>
   <div class="TextInput">
     <div class="TextInput-wrapper">
-      <div :class="['TextInput-label', isActive && 'TextInput-label-active']">
+      <div
+        :class="[
+          'TextInput-label',
+          isActive || content || modelValue ? 'TextInput-label-active' : '',
+        ]"
+      >
         {{ label }}
       </div>
 
       <div class="TextInput-field">
         <input
-          v-model="content"
           :class="[
             'TextInput-control',
             !validatorStatus && 'TextInput-control-invalid',
@@ -18,8 +22,9 @@
           :readonly="inputReadonly"
           @blur="inputBlur"
           @focus="inputFocus"
-          @input="inputUpdate"
+          @input="inputUpdate($event.target.value)"
           @click="$emit('click')"
+          :value="modelValue"
           :v-autofocus="inputAutofocus"
         />
       </div>
@@ -39,7 +44,7 @@
   </div>
 </template>
 
-<script lang="tsx">
+<script lang="ts">
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
@@ -116,6 +121,10 @@ export default defineComponent({
     const isActive = ref(false);
     const validatorStatus = ref(true);
 
+    if (content.value.length > 0) {
+      isActive.value = true;
+    }
+
     const toggleActive = (): void => {
       if (content.value.length < 1) {
         isActive.value = !isActive.value;
@@ -140,8 +149,9 @@ export default defineComponent({
       }
     };
 
-    const inputUpdate = (): void => {
-      emit("update:modelValue", content.value);
+    const inputUpdate = (value: string): void => {
+      content.value = value;
+      emit("update:modelValue", value);
     };
 
     return {
@@ -178,6 +188,7 @@ export default defineComponent({
     font-size: 1.5rem;
     pointer-events: none;
     transition: all 0.25s ease;
+    user-select: none;
 
     &-active {
       top: 1rem;

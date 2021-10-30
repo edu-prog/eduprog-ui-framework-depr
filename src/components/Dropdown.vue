@@ -19,10 +19,12 @@
           'dropdown-item',
           direction && `dropdown-item-${direction}`,
           clearly && 'dropdown-clearly',
+          fullView && 'dropdown-item-fullview',
         ]"
         :style="{ width: `${max_width}px` }"
         @mouseleave="onDropdownMouseLeaveFromItem"
         @mouseover="onDropdownMouseOverOnItem"
+        @click="closeOnClick ? (isActive = false) : 0"
       >
         <div class="dropdown-item-content">
           <slot name="content"></slot>
@@ -37,7 +39,6 @@ import { directive } from "vue3-click-away";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Dropdown",
   directives: {
     ClickAway: directive,
   },
@@ -71,6 +72,20 @@ export default defineComponent({
       required: false,
       default: false,
     },
+    fullView: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    closeOnClick: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    modelValue: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -82,16 +97,19 @@ export default defineComponent({
     onDropdownToogleClicked() {
       if (!this.hover) {
         this.isActive = !this.isActive;
+        this.$emit("update:modelValue", this.isActive);
       }
     },
     onDropdownAwayClicked() {
       if (!this.hover) {
         this.isActive = false;
+        this.$emit("update:modelValue", this.isActive);
       }
     },
     onDropdownMouseOver() {
       if (this.hover) {
         this.isActive = true;
+        this.$emit("update:modelValue", this.isActive);
       }
     },
 
@@ -117,6 +135,7 @@ export default defineComponent({
       }
     },
   },
+  emits: ["update:modelValue"],
 });
 </script>
 
@@ -129,6 +148,7 @@ export default defineComponent({
 
   &-toggle {
     display: inline-block;
+    width: 100%;
   }
 
   &-item {
@@ -136,6 +156,10 @@ export default defineComponent({
     z-index: 10;
     transition: opacity 0.25s ease;
     position: absolute;
+
+    &-fullview {
+      width: 100%;
+    }
 
     &::before {
       content: "";

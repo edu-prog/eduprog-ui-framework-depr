@@ -18,7 +18,6 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "TextInputButton",
   props: {
     label: {
       type: String,
