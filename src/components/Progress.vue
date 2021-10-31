@@ -1,7 +1,7 @@
 <template>
   <div class="progress">
     <div
-      v-for="value of values"
+      v-for="value of progressValues"
       v-bind:key="value.color"
       :style="{ backgroundColor: value.color, width: `${value.value}%` }"
       class="progress-bar progress-bar-stripted"
@@ -9,31 +9,29 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script lang="ts">
+import { computed, defineComponent, PropType } from "vue";
+
+interface IProgressOptions {
+  value: number;
+  color: string;
+}
 
 export default defineComponent({
-  name: "Progress",
   props: {
-    values: {
-      type: Array,
-      required: true,
+    modelValue: {
+      type: Array as PropType<Array<IProgressOptions>>,
+      default: Array as PropType<Array<IProgressOptions>>,
     },
   },
-  data() {
-    return {
-      progress_value: this.value,
-    };
-  },
-  methods: {
-    getValue() {
-      return this.progress_value;
-    },
+  setup(props) {
+    const progressValues = computed(() => {
+      return props.modelValue;
+    });
 
-    setValue(value) {
-      this.progress_value = value;
-    },
+    return { progressValues };
   },
+  emits: ["update:modelValue"],
 });
 </script>
 
