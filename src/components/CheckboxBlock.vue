@@ -1,15 +1,15 @@
 <template>
   <div>
     <div
-      v-for="option in options"
-      :key="option.content"
+      v-for="(option, index) in options"
+      :key="index"
       class="CheckboxBlock-container"
     >
       <div class="CheckboxBlock-container-item">
         <CheckboxBlockButton
           :data-value="option.content"
           :icon="option.icon"
-          @click="onItemSelected"
+          @click="itemSelect(option.content)"
         >
           {{ option.content }}
         </CheckboxBlockButton>
@@ -18,39 +18,41 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import CheckboxBlockButton from "./CheckboxBlockButton.vue";
-import { defineComponent } from "vue";
+import { defineComponent, PropType, ref } from "vue";
+
+interface ICheckboxBlockOptions {
+  icon: File;
+  content: string;
+}
 
 export default defineComponent({
-  name: "CheckboxBlock",
   components: {
     CheckboxBlockButton,
   },
   props: {
     options: {
-      type: Array,
+      type: Array as PropType<Array<ICheckboxBlockOptions>>,
     },
     modelValue: {
       type: String,
+      default: "",
     },
   },
-  data() {
-    return {
-      value: [],
-    };
-  },
-  methods: {
-    onItemSelected(event) {
-      const content = event.target.dataset.value;
-      if (!this.value.includes(content)) {
-        this.value.push(content);
+  setup(props, { emit }) {
+    const content = ref(Array<string>());
+    const itemSelect = (itemValue: string) => {
+      if (!content.value.includes(itemValue)) {
+        content.value.push(itemValue);
       } else {
-        this.value.splice(this.value.indexOf(content), 1);
+        content.value.splice(content.value.indexOf(itemValue), 1);
       }
 
-      this.$emit("update:modelValue", this.value);
-    },
+      emit("update:modelValue", content.value);
+    };
+
+    return { content, itemSelect };
   },
   emits: ["update:modelValue"],
 });
