@@ -6,14 +6,6 @@
 import { computed, defineComponent, StyleValue } from "vue";
 import { ISizes } from "@/utils/breakpoins";
 
-const sizes = {
-  xs: "1rem",
-  s: "1.25rem",
-  m: "1.5rem",
-  l: "1.75rem",
-  xl: "2rem",
-} as ISizes;
-
 export default defineComponent({
   props: {
     name: {
@@ -35,6 +27,14 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const sizes = {
+      xs: "1rem",
+      s: "1.25rem",
+      m: "1.5rem",
+      l: "1.75rem",
+      xl: "2rem",
+    } as ISizes;
+
     const iconStyles = computed(() => {
       return {
         color: props.color,
