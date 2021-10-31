@@ -1,71 +1,21 @@
 <template>
   <div class="Select">
     <div class="Select-Wrapper" v-if="!isMobileTemplate">
-      <Dropdown class="Select-dropdown" clearly full-view v-model="isActive">
-        <template #toggle>
-          <div class="Select-input">
-            <TextInput
-              :label="label"
-              input-cursor="pointer"
-              input-readonly
-              :model-value="content.join(', ')"
-            >
-              <template #additional-right>
-                <div
-                  :class="[
-                    'Select-input-right',
-                    isActive ? 'Select-input-right-active' : '',
-                  ]"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24px"
-                    viewBox="0 0 24 24"
-                    width="24px"
-                    fill="#9fa3a7"
-                  >
-                    <path d="M24 24H0V0h24v24z" fill="none" opacity=".87" />
-                    <path
-                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"
-                    />
-                  </svg>
-                </div>
-              </template>
-            </TextInput>
-          </div>
-        </template>
-
-        <template #content>
-          <div class="Select-dropdown">
-            <div
-              class="Select-dropdown-item"
-              v-for="(item, index) in options"
-              :key="index"
-            >
-              <Checkbox
-                position="left"
-                style="width: 100%; height: 100%; padding: 0.5rem"
-                type="main"
-                :checked="content.includes(item)"
-                @click="itemClick(item)"
-                :disabled="
-                  content.length >= maxSelected && !content.includes(item)
-                "
-              >
-                {{ item }}
-              </Checkbox>
-            </div>
-          </div>
-        </template>
-      </Dropdown>
+      <MultipleSelect
+        :label="label"
+        :options="options"
+        :max-selected="maxSelected"
+        v-model="content"
+        @change="$emit('update:modelValue', content)"
+      />
     </div>
     <div class="Select-mobile-wrapper" v-else>
       <MultipleMobileSelect
         :label="label"
-        @change="mobileChange"
         v-model="content"
         :options="options"
         :max-selected="maxSelected"
+        @change="$emit('update:modelValue', content)"
       />
     </div>
   </div>
@@ -73,18 +23,14 @@
 
 <script lang="ts">
 import { defineComponent, PropType, ref } from "vue";
-import TextInput from "@/components/TextInput.vue";
-import Dropdown from "@/components/Dropdown.vue";
-import Checkbox from "@/components/Checkbox.vue";
 import { isMobile } from "mobile-device-detect";
 import MultipleMobileSelect from "@/components/Select/MultipleMobileSelect.vue";
+import MultipleSelect from "@/components/Select/MultipleSelect.vue";
 
 export default defineComponent({
   components: {
-    TextInput,
-    Dropdown,
-    Checkbox,
     MultipleMobileSelect,
+    MultipleSelect,
   },
   props: {
     label: {
@@ -97,7 +43,7 @@ export default defineComponent({
       required: true,
     },
     modelValue: {
-      type: String,
+      type: Array as PropType<Array<string>>,
     },
     maxSelected: {
       type: [Number, String],
@@ -111,31 +57,13 @@ export default defineComponent({
       },
     },
   },
-  setup(props, { emit }) {
+  setup() {
     const content = ref<Array<string>>([]);
-    const isActive = ref(false);
     const isMobileTemplate = ref(isMobile);
-
-    const itemClick = (itemValue: string) => {
-      if (content.value.includes(itemValue)) {
-        content.value.splice(content.value.indexOf(itemValue), 1);
-      } else {
-        content.value.push(itemValue);
-      }
-
-      emit("update:modelValue", content.value);
-    };
-
-    const mobileChange = () => {
-      emit("update:modelValue", content.value);
-    };
 
     return {
       content,
-      isActive,
       isMobileTemplate,
-      itemClick,
-      mobileChange,
     };
   },
   emit: ["update:modelValue"],

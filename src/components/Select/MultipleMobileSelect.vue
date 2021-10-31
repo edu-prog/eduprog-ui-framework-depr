@@ -20,7 +20,10 @@
     </div>
 
     <div
-      :class="['Select-mobile-label', isActive && 'Select-mobile-label-active']"
+      :class="[
+        'Select-mobile-label',
+        (isActive || content.length > 0) && 'Select-mobile-label-active',
+      ]"
     >
       {{ label }}
     </div>
@@ -76,6 +79,7 @@ export default defineComponent({
     const content = ref<Array<string>>([]);
     const isActive = ref(false);
     const mobileSelected = () => {
+      console.log(content.value);
       if (content.value.length > 0) {
         isActive.value = !isActive.value;
       }
