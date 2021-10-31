@@ -4,7 +4,7 @@
     :label="label"
     :max-length="18"
     :input-required="required === true"
-    :validation-message="validation_message"
+    :validation-message="validationMessage"
     :validation-pattern="/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/"
     input-type="tel"
     @input="onPhoneInput"
@@ -28,7 +28,7 @@ export default defineComponent({
       required: false,
       default: "Номер телефона",
     },
-    validation_message: {
+    validationMessage: {
       type: String,
       required: false,
       default: "",
