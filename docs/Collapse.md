@@ -19,7 +19,7 @@ import Collapse from "eduprog-ds/src/components/Collapse.vue";
 <Row>
   <Column>
     <Collapse transition="fade">
-      <template #target>
+      <template #toggle>
         <Button>Open</Button>
       </template>
 

@@ -8,8 +8,10 @@ import Dropdown from "eduprog-ds/src/components/Dropdown.vue";
 
 | Свойство  | Значение                                                  | Описание                  |
 | --------- | --------------------------------------------------------- | ------------------------- |
-| direction | {bottom-[left, center, right], top-[left, center, right]} | Направление Dropdown      |
-| left      | number                                                    | Отклонение Dropdown влево |
+| direction | {bottom-[left, center, right], top-[left, center, right]} | направление Dropdown      |
+| hover      | boolean                                                    | открывается по наведению на `target` |
+| clearly      | boolean                                                    | не показывается стрелочка навигации |
+
 
 ## Пример
 

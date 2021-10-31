@@ -1,13 +1,13 @@
 <template>
   <div class="collapse">
     <div
-      class="collapse-target"
+      class="collapse-toggle"
       @click="
         $emit('click');
         isActive = !isActive;
       "
     >
-      <slot name="target" />
+      <slot name="toggle" />
     </div>
 
     <transition appear :name="transition">
@@ -41,7 +41,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .collapse {
-  &-target {
+  &-toggle {
     display: inline-block;
     cursor: pointer;
   }
