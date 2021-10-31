@@ -1,30 +1,14 @@
 <template>
-  <Button :style="iconButtonStyles" :type="button_type">
-    <Icon :color="icon_color" :name="icon_name" :size="icon_size" />
+  <Button :style="iconButtonStyles" :type="buttonType">
+    <Icon :color="iconColor" :name="iconName" :size="iconSize" />
   </Button>
 </template>
 
 <script lang="ts">
 import Button from "./Button.vue";
 import Icon from "./Icon.vue";
-import { BreakpointsLabel } from "@/utils/breakpoins";
-import { computed, defineComponent } from "vue";
-
-interface IButtonSize {
-  xs: string;
-  s: string;
-  m: string;
-  l: string;
-  xl: string;
-}
-
-const ButtonSize = {
-  xs: "3rem",
-  s: "4.5rem",
-  m: "6.75rem",
-  l: "10.125rem",
-  xl: "15.1875rem",
-} as IButtonSize;
+import { BreakpointsLabel, ISizes } from "@/utils/breakpoins";
+import { computed, defineComponent, StyleValue } from "vue";
 
 export default defineComponent({
   components: {
@@ -32,7 +16,7 @@ export default defineComponent({
     Button,
   },
   props: {
-    icon_name: {
+    iconName: {
       type: String,
       required: true,
     },
@@ -52,7 +36,7 @@ export default defineComponent({
         return BreakpointsLabel.includes(value);
       },
     },
-    icon_size: {
+    iconSize: {
       type: String,
       default: "m",
       required: false,
@@ -60,28 +44,35 @@ export default defineComponent({
         return BreakpointsLabel.includes(value);
       },
     },
-    icon_color: {
+    iconColor: {
       type: String,
       default: "white",
       required: false,
     },
-    button_round: {
+    buttonRound: {
       type: Boolean,
       default: false,
       required: false,
     },
-    button_type: {
+    buttonType: {
       type: String,
       default: "default",
       required: false,
     },
   },
   setup(props) {
+    const ButtonSize = {
+      xs: "3rem",
+      s: "4.5rem",
+      m: "6.75rem",
+      l: "10.125rem",
+      xl: "15.1875rem",
+    } as ISizes;
     const iconButtonStyles = computed(() => {
       return {
-        maxWidth: ButtonSize[props.width as keyof IButtonSize],
-        maxHeight: ButtonSize[props.height as keyof IButtonSize],
-      };
+        maxWidth: ButtonSize[props.width as keyof ISizes],
+        maxHeight: ButtonSize[props.height as keyof ISizes],
+      } as StyleValue;
     });
     return { iconButtonStyles };
   },

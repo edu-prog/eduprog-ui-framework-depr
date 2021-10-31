@@ -1,6 +1,6 @@
 const BreakpointsLabel = ["xs", "s", "m", "l", "xl"];
 
-interface Sizes {
+interface ISizes {
   xs: string;
   s: string;
   m: string;
@@ -10,7 +10,7 @@ interface Sizes {
 }
 
 const BreakpointsLabelConvertToLarge = (value: string): string => {
-  const sizes: Sizes = {
+  const sizes: ISizes = {
     xs: "sm",
     s: "md",
     m: "lg",
@@ -19,7 +19,7 @@ const BreakpointsLabelConvertToLarge = (value: string): string => {
     fluid: "fluid",
   };
 
-  return sizes[value as keyof Sizes];
+  return sizes[value as keyof ISizes];
 };
 
-export { BreakpointsLabel, BreakpointsLabelConvertToLarge };
+export { BreakpointsLabel, BreakpointsLabelConvertToLarge, ISizes };

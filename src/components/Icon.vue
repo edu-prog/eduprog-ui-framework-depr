@@ -2,8 +2,9 @@
   <span :style="iconStyles" class="material-icons">{{ name }}</span>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script lang="ts">
+import { computed, defineComponent, StyleValue } from "vue";
+import { ISizes } from "@/utils/breakpoins";
 
 const sizes = {
   xs: "1rem",
@@ -11,7 +12,7 @@ const sizes = {
   m: "1.5rem",
   l: "1.75rem",
   xl: "2rem",
-};
+} as ISizes;
 
 export default defineComponent({
   props: {
@@ -33,14 +34,15 @@ export default defineComponent({
       required: false,
     },
   },
-  computed: {
-    iconStyles() {
+  setup(props) {
+    const iconStyles = computed(() => {
       return {
-        color: this.color,
-        fontSize: `${sizes[this.size]}`,
-        fontWeight: this.weight,
-      };
-    },
+        color: props.color,
+        fontSize: `${sizes[props.size as keyof ISizes]}`,
+        fontWeight: props.weight,
+      } as StyleValue;
+    });
+    return { iconStyles };
   },
 });
 </script>
