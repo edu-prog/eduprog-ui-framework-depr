@@ -18,15 +18,13 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script lang="ts">
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: "Collapse",
-  data() {
-    return {
-      isActive: false,
-    };
+  setup() {
+    const isActive = ref(false);
+    return { isActive };
   },
   emits: ["click"],
 });
