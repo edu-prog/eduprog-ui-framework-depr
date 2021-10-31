@@ -6,9 +6,11 @@ import Progress from "eduprog-ds/src/components/Progress.vue";
 
 ## Свойства
 
-| Свойство | Значение                                                       | Описание               |
-| -------- | -------------------------------------------------------------- | ---------------------- |
-| Значение | [{value: 10, color: "#ffb000"}, {value: 90, color: "#ffcc00"}] | значения прогресс-бара |
+Значения для отрисовки `Progress` берутся из v-model атрибурта. Пример атрибута:
+
+```js
+const progressValue = [{ value: 30, color: "#ffbb00" }];
+```
 
 ## Пример
 
@@ -18,13 +20,16 @@ import Progress from "eduprog-ds/src/components/Progress.vue";
 <Row>
   <Column>
     <Progress
-      ref="progress"
-      :values="[
-        { value: 10, color: '#6320EE' },
-        { value: 40, color: '#8075FF' },
-        { value: 50, color: '#50C878' },
-      ]"
+          v-model="progressValue"
     />
   </Column>
 </Row>
+<!-- 
+  При этом, progressValue: 
+  const progressValue = [
+        { value: 10, color: '#6320EE' },
+        { value: 40, color: '#8075FF' },
+        { value: 50, color: '#50C878' },
+]
+-->
 ```
