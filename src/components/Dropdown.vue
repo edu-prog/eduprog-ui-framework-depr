@@ -5,9 +5,8 @@
     @mouseleave="onDropdownMouseLeave"
   >
     <div
-      ref="dropdownToggle"
       class="dropdown-toggle"
-      @click="onDropdownToogleClicked"
+      @click="onDropdownToggleClicked"
       @mouseover="onDropdownMouseOver"
     >
       <slot name="toggle"></slot>
@@ -34,9 +33,9 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { directive } from "vue3-click-away";
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   directives: {
@@ -47,7 +46,7 @@ export default defineComponent({
       type: String,
       required: false,
       default: "bottom-left",
-      validator(value) {
+      validator: (value: string): boolean => {
         return [
           "bottom-left",
           "bottom-center",
@@ -87,53 +86,60 @@ export default defineComponent({
       default: false,
     },
   },
-  data() {
-    return {
-      isActive: false,
-      isHover: false,
-    };
-  },
-  methods: {
-    onDropdownToogleClicked() {
-      if (!this.hover) {
-        this.isActive = !this.isActive;
-        this.$emit("update:modelValue", this.isActive);
-      }
-    },
-    onDropdownAwayClicked() {
-      if (!this.hover) {
-        this.isActive = false;
-        this.$emit("update:modelValue", this.isActive);
-      }
-    },
-    onDropdownMouseOver() {
-      if (this.hover) {
-        this.isActive = true;
-        this.$emit("update:modelValue", this.isActive);
-      }
-    },
+  setup(props, { emit }) {
+    const isActive = ref(false);
+    const isHover = ref(false);
 
-    onDropdownMouseLeave() {
-      if (this.hover) {
+    const onDropdownToggleClicked = () => {
+      if (!props.hover) {
+        isActive.value = !isActive.value;
+        emit("update:modelValue", isActive.value);
+      }
+    };
+    const onDropdownAwayClicked = () => {
+      if (!props.hover) {
+        isActive.value = false;
+        emit("update:modelValue", isActive.value);
+      }
+    };
+    const onDropdownMouseOver = () => {
+      if (props.hover) {
+        isActive.value = true;
+        emit("update:modelValue", isActive.value);
+      }
+    };
+    const onDropdownMouseLeave = () => {
+      if (props.hover) {
         setTimeout(() => {
-          if (!this.isHover) {
-            this.isActive = false;
+          if (!isHover.value) {
+            isActive.value = false;
           }
         }, 500);
       }
-    },
+    };
 
-    onDropdownMouseOverOnItem() {
-      if (this.hover) {
-        this.isHover = true;
+    const onDropdownMouseOverOnItem = () => {
+      if (props.hover) {
+        isHover.value = true;
       }
-    },
+    };
 
-    onDropdownMouseLeaveFromItem() {
-      if (this.hover) {
-        this.isHover = false;
+    const onDropdownMouseLeaveFromItem = () => {
+      if (props.hover) {
+        isHover.value = false;
       }
-    },
+    };
+
+    return {
+      isActive,
+      isHover,
+      onDropdownToggleClicked,
+      onDropdownAwayClicked,
+      onDropdownMouseOver,
+      onDropdownMouseLeave,
+      onDropdownMouseOverOnItem,
+      onDropdownMouseLeaveFromItem,
+    };
   },
   emits: ["update:modelValue"],
 });
