@@ -60,14 +60,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { isMobile } from "mobile-device-detect";
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  directives: {
-    isMobile,
-  },
   name: "Modal",
   props: {
     fullscreen: {
@@ -91,19 +88,18 @@ export default defineComponent({
       default: "m",
     },
   },
-  setup() {
+  setup(props) {
     const isActive = ref(false);
     const IsMobile = ref(isMobile);
     const onToggleClicked = () => {
       isActive.value = !isActive.value;
-      this.isActive = !this.isActive;
       document.body.style.overflow =
-        this.isActive && this.scrollable ? "hidden" : "";
+        isActive.value && props.scrollable ? "hidden" : "";
     };
     const closeModal = () => {
       isActive.value = false;
       document.body.style.overflow =
-        this.isActive && this.scrollable ? "hidden" : "";
+        isActive.value && props.scrollable ? "hidden" : "";
     };
 
     return { isActive, IsMobile, onToggleClicked, closeModal };

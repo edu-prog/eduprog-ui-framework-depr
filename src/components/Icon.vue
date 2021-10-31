@@ -14,7 +14,6 @@ const sizes = {
 };
 
 export default defineComponent({
-  name: "Icon",
   props: {
     name: {
       type: String,
