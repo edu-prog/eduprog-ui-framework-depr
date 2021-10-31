@@ -35,21 +35,18 @@
       </Button>
     </div>
     <div
-      v-for="item in total_visible === undefined ? length : total_visible"
+      v-for="item in totalVisible === undefined ? length : totalVisible"
       :key="item"
       class="pagination-item"
     >
       <Button
         :padding="0.75"
-        :type="rendered_page + item === page ? 'action' : 'default'"
-        @click="onButtonNumberClicked"
-        >{{ rendered_page + item }}
+        :type="renderedPage + item === page ? 'action' : 'default'"
+        @click="onButtonNumberClicked(renderedPage + item)"
+        >{{ renderedPage + item }}
       </Button>
     </div>
-    <div
-      v-show="rendered_page + total_visible < length"
-      class="pagination-item"
-    >
+    <div v-show="renderedPage + totalVisible < length" class="pagination-item">
       <Button
         :padding="0.5"
         :style="{ display: 'flex' }"
@@ -90,9 +87,9 @@
   </div>
 </template>
 
-<script>
-import Button from "./Button";
-import { defineComponent } from "vue";
+<script lang="ts">
+import Button from "@/components/Button.vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   components: {
@@ -103,59 +100,74 @@ export default defineComponent({
       type: Number,
       required: true,
     },
-    total_visible: {
+    totalVisible: {
       type: Number,
       required: false,
     },
+    modelValue: {
+      type: Number,
+    },
   },
-  data() {
+  setup(props, { emit }) {
+    const page = ref(1);
+    const renderedPage = ref(0);
+    const onButtonNextFrameRendered = () => {
+      if (
+        props.totalVisible &&
+        renderedPage.value + props.totalVisible < props.length
+      ) {
+        renderedPage.value += props.totalVisible;
+        page.value = renderedPage.value + 1;
+        emitPage();
+      }
+    };
+    const onButtonPrevFrameRendered = () => {
+      if (props.totalVisible && renderedPage.value > 0) {
+        renderedPage.value -= props.totalVisible;
+        page.value = renderedPage.value + props.totalVisible;
+        emitPage();
+      }
+    };
+    const onButtonNumberClicked = (value: number) => {
+      page.value = value;
+      emitPage();
+    };
+    const onButtonPrevClicked = () => {
+      if (page.value > 1) {
+        page.value--;
+        if (renderedPage.value >= page.value) {
+          onButtonPrevFrameRendered();
+        }
+        emitPage();
+      }
+    };
+    const onButtonNextClicked = () => {
+      if (page.value < props.length) {
+        page.value++;
+        if (
+          props.totalVisible &&
+          renderedPage.value + props.totalVisible < page.value
+        ) {
+          onButtonNextFrameRendered();
+        }
+        emitPage();
+      }
+    };
+    const emitPage = () => {
+      emit("update:modelValue", page.value);
+    };
+
     return {
-      page: 1,
-      rendered_page: 0,
+      page,
+      renderedPage,
+      onButtonNextFrameRendered,
+      onButtonPrevFrameRendered,
+      onButtonNumberClicked,
+      onButtonPrevClicked,
+      onButtonNextClicked,
     };
   },
-  methods: {
-    onButtonNextFrameRendered() {
-      if (this.rendered_page + this.total_visible < this.length) {
-        this.rendered_page += this.total_visible;
-        this.page = this.rendered_page + 1;
-        this.emitPage();
-      }
-    },
-    onButtonPrevFrameRendered() {
-      if (this.rendered_page > 0) {
-        this.rendered_page -= this.total_visible;
-        this.page = this.rendered_page + this.total_visible;
-        this.emitPage();
-      }
-    },
-    onButtonNumberClicked(event) {
-      this.page = Number(event.target.innerText);
-      this.emitPage();
-    },
-    onButtonPrevClicked() {
-      if (this.page > 1) {
-        this.page--;
-        if (this.rendered_page >= this.page) {
-          this.onButtonPrevFrameRendered();
-        }
-        this.emitPage();
-      }
-    },
-    onButtonNextClicked() {
-      if (this.page < this.length) {
-        this.page++;
-        if (this.rendered_page + this.total_visible < this.page) {
-          this.onButtonNextFrameRendered();
-        }
-        this.emitPage();
-      }
-    },
-    emitPage() {
-      this.$emit("input", this.page);
-    },
-  },
-  emits: ["input"],
+  emits: ["update:modelValue"],
 });
 </script>
 
