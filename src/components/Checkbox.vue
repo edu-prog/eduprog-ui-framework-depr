@@ -6,7 +6,6 @@
 
     <input
       :checked="isActive || checked"
-      :data-opt="__input_opts"
       :disabled="disabled"
       type="checkbox"
       @click="onCheckboxChanged"
@@ -52,9 +51,6 @@ export default defineComponent({
     checked: {
       type: Boolean,
       default: false,
-    },
-    __input_opts: {
-      type: String,
     },
     disabled: {
       type: Boolean,
