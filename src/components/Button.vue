@@ -20,8 +20,8 @@
         v-if="badge"
         :class="[
           'badge-container',
-          badge && `badge-container-${badge_type}`,
-          badge_color && `badge-container-${badge_color}`,
+          badge && `badge-container-${badgeType}`,
+          badgeColor && `badge-container-${badgeColor}`,
         ]"
       >
         {{ badge }}
@@ -76,7 +76,7 @@ export default defineComponent({
       default: "",
       required: false,
     },
-    badge_type: {
+    badgeType: {
       type: String,
       required: false,
       default: "edge",
@@ -84,7 +84,7 @@ export default defineComponent({
         return ["edge", "inside"].includes(value);
       },
     },
-    badge_color: {
+    badgeColor: {
       type: String,
       required: false,
       validator: (value: string): boolean => {
