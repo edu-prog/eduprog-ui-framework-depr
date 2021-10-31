@@ -20,7 +20,7 @@
           clearly && 'dropdown-clearly',
           fullView && 'dropdown-item-fullview',
         ]"
-        :style="{ width: `${max_width}px` }"
+        :style="{ width: `${maxWidth}px` }"
         @mouseleave="onDropdownMouseLeaveFromItem"
         @mouseover="onDropdownMouseOverOnItem"
         @click="closeOnClick ? (isActive = false) : 0"
@@ -62,7 +62,7 @@ export default defineComponent({
       required: false,
       default: false,
     },
-    max_width: {
+    maxWidth: {
       type: Number,
       required: false,
     },
