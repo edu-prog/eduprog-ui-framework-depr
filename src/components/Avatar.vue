@@ -21,7 +21,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { BreakpointsLabel } from "@/utils/breakpoins";
 import { defineComponent } from "vue";
 
@@ -31,7 +31,7 @@ export default defineComponent({
       type: String,
       required: false,
       default: "m",
-      validator(value) {
+      validator: (value: string): boolean => {
         return BreakpointsLabel.includes(value);
       },
     },
