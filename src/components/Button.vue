@@ -263,7 +263,7 @@ export default defineComponent({
 
   &-edge {
     position: absolute;
-    border-radius: 2px solid #ffffff;
+    border: 2px solid #ffffff;
     top: 0;
     right: 0;
     transform: translate(50%, -50%);
