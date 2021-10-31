@@ -13,7 +13,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Icon from "./Icon.vue";
 import { defineComponent } from "vue";
 
@@ -26,7 +26,7 @@ export default defineComponent({
       type: String,
       required: false,
       default: "primary",
-      validator(value) {
+      validator: (value: string): boolean => {
         return ["primary", "secondary", "accent"].includes(value);
       },
     },

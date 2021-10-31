@@ -26,7 +26,6 @@ import { BreakpointsLabel } from "@/utils/breakpoins";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Avatar",
   props: {
     size: {
       type: String,
