@@ -14,11 +14,10 @@
   </button>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: "CheckboxBlockButton",
   props: {
     icon: {
       type: String,
