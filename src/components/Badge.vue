@@ -1,10 +1,10 @@
 <template>
   <div class="badge-container">
     <Icon
-      :color="icon_color"
-      :name="icon_name"
-      :size="icon_size"
-      :weigth="icon_weight"
+      :color="iconColor"
+      :name="iconName"
+      :size="iconSize"
+      :weigth="iconWeight"
     />
 
     <span class="badge-content">
@@ -34,19 +34,19 @@ export default defineComponent({
       type: Number,
       required: false,
     },
-    icon_name: {
+    iconName: {
       type: String,
       required: true,
     },
-    icon_color: {
+    iconColor: {
       type: String,
       required: false,
     },
-    icon_size: {
+    iconSize: {
       type: String,
       default: "m",
     },
-    icon_weight: {
+    iconWeight: {
       type: String,
       default: "normal",
       required: false,
@@ -56,7 +56,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/_global.scss";
+@import "../assets/styles/global";
 
 .badge-content {
   display: inline-flex;
