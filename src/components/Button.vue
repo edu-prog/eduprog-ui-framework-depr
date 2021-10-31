@@ -32,17 +32,16 @@
   </button>
 </template>
 
-<script>
-import { BreakpointsLabel } from "../utils/breakpoins";
-import { defineComponent } from "vue";
+<script lang="ts">
+import { BreakpointsLabel } from "@/utils/breakpoins";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: "Button",
   props: {
     type: {
       type: String,
       default: "default",
-      validator(value) {
+      validator: (value: string): boolean => {
         return [
           "default",
           "action",
@@ -56,7 +55,7 @@ export default defineComponent({
     size: {
       type: String,
       default: "m",
-      validator(value) {
+      validator: (value: string): boolean => {
         return BreakpointsLabel.includes(value);
       },
     },
@@ -81,14 +80,14 @@ export default defineComponent({
       type: String,
       required: false,
       default: "edge",
-      validator(value) {
+      validator: (value: string): boolean => {
         return ["edge", "inside"].includes(value);
       },
     },
     badge_color: {
       type: String,
       required: false,
-      validator(value) {
+      validator: (value: string): boolean => {
         return ["primary", "secondary", "accent", "success", "danger"].includes(
           value
         );
@@ -99,19 +98,20 @@ export default defineComponent({
       required: false,
     },
   },
-  data() {
-    return { isActive: false };
-  },
-  methods: {
-    toggleState() {
-      this.isActive = !this.isActive;
+  setup(props, { emit }) {
+    const isActive = ref(false);
+
+    const toggleState = () => {
+      isActive.value = !isActive.value;
 
       setTimeout(() => {
-        this.isActive = false;
+        isActive.value = false;
       }, 400);
 
-      this.$emit("click");
-    },
+      emit("click");
+    };
+
+    return { isActive, toggleState };
   },
   emits: ["click"],
 });
