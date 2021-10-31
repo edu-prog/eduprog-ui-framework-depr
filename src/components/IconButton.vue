@@ -4,11 +4,19 @@
   </Button>
 </template>
 
-<script>
+<script lang="ts">
 import Button from "./Button.vue";
 import Icon from "./Icon.vue";
-import { BreakpointsLabel } from "../utils/breakpoins";
-import { defineComponent } from "vue";
+import { BreakpointsLabel } from "@/utils/breakpoins";
+import { computed, defineComponent } from "vue";
+
+interface IButtonSize {
+  xs: string;
+  s: string;
+  m: string;
+  l: string;
+  xl: string;
+}
 
 const ButtonSize = {
   xs: "3rem",
@@ -16,10 +24,9 @@ const ButtonSize = {
   m: "6.75rem",
   l: "10.125rem",
   xl: "15.1875rem",
-};
+} as IButtonSize;
 
 export default defineComponent({
-  name: "IconButton",
   components: {
     Icon,
     Button,
@@ -33,7 +40,7 @@ export default defineComponent({
       type: String,
       default: "xs",
       required: false,
-      validator(value) {
+      validator: (value: string): boolean => {
         return BreakpointsLabel.includes(value);
       },
     },
@@ -41,7 +48,7 @@ export default defineComponent({
       type: String,
       default: "xs",
       required: false,
-      validator(value) {
+      validator: (value: string): boolean => {
         return BreakpointsLabel.includes(value);
       },
     },
@@ -49,7 +56,7 @@ export default defineComponent({
       type: String,
       default: "m",
       required: false,
-      validator(value) {
+      validator: (value: string): boolean => {
         return BreakpointsLabel.includes(value);
       },
     },
@@ -69,13 +76,14 @@ export default defineComponent({
       required: false,
     },
   },
-  computed: {
-    iconButtonStyles() {
+  setup(props) {
+    const iconButtonStyles = computed(() => {
       return {
-        maxWidth: ButtonSize[this.width],
-        maxHeight: ButtonSize[this.height],
+        maxWidth: ButtonSize[props.width as keyof IButtonSize],
+        maxHeight: ButtonSize[props.height as keyof IButtonSize],
       };
-    },
+    });
+    return { iconButtonStyles };
   },
 });
 </script>
