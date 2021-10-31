@@ -32,7 +32,7 @@ export default defineComponent({
         return ["left", "right", "center", "justify"].includes(value);
       },
     },
-    text_color: {
+    textColor: {
       type: String,
       default: "#000000",
       required: false,
