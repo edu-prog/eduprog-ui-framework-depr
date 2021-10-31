@@ -14,8 +14,8 @@ import Button from "eduprog-ds/src/components/Button.vue";
 | round       | {true, false}                                  | круглая ли кнопка      |
 | rounded     | {true, false}                                  | закругленная ли кнопка |
 | badge       | string                                         | текст отметки          |
-| badge_type  | {edge, inside}                                 | Тип отметки            |
-| badge_color | {primary, secondary, accent, success, danger}  | Цвет отметки           |
+| badge-type  | {edge, inside}                                 | Тип отметки            |
+| badge-color | {primary, secondary, accent, success, danger}  | Цвет отметки           |
 
 ## Example
 
