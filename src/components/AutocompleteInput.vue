@@ -1,7 +1,7 @@
 <template>
   <div class="Autocomplete-Input">
     <div
-      v-if="!IsMobile"
+      v-if="!isMobileTemplate"
       class="Autocomplete-Input-pc"
       @keydown.down="onKeyDown"
       @keydown.up="onKeyUp"
@@ -9,23 +9,33 @@
     >
       <TextInput
         ref="TextInput"
-        v-model="value"
+        v-model="content"
         :label="label"
-        type="text"
+        input-type="text"
         @input="onInput"
       />
 
       <transition appear name="fade">
-        <div v-if="isActive" class="Autocomplete-Input-dropdown">
-          <div
-            v-for="(item, index) in resultItems"
-            :key="index"
-            :ref="setAutocompleteItemRef"
-            class="Autocomplete-Input-dropdown-item"
-            tabindex="0"
-            @click="onClickToItem"
-            v-html="item"
-          ></div>
+        <div
+          v-if="isActive"
+          class="Autocomplete-Input-dropdown"
+          v-click-away="clearFocusState"
+        >
+          <div class="Autocomplete-Input-dropdown-wrapper">
+            <div
+              v-for="(item, index) in resultItems"
+              :key="index"
+              :ref="
+                (el) => {
+                  if (el) autocompleteItems[index] = el;
+                }
+              "
+              class="Autocomplete-Input-dropdown-item"
+              tabindex="0"
+              @click="onClickToItem(item)"
+              v-html="item"
+            />
+          </div>
         </div>
       </transition>
     </div>
@@ -33,21 +43,20 @@
     <div v-else class="Autocomplete-Input-mobile">
       <TextInput
         ref="TextInput"
-        v-model="value"
+        v-model="content"
         :label="label"
         type="text"
         @click="onInputFocused"
       />
 
       <div v-if="isActive" class="Autocomplete-Input-mobile-wrapper">
-        <transition-group appear mode="out-in" name="pop">
+        <transition appear mode="in-out" name="slide">
           <div
-            :key="2"
             v-click-away="clearFocusState"
             class="Autocomplete-Input-mobile-modal"
           >
             <TextInput
-              v-model="value"
+              v-model="content"
               :label="label"
               autofocus
               type="text"
@@ -59,22 +68,22 @@
                 v-for="(item, index) in resultItems"
                 :key="index"
                 class="Autocomplete-Input-mobile-modal-options-item"
-                @click="onClickToItem"
+                @click="onClickToItem(item)"
                 v-html="item"
               ></div>
             </div>
           </div>
-        </transition-group>
+        </transition>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script lang="ts">
+import { defineComponent, PropType, ref } from "vue";
 import { isMobile } from "mobile-device-detect";
 import { directive } from "vue3-click-away";
-import TextInput from "./TextInput";
+import TextInput from "../components/TextInput.vue";
 
 export default defineComponent({
   props: {
@@ -83,63 +92,61 @@ export default defineComponent({
       required: true,
     },
     options: {
-      type: Array,
+      type: Array as PropType<Array<string>>,
       required: true,
     },
     modelValue: {
       type: String,
+      default: "",
     },
   },
   directives: {
-    isMobile,
     ClickAway: directive,
-  },
-  data() {
-    return {
-      value: "",
-      isActive: false,
-      resultItems: [],
-      focusedItem: 0,
-      IsMobile: isMobile,
-      autocompleteItems: [],
-    };
   },
   components: {
     TextInput,
   },
-  methods: {
-    setAutocompleteItemRef(el) {
-      if (el) {
-        this.autocompleteItems.push(el);
-      }
-    },
-    escapeRegExp(string) {
-      return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    },
-    clearFocusState() {
-      this.isActive = false;
-      this.focusedItem = 0;
-      this.resultItems = [];
-    },
-    onInput() {
-      this.isActive = this.IsMobile || Boolean(this.value);
-
-      const regex_pattern = new RegExp(
-        this.escapeRegExp(this.value.trim()),
-        "i"
+  setup(props, { emit }) {
+    const content = ref<string>(props.modelValue);
+    const isActive = ref(false);
+    const resultItems = ref(Array<string>());
+    const focusedItem = ref(0);
+    const isMobileTemplate = ref(isMobile);
+    const autocompleteItems = ref(Array<HTMLElement>());
+    const setComponentValue = (value: string) => {
+      content.value = value;
+      emit("update:modelValue", content.value);
+    };
+    const clearFocusState = () => {
+      isActive.value = false;
+      focusedItem.value = 0;
+      resultItems.value = Array<string>();
+    };
+    const escapeRegExp = (value: string): string => {
+      return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    };
+    const onClickToItem = (itemValue: string) => {
+      setComponentValue(
+        itemValue.replace("<strong>", "").replace("</strong>", "")
       );
+      clearFocusState();
+    };
+    const onInput = () => {
+      isActive.value = isMobile || Boolean(content.value);
 
-      this.resultItems = this.options.filter((item) =>
+      const regex_pattern = new RegExp(escapeRegExp(content.value.trim()), "i");
+
+      resultItems.value = props.options.filter((item) =>
         regex_pattern.test(item)
       );
 
-      this.resultItems = this.resultItems.map((item) => {
+      resultItems.value = resultItems.value.map((item: string) => {
         let selectedSubstrIndex = item
           .toLowerCase()
-          .indexOf(this.value.toLowerCase());
+          .indexOf(content.value.toLowerCase());
         let selectedString = item.substring(
           selectedSubstrIndex,
-          selectedSubstrIndex + this.value.length
+          selectedSubstrIndex + content.value.length
         );
 
         return item.replace(
@@ -148,51 +155,65 @@ export default defineComponent({
         );
       });
 
-      this.$emit("changed:modelValue", this.value);
-    },
-    setComponentValue(value) {
-      this.$refs.TextInput.content = value;
-      this.value = value;
-      this.$emit("changed:modelValue", this.value);
-    },
-    onClickToItem(event) {
-      this.setComponentValue(event.target.innerText);
-      this.clearFocusState();
-    },
-    onKeyUp(event) {
-      if (this.isActive) {
+      emit("update:modelValue", content.value);
+    };
+
+    const onKeyUp = (event: Event) => {
+      if (isActive.value) {
         event.preventDefault();
-        if (this.focusedItem > 1) {
-          this.focusedItem--;
-          this.autocompleteItems[this.focusedItem - 1].focus();
+        if (focusedItem.value > 1) {
+          focusedItem.value--;
+          autocompleteItems.value[focusedItem.value - 1].focus();
         }
       }
-    },
-    onKeyDown(event) {
-      if (this.isActive) {
+    };
+    const onKeyDown = (event: Event) => {
+      if (isActive.value) {
         event.preventDefault();
-        if (this.focusedItem < this.resultItems.length) {
-          this.focusedItem++;
-          this.autocompleteItems[this.focusedItem - 1].focus();
+        if (focusedItem.value < resultItems.value.length) {
+          focusedItem.value++;
+          autocompleteItems.value[focusedItem.value - 1].focus();
         }
       }
-    },
-    onKeyEnter() {
-      if (this.isActive) {
-        const content = this.resultItems[this.focusedItem - 1]
+    };
+    const onKeyEnter = () => {
+      if (isActive.value) {
+        const content = resultItems.value[focusedItem.value - 1]
           .replace("<strong>", "")
           .replace("</strong>", "");
-        this.setComponentValue(content);
+        setComponentValue(content);
 
-        this.clearFocusState();
+        clearFocusState();
       }
-    },
-    onInputFocused() {
-      this.isActive = true;
-      this.resultItems = this.options.slice();
-    },
+    };
+    const onInputFocused = () => {
+      isActive.value = true;
+      resultItems.value = props.options.slice();
+    };
+    const setAutocompleteItemRef = (el: HTMLElement) => {
+      if (el) {
+        autocompleteItems.value.push(el);
+      }
+    };
+
+    return {
+      content,
+      isActive,
+      resultItems,
+      focusedItem,
+      isMobileTemplate,
+      autocompleteItems,
+      onClickToItem,
+      clearFocusState,
+      onInput,
+      onKeyUp,
+      onKeyDown,
+      onKeyEnter,
+      onInputFocused,
+      setAutocompleteItemRef,
+    };
   },
-  emits: ["changed:modelValue"],
+  emits: ["update:modelValue"],
 });
 </script>
 
@@ -215,16 +236,21 @@ export default defineComponent({
       z-index: 10;
       background-color: $color-white;
       max-height: 190px;
-      overflow-y: auto;
+      margin-top: 0.5rem;
 
-      &::-webkit-scrollbar {
-        width: 0.25rem;
-        height: 0.25rem;
-      }
+      &-wrapper {
+        margin: 0.25rem 0;
+        overflow-y: auto;
 
-      &::-webkit-scrollbar-thumb {
-        background-color: $color-gray;
-        border-radius: 0.5rem;
+        &::-webkit-scrollbar {
+          width: 0.25rem;
+          height: 0.25rem;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: $color-gray;
+          border-radius: 0.5rem;
+        }
       }
 
       &-item {
@@ -261,6 +287,7 @@ export default defineComponent({
       height: 100%;
       padding: 1rem;
       border-radius: 0.5rem;
+      transition: transform 0.5s ease;
 
       &::before {
         content: "";
@@ -305,5 +332,15 @@ export default defineComponent({
 .pop-leave-to {
   opacity: 0;
   transform: scale(0.3) translateY(-50%);
+}
+
+.slide-enter-from,
+.slide-leave-from {
+  transform: translateY(100%);
+}
+
+.slide-enter-to,
+.slide-leave-to {
+  transform: translateY(0%);
 }
 </style>
