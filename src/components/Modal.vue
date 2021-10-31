@@ -93,6 +93,7 @@ export default defineComponent({
   },
   setup() {
     const isActive = ref(false);
+    const IsMobile = ref(isMobile);
     const onToggleClicked = () => {
       isActive.value = !isActive.value;
       this.isActive = !this.isActive;
@@ -105,7 +106,7 @@ export default defineComponent({
         this.isActive && this.scrollable ? "hidden" : "";
     };
 
-    return { isActive, onToggleClicked, closeModal };
+    return { isActive, IsMobile, onToggleClicked, closeModal };
   },
 });
 </script>
