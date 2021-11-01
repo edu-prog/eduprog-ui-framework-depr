@@ -20,6 +20,7 @@
           :type="inputType"
           :maxlength="maxLength"
           :readonly="inputReadonly"
+          :placeholder="isActive ? mask : ''"
           @blur="inputBlur"
           @focus="inputFocus"
           @input="inputUpdate($event.target.value)"
@@ -106,6 +107,11 @@ export default defineComponent({
           return true;
         }
       },
+    },
+    mask: {
+      type: String,
+      required: false,
+      default: "",
     },
   },
   directives: {
