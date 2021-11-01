@@ -7,6 +7,7 @@
     :validation-message="validationMessage"
     :validation-pattern="/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/"
     input-type="tel"
+    :mask="mask"
     @input="onPhoneInput"
     @keydown="onPhoneKeyDown"
     @paste="onPhonePaste"
@@ -45,6 +46,11 @@ export default defineComponent({
     modelValue: {
       type: String,
       default: "",
+    },
+    mask: {
+      type: String,
+      default: "",
+      required: false,
     },
   },
   setup(props, { emit }) {

@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts">
-import { BreakpointsLabel } from "@/utils/breakpoins";
+import { BreakpointsLabel } from "../utils/breakpoins";
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
