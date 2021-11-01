@@ -65,7 +65,6 @@ import { isMobile } from "mobile-device-detect";
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: "Modal",
   props: {
     fullscreen: {
       type: Boolean,
