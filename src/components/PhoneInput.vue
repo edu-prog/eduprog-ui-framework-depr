@@ -42,9 +42,13 @@ export default defineComponent({
       required: false,
       default: false,
     },
+    modelValue: {
+      type: String,
+      default: "",
+    },
   },
   setup(props, { emit }) {
-    const phoneNumber = ref("");
+    const phoneNumber = ref(props.modelValue);
 
     const onPhoneInput = (event: InputEvent) => {
       const { selectionStart } = event.target as HTMLInputElement;
@@ -85,8 +89,8 @@ export default defineComponent({
       } else {
         formattedInputValue = `+${inputNumbersValue.substring(0, 16)}`;
       }
-      (event.target as HTMLInputElement).value = formattedInputValue;
-      emit("update:phoneNumber", phoneNumber.value);
+      phoneNumber.value = formattedInputValue;
+      emit("update:modelValue", phoneNumber.value);
     };
     const onPhoneKeyDown = (event: any) => {
       if (event) {
@@ -111,7 +115,7 @@ export default defineComponent({
         }
       }
     };
-    const onPhonePaste = (event: any) => {
+    const onPhonePaste = (event: ClipboardEvent) => {
       const input = event.target as HTMLInputElement;
       const inputNumbersValue = input.value.replace(/\D/g, "");
       const pasted = event.clipboardData;
@@ -122,6 +126,7 @@ export default defineComponent({
           input.value = inputNumbersValue;
         }
       }
+      emit("update:modelValue", phoneNumber.value);
     };
 
     return {
@@ -131,6 +136,6 @@ export default defineComponent({
       onPhonePaste,
     };
   },
-  emits: ["update:phoneNumber"],
+  emits: ["update:modelValue"],
 });
 </script>
