@@ -10,23 +10,22 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Spinner",
   props: {
     type: {
       type: String,
       required: true,
-      validator(value) {
+      validator: (value: string): boolean => {
         return ["primary", "secondary", "accent"].includes(value);
       },
     },
     mode: {
       type: String,
       required: true,
-      validator(value) {
+      validator: (value: string): boolean => {
         return ["border", "growing"].includes(value);
       },
     },

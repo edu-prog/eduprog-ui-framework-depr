@@ -14,26 +14,23 @@
   </button>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script lang="ts">
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: "CheckboxBlockButton",
   props: {
     icon: {
       type: String,
       required: false,
     },
   },
-  data() {
-    return {
-      isActive: false,
+  setup() {
+    const isActive = ref(false);
+    const onCheckboxItemClicked = () => {
+      isActive.value = !isActive.value;
     };
-  },
-  methods: {
-    onCheckboxItemClicked() {
-      this.isActive = !this.isActive;
-    },
+
+    return { isActive, onCheckboxItemClicked };
   },
 });
 </script>

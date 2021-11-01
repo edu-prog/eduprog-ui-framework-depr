@@ -11,17 +11,16 @@
   </p>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Paragraph",
   props: {
     type: {
       type: String,
       default: "normal",
       required: false,
-      validator(value) {
+      validator: (value: string): boolean => {
         return ["small", "normal", "lead"].includes(value);
       },
     },
@@ -29,17 +28,17 @@ export default defineComponent({
       type: String,
       default: "left",
       required: false,
-      validator(value) {
+      validator: (value: string): boolean => {
         return ["left", "right", "center", "justify"].includes(value);
       },
     },
-    text_color: {
+    textColor: {
       type: String,
       default: "#000000",
       required: false,
-      validator(value) {
-        return value.match(
-          /(?:#|0x)(?:[a-f0-9]{3}|[a-f0-9]{6})\b|(?:rgb|hsl)a?\([^)]*\)/i
+      validator: (value: string): boolean => {
+        return /(?:#|0x)(?:[a-f0-9]{3}|[a-f0-9]{6})\b|(?:rgb|hsl)a?\([^)]*\)/i.test(
+          value
         );
       },
     },

@@ -5,9 +5,8 @@
     @mouseleave="onDropdownMouseLeave"
   >
     <div
-      ref="dropdownToggle"
       class="dropdown-toggle"
-      @click="onDropdownToogleClicked"
+      @click="onDropdownToggleClicked"
       @mouseover="onDropdownMouseOver"
     >
       <slot name="toggle"></slot>
@@ -19,10 +18,12 @@
           'dropdown-item',
           direction && `dropdown-item-${direction}`,
           clearly && 'dropdown-clearly',
+          fullView && 'dropdown-item-fullview',
         ]"
-        :style="{ width: `${max_width}px` }"
+        :style="{ width: `${maxWidth}px` }"
         @mouseleave="onDropdownMouseLeaveFromItem"
         @mouseover="onDropdownMouseOverOnItem"
+        @click="closeOnClick ? (isActive = false) : 0"
       >
         <div class="dropdown-item-content">
           <slot name="content"></slot>
@@ -32,12 +33,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { directive } from "vue3-click-away";
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: "Dropdown",
   directives: {
     ClickAway: directive,
   },
@@ -46,7 +46,7 @@ export default defineComponent({
       type: String,
       required: false,
       default: "bottom-left",
-      validator(value) {
+      validator: (value: string): boolean => {
         return [
           "bottom-left",
           "bottom-center",
@@ -62,7 +62,7 @@ export default defineComponent({
       required: false,
       default: false,
     },
-    max_width: {
+    maxWidth: {
       type: Number,
       required: false,
     },
@@ -71,52 +71,77 @@ export default defineComponent({
       required: false,
       default: false,
     },
+    fullView: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    closeOnClick: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    modelValue: {
+      type: Boolean,
+      default: false,
+    },
   },
-  data() {
-    return {
-      isActive: false,
-      isHover: false,
-    };
-  },
-  methods: {
-    onDropdownToogleClicked() {
-      if (!this.hover) {
-        this.isActive = !this.isActive;
-      }
-    },
-    onDropdownAwayClicked() {
-      if (!this.hover) {
-        this.isActive = false;
-      }
-    },
-    onDropdownMouseOver() {
-      if (this.hover) {
-        this.isActive = true;
-      }
-    },
+  setup(props, { emit }) {
+    const isActive = ref(false);
+    const isHover = ref(false);
 
-    onDropdownMouseLeave() {
-      if (this.hover) {
+    const onDropdownToggleClicked = () => {
+      if (!props.hover) {
+        isActive.value = !isActive.value;
+        emit("update:modelValue", isActive.value);
+      }
+    };
+    const onDropdownAwayClicked = () => {
+      if (!props.hover) {
+        isActive.value = false;
+        emit("update:modelValue", isActive.value);
+      }
+    };
+    const onDropdownMouseOver = () => {
+      if (props.hover) {
+        isActive.value = true;
+        emit("update:modelValue", isActive.value);
+      }
+    };
+    const onDropdownMouseLeave = () => {
+      if (props.hover) {
         setTimeout(() => {
-          if (!this.isHover) {
-            this.isActive = false;
+          if (!isHover.value) {
+            isActive.value = false;
           }
         }, 500);
       }
-    },
+    };
 
-    onDropdownMouseOverOnItem() {
-      if (this.hover) {
-        this.isHover = true;
+    const onDropdownMouseOverOnItem = () => {
+      if (props.hover) {
+        isHover.value = true;
       }
-    },
+    };
 
-    onDropdownMouseLeaveFromItem() {
-      if (this.hover) {
-        this.isHover = false;
+    const onDropdownMouseLeaveFromItem = () => {
+      if (props.hover) {
+        isHover.value = false;
       }
-    },
+    };
+
+    return {
+      isActive,
+      isHover,
+      onDropdownToggleClicked,
+      onDropdownAwayClicked,
+      onDropdownMouseOver,
+      onDropdownMouseLeave,
+      onDropdownMouseOverOnItem,
+      onDropdownMouseLeaveFromItem,
+    };
   },
+  emits: ["update:modelValue"],
 });
 </script>
 
@@ -129,6 +154,7 @@ export default defineComponent({
 
   &-toggle {
     display: inline-block;
+    width: 100%;
   }
 
   &-item {
@@ -136,6 +162,10 @@ export default defineComponent({
     z-index: 10;
     transition: opacity 0.25s ease;
     position: absolute;
+
+    &-fullview {
+      width: 100%;
+    }
 
     &::before {
       content: "";

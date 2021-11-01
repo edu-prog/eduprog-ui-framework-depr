@@ -8,7 +8,7 @@
       <div
         v-if="isActive"
         :class="['modal-wrapper', scrollable && 'modal-scrollable']"
-        @click="onModalClickedAway"
+        @click="closeModal"
       ></div>
     </transition>
 
@@ -60,15 +60,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { isMobile } from "mobile-device-detect";
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  directives: {
-    isMobile,
-  },
-  name: "Modal",
   props: {
     fullscreen: {
       type: Boolean,
@@ -91,25 +87,21 @@ export default defineComponent({
       default: "m",
     },
   },
-  data() {
-    return {
-      isActive: false,
+  setup(props) {
+    const isActive = ref(false);
+    const IsMobile = ref(isMobile);
+    const onToggleClicked = () => {
+      isActive.value = !isActive.value;
+      document.body.style.overflow =
+        isActive.value && props.scrollable ? "hidden" : "";
     };
-  },
-  methods: {
-    onToggleClicked() {
-      this.isActive = !this.isActive;
+    const closeModal = () => {
+      isActive.value = false;
       document.body.style.overflow =
-        this.isActive && this.scrollable ? "hidden" : "";
-    },
-    closeModal() {
-      this.isActive = false;
-      document.body.style.overflow =
-        this.isActive && this.scrollable ? "hidden" : "";
-    },
-    onModalClickedAway() {
-      this.closeModal();
-    },
+        isActive.value && props.scrollable ? "hidden" : "";
+    };
+
+    return { isActive, IsMobile, onToggleClicked, closeModal };
   },
 });
 </script>
@@ -164,7 +156,9 @@ export default defineComponent({
     width: 100%;
     background-color: #ffffff;
     flex-direction: column;
-    transition: all 0.2s ease-in-out;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-duration: 0.25s;
+    transition-property: max-height;
     z-index: 101;
     padding: 1rem;
     border-radius: 0.5rem;

@@ -6,10 +6,10 @@ import AutocompleteInput from "eduprog-ds/src/components/AutocompleteInput.vue";
 
 ## Свойства
 
-| Свойство | Значение                         | Описание             |
-| -------- | -------------------------------- | -------------------- |
-| label    | string                           | заголовок поля ввода |
-| options  | `['первое', 'второе', 'третье']` | заголовок поля ввода |
+| Свойство | Значение                         | Описание                                       |
+| -------- | -------------------------------- | ---------------------------------------------- |
+| label    | string                           | заголовок поля ввода                           |
+| options  | `['первое', 'второе', 'третье']` | Опции, которые будут предложены в autocomplete |
 
 ## Примеры
 
@@ -19,10 +19,10 @@ import AutocompleteInput from "eduprog-ds/src/components/AutocompleteInput.vue";
 
 ```vue
 <Row>
-    <Column>
-      <AutocompleteInput
-        :options="listCounties"
-        label="Страна" />
-    </Column>
+<Column>
+  <AutocompleteInput
+      :options="listCounties"
+      label="Страна"/>
+</Column>
 </Row>
 ```

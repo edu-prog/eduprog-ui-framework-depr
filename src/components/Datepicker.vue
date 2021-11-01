@@ -91,7 +91,6 @@ export default defineComponent({
     },
 
     selectDate(event) {
-      console.log("fwefwe");
       this.selectedDates.add(event.target.dataset.date);
       this.$emit("update", this.selectedDates);
     },

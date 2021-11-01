@@ -33,18 +33,17 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { BreakpointsLabel } from "@/utils/breakpoins";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Heading",
   props: {
     size: {
       type: String,
       require: true,
       default: "xl",
-      validator(value) {
+      validator: (value: string): boolean => {
         return [...BreakpointsLabel, "xxl"].includes(value);
       },
     },

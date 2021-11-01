@@ -14,12 +14,10 @@
   </button>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 
-export default defineComponent({
-  name: "PrevButton",
-});
+export default defineComponent({});
 </script>
 
 <style lang="scss" scoped>

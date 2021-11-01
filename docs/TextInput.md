@@ -6,14 +6,16 @@ import TextInput from "eduprog-ds/src/components/TextInput.vue";
 
 ## Свойства
 
-| Свойство   | Значения          | Описание                   |
-| ---------- | ----------------- | -------------------------- |
-| type       | {text, password}  | тип Input'а                |
-| label      | string            | заголовок Input'а          |
-| size       | {xs, s, m, l, xl} | размер Input'а             |
-| mask       | string            | маска Input'а              |
-| max_length | number            | максимальная длина Input'a |
-| readonly   | boolean           | Только для чтения?         |
+| Свойство           | Значения                     | Описание                                                       |
+| ------------------ | ---------------------------- | -------------------------------------------------------------- |
+| label              | string                       | заголовок TextInput                                            |
+| mask               | string                       | маска TextInput                                                |
+| max-length         | number                       | максимальная длина текст в TextInput                           |
+| input-readonly     | boolean                      | неизменяемый TextInput                                         |
+| input-type         | {text, tel, email, password} | тип Input в TextInput                                          |
+| input-cursor       | {text, pointer}              | курсор при наведении на TextInput                              |
+| validation-pattern | RegExpr                      | регулярное выражение для валидации TextInput                   |
+| validation-message | string                       | сообщение, которое выведется пользователю при ошибки валидации |
 
 ## Пример
 
@@ -21,8 +23,8 @@ import TextInput from "eduprog-ds/src/components/TextInput.vue";
 
 ```vue
 <Row>
-    <Column>
+  <Column>
     <TextInput type="text" label="Номер паспорта" mask="0308 075673" />
-    </Column>
+  </Column>
 </Row>
 ```

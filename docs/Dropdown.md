@@ -6,10 +6,13 @@ import Dropdown from "eduprog-ds/src/components/Dropdown.vue";
 
 ## Свойства
 
-| Свойство  | Значение                                                  | Описание                  |
-| --------- | --------------------------------------------------------- | ------------------------- |
-| direction | {bottom-[left, center, right], top-[left, center, right]} | Направление Dropdown      |
-| left      | number                                                    | Отклонение Dropdown влево |
+| Свойство     | Значение                                                               | Описание                                            |
+| ------------ | ---------------------------------------------------------------------- | --------------------------------------------------- |
+| direction    | {bottom-left, top-center, top-right, top-left, top-center, top-right]} | направление Dropdown                                |
+| hover        | boolean                                                                | открывается по наведению на `target`                |
+| clearly      | boolean                                                                | не показывается стрелочка навигации                 |
+| fullView     | boolean                                                                | расстянуть диалог dropdown по вней ширине `target`. |
+| closeOnClick | boolean                                                                | закрывать dropdown при клике на dropdown диалог     |
 
 ## Пример
 
