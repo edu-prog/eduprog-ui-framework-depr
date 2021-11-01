@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, StyleValue } from "vue";
-import { ISizes } from "@/utils/breakpoins";
+import { ISizes } from "../utils/breakpoins";
 
 export default defineComponent({
   props: {

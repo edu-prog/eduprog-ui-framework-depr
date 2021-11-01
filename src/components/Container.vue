@@ -8,7 +8,7 @@
 import {
   BreakpointsLabel,
   BreakpointsLabelConvertToLarge,
-} from "@/utils/breakpoins";
+} from "../utils/breakpoins";
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
