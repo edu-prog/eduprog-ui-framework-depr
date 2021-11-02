@@ -160,7 +160,7 @@ export default defineComponent({
   &-item {
     display: block;
     z-index: 10;
-    transition: opacity 0.25s ease;
+    transition: opacity $transition-duration $transition-type;
     position: absolute;
 
     &-fullview {
@@ -256,7 +256,7 @@ export default defineComponent({
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.25s ease;
+  transition: opacity $transition-duration $transition-type;
 }
 
 .fade-enter-from,

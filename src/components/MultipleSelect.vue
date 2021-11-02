@@ -81,7 +81,7 @@ export default defineComponent({
 
     &-right {
       display: flex;
-      transition: transform 0.25s ease;
+      transition: transform $transition-duration $transition-type;
       &-active {
         transform: rotate(180deg);
       }

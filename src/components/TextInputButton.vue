@@ -41,7 +41,7 @@ export default defineComponent({
   padding: 0.5rem;
   width: 100%;
   cursor: pointer;
-  transition: background 0.25s ease;
+  transition: background $transition-duration $transition-type;
   position: relative;
 
   &__left-icon {

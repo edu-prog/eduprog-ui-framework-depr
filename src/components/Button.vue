@@ -134,8 +134,8 @@ export default defineComponent({
   text-align: center;
   white-space: nowrap;
   transform: scale(1);
-  transition: background 0.25s ease, width 0.25s ease, color 0.25s ease,
-    transform 0.25s ease;
+  transition: background, width, color,
+    transform $transition-duration $transition-type;
   border: 2px;
   border-radius: 0.5rem;
   font-family: $font-family;

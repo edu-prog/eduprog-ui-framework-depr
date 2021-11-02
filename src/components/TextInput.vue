@@ -193,7 +193,7 @@ export default defineComponent({
     left: 1rem;
     font-size: 1.5rem;
     pointer-events: none;
-    transition: all 0.25s ease;
+    transition: all $transition-duration $transition-type;
     user-select: none;
 
     &-active {
@@ -210,7 +210,7 @@ export default defineComponent({
     font-size: 1.5rem;
     vertical-align: top;
     background-color: $color-platinum;
-    transition: background-color 0.25s ease;
+    transition: background-color $transition-duration $transition-type;
     border-radius: 0.5rem;
     border: 0;
     outline: none;
@@ -233,7 +233,7 @@ export default defineComponent({
 
   &-validator {
     color: $color-danger;
-    transition: all 0.25s ease;
+    transition: all $transition-duration $transition-type;
     font-size: 1rem;
     opacity: 0;
 

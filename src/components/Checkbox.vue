@@ -124,7 +124,7 @@ export default defineComponent({
     height: 1.5rem;
     border-radius: 0.5rem;
     background-color: #ecf1f7;
-    transition: 0.25s ease;
+    transition: all $transition-duration $transition-type;
     cursor: pointer;
 
     &:hover {
@@ -136,13 +136,13 @@ export default defineComponent({
       width: 1.5rem;
       height: 1.5rem;
       border-radius: 0.5rem;
-      transition: transform 0.25s ease;
+      transition: transform $transition-duration $transition-type;
       transform: scale(0);
 
       &-icon {
         visibility: hidden;
         display: flex;
-        transition: transform 0.25s ease;
+        transition: transform $transition-duration $transition-type;
         width: 100%;
         height: 100%;
         justify-content: center;

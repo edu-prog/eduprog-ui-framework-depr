@@ -114,7 +114,7 @@ export default defineComponent({
     font-size: 1.5rem;
     vertical-align: top;
     background-color: $color-platinum;
-    transition: background-color 0.25s ease;
+    transition: background-color $transition-duration $transition-type;
     border-radius: 0.5rem;
     border: 0;
     outline: none;
@@ -139,7 +139,7 @@ export default defineComponent({
     left: 1rem;
     overflow: hidden;
     width: calc(100% - 3rem);
-    transition: all 0.25s ease;
+    transition: all $transition-duration $transition-type;
     z-index: 1;
     font-size: 1.5rem;
     white-space: nowrap;
@@ -175,7 +175,7 @@ export default defineComponent({
     right: 1rem;
     transform: translate(0, -50%);
     display: flex;
-    transition: transform 0.25s ease;
+    transition: transform $transition-duration $transition-type;
     pointer-events: none;
   }
 }
