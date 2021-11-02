@@ -4,8 +4,8 @@
       'ep-col',
       col && `ep-col_${col}`,
       xs && `ep-col_xs-${xs}`,
-      m && `ep-col_m-${m}`,
-      l && `ep-col_l-${l}`,
+      md && `ep-col_md-${md}`,
+      lg && `ep-col_lg-${lg}`,
     ]"
   >
     <slot></slot>
@@ -43,7 +43,7 @@ export default defineComponent({
         }
       },
     },
-    m: {
+    md: {
       type: [String, Number],
       required: false,
       validator: (value: string | number): boolean => {
@@ -54,7 +54,7 @@ export default defineComponent({
         }
       },
     },
-    l: {
+    lg: {
       type: [String, Number],
       required: false,
       validator: (value: string | number): boolean => {
@@ -74,7 +74,7 @@ export default defineComponent({
 
 .ep-col {
   @include generate-sme-columns($space-normal);
-  @include generate-column(m, $space-normal);
+  @include generate-column(md, $space-normal);
 
   &_stretch {
     display: flex;
@@ -82,11 +82,11 @@ export default defineComponent({
 
   .ep-row_adaptive & {
     @media #{$desktop-m-min} {
-      @include generate-column(l, $space-large);
+      @include generate-column(lg, $space-large);
     }
 
     @media #{$desktop-s} {
-      @include generate-column(m, $space-normal);
+      @include generate-column(md, $space-normal);
     }
 
     @media #{$mobile-m} {
@@ -111,11 +111,11 @@ export default defineComponent({
   }
 
   @media #{$desktop-s} {
-    @include generate-offset-columns(m);
+    @include generate-offset-columns(md);
   }
 
   @media #{$desktop-m-min} {
-    @include generate-offset-columns(l);
+    @include generate-offset-columns(lg);
   }
 }
 </style>

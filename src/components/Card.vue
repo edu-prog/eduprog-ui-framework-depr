@@ -74,15 +74,15 @@ export default defineComponent({
     max-width: calc(300px - 3rem);
   }
 
-  &-s {
+  &-sm {
     max-width: calc(500px - 3rem);
   }
 
-  &-m {
+  &-md {
     max-width: calc(960px - 3rem);
   }
 
-  &-l {
+  &-lg {
     max-width: calc(1280px - 3rem);
   }
 

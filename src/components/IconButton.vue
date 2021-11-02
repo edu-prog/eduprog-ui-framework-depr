@@ -38,7 +38,7 @@ export default defineComponent({
     },
     iconSize: {
       type: String,
-      default: "m",
+      default: "md",
       required: false,
       validator: (value: string): boolean => {
         return BreakpointsLabel.includes(value);
@@ -63,9 +63,9 @@ export default defineComponent({
   setup(props) {
     const ButtonSize = {
       xs: "3rem",
-      s: "4.5rem",
-      m: "6.75rem",
-      l: "10.125rem",
+      sm: "4.5rem",
+      md: "6.75rem",
+      lg: "10.125rem",
       xl: "15.1875rem",
     } as ISizes;
     const iconButtonStyles = computed(() => {

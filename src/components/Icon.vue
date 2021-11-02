@@ -29,9 +29,9 @@ export default defineComponent({
   setup(props) {
     const sizes = {
       xs: "1rem",
-      s: "1.25rem",
-      m: "1.5rem",
-      l: "1.75rem",
+      sm: "1.25rem",
+      md: "1.5rem",
+      lg: "1.75rem",
       xl: "2rem",
     } as ISizes;
 

@@ -10,17 +10,17 @@
         <slot></slot>
       </h2>
     </div>
-    <div v-else-if="size === 'l'" class="heading-item">
+    <div v-else-if="size === 'lg'" class="heading-item">
       <h3 :class="[align ? `heading-item-align-${align}` : '']">
         <slot></slot>
       </h3>
     </div>
-    <div v-else-if="size === 'm'" class="heading-item">
+    <div v-else-if="size === 'md'" class="heading-item">
       <h4 :class="[align ? `heading-item-align-${align}` : '']">
         <slot></slot>
       </h4>
     </div>
-    <div v-else-if="size === 's'" class="heading-item">
+    <div v-else-if="size === 'sm'" class="heading-item">
       <h5 :class="[align ? `heading-item-align-${align}` : '']">
         <slot></slot>
       </h5>
