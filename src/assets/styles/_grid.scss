@@ -1,0 +1,44 @@
+@import "media";
+
+$space-small: 0.5rem;
+$space-normal: 1.25rem;
+$space-large: 1.5rem;
+$columns-count: 12;
+
+@mixin generate-column($infix, $padding) {
+  @for $i from 1 to $columns-count + 1 {
+    &_#{$infix}-#{$i} {
+      width: ($i * 100% / $columns-count);
+      padding-left: $padding;
+      padding-right: $padding;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@mixin generate-offset-columns($infix) {
+  @for $i from 1 to $columns-count + 1 {
+    &_#{$infix}-#{$i} {
+      margin-left: ($i * 100% / $columns-count);
+    }
+  }
+}
+
+@mixin generate-sme-columns($padding) {
+  @for $i from 1 to $columns-count + 1 {
+    &_#{$i} {
+      width: ($i * 100% / $columns-count);
+      padding-left: $padding;
+      padding-right: $padding;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@mixin generate-sme-offset-columns() {
+  @for $i from 1 to $columns-count + 1 {
+    &_#{$i} {
+      margin-left: ($i * 100 / $columns-count);
+    }
+  }
+}

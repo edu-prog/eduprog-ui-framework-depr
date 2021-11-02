@@ -29,7 +29,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/_global.scss";
+@import "../assets/styles/color";
+@import "../assets/styles/animations";
 
 .TextInput-Button {
   display: flex;

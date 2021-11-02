@@ -107,7 +107,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/global";
+@import "../assets/styles/color";
+@import "../assets/styles/animations";
+@import "../assets/styles/media";
 
 .modal {
   &-toggle {
@@ -162,7 +164,7 @@ export default defineComponent({
     padding: 1rem;
     border-radius: 0.5rem;
 
-    @media #{$small-and-down} {
+    @media #{$mobile-m} {
       width: 300px;
       height: 80vh;
       top: initial;
@@ -189,7 +191,7 @@ export default defineComponent({
         overflow-x: hidden;
         overflow-y: auto;
 
-        @media #{$small-and-down} {
+        @media #{$mobile-m} {
           padding-right: 0.25rem;
         }
 

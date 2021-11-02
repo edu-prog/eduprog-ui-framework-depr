@@ -116,7 +116,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/global";
+@import "../assets/styles/color";
 
 .datepicker {
   display: flex;

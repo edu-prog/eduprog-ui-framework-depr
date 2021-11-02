@@ -29,7 +29,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/global";
+@import "../assets/styles/color";
 
 .link {
   color: $color-primary;

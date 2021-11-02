@@ -5,7 +5,3 @@ export { default as Container } from "./Container.vue";
 
 export default {};
 </script>
-
-<style lang="scss">
-@import "../assets/styles/_grid.css";
-</style>

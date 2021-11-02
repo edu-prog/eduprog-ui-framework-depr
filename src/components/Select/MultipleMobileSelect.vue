@@ -100,7 +100,8 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/styles/global";
+@import "../../assets/styles/animations";
+@import "../../assets/styles/color";
 
 .Select-mobile {
   position: relative;

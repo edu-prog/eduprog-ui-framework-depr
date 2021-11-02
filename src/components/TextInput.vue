@@ -174,7 +174,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/global";
+@import "../assets/styles/color";
+@import "../assets/styles/animations";
 
 .TextInput {
   &-wrapper {

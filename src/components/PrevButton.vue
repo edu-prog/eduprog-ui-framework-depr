@@ -21,7 +21,7 @@ export default defineComponent({});
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/global";
+@import "../assets/styles/animations";
 
 .previous_button {
   display: flex;

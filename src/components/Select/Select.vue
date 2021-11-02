@@ -97,7 +97,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/styles/global";
+@import "../../assets/styles/animations";
 
 .Select {
   width: 100%;

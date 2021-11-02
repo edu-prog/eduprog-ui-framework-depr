@@ -59,8 +59,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/global";
-
 .CheckboxBlock-container {
   display: flex;
   width: 100%;
