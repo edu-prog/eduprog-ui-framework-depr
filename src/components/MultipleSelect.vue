@@ -71,7 +71,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/global";
+@import "../assets/styles/color";
+@import "../assets/styles/animations";
+@import "../assets/styles/font";
 
 .Select {
   width: 100%;
@@ -81,7 +83,7 @@ export default defineComponent({
 
     &-right {
       display: flex;
-      transition: transform 0.25s ease;
+      transition: transform $transition-duration $transition-type;
       &-active {
         transform: rotate(180deg);
       }

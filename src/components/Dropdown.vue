@@ -146,7 +146,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/global";
+@import "../assets/styles/color";
+@import "../assets/styles/animations";
 
 .dropdown {
   position: relative;
@@ -160,7 +161,7 @@ export default defineComponent({
   &-item {
     display: block;
     z-index: 10;
-    transition: opacity 0.25s ease;
+    transition: opacity $transition-duration $transition-type;
     position: absolute;
 
     &-fullview {
@@ -256,7 +257,7 @@ export default defineComponent({
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.25s ease;
+  transition: opacity $transition-duration $transition-type;
 }
 
 .fade-enter-from,

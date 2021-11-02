@@ -40,6 +40,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/styles/animations";
+
 .avatar {
   position: relative;
   width: 100%;
@@ -62,7 +64,7 @@ export default defineComponent({
   }
 
   &-wrapper {
-    transition: background-color 0.25s ease-in-out;
+    transition: background-color $transition-duration $transition-type;
     border-radius: 50%;
   }
 
@@ -89,10 +91,10 @@ export default defineComponent({
       transform: translateX(-50%);
       background-color: rgba(0, 0, 0, 0.5);
       border-radius: 50%;
-      transition: 0.3s ease;
+      transition: all $transition-duration $transition-type;
 
       svg {
-        transition: 0.25s ease;
+        transition: all $transition-duration $transition-type;
       }
     }
   }
