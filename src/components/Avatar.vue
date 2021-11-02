@@ -41,6 +41,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import "../assets/styles/animations";
+@import "../assets/styles/mixins";
 
 .avatar {
   position: relative;
@@ -80,18 +81,16 @@ export default defineComponent({
     }
 
     &-wrapper {
-      position: absolute;
       display: flex;
       justify-content: center;
       align-items: center;
       width: 15%;
       height: 15%;
       bottom: 20%;
-      left: 50%;
-      transform: translateX(-50%);
       background-color: rgba(0, 0, 0, 0.5);
       border-radius: 50%;
       transition: all $transition-duration $transition-type;
+      @include center-left();
 
       svg {
         transition: all $transition-duration $transition-type;

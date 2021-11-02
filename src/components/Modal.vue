@@ -84,7 +84,12 @@ export default defineComponent({
     size: {
       type: String,
       required: false,
-      default: "m",
+      default: "md",
+    },
+    closable: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   setup(props) {
@@ -110,6 +115,7 @@ export default defineComponent({
 @import "../assets/styles/color";
 @import "../assets/styles/animations";
 @import "../assets/styles/media";
+@import "../assets/styles/mixins";
 
 .modal {
   &-toggle {
@@ -207,15 +213,15 @@ export default defineComponent({
       }
     }
 
-    &-s {
+    &-sm {
       max-width: 300px;
     }
 
-    &-m {
+    &-md {
       max-width: 500px;
     }
 
-    &-l {
+    &-lg {
       max-width: 800px;
     }
 
@@ -229,10 +235,9 @@ export default defineComponent({
     height: 3px;
     border-radius: 3px;
     background-color: $color-white;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     top: -10px;
+
+    @include center-left();
   }
 }
 
