@@ -66,6 +66,6 @@
   },
   "files": [
     "src/components",
-    "src/assets"
+    "src/utils"
   ]
 }
