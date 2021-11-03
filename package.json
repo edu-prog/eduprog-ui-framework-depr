@@ -1,5 +1,6 @@
 {
   "name": "eduprog-ds",
+  "main": "src/index.ts",
   "version": "1.0.0",
   "scripts": {
     "dev": "vue-cli-service serve",
