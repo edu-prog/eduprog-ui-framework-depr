@@ -24,8 +24,8 @@
 <script lang="ts">
 import { defineComponent, PropType, ref } from "vue";
 import { isMobile } from "mobile-device-detect";
-import MultipleMobileSelect from "./components/Select/MultipleMobileSelect.vue";
-import MultipleSelect from "./components/Select/MultipleSelect.vue";
+import MultipleMobileSelect from "../components/Select/MultipleMobileSelect.vue";
+import MultipleSelect from "../components/Select/MultipleSelect.vue";
 
 export default defineComponent({
   components: {

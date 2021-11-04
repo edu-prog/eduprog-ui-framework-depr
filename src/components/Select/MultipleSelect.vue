@@ -58,9 +58,9 @@
 
 <script lang="ts">
 import { defineComponent, PropType, ref } from "vue";
-import Dropdown from "./components/Dropdown.vue";
-import TextInput from "./components/TextInput.vue";
-import Checkbox from "./components/Checkbox.vue";
+import Dropdown from "../components/Dropdown.vue";
+import TextInput from "../components/TextInput.vue";
+import Checkbox from "../components/Checkbox.vue";
 
 export default defineComponent({
   components: {

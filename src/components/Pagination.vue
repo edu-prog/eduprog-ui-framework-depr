@@ -88,7 +88,7 @@
 </template>
 
 <script lang="ts">
-import Button from "./components/Button.vue";
+import Button from "../components/Button.vue";
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
