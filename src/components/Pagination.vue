@@ -1,6 +1,6 @@
 <template>
   <div class="pagination">
-    <div v-show="rendered_page" class="pagination-item">
+    <div v-show="renderedPage" class="pagination-item">
       <Button :padding="0.25" @click="onButtonPrevClicked">
         <svg
           :style="{ display: 'flex' }"
@@ -17,7 +17,7 @@
         </svg>
       </Button>
     </div>
-    <div v-show="rendered_page > 0" class="pagination-item">
+    <div v-show="renderedPage > 0" class="pagination-item">
       <Button :padding="0.5" @click="onButtonPrevFrameRendered">
         <svg
           :style="{ display: 'flex' }"
@@ -102,6 +102,7 @@ export default defineComponent({
     },
     totalVisible: {
       type: Number,
+      default: 10,
       required: false,
     },
     modelValue: {
