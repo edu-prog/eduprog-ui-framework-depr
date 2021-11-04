@@ -14,7 +14,6 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "core-js": "^3.19.1",
     "mobile-device-detect": "^0.4.3",
     "vue": "^3.2.21",
     "vue3-click-away": "^1.2.1"
@@ -45,7 +44,15 @@
     "sass": "^1.43.4",
     "sass-loader": "^12.3.0",
     "style-loader": "^3.3.1",
-    "typescript": "^4.4.4"
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.4",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.7.2"
+  },
+  "peerDependencies": {
+    "core-js": "*",
+    "vue": "*",
+    "vue3-click-away": "*"
   },
   "browserslist": [
     "> 1%",
