@@ -57,6 +57,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@use "sass:math";
+
 $h1-font-size: 4.2rem;
 $h2-font-size: 3.56rem;
 $h3-font-size: 2.92rem;
@@ -69,37 +71,37 @@ $h6-font-size: 1.15rem;
     h1 {
       font-size: $h1-font-size;
       line-height: 110%;
-      margin: ($h1-font-size / 1.5) 0 ($h1-font-size / 2.5) 0;
+      margin: math.div($h1-font-size, 1.5) 0 math.div($h1-font-size, 2.5) 0;
     }
 
     h2 {
       font-size: $h2-font-size;
       line-height: 110%;
-      margin: ($h2-font-size / 1.5) 0 ($h2-font-size / 2.5) 0;
+      margin: math.div($h2-font-size, 1.5) 0 math.div($h2-font-size, 2.5) 0;
     }
 
     h3 {
       font-size: $h3-font-size;
       line-height: 110%;
-      margin: ($h3-font-size / 1.5) 0 ($h3-font-size / 2.5) 0;
+      margin: math.div($h3-font-size, 1.5) 0 math.div($h3-font-size, 2.5) 0;
     }
 
     h4 {
       font-size: $h4-font-size;
       line-height: 110%;
-      margin: ($h4-font-size / 1.5) 0 ($h4-font-size / 2.5) 0;
+      margin: math.div($h4-font-size, 1.5) 0 math.div($h4-font-size, 2.5) 0;
     }
 
     h5 {
       font-size: $h5-font-size;
       line-height: 110%;
-      margin: ($h5-font-size / 1.5) 0 ($h5-font-size / 2.5) 0;
+      margin: math.div($h5-font-size, 1.5) 0 math.div($h5-font-size, 2.5) 0;
     }
 
     h6 {
       font-size: $h6-font-size;
       line-height: 110%;
-      margin: ($h6-font-size / 1.5) 0 ($h6-font-size / 2.5) 0;
+      margin: math.div($h6-font-size, 1.5) 0 math.div($h6-font-size, 2.5) 0;
     }
 
     &-align {
