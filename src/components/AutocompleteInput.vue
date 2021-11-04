@@ -219,6 +219,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import "../assets/styles/color";
+@import "../assets/styles/mixins";
 
 .Autocomplete-Input {
   position: relative;
@@ -294,11 +295,10 @@ export default defineComponent({
         display: block;
         width: 40px;
         height: 3px;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
         background-color: $color-white;
         top: 91px;
+
+        @include center-left();
       }
 
       &-options {
