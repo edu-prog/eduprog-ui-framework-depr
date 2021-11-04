@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, ref } from "vue";
-import Select from "@/components/Select/Select.vue";
+import Select from "./components/Select/Select.vue";
 
 export default defineComponent({
   components: {
